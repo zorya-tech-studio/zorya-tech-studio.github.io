@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "about": "About",
+    "apps": "Apps",
+    "contact": "Contact"
+  },
+  "hero": {
+    "tagline": "Crafting mobile experiences with care"
+  },
+  "about": {
+    "title": "About",
+    "p1": "Zorya Tech Studio is an independent mobile development studio. We build apps that combine thoughtful design with solid engineering.",
+    "p2": "Our goal is to create useful everyday tools with attention to detail and user experience."
+  },
+  "apps": {
+    "title": "Apps",
+    "secret_app": "Secret App",
+    "secret_app_desc": "Something exciting is cooking. Release coming soon!",
+    "coming_soon": "Coming Soon",
+    "view_all": "View All Projects"
+  },
+  "contact": {
+    "title": "Contact"
+  },
+  "breadcrumb": {
+    "home": "Home"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "What we're working on",
+    "back": "Back to home",
+    "empty": "Projects are in development. Stay tuned!"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "updated": "Last updated",
+    "intro": "Zorya Tech Studio (\"we\", \"us\", \"our\") respects your privacy. This policy describes how we collect, use, and protect your information when using our mobile applications.",
+    "collect_title": "Information We Collect",
+    "collect_text": "Our apps may collect minimal anonymous data for analytics and improvement purposes. We do not collect personal information without your consent.",
+    "use_title": "How We Use Information",
+    "use_text": "Collected information is used solely to improve the quality of our apps and fix bugs.",
+    "third_title": "Third Parties",
+    "third_text": "We do not sell or share your personal information with third parties, except as required by law.",
+    "security_title": "Security",
+    "security_text": "We take reasonable measures to protect your information, but no method of transmission over the Internet is completely secure.",
+    "changes_title": "Changes to This Policy",
+    "changes_text": "We may update this policy from time to time. Any changes will be posted on this page.",
+    "contact_title": "Contact Us",
+    "contact_text": "If you have questions about this privacy policy, contact us at:"
+  }
+}
