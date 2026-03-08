@@ -1,29 +1,7 @@
-# Zorya Tech Studio
+# ✨ Zorya Tech Studio
 
-Landing page for **Zorya Tech Studio** — independent mobile app studio.
+Independent mobile app studio. We build thoughtful, useful apps — from idea to release.
 
-🌐 **Live:** [zorya-tech-studio.github.io](https://zorya-tech-studio.github.io/)
+Our goal is to create apps that are a pleasure to use: clean design, nothing unnecessary, attention to detail.
 
-## Tech Stack
-
-- [Vite](https://vitejs.dev/) + [Vue 3](https://vuejs.org/) (Composition API, `<script setup>`)
-- Pure CSS (no frameworks)
-- Google Fonts: Cormorant Garamond + Rajdhani
-
-## Development
-
-```bash
-npm install
-npm run dev
-```
-
-## Build
-
-```bash
-npm run build
-npm run preview
-```
-
-## Deployment
-
-Automatic via GitHub Actions — pushes to `main` trigger a build and deploy to GitHub Pages.
+🌐 **Website:** [zorya-tech-studio.github.io](https://zorya-tech-studio.github.io/)
