@@ -25,6 +25,14 @@ export default [
     },
   },
   {
+    files: ['scripts/**/*.js'],
+    languageOptions: {
+      globals: {
+        console: 'readonly',
+      },
+    },
+  },
+  {
     ignores: ['dist/', 'node_modules/'],
   },
 ]

@@ -54,6 +54,12 @@ router.afterEach((to) => {
 
   // Update html lang attribute to match current locale
   document.documentElement.lang = i18n.global.locale.value
+
+  // Update canonical URL to match current page
+  const canonical = document.getElementById('canonical')
+  if (canonical) {
+    canonical.href = `https://zorya-tech-studio.github.io${to.path}`
+  }
 })
 
 export default router
