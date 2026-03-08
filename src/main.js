@@ -4,4 +4,13 @@ import router from './router.js'
 import i18n from './i18n/index.js'
 import './style.css'
 
-createApp(App).use(router).use(i18n).mount('#app')
+const app = createApp(App)
+app.use(router)
+app.use(i18n)
+app.mount('#app')
+
+router.afterEach((to) => {
+  if (typeof gtag === 'function') {
+    gtag('config', 'G-3NDKKBEJTE', { page_path: to.fullPath })
+  }
+})

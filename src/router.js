@@ -7,8 +7,18 @@ const SITE_NAME = 'Zorya Tech Studio'
 
 const routes = [
   { path: '/:locale', name: 'home', component: () => import('./pages/HomePage.vue') },
-  { path: '/:locale/privacy', name: 'privacy', component: () => import('./pages/PrivacyPage.vue'), meta: { titleKey: 'privacy.title' } },
-  { path: '/:locale/projects', name: 'projects', component: () => import('./pages/ProjectsPage.vue'), meta: { titleKey: 'projects.title' } },
+  {
+    path: '/:locale/privacy',
+    name: 'privacy',
+    component: () => import('./pages/PrivacyPage.vue'),
+    meta: { titleKey: 'privacy.title' },
+  },
+  {
+    path: '/:locale/projects',
+    name: 'projects',
+    component: () => import('./pages/ProjectsPage.vue'),
+    meta: { titleKey: 'projects.title' },
+  },
   { path: '/', redirect: () => `/${i18n.global.locale.value}` },
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
@@ -41,6 +51,9 @@ router.afterEach((to) => {
   } else {
     document.title = SITE_NAME
   }
+
+  // Update html lang attribute to match current locale
+  document.documentElement.lang = i18n.global.locale.value
 })
 
 export default router

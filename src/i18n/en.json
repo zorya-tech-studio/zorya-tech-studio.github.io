@@ -2,7 +2,8 @@
   "nav": {
     "about": "About",
     "apps": "Apps",
-    "contact": "Contact"
+    "contact": "Contact",
+    "switch_lang": "Switch language"
   },
   "hero": {
     "tagline": "Crafting mobile experiences with care"

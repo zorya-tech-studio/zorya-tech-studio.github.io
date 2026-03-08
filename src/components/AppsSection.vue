@@ -1,7 +1,6 @@
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useRoute } from 'vue-router'
 
 const { t, locale } = useI18n()
 const projectsUrl = computed(() => `/${locale.value}/projects`)
@@ -14,7 +13,15 @@ const projectsUrl = computed(() => `/${locale.value}/projects`)
       <div class="app-card">
         <div class="app-icon">
           <svg viewBox="0 0 48 48" width="48" height="48" fill="none">
-            <rect x="4" y="4" width="40" height="40" rx="10" stroke="currentColor" stroke-width="1.5" />
+            <rect
+              x="4"
+              y="4"
+              width="40"
+              height="40"
+              rx="10"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
             <text x="24" y="30" text-anchor="middle" fill="currentColor" font-size="20">?</text>
           </svg>
         </div>
@@ -27,10 +34,19 @@ const projectsUrl = computed(() => `/${locale.value}/projects`)
     </div>
     <div class="apps-cta">
       <router-link :to="projectsUrl" class="apps-view-all">
-      {{ t('apps.view_all') }}
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="9,6 15,12 9,18" />
-      </svg>
+        {{ t('apps.view_all') }}
+        <svg
+          viewBox="0 0 24 24"
+          width="16"
+          height="16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="9,6 15,12 9,18" />
+        </svg>
       </router-link>
     </div>
   </section>
@@ -53,7 +69,9 @@ const projectsUrl = computed(() => `/${locale.value}/projects`)
   background: var(--surface);
   border: 1px solid var(--accent-dim);
   border-radius: 12px;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
 }
 
 .app-card:hover {
@@ -105,7 +123,10 @@ const projectsUrl = computed(() => `/${locale.value}/projects`)
   border: 1px solid var(--accent-dim);
   border-radius: 6px;
   text-align: center;
-  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .apps-view-all:hover {
@@ -126,5 +147,18 @@ const projectsUrl = computed(() => `/${locale.value}/projects`)
   padding: 4px 12px;
   border-radius: 20px;
   white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .app-card {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .app-badge {
+    width: 100%;
+    text-align: center;
+  }
 }
 </style>

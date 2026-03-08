@@ -1,270 +1,291 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-import * as THREE from 'three'
-import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js'
-import { RenderPass } from 'three/addons/postprocessing/RenderPass.js'
-import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js'
 
 const { t } = useI18n()
-const container = ref(null)
-let renderer, scene, camera, particles, mouse, animationId, composer
+const starsCanvas = ref(null)
+const trailCanvas = ref(null)
+let starsCtx, trailCtx
+let animationId
+let stars = []
+let trail = []
 
-// Custom glitch post-processing shader
-const GlitchShader = {
-  uniforms: {
-    tDiffuse: { value: null },
-    uTime: { value: 0 },
-    uIntensity: { value: 0 },
-  },
-  vertexShader: `
-    varying vec2 vUv;
-    void main() {
-      vUv = uv;
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+const STAR_COUNT = 350
+const TRAIL_LENGTH = 50
+
+function createStar(canvasW, canvasH, fromTop = false) {
+  // depth 0 = far background, 1 = close foreground
+  const depth = Math.random()
+  const d = 0.3 + depth * 0.7 // scale factor 0.3–1.0
+  return {
+    x: Math.random() * canvasW,
+    y: fromTop ? -Math.random() * 40 : Math.random() * canvasH,
+    depth,
+    speed: (0.1 + depth * depth * 2.2) * (0.8 + Math.random() * 0.4),
+    size: (0.2 + depth * depth * 3) * (0.7 + Math.random() * 0.6),
+    opacity: (0.05 + depth * depth * 0.7) * (0.5 + Math.random() * 0.5),
+    tailLen: (1 + depth * depth * 24) * (0.6 + Math.random() * 0.8),
+    color: Math.random() < 0.7 ? 'cyan' : Math.random() < 0.67 ? 'white' : 'magenta',
+    drift: (Math.random() - 0.5) * 0.1 * d,
+    twinklePhase: Math.random() * Math.PI * 2,
+  }
+}
+
+function initStars(w, h) {
+  stars = []
+  for (let i = 0; i < STAR_COUNT; i++) {
+    stars.push(createStar(w, h, false))
+  }
+  stars.sort((a, b) => a.depth - b.depth)
+}
+
+function drawStars(time) {
+  const canvas = starsCanvas.value
+  if (!canvas) return
+  const w = canvas.width
+  const h = canvas.height
+  starsCtx.clearRect(0, 0, w, h)
+
+  for (const s of stars) {
+    // Twinkle
+    const twinkle = 0.5 + 0.5 * Math.sin(time * 0.002 + s.twinklePhase)
+    const alpha = s.opacity * (0.5 + twinkle * 0.5)
+
+    // Color
+    let r, g, b
+    if (s.color === 'cyan') {
+      r = 0
+      g = 240
+      b = 255
+    } else if (s.color === 'magenta') {
+      r = 255
+      g = 45
+      b = 107
+    } else {
+      r = 230
+      g = 230
+      b = 240
     }
-  `,
-  fragmentShader: `
-    uniform sampler2D tDiffuse;
-    uniform float uTime;
-    uniform float uIntensity;
-    varying vec2 vUv;
 
-    float random(vec2 co) {
-      return fract(sin(dot(co, vec2(12.9898, 78.233))) * 43758.5453);
+    // Tail (gradient line going up from star)
+    const grad = starsCtx.createLinearGradient(s.x, s.y, s.x, s.y - s.tailLen)
+    grad.addColorStop(0, `rgba(${r},${g},${b},${alpha})`)
+    grad.addColorStop(1, `rgba(${r},${g},${b},0)`)
+    starsCtx.beginPath()
+    starsCtx.moveTo(s.x, s.y - s.tailLen)
+    starsCtx.lineTo(s.x, s.y)
+    starsCtx.strokeStyle = grad
+    starsCtx.lineWidth = s.size * 0.6
+    starsCtx.stroke()
+
+    // Star dot with glow
+    starsCtx.beginPath()
+    starsCtx.arc(s.x, s.y, s.size, 0, Math.PI * 2)
+    starsCtx.fillStyle = `rgba(${r},${g},${b},${alpha})`
+    starsCtx.shadowColor = `rgba(${r},${g},${b},${alpha * 0.8})`
+    starsCtx.shadowBlur = s.size * 3
+    starsCtx.fill()
+    starsCtx.shadowBlur = 0
+
+    // Move
+    s.y += s.speed
+    s.x += s.drift
+
+    // Reset if off screen
+    if (s.y > h + 20) {
+      Object.assign(s, createStar(w, h, true))
     }
+    if (s.x < -10) s.x = w + 10
+    if (s.x > w + 10) s.x = -10
+  }
+}
 
-    void main() {
-      vec2 uv = vUv;
-      float intensity = uIntensity;
+function drawTrail() {
+  const canvas = trailCanvas.value
+  if (!canvas) {
+    return
+  }
+  trailCtx.clearRect(0, 0, canvas.width, canvas.height)
+  if (trail.length < 3) return
 
-      // Horizontal shift bands
-      float band = step(0.98, random(vec2(floor(uv.y * 40.0), floor(uTime * 20.0))));
-      uv.x += band * intensity * (random(vec2(uTime)) - 0.5) * 0.15;
+  // Draw segments with gradient: fade from transparent (tail) to bright (head)
+  trailCtx.lineCap = 'round'
+  trailCtx.lineJoin = 'round'
 
-      // Chromatic aberration
-      float rShift = intensity * 0.012;
-      float bShift = intensity * -0.012;
+  for (let i = 1; i < trail.length - 1; i++) {
+    const p0 = trail[i - 1]
+    const p1 = trail[i]
+    const p2 = trail[i + 1]
 
-      vec4 cr = texture2D(tDiffuse, vec2(uv.x + rShift, uv.y));
-      vec4 cg = texture2D(tDiffuse, uv);
-      vec4 cb = texture2D(tDiffuse, vec2(uv.x + bShift, uv.y));
+    const progress = i / (trail.length - 1) // 0=tail, 1=head
+    const alpha = progress * progress * progress * 0.65
+    const width = 0.3 + progress * progress * 2.5
 
-      // Scanline noise
-      float scanNoise = random(vec2(uv.y * 100.0, uTime * 5.0)) * intensity * 0.08;
+    // Blend color from dim magenta (tail) → bright cyan (head)
+    const r = Math.round(255 * (1 - progress) * 0.4)
+    const g = Math.round(45 + 195 * progress)
+    const b = Math.round(107 + 148 * progress)
 
-      gl_FragColor = vec4(cr.r, cg.g, cb.b, cg.a) + scanNoise;
-    }
-  `,
+    trailCtx.beginPath()
+    trailCtx.moveTo((p0.x + p1.x) / 2, (p0.y + p1.y) / 2)
+    trailCtx.quadraticCurveTo(p1.x, p1.y, (p1.x + p2.x) / 2, (p1.y + p2.y) / 2)
+    trailCtx.strokeStyle = `rgba(${r},${g},${b},${alpha})`
+    trailCtx.lineWidth = width
+    trailCtx.stroke()
+  }
+
+  // Soft glow pass on the head portion
+  const headLen = Math.max(3, Math.floor(trail.length * 0.3))
+  const headStart = trail.length - headLen
+  trailCtx.beginPath()
+  trailCtx.moveTo(
+    (trail[headStart].x + trail[headStart + 1].x) / 2,
+    (trail[headStart].y + trail[headStart + 1].y) / 2,
+  )
+  for (let i = headStart + 1; i < trail.length - 1; i++) {
+    const p1 = trail[i]
+    const p2 = trail[i + 1]
+    trailCtx.quadraticCurveTo(p1.x, p1.y, (p1.x + p2.x) / 2, (p1.y + p2.y) / 2)
+  }
+  trailCtx.strokeStyle = 'rgba(0, 240, 255, 0.15)'
+  trailCtx.lineWidth = 6
+  trailCtx.shadowColor = 'rgba(0, 240, 255, 0.25)'
+  trailCtx.shadowBlur = 16
+  trailCtx.stroke()
+  trailCtx.shadowBlur = 0
+}
+
+function animate(time) {
+  drawStars(time)
+
+  // Continuously remove oldest point so trail always fades
+  if (trail.length > 0) trail.shift()
+
+  drawTrail()
+  animationId = requestAnimationFrame(animate)
+}
+
+function onMouseMove(e) {
+  const canvas = trailCanvas.value
+  if (!canvas) return
+  const rect = canvas.getBoundingClientRect()
+  const x = (e.clientX - rect.left) * (canvas.width / rect.width)
+  const y = (e.clientY - rect.top) * (canvas.height / rect.height)
+
+  trail.push({ x, y })
+  if (trail.length > TRAIL_LENGTH) trail.shift()
+}
+
+function resize() {
+  const starsEl = starsCanvas.value
+  const trailEl = trailCanvas.value
+  if (!starsEl || !trailEl) return
+
+  const parent = starsEl.parentElement
+  const dpr = Math.min(window.devicePixelRatio, 2)
+  const w = parent.offsetWidth
+  const h = parent.offsetHeight
+
+  starsEl.width = w * dpr
+  starsEl.height = h * dpr
+  starsEl.style.width = w + 'px'
+  starsEl.style.height = h + 'px'
+  starsCtx.setTransform(dpr, 0, 0, dpr, 0, 0)
+
+  trailEl.width = w * dpr
+  trailEl.height = h * dpr
+  trailEl.style.width = w + 'px'
+  trailEl.style.height = h + 'px'
+  trailCtx.setTransform(dpr, 0, 0, dpr, 0, 0)
+
+  initStars(w, h)
 }
 
 onMounted(() => {
-  const el = container.value
+  starsCtx = starsCanvas.value.getContext('2d')
+  trailCtx = trailCanvas.value.getContext('2d')
+  resize()
+  animationId = requestAnimationFrame(animate)
 
-  scene = new THREE.Scene()
-  camera = new THREE.PerspectiveCamera(75, el.offsetWidth / el.offsetHeight, 0.1, 1000)
-  camera.position.z = 5
-
-  renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
-  renderer.setSize(el.offsetWidth, el.offsetHeight)
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-  el.appendChild(renderer.domElement)
-
-  // Post-processing
-  composer = new EffectComposer(renderer)
-  composer.addPass(new RenderPass(scene, camera))
-  const glitchPass = new ShaderPass(GlitchShader)
-  composer.addPass(glitchPass)
-
-  const count = 1500
-  const positions = new Float32Array(count * 3)
-  const colors = new Float32Array(count * 3)
-  const sizes = new Float32Array(count)
-  const basePositions = new Float32Array(count * 3)
-
-  const cyan = new THREE.Color(0x00f0ff)
-  const magenta = new THREE.Color(0xff2d6b)
-  const white = new THREE.Color(0xffffff)
-
-  for (let i = 0; i < count; i++) {
-    const i3 = i * 3
-    positions[i3] = (Math.random() - 0.5) * 14
-    positions[i3 + 1] = (Math.random() - 0.5) * 10
-    positions[i3 + 2] = (Math.random() - 0.5) * 8
-
-    basePositions[i3] = positions[i3]
-    basePositions[i3 + 1] = positions[i3 + 1]
-    basePositions[i3 + 2] = positions[i3 + 2]
-
-    const r = Math.random()
-    const c = r < 0.7 ? cyan : r < 0.85 ? magenta : white
-    colors[i3] = c.r
-    colors[i3 + 1] = c.g
-    colors[i3 + 2] = c.b
-
-    sizes[i] = Math.random() * 3 + 1
-  }
-
-  const geometry = new THREE.BufferGeometry()
-  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
-  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
-  geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1))
-
-  const material = new THREE.ShaderMaterial({
-    uniforms: {
-      uTime: { value: 0 },
-      uMouse: { value: new THREE.Vector2(-10, -10) },
-      uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
-    },
-    vertexShader: `
-      attribute float size;
-      attribute vec3 color;
-      uniform float uTime;
-      uniform vec2 uMouse;
-      uniform float uPixelRatio;
-      varying vec3 vColor;
-      varying float vAlpha;
-
-      void main() {
-        vColor = color;
-        vec3 pos = position;
-        pos.y += sin(uTime * 0.3 + position.x * 2.0) * 0.05;
-        pos.x += cos(uTime * 0.2 + position.y * 1.5) * 0.03;
-
-        vec4 mvPos = modelViewMatrix * vec4(pos, 1.0);
-        vec2 screenPos = mvPos.xy / -mvPos.z;
-        float dist = distance(screenPos, uMouse);
-        float influence = smoothstep(1.2, 0.0, dist);
-
-        mvPos.xy += normalize(screenPos - uMouse + 0.001) * influence * 0.4;
-
-        float twinkle = sin(uTime * 2.0 + position.x * 10.0 + position.y * 7.0) * 0.5 + 0.5;
-        vAlpha = 0.3 + twinkle * 0.5 + influence * 0.5;
-
-        gl_Position = projectionMatrix * mvPos;
-        gl_PointSize = (size + influence * 4.0) * uPixelRatio * (2.0 / -mvPos.z);
-      }
-    `,
-    fragmentShader: `
-      varying vec3 vColor;
-      varying float vAlpha;
-
-      void main() {
-        float d = distance(gl_PointCoord, vec2(0.5));
-        if (d > 0.5) discard;
-        float glow = 1.0 - smoothstep(0.0, 0.5, d);
-        gl_FragColor = vec4(vColor, vAlpha * glow);
-      }
-    `,
-    transparent: true,
-    depthWrite: false,
-    blending: THREE.AdditiveBlending,
-  })
-
-  particles = new THREE.Points(geometry, material)
-  scene.add(particles)
-
-  mouse = new THREE.Vector2(-10, -10)
-
-  function onMouseMove(e) {
-    const rect = el.getBoundingClientRect()
-    mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1
-    mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1
-  }
-
-  function onMouseLeave() {
-    mouse.x = -10
-    mouse.y = -10
-  }
-
-  function onResize() {
-    camera.aspect = el.offsetWidth / el.offsetHeight
-    camera.updateProjectionMatrix()
-    renderer.setSize(el.offsetWidth, el.offsetHeight)
-    composer.setSize(el.offsetWidth, el.offsetHeight)
-    material.uniforms.uPixelRatio.value = Math.min(window.devicePixelRatio, 2)
-  }
-
-  let glitchTimer = 0
-  let sceneGlitchIntensity = 0
-
-  function animate() {
-    const time = performance.now() * 0.001
-
-    material.uniforms.uTime.value = time
-    material.uniforms.uMouse.value.set(mouse.x, mouse.y)
-
-    // Periodic particle glitch burst
-    glitchTimer -= 1
-    if (glitchTimer <= 0) {
-      glitchTimer = Math.random() * 200 + 100
-      if (Math.random() < 0.4) {
-        sceneGlitchIntensity = 1.0
-        const pos = geometry.attributes.position.array
-        for (let i = 0; i < 50; i++) {
-          const idx = Math.floor(Math.random() * count) * 3
-          pos[idx] += (Math.random() - 0.5) * 3
-          pos[idx + 1] += (Math.random() - 0.5) * 3
-        }
-        geometry.attributes.position.needsUpdate = true
-        setTimeout(() => {
-          const pos = geometry.attributes.position.array
-          for (let i = 0; i < count * 3; i++) {
-            pos[i] += (basePositions[i] - pos[i]) * 0.5
-          }
-          geometry.attributes.position.needsUpdate = true
-        }, 100)
-      }
-    }
-
-    // Decay glitch intensity
-    sceneGlitchIntensity *= 0.92
-    glitchPass.uniforms.uTime.value = time
-    glitchPass.uniforms.uIntensity.value = sceneGlitchIntensity
-
-    particles.rotation.y = time * 0.02
-    particles.rotation.x = Math.sin(time * 0.1) * 0.05
-
-    composer.render()
-    animationId = requestAnimationFrame(animate)
-  }
-
-  animate()
-  el.addEventListener('mousemove', onMouseMove)
-  el.addEventListener('mouseleave', onMouseLeave)
-  window.addEventListener('resize', onResize)
+  const hero = starsCanvas.value.parentElement
+  hero.addEventListener('mousemove', onMouseMove)
+  window.addEventListener('resize', resize)
 
   onUnmounted(() => {
     cancelAnimationFrame(animationId)
-    el.removeEventListener('mousemove', onMouseMove)
-    el.removeEventListener('mouseleave', onMouseLeave)
-    window.removeEventListener('resize', onResize)
-    composer.dispose()
-    renderer.dispose()
-    geometry.dispose()
-    material.dispose()
+    hero.removeEventListener('mousemove', onMouseMove)
+    window.removeEventListener('resize', resize)
   })
 })
 </script>
 
 <template>
   <section id="hero" class="hero">
-    <div ref="container" class="three-container" />
+    <canvas ref="starsCanvas" class="hero-canvas" aria-hidden="true" />
+    <canvas ref="trailCanvas" class="hero-canvas trail-canvas" aria-hidden="true" />
     <div class="hero-content">
-      <div class="title-3d-wrapper">
-        <h1 class="hero-title glitch" data-text="Zorya Tech Studio">
-          Zorya Tech Studio
-        </h1>
-        <div class="title-reflection" aria-hidden="true">Zorya Tech Studio</div>
+      <!-- Star logo -->
+      <div class="logo-wrapper">
+        <svg
+          class="hero-logo"
+          viewBox="0 0 120 120"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <!-- Outer glow circle -->
+          <circle cx="60" cy="60" r="56" stroke="rgba(0,240,255,0.08)" stroke-width="1" />
+          <circle cx="60" cy="60" r="48" stroke="rgba(0,240,255,0.05)" stroke-width="0.5" />
+          <!-- 8-pointed star -->
+          <path
+            d="
+            M60 8 L66 46 L98 30 L74 54 L112 60 L74 66 L98 90 L66 74 L60 112 L54 74 L22 90 L46 66 L8 60 L46 54 L22 30 L54 46 Z
+          "
+            fill="url(#starGrad)"
+            opacity="0.9"
+          />
+          <!-- Inner bright star -->
+          <path
+            d="
+            M60 28 L64 52 L84 40 L72 56 L96 60 L72 64 L84 80 L64 68 L60 92 L56 68 L36 80 L48 64 L24 60 L48 56 L36 40 L56 52 Z
+          "
+            fill="url(#starInner)"
+            opacity="0.6"
+          />
+          <!-- Center dot -->
+          <circle cx="60" cy="60" r="4" fill="#00f0ff" opacity="0.9" />
+          <circle cx="60" cy="60" r="2" fill="#ffffff" opacity="0.9" />
+          <defs>
+            <radialGradient id="starGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#00f0ff" />
+              <stop offset="70%" stop-color="#00a0cc" />
+              <stop offset="100%" stop-color="#005577" stop-opacity="0.3" />
+            </radialGradient>
+            <radialGradient id="starInner" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="50%" stop-color="#00f0ff" />
+              <stop offset="100%" stop-color="#00a0cc" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+        </svg>
       </div>
+      <h1 class="hero-title">Zorya Tech Studio</h1>
       <p class="hero-tagline">{{ t('hero.tagline') }}</p>
     </div>
     <a href="#about" class="scroll-hint" aria-label="Scroll down">
-      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <svg
+        viewBox="0 0 24 24"
+        width="28"
+        height="28"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
         <polyline points="6,9 12,15 18,9" />
       </svg>
     </a>
-    <div class="scanlines" />
   </section>
 </template>
 
@@ -279,29 +300,15 @@ onMounted(() => {
   overflow: hidden;
 }
 
-.three-container {
+.hero-canvas {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.three-container :deep(canvas) {
-  display: block;
-}
-
-.scanlines {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 0, 0, 0.03) 2px,
-    rgba(0, 0, 0, 0.03) 4px
-  );
   pointer-events: none;
-  z-index: 2;
+}
+
+.trail-canvas {
+  z-index: 1;
+  pointer-events: none;
 }
 
 .hero-content {
@@ -310,167 +317,70 @@ onMounted(() => {
   text-align: center;
   padding: 0 24px;
   pointer-events: none;
-  perspective: 800px;
 }
 
-/* 3D title wrapper */
-.title-3d-wrapper {
-  transform-style: preserve-3d;
-  animation: title-float 6s ease-in-out infinite;
-  position: relative;
+/* Logo */
+.logo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
 }
 
+.hero-logo {
+  width: 90px;
+  height: 90px;
+  filter: drop-shadow(0 0 16px rgba(0, 240, 255, 0.35)) drop-shadow(0 0 40px rgba(0, 240, 255, 0.1));
+  animation: logo-pulse 4s ease-in-out infinite;
+}
+
+@keyframes logo-pulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 16px rgba(0, 240, 255, 0.35))
+      drop-shadow(0 0 40px rgba(0, 240, 255, 0.1));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 24px rgba(0, 240, 255, 0.5))
+      drop-shadow(0 0 60px rgba(0, 240, 255, 0.15));
+    transform: scale(1.03);
+  }
+}
+
+/* Title */
 .hero-title {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: clamp(2.4rem, 7vw, 4.5rem);
-  color: var(--accent);
+  font-size: clamp(2.2rem, 7vw, 4.2rem);
   letter-spacing: 6px;
   text-transform: uppercase;
   line-height: 1.2;
   margin-bottom: 16px;
-  position: relative;
-  transform-style: preserve-3d;
-  text-shadow:
-    0 0 20px var(--accent-glow),
-    0 0 60px rgba(0, 240, 255, 0.15),
-    0 0 100px rgba(0, 240, 255, 0.05),
-    0 2px 0 rgba(0, 180, 200, 0.6),
-    0 4px 0 rgba(0, 150, 170, 0.4),
-    0 6px 0 rgba(0, 120, 140, 0.2),
-    0 8px 15px rgba(0, 0, 0, 0.4);
-  animation: glitch-main 4s infinite;
+  background: linear-gradient(
+    90deg,
+    #00f0ff 0%,
+    #00c8ff 15%,
+    #a855f7 35%,
+    #ff2d6b 50%,
+    #e8b84b 65%,
+    #00f0ff 80%,
+    #00c8ff 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: title-gradient 6s linear infinite;
+  filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.25))
+    drop-shadow(0 0 60px rgba(0, 240, 255, 0.08));
 }
 
-/* 3D reflection below title */
-.title-reflection {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: clamp(2.4rem, 7vw, 4.5rem);
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  line-height: 1.2;
-  color: var(--accent);
-  transform: rotateX(180deg) translateY(10px) scaleY(0.4);
-  transform-origin: top center;
-  opacity: 0.15;
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent 80%);
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent 80%);
-  filter: blur(2px);
-  pointer-events: none;
-}
-
-/* Main title glitch animation */
-@keyframes glitch-main {
-  0%, 80%, 100% {
-    transform: translate3d(0, 0, 0) skewX(0);
-    filter: none;
+@keyframes title-gradient {
+  0% {
+    background-position: 0% 50%;
   }
-  81% {
-    transform: translate3d(-8px, -2px, 20px) skewX(-2deg);
-    filter: hue-rotate(40deg);
-  }
-  82% {
-    transform: translate3d(10px, 1px, -10px) skewX(1.5deg);
-    filter: hue-rotate(-20deg) brightness(1.3);
-  }
-  83% {
-    transform: translate3d(-4px, 3px, 15px) skewX(-0.5deg);
-    filter: none;
-  }
-  84% {
-    transform: translate3d(6px, -1px, -5px) skewX(2deg);
-    filter: hue-rotate(60deg) saturate(1.5);
-  }
-  85% {
-    transform: translate3d(0, 0, 0) skewX(0);
-    filter: none;
-  }
-  91% {
-    transform: translate3d(0, 0, 0) skewX(0);
-  }
-  92% {
-    transform: translate3d(12px, -3px, 25px) skewX(-3deg);
-    filter: hue-rotate(-30deg) brightness(1.5);
-  }
-  93% {
-    transform: translate3d(-15px, 2px, -15px) skewX(2deg);
-    filter: hue-rotate(50deg);
-  }
-  94% {
-    transform: translate3d(5px, 0, 10px) skewX(-1deg);
-    filter: none;
-  }
-  95% {
-    transform: translate3d(0, 0, 0) skewX(0);
-    filter: none;
-  }
-}
-
-/* Glitch chromatic layers */
-.glitch::before,
-.glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.glitch::before {
-  color: var(--glitch);
-  animation: glitch-top 2s infinite linear alternate-reverse;
-  clip-path: inset(0 0 55% 0);
-  text-shadow: -3px 0 var(--glitch), 3px 0 rgba(255, 45, 107, 0.5);
-  z-index: -1;
-}
-
-.glitch::after {
-  color: var(--accent);
-  animation: glitch-bottom 1.8s infinite linear alternate-reverse;
-  clip-path: inset(55% 0 0 0);
-  text-shadow: 3px 0 rgba(0, 240, 255, 0.8), -3px 0 rgba(0, 240, 255, 0.4);
-  z-index: -1;
-}
-
-@keyframes glitch-top {
-  0%, 78%, 100% { transform: translate3d(0, 0, 0) skewX(0); opacity: 0.8; }
-  80% { transform: translate3d(-10px, -2px, 0) skewX(-3deg); opacity: 1; }
-  82% { transform: translate3d(8px, 0, 0) skewX(2deg); opacity: 0.6; }
-  84% { transform: translate3d(-12px, 1px, 0) skewX(-1deg); opacity: 1; }
-  86% { transform: translate3d(6px, -1px, 0); opacity: 0.9; }
-  88% { transform: translate3d(-4px, 2px, 0) skewX(1.5deg); opacity: 0.7; }
-  90% { transform: translate3d(14px, 0, 0) skewX(-2deg); opacity: 1; }
-  92% { transform: translate3d(-6px, -1px, 0); opacity: 0.8; }
-  94% { transform: translate3d(0, 0, 0) skewX(0); opacity: 0.8; }
-}
-
-@keyframes glitch-bottom {
-  0%, 75%, 100% { transform: translate3d(0, 0, 0) skewX(0); opacity: 0.8; }
-  77% { transform: translate3d(8px, 2px, 0) skewX(2deg); opacity: 1; }
-  79% { transform: translate3d(-12px, -1px, 0) skewX(-3deg); opacity: 0.5; }
-  81% { transform: translate3d(6px, 0, 0) skewX(1deg); opacity: 1; }
-  83% { transform: translate3d(-8px, 3px, 0); opacity: 0.7; }
-  85% { transform: translate3d(15px, -2px, 0) skewX(-2.5deg); opacity: 1; }
-  87% { transform: translate3d(-5px, 1px, 0) skewX(1deg); opacity: 0.9; }
-  89% { transform: translate3d(0, 0, 0) skewX(0); opacity: 0.8; }
-}
-
-/* 3D floating animation */
-@keyframes title-float {
-  0%, 100% {
-    transform: rotateX(2deg) rotateY(0deg) translateZ(0);
-  }
-  25% {
-    transform: rotateX(-1deg) rotateY(3deg) translateZ(10px);
-  }
-  50% {
-    transform: rotateX(3deg) rotateY(-2deg) translateZ(5px);
-  }
-  75% {
-    transform: rotateX(-2deg) rotateY(1deg) translateZ(15px);
+  100% {
+    background-position: 200% 50%;
   }
 }
 
@@ -481,9 +391,9 @@ onMounted(() => {
   color: var(--text-dim);
   letter-spacing: 3px;
   text-transform: uppercase;
-  animation: tagline-flicker 5s infinite;
 }
 
+/* Scroll hint */
 .scroll-hint {
   position: absolute;
   bottom: 32px;
@@ -503,16 +413,14 @@ onMounted(() => {
 }
 
 @keyframes scroll-bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
-  50% { transform: translateX(-50%) translateY(8px); opacity: 0.9; }
-}
-
-@keyframes tagline-flicker {
-  0%, 90%, 94%, 98%, 100% { opacity: 1; }
-  91% { opacity: 0.4; }
-  93% { opacity: 0.8; transform: translateX(2px); }
-  95% { opacity: 0.3; transform: translateX(-1px); }
-  97% { opacity: 0.9; transform: translateX(1px); }
-  99% { opacity: 0.6; transform: translateX(0); }
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateX(-50%) translateY(8px);
+    opacity: 0.9;
+  }
 }
 </style>

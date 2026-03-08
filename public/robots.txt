@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zorya-tech-studio.github.io/sitemap.xml

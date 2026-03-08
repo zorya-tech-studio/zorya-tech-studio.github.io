@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 
@@ -27,21 +27,33 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 </script>
 
 <template>
-  <nav :class="['navbar', { scrolled }]">
+  <nav :class="['navbar', { scrolled }]" aria-label="Main navigation">
     <div class="nav-inner">
       <router-link :to="homeUrl" class="nav-logo">Zorya Tech Studio</router-link>
       <div class="nav-right">
         <ul v-if="isHome" class="nav-links">
-          <li><a href="#about">{{ t('nav.about') }}</a></li>
-          <li><a href="#apps">{{ t('nav.apps') }}</a></li>
-          <li><a href="#contact">{{ t('nav.contact') }}</a></li>
+          <li>
+            <a href="#about">{{ t('nav.about') }}</a>
+          </li>
+          <li>
+            <a href="#apps">{{ t('nav.apps') }}</a>
+          </li>
+          <li>
+            <a href="#contact">{{ t('nav.contact') }}</a>
+          </li>
         </ul>
         <ul v-else class="nav-links">
-          <li><router-link :to="homeUrl">{{ t('nav.about') }}</router-link></li>
-          <li><router-link :to="homeUrl">{{ t('nav.apps') }}</router-link></li>
-          <li><router-link :to="homeUrl">{{ t('nav.contact') }}</router-link></li>
+          <li>
+            <router-link :to="homeUrl + '#about'">{{ t('nav.about') }}</router-link>
+          </li>
+          <li>
+            <router-link :to="homeUrl + '#apps'">{{ t('nav.apps') }}</router-link>
+          </li>
+          <li>
+            <router-link :to="homeUrl + '#contact'">{{ t('nav.contact') }}</router-link>
+          </li>
         </ul>
-        <button class="lang-toggle" @click="toggleLocale">
+        <button class="lang-toggle" :aria-label="t('nav.switch_lang')" @click="toggleLocale">
           <span :class="{ active: locale === 'uk' }">UA</span>
           <span class="lang-sep">/</span>
           <span :class="{ active: locale === 'en' }">EN</span>
@@ -61,7 +73,9 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   height: var(--nav-height);
   display: flex;
   align-items: center;
-  transition: background 0.3s, backdrop-filter 0.3s;
+  transition:
+    background 0.3s,
+    backdrop-filter 0.3s;
 }
 
 .navbar.scrolled {
@@ -143,16 +157,25 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 }
 
 @media (max-width: 480px) {
+  .nav-logo {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+
   .nav-links {
-    gap: 14px;
+    gap: 10px;
   }
 
   .nav-links a {
-    font-size: 0.82rem;
+    font-size: 0.78rem;
   }
 
   .nav-right {
-    gap: 12px;
+    gap: 8px;
+  }
+
+  .nav-inner {
+    padding: 0 12px;
   }
 }
 </style>

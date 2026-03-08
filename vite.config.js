@@ -6,14 +6,6 @@ export default defineConfig({
   base: '/',
   server: {
     port: 5174,
-  },
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          three: ['three'],
-        },
-      },
-    },
+    open: true,
   },
 })
