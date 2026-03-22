@@ -50,13 +50,13 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
       <p class="section-text">{{ t('movogra.privacy.third_text') }}</p>
       <ul class="third-party-list">
         <li>
-          <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener"
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener"
             >Google AdMob</a
           >
           — {{ t('movogra.privacy.third_admob') }}
         </li>
         <li>
-          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener"
+          <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener"
             >Firebase Analytics</a
           >
           — {{ t('movogra.privacy.third_firebase') }}
