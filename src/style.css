@@ -121,8 +121,8 @@ img {
 }
 
 .breadcrumbs .breadcrumb-sep {
-  color: var(--accent-dim);
-  font-size: 0.7rem;
+  color: var(--text-dim);
+  font-size: 0.8rem;
 }
 
 .breadcrumbs .breadcrumb-current {

@@ -1,12 +1,13 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
+import { apps } from '../data/apps.js'
 
 const { t } = useI18n()
 const route = useRoute()
-const homeUrl = computed(() => `/${route.params.locale || 'en'}`)
-const projects = ref([])
+const locale = computed(() => route.params.locale || 'en')
+const homeUrl = computed(() => `/${locale.value}`)
 </script>
 
 <template>
@@ -20,19 +21,24 @@ const projects = ref([])
       <h1 class="page-title">{{ t('projects.title') }}</h1>
       <p class="page-subtitle">{{ t('projects.subtitle') }}</p>
 
-      <p v-if="projects.length === 0" class="projects-empty">{{ t('projects.empty') }}</p>
+      <p v-if="apps.length === 0" class="projects-empty">{{ t('projects.empty') }}</p>
 
       <div v-else class="projects-list">
-        <article v-for="project in projects" :key="project.name" class="project-card">
+        <router-link
+          v-for="app in apps"
+          :key="app.slug"
+          :to="app.privacyRoute(locale)"
+          class="project-card"
+        >
           <div class="project-header">
-            <h2 class="project-name">{{ project.name }}</h2>
-            <span class="project-status">{{ project.status }}</span>
+            <h2 class="project-name">{{ t(app.nameKey) }}</h2>
+            <span class="project-status">{{ t(app.statusKey) }}</span>
           </div>
-          <p class="project-description">{{ project.description }}</p>
+          <p class="project-description">{{ t(app.descKey) }}</p>
           <div class="project-tags">
-            <span v-for="tag in project.tags" :key="tag" class="tag">{{ tag }}</span>
+            <span v-for="tag in app.tags" :key="tag" class="tag">{{ tag }}</span>
           </div>
-        </article>
+        </router-link>
       </div>
     </div>
   </section>
@@ -73,10 +79,13 @@ const projects = ref([])
 }
 
 .project-card {
+  display: block;
   background: var(--surface);
   border: 1px solid var(--accent-dim);
   border-radius: 12px;
   padding: 28px;
+  text-decoration: none;
+  color: inherit;
   transition:
     border-color 0.3s,
     box-shadow 0.3s;
@@ -106,10 +115,10 @@ const projects = ref([])
 .project-status {
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--accent);
+  color: #34d399;
   text-transform: uppercase;
   letter-spacing: 1px;
-  background: var(--accent-dim);
+  background: rgba(52, 211, 153, 0.12);
   padding: 4px 12px;
   border-radius: 20px;
   white-space: nowrap;

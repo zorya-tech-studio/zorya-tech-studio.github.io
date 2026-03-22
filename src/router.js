@@ -19,9 +19,20 @@ const routes = [
     component: () => import('./pages/ProjectsPage.vue'),
     meta: { titleKey: 'projects.title' },
   },
+  // App-specific routes
+  {
+    path: '/:locale/movogra/privacy-policy',
+    name: 'movogra-privacy',
+    component: () => import('./pages/apps/movogra/MovograPrivacyPage.vue'),
+    meta: { titleKey: 'movogra.privacy.title', app: 'movogra' },
+  },
   { path: '/', redirect: () => `/${i18n.global.locale.value}` },
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
+  {
+    path: '/movogra/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/movogra/privacy-policy`,
+  },
 ]
 
 const router = createRouter({

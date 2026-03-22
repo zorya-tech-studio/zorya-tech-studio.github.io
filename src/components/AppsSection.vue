@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { apps } from '../data/apps.js'
 
 const { t, locale } = useI18n()
 const projectsUrl = computed(() => `/${locale.value}/projects`)
@@ -10,27 +11,19 @@ const projectsUrl = computed(() => `/${locale.value}/projects`)
   <section id="apps" class="section">
     <h2 class="section-title">{{ t('apps.title') }}</h2>
     <div class="apps-grid">
-      <div class="app-card">
-        <div class="app-icon">
-          <svg viewBox="0 0 48 48" width="48" height="48" fill="none">
-            <rect
-              x="4"
-              y="4"
-              width="40"
-              height="40"
-              rx="10"
-              stroke="currentColor"
-              stroke-width="1.5"
-            />
-            <text x="24" y="30" text-anchor="middle" fill="currentColor" font-size="20">?</text>
-          </svg>
-        </div>
+      <router-link
+        v-for="app in apps"
+        :key="app.slug"
+        :to="app.privacyRoute(locale)"
+        class="app-card"
+      >
+        <img :src="app.icon" :alt="t(app.nameKey)" class="app-icon" width="48" height="48" />
         <div class="app-info">
-          <h3 class="app-name">{{ t('apps.secret_app') }}</h3>
-          <p class="app-desc">{{ t('apps.secret_app_desc') }}</p>
+          <h3 class="app-name">{{ t(app.nameKey) }}</h3>
+          <p class="app-desc">{{ t(app.descKey) }}</p>
         </div>
-        <span class="app-badge">{{ t('apps.coming_soon') }}</span>
-      </div>
+        <span class="app-badge app-badge--released">{{ t(app.statusKey) }}</span>
+      </router-link>
     </div>
     <div class="apps-cta">
       <router-link :to="projectsUrl" class="apps-view-all">
@@ -72,6 +65,8 @@ const projectsUrl = computed(() => `/${locale.value}/projects`)
   transition:
     border-color 0.3s,
     box-shadow 0.3s;
+  text-decoration: none;
+  color: inherit;
 }
 
 .app-card:hover {
@@ -81,8 +76,10 @@ const projectsUrl = computed(() => `/${locale.value}/projects`)
 
 .app-icon {
   flex-shrink: 0;
-  color: var(--accent);
-  opacity: 0.6;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 .app-info {
@@ -140,13 +137,16 @@ const projectsUrl = computed(() => `/${locale.value}/projects`)
   flex-shrink: 0;
   font-size: 0.72rem;
   font-weight: 600;
-  color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 1px;
-  background: var(--accent-dim);
   padding: 4px 12px;
   border-radius: 20px;
   white-space: nowrap;
+}
+
+.app-badge--released {
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.12);
 }
 
 @media (max-width: 480px) {

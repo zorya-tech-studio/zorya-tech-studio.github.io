@@ -15,9 +15,6 @@
   },
   "apps": {
     "title": "Apps",
-    "secret_app": "Secret App",
-    "secret_app_desc": "Something exciting is cooking. Release coming soon!",
-    "coming_soon": "Coming Soon",
     "view_all": "View All Projects"
   },
   "contact": {
@@ -31,6 +28,32 @@
     "subtitle": "What we're working on",
     "back": "Back to home",
     "empty": "Projects are in development. Stay tuned!"
+  },
+  "movogra": {
+    "name": "МовоГра UA",
+    "subtitle": "Improve your Ukrainian by playing",
+    "desc_short": "A mobile quiz app for practicing Ukrainian language. 9 categories, 1040+ questions with explanations.",
+    "status": "Released",
+    "platform": "Android",
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Effective date",
+      "intro": "Zorya Tech Studio (\"we\", \"us\", \"our\") built the МовоГра UA app. This Privacy Policy explains how we handle information when you use our app.",
+      "collect_title": "Personal Data Collection",
+      "collect_text": "We do not collect any personal data. The app does not require registration, account creation, or sign-in. We do not request or store your name, email address, phone number, or any other personally identifiable information.",
+      "storage_title": "Data Storage",
+      "storage_text": "All progress and settings are stored exclusively on your device using SharedPreferences. No data is transmitted to our servers. We do not operate any server infrastructure for storing user data.",
+      "third_title": "Third-Party Services",
+      "third_text": "Our app uses the following third-party services that may collect certain information in accordance with their own privacy policies:",
+      "third_admob": "displays ads (banner and interstitial). May collect device identifiers and data for ad serving.",
+      "third_firebase": "collects anonymous usage statistics (app opens, screen views, device type).",
+      "children_title": "Children's Privacy",
+      "children_text": "This app is not directed at children under the age of 13. We do not knowingly collect information from children under 13. If you believe your child has provided us with any information, please contact us and we will delete it.",
+      "changes_title": "Changes to This Policy",
+      "changes_text": "We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date.",
+      "contact_title": "Contact Us",
+      "contact_text": "If you have questions about this Privacy Policy, please contact us at:"
+    }
   },
   "privacy": {
     "title": "Privacy Policy",

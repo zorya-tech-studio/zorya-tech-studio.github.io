@@ -7,7 +7,16 @@ import { copyFileSync, mkdirSync } from 'fs'
 
 const src = 'dist/index.html'
 
-const routes = ['en', 'uk', 'en/privacy', 'uk/privacy', 'en/projects', 'uk/projects']
+const routes = [
+  'en',
+  'uk',
+  'en/privacy',
+  'uk/privacy',
+  'en/projects',
+  'uk/projects',
+  'en/movogra/privacy-policy',
+  'uk/movogra/privacy-policy',
+]
 
 for (const route of routes) {
   const dir = `dist/${route}`

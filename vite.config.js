@@ -9,6 +9,7 @@ const PAGES = [
   { path: '', changefreq: 'monthly', priority: 1.0 },
   { path: '/privacy', changefreq: 'yearly', priority: 0.3 },
   { path: '/projects', changefreq: 'monthly', priority: 0.7 },
+  { path: '/movogra/privacy-policy', changefreq: 'yearly', priority: 0.3 },
 ]
 
 function sitemapPlugin() {
