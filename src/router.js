@@ -21,6 +21,12 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/senso/privacy-policy',
+    name: 'senso-privacy',
+    component: () => import('./pages/apps/senso/SensoPrivacyPage.vue'),
+    meta: { titleKey: 'senso.privacy.title', app: 'senso' },
+  },
+  {
     path: '/:locale/movogra/privacy-policy',
     name: 'movogra-privacy',
     component: () => import('./pages/apps/movogra/MovograPrivacyPage.vue'),
@@ -29,6 +35,10 @@ const routes = [
   { path: '/', redirect: () => `/${i18n.global.locale.value}` },
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
+  {
+    path: '/senso/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/senso/privacy-policy`,
+  },
   {
     path: '/movogra/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/movogra/privacy-policy`,

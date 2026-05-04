@@ -5,6 +5,18 @@
  */
 export const apps = [
   {
+    slug: 'senso',
+    nameKey: 'senso.name',
+    subtitleKey: 'senso.subtitle',
+    descKey: 'senso.desc_short',
+    platform: 'Android',
+    status: 'released',
+    statusKey: 'senso.status',
+    tags: ['Android', 'Tools', 'Sensors'],
+    icon: '/apps/senso/icon.png',
+    privacyRoute: (locale) => `/${locale}/senso/privacy-policy`,
+  },
+  {
     slug: 'movogra',
     nameKey: 'movogra.name',
     subtitleKey: 'movogra.subtitle',

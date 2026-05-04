@@ -29,6 +29,36 @@
     "back": "Back to home",
     "empty": "Projects are in development. Stay tuned!"
   },
+  "senso": {
+    "name": "Senso",
+    "subtitle": "Smart sensors in your pocket",
+    "desc_short": "An Android measurement toolkit: level, lux meter, decibel meter, compass. All calculations run on-device.",
+    "status": "Released",
+    "platform": "Android",
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Effective date",
+      "intro": "Zorya Tech Studio (\"we\", \"us\", \"our\") built the Senso app — a measurement toolkit for Android. This Privacy Policy explains how we handle information when you use the app.",
+      "collect_title": "Personal Data Collection",
+      "collect_text": "We do not collect any personal data. The app requires no registration, account, or sign-in. We do not request or store your name, email, phone number, or any other personally identifiable information.",
+      "storage_title": "Data Storage",
+      "storage_text": "All measurements, settings, and calibrations are stored exclusively on your device (SharedPreferences for settings, SQLite for measurement history). No data is transmitted to our servers — we do not operate any server infrastructure for storing user data.",
+      "permissions_title": "Permissions and Sensor Use",
+      "permissions_text": "Senso uses device sensors strictly for in-app, real-time calculations. All raw data stays in memory and is not transmitted anywhere:",
+      "permissions_mic": "Microphone — used by the Decibel Meter to measure sound level. Audio is analysed frame-by-frame (RMS, A-weighting) and never recorded.",
+      "permissions_camera": "Camera — used by the Camera Level mode (horizon overlay) and by the Camera fallback mode in the Lux Meter (frame brightness estimation). Frames are not stored or transmitted.",
+      "permissions_location": "Location — used to compute magnetic declination (True North) in the Compass via the WMM-2025 model. Coordinates are used once for the math and not transmitted anywhere.",
+      "third_title": "Third-Party Services",
+      "third_text": "Senso displays ads via Google AdMob (a banner on the Settings and History screens, and a full-screen interstitial between tools). AdMob may collect device identifiers, IP address, and usage data per its own policy:",
+      "third_admob": "displays ads. May collect device identifiers, IP address, and usage data for serving personalized or non-personalized ads.",
+      "children_title": "Children's Privacy",
+      "children_text": "Senso is not directed at children under the age of 13. We do not knowingly collect information from children under 13. If you believe your child has provided us with any information, please contact us and we will delete it.",
+      "changes_title": "Changes to This Policy",
+      "changes_text": "We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date.",
+      "contact_title": "Contact Us",
+      "contact_text": "If you have questions about this Privacy Policy, please contact us at:"
+    }
+  },
   "movogra": {
     "name": "МовоГра UA",
     "subtitle": "Improve your Ukrainian by playing",

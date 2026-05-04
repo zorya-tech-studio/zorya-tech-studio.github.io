@@ -14,6 +14,8 @@ const routes = [
   'uk/privacy',
   'en/projects',
   'uk/projects',
+  'en/senso/privacy-policy',
+  'uk/senso/privacy-policy',
   'en/movogra/privacy-policy',
   'uk/movogra/privacy-policy',
 ]
