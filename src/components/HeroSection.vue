@@ -3,226 +3,313 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
-const starsCanvas = ref(null)
-const trailCanvas = ref(null)
-let starsCtx, trailCtx
-let animationId
+const heroEl = ref(null)
+const canvasEl = ref(null)
+let ctx
+let animationId = null
 let stars = []
-let trail = []
+let sprites = {}
 
-const STAR_COUNT = 350
-const TRAIL_LENGTH = 50
+// Tunables — kept low for steady 60fps on mid-tier hardware.
+const STAR_COUNT = 140
+const CURSOR_GLOW_RADIUS = 120 // px — within this distance, stars brighten + grow
+const CURSOR_PUSH_RADIUS = 100 // px — within this distance, stars drift away
+const CURSOR_PUSH_RADIUS_SQ = CURSOR_PUSH_RADIUS * CURSOR_PUSH_RADIUS
+const CURSOR_GLOW_RADIUS_SQ = CURSOR_GLOW_RADIUS * CURSOR_GLOW_RADIUS
 
-function createStar(canvasW, canvasH, fromTop = false) {
-  // depth 0 = far background, 1 = close foreground
-  const depth = Math.random()
-  const d = 0.3 + depth * 0.7 // scale factor 0.3–1.0
+// Cursor state in CSS-pixel space, relative to the hero element.
+let mouseX = -9999
+let mouseY = -9999
+let cursorActive = false
+
+// Visibility / motion gates.
+let isVisible = true
+let prefersReducedMotion = false
+
+// Resize debounce.
+let resizeTimer = null
+
+// ──────────────────────────────────────────────────────────────────────
+// Sprite preparation: a 64×64 radial-gradient bitmap per color. Drawing
+// a sprite via drawImage is ~10× cheaper than ctx.shadowBlur per star.
+// ──────────────────────────────────────────────────────────────────────
+
+function makeSprite(r, g, b) {
+  const SIZE = 64
+  const c = document.createElement('canvas')
+  c.width = SIZE
+  c.height = SIZE
+  const cx = c.getContext('2d')
+  const grad = cx.createRadialGradient(SIZE / 2, SIZE / 2, 0, SIZE / 2, SIZE / 2, SIZE / 2)
+  grad.addColorStop(0, `rgba(${r},${g},${b},1)`)
+  grad.addColorStop(0.25, `rgba(${r},${g},${b},0.55)`)
+  grad.addColorStop(0.6, `rgba(${r},${g},${b},0.12)`)
+  grad.addColorStop(1, `rgba(${r},${g},${b},0)`)
+  cx.fillStyle = grad
+  cx.fillRect(0, 0, SIZE, SIZE)
+  return c
+}
+
+function buildSprites() {
+  sprites = {
+    cyan: makeSprite(0, 240, 255),
+    white: makeSprite(230, 230, 240),
+    magenta: makeSprite(255, 80, 140),
+  }
+}
+
+// ──────────────────────────────────────────────────────────────────────
+// Star factory.
+// ──────────────────────────────────────────────────────────────────────
+
+function pickColor() {
+  const r = Math.random()
+  if (r < 0.75) return 'cyan'
+  if (r < 0.95) return 'white'
+  return 'magenta'
+}
+
+function createStar(w, h) {
+  const depth = Math.random() // 0 = far, 1 = near
+  const x = Math.random() * w
+  const y = Math.random() * h
   return {
-    x: Math.random() * canvasW,
-    y: fromTop ? -Math.random() * 40 : Math.random() * canvasH,
-    depth,
-    speed: (0.1 + depth * depth * 2.2) * (0.8 + Math.random() * 0.4),
-    size: (0.2 + depth * depth * 3) * (0.7 + Math.random() * 0.6),
-    opacity: (0.05 + depth * depth * 0.7) * (0.5 + Math.random() * 0.5),
-    tailLen: (1 + depth * depth * 24) * (0.6 + Math.random() * 0.8),
-    color: Math.random() < 0.7 ? 'cyan' : Math.random() < 0.67 ? 'white' : 'magenta',
-    drift: (Math.random() - 0.5) * 0.1 * d,
-    twinklePhase: Math.random() * Math.PI * 2,
+    homeX: x,
+    homeY: y,
+    x,
+    y,
+    vx: 0,
+    vy: 0,
+    baseSize: 0.6 + depth * depth * 1.8, // 0.6 – 2.4 px
+    baseAlpha: 0.25 + depth * depth * 0.75, // 0.25 – 1.0
+    color: pickColor(),
+    twinkleOffset: Math.random() * Math.PI * 2,
+    twinkleSpeed: 0.0008 + Math.random() * 0.0014,
+    // Random blink (~8% of stars get a "flare" trigger)
+    canBlink: Math.random() < 0.08,
+    blinkUntil: 0,
   }
 }
 
 function initStars(w, h) {
-  stars = []
+  stars = new Array(STAR_COUNT)
   for (let i = 0; i < STAR_COUNT; i++) {
-    stars.push(createStar(w, h, false))
+    stars[i] = createStar(w, h)
   }
-  stars.sort((a, b) => a.depth - b.depth)
 }
 
-function drawStars(time) {
-  const canvas = starsCanvas.value
+// ──────────────────────────────────────────────────────────────────────
+// Frame loop.
+// ──────────────────────────────────────────────────────────────────────
+
+function draw(time) {
+  const canvas = canvasEl.value
   if (!canvas) return
-  const w = canvas.width
-  const h = canvas.height
-  starsCtx.clearRect(0, 0, w, h)
+  const w = canvas.clientWidth
+  const h = canvas.clientHeight
 
-  for (const s of stars) {
-    // Twinkle
-    const twinkle = 0.5 + 0.5 * Math.sin(time * 0.002 + s.twinklePhase)
-    const alpha = s.opacity * (0.5 + twinkle * 0.5)
+  ctx.clearRect(0, 0, w, h)
 
-    // Color
-    let r, g, b
-    if (s.color === 'cyan') {
-      r = 0
-      g = 240
-      b = 255
-    } else if (s.color === 'magenta') {
-      r = 255
-      g = 45
-      b = 107
-    } else {
-      r = 230
-      g = 230
-      b = 240
+  for (let i = 0; i < stars.length; i++) {
+    const s = stars[i]
+
+    // Gentle spring back to home position.
+    s.vx += (s.homeX - s.x) * 0.02
+    s.vy += (s.homeY - s.y) * 0.02
+    s.vx *= 0.85
+    s.vy *= 0.85
+
+    // Cursor proximity — only compute if cursor is over the hero.
+    let glowBoost = 0
+    if (cursorActive) {
+      const dx = s.x - mouseX
+      const dy = s.y - mouseY
+      const distSq = dx * dx + dy * dy
+
+      // Glow boost (alpha + size).
+      if (distSq < CURSOR_GLOW_RADIUS_SQ) {
+        const dist = Math.sqrt(distSq)
+        glowBoost = 1 - dist / CURSOR_GLOW_RADIUS
+      }
+
+      // Repulsion (drift away).
+      if (distSq < CURSOR_PUSH_RADIUS_SQ && distSq > 0.5) {
+        const dist = Math.sqrt(distSq)
+        const push = (1 - dist / CURSOR_PUSH_RADIUS) * 0.45
+        s.vx += (dx / dist) * push
+        s.vy += (dy / dist) * push
+      }
     }
 
-    // Tail (gradient line going up from star)
-    const grad = starsCtx.createLinearGradient(s.x, s.y, s.x, s.y - s.tailLen)
-    grad.addColorStop(0, `rgba(${r},${g},${b},${alpha})`)
-    grad.addColorStop(1, `rgba(${r},${g},${b},0)`)
-    starsCtx.beginPath()
-    starsCtx.moveTo(s.x, s.y - s.tailLen)
-    starsCtx.lineTo(s.x, s.y)
-    starsCtx.strokeStyle = grad
-    starsCtx.lineWidth = s.size * 0.6
-    starsCtx.stroke()
+    s.x += s.vx
+    s.y += s.vy
 
-    // Star dot with glow
-    starsCtx.beginPath()
-    starsCtx.arc(s.x, s.y, s.size, 0, Math.PI * 2)
-    starsCtx.fillStyle = `rgba(${r},${g},${b},${alpha})`
-    starsCtx.shadowColor = `rgba(${r},${g},${b},${alpha * 0.8})`
-    starsCtx.shadowBlur = s.size * 3
-    starsCtx.fill()
-    starsCtx.shadowBlur = 0
+    // Twinkle (cheap sin per star).
+    const twinkle = 0.55 + 0.45 * Math.sin(time * s.twinkleSpeed + s.twinkleOffset)
 
-    // Move
-    s.y += s.speed
-    s.x += s.drift
-
-    // Reset if off screen
-    if (s.y > h + 20) {
-      Object.assign(s, createStar(w, h, true))
+    // Random blink trigger.
+    if (s.canBlink && time > s.blinkUntil && Math.random() < 0.0008) {
+      s.blinkUntil = time + 200 // 200ms flare
     }
-    if (s.x < -10) s.x = w + 10
-    if (s.x > w + 10) s.x = -10
-  }
-}
+    const blink = time < s.blinkUntil ? 1.6 : 1
 
-function drawTrail() {
-  const canvas = trailCanvas.value
-  if (!canvas) {
-    return
-  }
-  trailCtx.clearRect(0, 0, canvas.width, canvas.height)
-  if (trail.length < 3) return
+    // Final alpha + size.
+    let alpha = s.baseAlpha * twinkle * blink + glowBoost * 0.8
+    if (alpha > 1) alpha = 1
+    const size = s.baseSize * (1 + glowBoost * 1.4) * (blink === 1.6 ? 1.3 : 1)
 
-  // Draw segments with gradient: fade from transparent (tail) to bright (head)
-  trailCtx.lineCap = 'round'
-  trailCtx.lineJoin = 'round'
-
-  for (let i = 1; i < trail.length - 1; i++) {
-    const p0 = trail[i - 1]
-    const p1 = trail[i]
-    const p2 = trail[i + 1]
-
-    const progress = i / (trail.length - 1) // 0=tail, 1=head
-    const alpha = progress * progress * progress * 0.65
-    const width = 0.3 + progress * progress * 2.5
-
-    // Blend color from dim magenta (tail) → bright cyan (head)
-    const r = Math.round(255 * (1 - progress) * 0.4)
-    const g = Math.round(45 + 195 * progress)
-    const b = Math.round(107 + 148 * progress)
-
-    trailCtx.beginPath()
-    trailCtx.moveTo((p0.x + p1.x) / 2, (p0.y + p1.y) / 2)
-    trailCtx.quadraticCurveTo(p1.x, p1.y, (p1.x + p2.x) / 2, (p1.y + p2.y) / 2)
-    trailCtx.strokeStyle = `rgba(${r},${g},${b},${alpha})`
-    trailCtx.lineWidth = width
-    trailCtx.stroke()
+    // Draw sprite. Sprite is 64px; we scale to (size * 6) so the bright
+    // core is roughly `size` and the soft halo extends a few px.
+    const sprite = sprites[s.color]
+    const drawSize = size * 6
+    ctx.globalAlpha = alpha
+    ctx.drawImage(sprite, s.x - drawSize / 2, s.y - drawSize / 2, drawSize, drawSize)
   }
 
-  // Soft glow pass on the head portion
-  const headLen = Math.max(3, Math.floor(trail.length * 0.3))
-  const headStart = trail.length - headLen
-  trailCtx.beginPath()
-  trailCtx.moveTo(
-    (trail[headStart].x + trail[headStart + 1].x) / 2,
-    (trail[headStart].y + trail[headStart + 1].y) / 2,
-  )
-  for (let i = headStart + 1; i < trail.length - 1; i++) {
-    const p1 = trail[i]
-    const p2 = trail[i + 1]
-    trailCtx.quadraticCurveTo(p1.x, p1.y, (p1.x + p2.x) / 2, (p1.y + p2.y) / 2)
-  }
-  trailCtx.strokeStyle = 'rgba(0, 240, 255, 0.15)'
-  trailCtx.lineWidth = 6
-  trailCtx.shadowColor = 'rgba(0, 240, 255, 0.25)'
-  trailCtx.shadowBlur = 16
-  trailCtx.stroke()
-  trailCtx.shadowBlur = 0
+  ctx.globalAlpha = 1
 }
 
 function animate(time) {
-  drawStars(time)
-
-  // Continuously remove oldest point so trail always fades
-  if (trail.length > 0) trail.shift()
-
-  drawTrail()
+  if (!isVisible || prefersReducedMotion) {
+    animationId = null
+    return
+  }
+  draw(time)
   animationId = requestAnimationFrame(animate)
 }
 
-function onMouseMove(e) {
-  const canvas = trailCanvas.value
+function startAnimation() {
+  if (animationId !== null) return
+  animationId = requestAnimationFrame(animate)
+}
+
+function stopAnimation() {
+  if (animationId !== null) {
+    cancelAnimationFrame(animationId)
+    animationId = null
+  }
+}
+
+// ──────────────────────────────────────────────────────────────────────
+// Cursor handling.
+// ──────────────────────────────────────────────────────────────────────
+
+function onPointerMove(e) {
+  const canvas = canvasEl.value
   if (!canvas) return
   const rect = canvas.getBoundingClientRect()
-  const x = (e.clientX - rect.left) * (canvas.width / rect.width)
-  const y = (e.clientY - rect.top) * (canvas.height / rect.height)
-
-  trail.push({ x, y })
-  if (trail.length > TRAIL_LENGTH) trail.shift()
+  mouseX = e.clientX - rect.left
+  mouseY = e.clientY - rect.top
+  cursorActive = true
 }
 
-function resize() {
-  const starsEl = starsCanvas.value
-  const trailEl = trailCanvas.value
-  if (!starsEl || !trailEl) return
+function onPointerLeave() {
+  cursorActive = false
+}
 
-  const parent = starsEl.parentElement
-  const dpr = Math.min(window.devicePixelRatio, 2)
-  const w = parent.offsetWidth
-  const h = parent.offsetHeight
+// ──────────────────────────────────────────────────────────────────────
+// Sizing.
+// ──────────────────────────────────────────────────────────────────────
 
-  starsEl.width = w * dpr
-  starsEl.height = h * dpr
-  starsEl.style.width = w + 'px'
-  starsEl.style.height = h + 'px'
-  starsCtx.setTransform(dpr, 0, 0, dpr, 0, 0)
-
-  trailEl.width = w * dpr
-  trailEl.height = h * dpr
-  trailEl.style.width = w + 'px'
-  trailEl.style.height = h + 'px'
-  trailCtx.setTransform(dpr, 0, 0, dpr, 0, 0)
-
+function applySize() {
+  const canvas = canvasEl.value
+  const hero = heroEl.value
+  if (!canvas || !hero) return
+  // Cap DPR at 1.5 — visually identical, half the work on retina.
+  const dpr = Math.min(window.devicePixelRatio || 1, 1.5)
+  const w = hero.offsetWidth
+  const h = hero.offsetHeight
+  canvas.width = Math.round(w * dpr)
+  canvas.height = Math.round(h * dpr)
+  canvas.style.width = w + 'px'
+  canvas.style.height = h + 'px'
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
   initStars(w, h)
+  // For reduced-motion users, render a single frame so the field is
+  // still visible (just static).
+  if (prefersReducedMotion) draw(0)
 }
+
+function onResize() {
+  if (resizeTimer) clearTimeout(resizeTimer)
+  resizeTimer = setTimeout(applySize, 150)
+}
+
+// ──────────────────────────────────────────────────────────────────────
+// Visibility / reduced-motion.
+// ──────────────────────────────────────────────────────────────────────
+
+function onVisibilityChange() {
+  if (document.hidden) {
+    isVisible = false
+    stopAnimation()
+  } else {
+    isVisible = true
+    if (!prefersReducedMotion) startAnimation()
+  }
+}
+
+let intersectionObserver = null
+let reducedMotionMql = null
 
 onMounted(() => {
-  starsCtx = starsCanvas.value.getContext('2d')
-  trailCtx = trailCanvas.value.getContext('2d')
-  resize()
-  animationId = requestAnimationFrame(animate)
+  ctx = canvasEl.value.getContext('2d')
+  buildSprites()
 
-  const hero = starsCanvas.value.parentElement
-  hero.addEventListener('mousemove', onMouseMove)
-  window.addEventListener('resize', resize)
-
-  onUnmounted(() => {
-    cancelAnimationFrame(animationId)
-    hero.removeEventListener('mousemove', onMouseMove)
-    window.removeEventListener('resize', resize)
+  reducedMotionMql = window.matchMedia('(prefers-reduced-motion: reduce)')
+  prefersReducedMotion = reducedMotionMql.matches
+  reducedMotionMql.addEventListener('change', (e) => {
+    prefersReducedMotion = e.matches
+    if (prefersReducedMotion) {
+      stopAnimation()
+      draw(0)
+    } else if (isVisible) {
+      startAnimation()
+    }
   })
+
+  applySize()
+
+  // Pause when hero leaves viewport (e.g. user scrolled to About).
+  intersectionObserver = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0]
+      if (entry.isIntersecting) {
+        isVisible = true
+        if (!prefersReducedMotion) startAnimation()
+      } else {
+        isVisible = false
+        stopAnimation()
+      }
+    },
+    { threshold: 0 },
+  )
+  intersectionObserver.observe(heroEl.value)
+
+  document.addEventListener('visibilitychange', onVisibilityChange)
+  window.addEventListener('resize', onResize, { passive: true })
+  heroEl.value.addEventListener('pointermove', onPointerMove, { passive: true })
+  heroEl.value.addEventListener('pointerleave', onPointerLeave, { passive: true })
+
+  if (!prefersReducedMotion) startAnimation()
+})
+
+onUnmounted(() => {
+  stopAnimation()
+  if (intersectionObserver) intersectionObserver.disconnect()
+  document.removeEventListener('visibilitychange', onVisibilityChange)
+  window.removeEventListener('resize', onResize)
+  if (heroEl.value) {
+    heroEl.value.removeEventListener('pointermove', onPointerMove)
+    heroEl.value.removeEventListener('pointerleave', onPointerLeave)
+  }
+  if (resizeTimer) clearTimeout(resizeTimer)
 })
 </script>
 
 <template>
-  <section id="hero" class="hero">
-    <canvas ref="starsCanvas" class="hero-canvas" aria-hidden="true" />
-    <canvas ref="trailCanvas" class="hero-canvas trail-canvas" aria-hidden="true" />
+  <section id="hero" ref="heroEl" class="hero">
+    <canvas ref="canvasEl" class="hero-canvas" aria-hidden="true" />
     <div class="hero-content">
       <!-- Star logo -->
       <div class="logo-wrapper">
@@ -303,11 +390,6 @@ onMounted(() => {
 .hero-canvas {
   position: absolute;
   inset: 0;
-  pointer-events: none;
-}
-
-.trail-canvas {
-  z-index: 1;
   pointer-events: none;
 }
 
@@ -421,6 +503,14 @@ onMounted(() => {
   50% {
     transform: translateX(-50%) translateY(8px);
     opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-logo,
+  .hero-title,
+  .scroll-hint {
+    animation: none;
   }
 }
 </style>

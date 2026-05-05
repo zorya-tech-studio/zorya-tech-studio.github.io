@@ -17,6 +17,8 @@ export default [
         requestAnimationFrame: 'readonly',
         cancelAnimationFrame: 'readonly',
         IntersectionObserver: 'readonly',
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
         gtag: 'readonly',
       },
     },

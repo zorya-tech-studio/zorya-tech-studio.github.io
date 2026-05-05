@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 
@@ -7,6 +7,9 @@ const { t, locale } = useI18n()
 const route = useRoute()
 const router = useRouter()
 const scrolled = ref(false)
+const menuOpen = ref(false)
+const panelEl = ref(null)
+const togglerEl = ref(null)
 
 const isHome = computed(() => route.name === 'home')
 const homeUrl = computed(() => `/${locale.value}`)
@@ -22,16 +25,70 @@ function toggleLocale() {
   router.replace({ params: { ...route.params, locale: newLocale } })
 }
 
-onMounted(() => window.addEventListener('scroll', onScroll, { passive: true }))
-onUnmounted(() => window.removeEventListener('scroll', onScroll))
+function openMenu() {
+  menuOpen.value = true
+}
+
+function closeMenu() {
+  menuOpen.value = false
+}
+
+function toggleMenu() {
+  menuOpen.value ? closeMenu() : openMenu()
+}
+
+function onLinkClick() {
+  closeMenu()
+}
+
+function onKeydown(e) {
+  if (e.key === 'Escape' && menuOpen.value) {
+    closeMenu()
+    togglerEl.value?.focus()
+  }
+}
+
+function onClickOutside(e) {
+  if (!menuOpen.value) return
+  const panel = panelEl.value
+  const toggler = togglerEl.value
+  if (panel && !panel.contains(e.target) && toggler && !toggler.contains(e.target)) {
+    closeMenu()
+  }
+}
+
+// Lock body scroll while panel is open; move focus into the panel when
+// it opens so keyboard users can tab through the links naturally.
+watch(menuOpen, async (open) => {
+  if (open) {
+    document.documentElement.style.overflow = 'hidden'
+    await nextTick()
+    const firstLink = panelEl.value?.querySelector('a')
+    firstLink?.focus()
+  } else {
+    document.documentElement.style.overflow = ''
+  }
+})
+
+onMounted(() => {
+  window.addEventListener('scroll', onScroll, { passive: true })
+  document.addEventListener('keydown', onKeydown)
+  document.addEventListener('click', onClickOutside)
+})
+onUnmounted(() => {
+  window.removeEventListener('scroll', onScroll)
+  document.removeEventListener('keydown', onKeydown)
+  document.removeEventListener('click', onClickOutside)
+  document.documentElement.style.overflow = ''
+})
 </script>
 
 <template>
-  <nav :class="['navbar', { scrolled }]" aria-label="Main navigation">
+  <nav :class="['navbar', { scrolled, 'menu-open': menuOpen }]" aria-label="Main navigation">
     <div class="nav-inner">
-      <router-link :to="homeUrl" class="nav-logo">Zorya Tech Studio</router-link>
+      <router-link :to="homeUrl" class="nav-logo" @click="closeMenu">Zorya Tech Studio</router-link>
       <div class="nav-right">
-        <ul v-if="isHome" class="nav-links">
+        <ul v-if="isHome" class="nav-links nav-links-inline">
           <li>
             <a href="#about">{{ t('nav.about') }}</a>
           </li>
@@ -42,7 +99,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
             <a href="#contact">{{ t('nav.contact') }}</a>
           </li>
         </ul>
-        <ul v-else class="nav-links">
+        <ul v-else class="nav-links nav-links-inline">
           <li>
             <router-link :to="homeUrl + '#about'">{{ t('nav.about') }}</router-link>
           </li>
@@ -58,7 +115,77 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
           <span class="lang-sep">/</span>
           <span :class="{ active: locale === 'en' }">EN</span>
         </button>
+        <button
+          ref="togglerEl"
+          class="menu-toggle"
+          type="button"
+          :aria-expanded="menuOpen"
+          aria-controls="mobile-menu-panel"
+          :aria-label="menuOpen ? 'Close menu' : 'Open menu'"
+          @click="toggleMenu"
+        >
+          <span class="bar bar-1" />
+          <span class="bar bar-2" />
+          <span class="bar bar-3" />
+        </button>
       </div>
+    </div>
+    <div
+      id="mobile-menu-panel"
+      ref="panelEl"
+      class="mobile-panel"
+      :class="{ open: menuOpen }"
+      role="menu"
+      :aria-hidden="!menuOpen"
+    >
+      <ul class="nav-links nav-links-mobile">
+        <template v-if="isHome">
+          <li role="none">
+            <a role="menuitem" href="#about" :tabindex="menuOpen ? 0 : -1" @click="onLinkClick">{{
+              t('nav.about')
+            }}</a>
+          </li>
+          <li role="none">
+            <a role="menuitem" href="#apps" :tabindex="menuOpen ? 0 : -1" @click="onLinkClick">{{
+              t('nav.apps')
+            }}</a>
+          </li>
+          <li role="none">
+            <a role="menuitem" href="#contact" :tabindex="menuOpen ? 0 : -1" @click="onLinkClick">{{
+              t('nav.contact')
+            }}</a>
+          </li>
+        </template>
+        <template v-else>
+          <li role="none">
+            <router-link
+              role="menuitem"
+              :to="homeUrl + '#about'"
+              :tabindex="menuOpen ? 0 : -1"
+              @click="onLinkClick"
+              >{{ t('nav.about') }}</router-link
+            >
+          </li>
+          <li role="none">
+            <router-link
+              role="menuitem"
+              :to="homeUrl + '#apps'"
+              :tabindex="menuOpen ? 0 : -1"
+              @click="onLinkClick"
+              >{{ t('nav.apps') }}</router-link
+            >
+          </li>
+          <li role="none">
+            <router-link
+              role="menuitem"
+              :to="homeUrl + '#contact'"
+              :tabindex="menuOpen ? 0 : -1"
+              @click="onLinkClick"
+              >{{ t('nav.contact') }}</router-link
+            >
+          </li>
+        </template>
+      </ul>
     </div>
   </nav>
 </template>
@@ -78,7 +205,8 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
     backdrop-filter 0.3s;
 }
 
-.navbar.scrolled {
+.navbar.scrolled,
+.navbar.menu-open {
   background: var(--bg-nav);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -114,6 +242,8 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   list-style: none;
   display: flex;
   gap: 28px;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links a {
@@ -156,24 +286,158 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   opacity: 0.3;
 }
 
-@media (max-width: 480px) {
+/* ── Hamburger ─────────────────────────────────────────────────────── */
+
+.menu-toggle {
+  display: none; /* shown on mobile via media query */
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: 1px solid var(--accent-dim);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 0.2s;
+}
+
+.menu-toggle:hover {
+  border-color: var(--accent);
+}
+
+.menu-toggle .bar {
+  position: absolute;
+  left: 50%;
+  width: 18px;
+  height: 1.5px;
+  background: var(--text-dim);
+  border-radius: 1px;
+  transform-origin: center;
+  transition:
+    transform 0.25s ease,
+    opacity 0.2s ease,
+    top 0.25s ease,
+    background 0.2s;
+  margin-left: -9px;
+}
+
+.menu-toggle .bar-1 {
+  top: 13px;
+}
+.menu-toggle .bar-2 {
+  top: 19px;
+}
+.menu-toggle .bar-3 {
+  top: 25px;
+}
+
+.menu-toggle[aria-expanded='true'] {
+  border-color: var(--accent);
+}
+
+.menu-toggle[aria-expanded='true'] .bar {
+  background: var(--accent);
+}
+
+.menu-toggle[aria-expanded='true'] .bar-1 {
+  top: 19px;
+  transform: rotate(45deg);
+}
+.menu-toggle[aria-expanded='true'] .bar-2 {
+  opacity: 0;
+}
+.menu-toggle[aria-expanded='true'] .bar-3 {
+  top: 19px;
+  transform: rotate(-45deg);
+}
+
+/* ── Mobile slide-down panel ───────────────────────────────────────── */
+
+.mobile-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg-nav);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--accent-dim);
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition:
+    max-height 0.3s ease,
+    visibility 0s linear 0.3s;
+}
+
+.mobile-panel.open {
+  max-height: 320px;
+  visibility: visible;
+  transition:
+    max-height 0.3s ease,
+    visibility 0s linear 0s;
+}
+
+.nav-links-mobile {
+  flex-direction: column;
+  gap: 0;
+  padding: 8px 0;
+}
+
+.nav-links-mobile li {
+  width: 100%;
+}
+
+.nav-links-mobile a {
+  display: block;
+  padding: 14px 24px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-left: 2px solid transparent;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background 0.2s;
+}
+
+.nav-links-mobile a:hover,
+.nav-links-mobile a:focus-visible {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  background: rgba(0, 240, 255, 0.04);
+  outline: none;
+}
+
+@media (max-width: 720px) {
+  .nav-links-inline {
+    display: none;
+  }
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-right {
+    gap: 12px;
+  }
+  .nav-inner {
+    padding: 0 16px;
+  }
+  .nav-logo {
+    font-size: 0.95rem;
+    letter-spacing: 1.5px;
+  }
+}
+
+@media (max-width: 380px) {
   .nav-logo {
     font-size: 0.85rem;
     letter-spacing: 1px;
   }
-
-  .nav-links {
-    gap: 10px;
-  }
-
-  .nav-links a {
-    font-size: 0.78rem;
-  }
-
   .nav-right {
     gap: 8px;
   }
-
   .nav-inner {
     padding: 0 12px;
   }
