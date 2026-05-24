@@ -32,6 +32,12 @@ const routes = [
     component: () => import('./pages/apps/movogra/MovograPrivacyPage.vue'),
     meta: { titleKey: 'movogra.privacy.title', app: 'movogra' },
   },
+  {
+    path: '/:locale/alias/privacy-policy',
+    name: 'alias-privacy',
+    component: () => import('./pages/apps/alias/AliasPrivacyPage.vue'),
+    meta: { titleKey: 'alias.privacy.title', app: 'alias' },
+  },
   { path: '/', redirect: () => `/${i18n.global.locale.value}` },
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
@@ -42,6 +48,10 @@ const routes = [
   {
     path: '/movogra/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/movogra/privacy-policy`,
+  },
+  {
+    path: '/alias/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/alias/privacy-policy`,
   },
 ]
 

@@ -59,6 +59,35 @@
       "contact_text": "If you have questions about this Privacy Policy, please contact us at:"
     }
   },
+  "alias": {
+    "name": "Alias",
+    "subtitle": "Party word game for friends",
+    "desc_short": "A pass-and-play party word game with 35+ categories and 14 languages. Explain words to your team without using them — beat the clock.",
+    "status": "Released",
+    "platform": "Android",
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Effective date",
+      "intro": "Zorya Tech Studio (\"we\", \"us\", \"our\") built the Alias app — a pass-and-play party word game for Android. This Privacy Policy explains how we handle information when you use the app.",
+      "collect_title": "Personal Data Collection",
+      "collect_text": "We do not collect any personal data. The app requires no registration, account, or sign-in. We do not request or store your name, email address, phone number, or any other personally identifiable information.",
+      "storage_title": "Data Storage",
+      "storage_text": "All game settings, custom word lists, and team names are stored exclusively on your device using SharedPreferences. No game data is transmitted to our servers — we do not operate any server infrastructure for storing user data.",
+      "permissions_title": "Permissions",
+      "permissions_text": "Alias requests only the minimum permissions required to display ads. The app does not access the microphone, camera, location, contacts, or any other sensitive device data.",
+      "permissions_internet": "Internet — required to load ads from Google AdMob. The app itself works fully offline; only ad loading uses the network.",
+      "permissions_ad_id": "Advertising ID (AD_ID) — used by Google AdMob to serve relevant ads. You can reset or opt out of this identifier at any time in your device's Google settings.",
+      "third_title": "Third-Party Services",
+      "third_text": "Alias displays ads via Google AdMob (a banner on the home screen and a full-screen interstitial between rounds). AdMob may collect device identifiers, IP address, and usage data per its own policy:",
+      "third_admob": "displays ads. May collect device identifiers, IP address, and usage data for serving personalized or non-personalized ads.",
+      "children_title": "Children's Privacy",
+      "children_text": "Alias is not directed at children under the age of 13. We do not knowingly collect information from children under 13. If you believe your child has provided us with any information, please contact us and we will delete it.",
+      "changes_title": "Changes to This Policy",
+      "changes_text": "We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date.",
+      "contact_title": "Contact Us",
+      "contact_text": "If you have questions about this Privacy Policy, please contact us at:"
+    }
+  },
   "movogra": {
     "name": "МовоГра UA",
     "subtitle": "Improve your Ukrainian by playing",
