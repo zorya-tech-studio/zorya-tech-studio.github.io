@@ -18,6 +18,10 @@ const routes = [
   'uk/senso/privacy-policy',
   'en/movogra/privacy-policy',
   'uk/movogra/privacy-policy',
+  'en/alias/privacy-policy',
+  'uk/alias/privacy-policy',
+  'en/alias/offer',
+  'uk/alias/offer',
 ]
 
 for (const route of routes) {

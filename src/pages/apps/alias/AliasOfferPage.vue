@@ -8,26 +8,26 @@ const route = useRoute()
 
 const locale = computed(() => route.params.locale || 'uk')
 const homeUrl = computed(() => `/${locale.value}`)
-const offerUrl = computed(() => `/${locale.value}/alias/offer`)
+const privacyUrl = computed(() => `/${locale.value}/alias/privacy-policy`)
 const otherLocale = computed(() => (locale.value === 'uk' ? 'en' : 'uk'))
-const otherLocaleUrl = computed(() => `/${otherLocale.value}/alias/privacy-policy`)
+const otherLocaleUrl = computed(() => `/${otherLocale.value}/alias/offer`)
 const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
 </script>
 
 <template>
-  <div class="privacy-page">
+  <div class="offer-page">
     <nav class="breadcrumbs" aria-label="Breadcrumb">
       <router-link :to="homeUrl">{{ t('breadcrumb.home') }}</router-link>
       <span class="breadcrumb-sep">/</span>
       <span>{{ t('alias.name') }}</span>
       <span class="breadcrumb-sep">/</span>
-      <span class="breadcrumb-current">{{ t('alias.privacy.title') }}</span>
+      <span class="breadcrumb-current">{{ t('alias.offer.title') }}</span>
     </nav>
 
     <div class="page-header">
-      <h1 class="page-title">{{ t('alias.privacy.title') }}</h1>
+      <h1 class="page-title">{{ t('alias.offer.title') }}</h1>
       <div class="header-actions">
-        <router-link :to="offerUrl" class="header-link">{{ t('nav.view_offer') }}</router-link>
+        <router-link :to="privacyUrl" class="header-link">{{ t('nav.view_privacy') }}</router-link>
         <router-link :to="otherLocaleUrl" class="lang-toggle" :aria-label="t('nav.switch_lang')">
           {{ otherLocaleLabel }}
         </router-link>
@@ -35,55 +35,98 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
     </div>
 
     <p class="app-label">{{ t('alias.name') }} — {{ t('alias.subtitle') }}</p>
-    <p class="updated-date">{{ t('alias.privacy.updated') }}: 2026-05-24</p>
+    <p class="updated-date">{{ t('alias.offer.updated') }}: 2026-05-24</p>
 
-    <p class="intro-text">{{ t('alias.privacy.intro') }}</p>
+    <p class="intro-text">{{ t('alias.offer.intro') }}</p>
 
     <div class="policy-section">
-      <h2 class="section-heading">{{ t('alias.privacy.collect_title') }}</h2>
-      <p class="section-text">{{ t('alias.privacy.collect_text') }}</p>
+      <h2 class="section-heading">{{ t('alias.offer.definitions_title') }}</h2>
+      <p class="section-text">{{ t('alias.offer.definitions_text') }}</p>
     </div>
 
     <div class="policy-section">
-      <h2 class="section-heading">{{ t('alias.privacy.storage_title') }}</h2>
-      <p class="section-text">{{ t('alias.privacy.storage_text') }}</p>
+      <h2 class="section-heading">{{ t('alias.offer.subject_title') }}</h2>
+      <p class="section-text">{{ t('alias.offer.subject_text') }}</p>
     </div>
 
     <div class="policy-section">
-      <h2 class="section-heading">{{ t('alias.privacy.permissions_title') }}</h2>
-      <p class="section-text">{{ t('alias.privacy.permissions_text') }}</p>
-      <ul class="permissions-list">
-        <li>{{ t('alias.privacy.permissions_internet') }}</li>
-        <li>{{ t('alias.privacy.permissions_ad_id') }}</li>
+      <h2 class="section-heading">{{ t('alias.offer.acceptance_title') }}</h2>
+      <p class="section-text">{{ t('alias.offer.acceptance_text') }}</p>
+    </div>
+
+    <div class="policy-section">
+      <h2 class="section-heading">{{ t('alias.offer.license_title') }}</h2>
+      <p class="section-text">{{ t('alias.offer.license_text') }}</p>
+    </div>
+
+    <div class="policy-section">
+      <h2 class="section-heading">{{ t('alias.offer.restrictions_title') }}</h2>
+      <p class="section-text">{{ t('alias.offer.restrictions_text') }}</p>
+      <ul class="rules-list">
+        <li>{{ t('alias.offer.restrictions_reverse') }}</li>
+        <li>{{ t('alias.offer.restrictions_modify') }}</li>
+        <li>{{ t('alias.offer.restrictions_distribute') }}</li>
+        <li>{{ t('alias.offer.restrictions_circumvent') }}</li>
       </ul>
     </div>
 
     <div class="policy-section">
-      <h2 class="section-heading">{{ t('alias.privacy.third_title') }}</h2>
-      <p class="section-text">{{ t('alias.privacy.third_text') }}</p>
-      <ul class="third-party-list">
-        <li>
-          <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener"
-            >Google AdMob</a
-          >
-          — {{ t('alias.privacy.third_admob') }}
-        </li>
-      </ul>
+      <h2 class="section-heading">{{ t('alias.offer.ads_title') }}</h2>
+      <p class="section-text">{{ t('alias.offer.ads_text') }}</p>
     </div>
 
     <div class="policy-section">
-      <h2 class="section-heading">{{ t('alias.privacy.children_title') }}</h2>
-      <p class="section-text">{{ t('alias.privacy.children_text') }}</p>
+      <h2 class="section-heading">{{ t('alias.offer.iap_title') }}</h2>
+      <p class="section-text">{{ t('alias.offer.iap_text') }}</p>
     </div>
 
     <div class="policy-section">
-      <h2 class="section-heading">{{ t('alias.privacy.changes_title') }}</h2>
-      <p class="section-text">{{ t('alias.privacy.changes_text') }}</p>
+      <h2 class="section-heading">{{ t('alias.offer.ugc_title') }}</h2>
+      <p class="section-text">{{ t('alias.offer.ugc_text') }}</p>
     </div>
 
     <div class="policy-section">
-      <h2 class="section-heading">{{ t('alias.privacy.contact_title') }}</h2>
-      <p class="section-text">{{ t('alias.privacy.contact_text') }}</p>
+      <h2 class="section-heading">{{ t('alias.offer.ip_title') }}</h2>
+      <p class="section-text">{{ t('alias.offer.ip_text') }}</p>
+    </div>
+
+    <div class="policy-section">
+      <h2 class="section-heading">{{ t('alias.offer.warranty_title') }}</h2>
+      <p class="section-text">{{ t('alias.offer.warranty_text') }}</p>
+    </div>
+
+    <div class="policy-section">
+      <h2 class="section-heading">{{ t('alias.offer.liability_title') }}</h2>
+      <p class="section-text">{{ t('alias.offer.liability_text') }}</p>
+    </div>
+
+    <div class="policy-section">
+      <h2 class="section-heading">{{ t('alias.offer.privacy_title') }}</h2>
+      <p class="section-text">
+        {{ t('alias.offer.privacy_text') }}
+        <router-link :to="privacyUrl" class="inline-link">{{ t('nav.view_privacy') }}</router-link
+        >.
+      </p>
+    </div>
+
+    <div class="policy-section">
+      <h2 class="section-heading">{{ t('alias.offer.termination_title') }}</h2>
+      <p class="section-text">{{ t('alias.offer.termination_text') }}</p>
+    </div>
+
+    <div class="policy-section">
+      <h2 class="section-heading">{{ t('alias.offer.changes_title') }}</h2>
+      <p class="section-text">{{ t('alias.offer.changes_text') }}</p>
+    </div>
+
+    <div class="policy-section">
+      <h2 class="section-heading">{{ t('alias.offer.law_title') }}</h2>
+      <p class="section-text">{{ t('alias.offer.law_text') }}</p>
+    </div>
+
+    <div class="policy-section">
+      <h2 class="section-heading">{{ t('alias.offer.contact_title') }}</h2>
+      <p class="section-text">{{ t('alias.offer.contact_text') }}</p>
       <a href="mailto:zoryatechstudio@gmail.com" class="contact-email">
         zoryatechstudio@gmail.com
       </a>
@@ -92,7 +135,7 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
 </template>
 
 <style scoped>
-.privacy-page {
+.offer-page {
   min-height: 100vh;
   max-width: 720px;
   margin: 0 auto;
@@ -212,28 +255,28 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
   margin-bottom: 16px;
 }
 
-.permissions-list,
-.third-party-list {
+.rules-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.permissions-list li,
-.third-party-list li {
+.rules-list li {
   color: var(--text-dim);
   line-height: 1.7;
-  margin-bottom: 6px;
-}
-
-.permissions-list li {
+  margin-bottom: 12px;
   padding-left: 16px;
   border-left: 2px solid rgba(0, 240, 255, 0.15);
-  margin-bottom: 12px;
 }
 
-.third-party-list a {
+.inline-link {
   color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.inline-link:hover {
+  text-decoration: none;
 }
 
 .contact-email {
@@ -244,7 +287,7 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
 }
 
 @media (max-width: 480px) {
-  .privacy-page {
+  .offer-page {
     padding: calc(var(--nav-height) + 24px) 16px 60px;
   }
 

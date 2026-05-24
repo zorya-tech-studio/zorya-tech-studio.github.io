@@ -3,7 +3,9 @@
     "about": "About",
     "apps": "Apps",
     "contact": "Contact",
-    "switch_lang": "Switch language"
+    "switch_lang": "Switch language",
+    "view_privacy": "Privacy Policy",
+    "view_offer": "Terms of Use"
   },
   "hero": {
     "tagline": "Crafting mobile experiences with care"
@@ -86,6 +88,47 @@
       "changes_text": "We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date.",
       "contact_title": "Contact Us",
       "contact_text": "If you have questions about this Privacy Policy, please contact us at:"
+    },
+    "offer": {
+      "title": "Terms of Use",
+      "updated": "Effective date",
+      "intro": "This document is a public offer by Zorya Tech Studio (\"Studio\", \"we\") regarding the use of the Alias mobile app (the \"App\"). By downloading, installing, or using the App, you (the \"User\") unconditionally accept all terms of this Agreement. If you do not agree to any of the terms, please do not use the App.",
+      "definitions_title": "Definitions",
+      "definitions_text": "App — the Alias mobile application for Android, distributed via Google Play. Parties — the Studio and the User. Agreement — these Terms of Use together with the Privacy Policy.",
+      "subject_title": "Subject of the Agreement",
+      "subject_text": "The Studio grants the User the right to use the App free of charge for personal, non-commercial purposes subject to this Agreement. The App is distributed on a freemium model: the base functionality is free and ad-supported, while additional features may be available via one-time in-app purchases through Google Play.",
+      "acceptance_title": "Acceptance of the Offer",
+      "acceptance_text": "Acceptance of this offer occurs through any of the following actions: downloading the App from Google Play, installing it on a device, or actually using it. From the moment of acceptance, this Agreement is deemed concluded between the Studio and the User.",
+      "license_title": "License to Use",
+      "license_text": "The Studio grants the User a non-exclusive, royalty-free, revocable, non-transferable license to install and use the App on Android devices owned or lawfully controlled by the User. The license remains in force for as long as the User uses the App and is limited to personal, non-commercial use.",
+      "restrictions_title": "Use Restrictions",
+      "restrictions_text": "The User agrees not to:",
+      "restrictions_reverse": "decompile, disassemble, or reverse-engineer the App, except as expressly permitted by applicable law;",
+      "restrictions_modify": "modify, adapt, translate, or create derivative works based on the App;",
+      "restrictions_distribute": "copy, distribute, sell, rent, sublicense, or otherwise commercially exploit the App or any part of it;",
+      "restrictions_circumvent": "circumvent or attempt to circumvent any technical protection measures, ad-display mechanisms, or in-app purchase systems.",
+      "ads_title": "Advertising",
+      "ads_text": "The App contains ads served by Google AdMob (banners and full-screen interstitials between rounds). Ads fund the free version of the App. By using the App, the User consents to the display of ads. Data collection by the ad network is governed by Google's policy and is described in our Privacy Policy.",
+      "iap_title": "In-App Purchases",
+      "iap_text": "The App may offer one-time in-app purchases (e.g., a premium unlock that removes ads) via the Google Play billing system. All purchases are processed by Google; the Studio does not receive payment card data. Refunds are handled in accordance with Google Play's policy. As of this version of the Agreement, in-app purchases may be inactive — activation will be announced in an App update.",
+      "ugc_title": "User-Generated Content",
+      "ugc_text": "The App allows the User to create custom word lists and team names. Such content is stored exclusively on the User's device and is not transmitted to the Studio. The User is solely responsible for the content they create and agrees not to use offensive, unlawful, or rights-infringing material.",
+      "ip_title": "Intellectual Property",
+      "ip_text": "All exclusive proprietary rights to the App, including its code, design, graphics, audio, text, and other components, belong to the Studio. This Agreement does not transfer any intellectual property rights in the App to the User, other than the limited license to use expressly granted herein.",
+      "warranty_title": "Disclaimer of Warranties",
+      "warranty_text": "The App is provided \"as is\" and \"as available\", without warranties of any kind, express or implied, including warranties of fitness for a particular purpose, error-free operation, or uninterrupted availability. The Studio does not warrant that the App will meet all User expectations or operate without faults on every device.",
+      "liability_title": "Limitation of Liability",
+      "liability_text": "To the maximum extent permitted by applicable law, the Studio is not liable for any direct, indirect, incidental, special, or consequential damages arising out of the use or inability to use the App, loss of data stored locally on the User's device, or actions of third-party services (Google Play, AdMob). The Studio's total liability, if any, shall not exceed the amount actually paid by the User for in-app purchases during the previous 12 months.",
+      "privacy_title": "Privacy",
+      "privacy_text": "The handling of information when using the App is governed by a separate document — the Privacy Policy — which forms an integral part of this Agreement.",
+      "termination_title": "Termination",
+      "termination_text": "The User may stop using the App at any time by uninstalling it from their device. The Studio reserves the right to discontinue the App or any of its features upon notice via a Google Play update or on the Studio's website. Termination does not relieve either Party from obligations that arose prior to such termination.",
+      "changes_title": "Changes to the Terms",
+      "changes_text": "The Studio reserves the right to unilaterally modify the terms of this Agreement. The current version is always posted on this page with the effective date. Continued use of the App after changes constitutes the User's acceptance of the new version.",
+      "law_title": "Governing Law",
+      "law_text": "This Agreement is governed by the laws of Ukraine. Any disputes arising in connection with this Agreement shall first be resolved through negotiations between the Parties; failing that, in court in accordance with the laws of Ukraine.",
+      "contact_title": "Contact Information",
+      "contact_text": "Questions about the terms of this Agreement can be sent to:"
     }
   },
   "movogra": {

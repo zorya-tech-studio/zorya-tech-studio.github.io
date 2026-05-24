@@ -5,6 +5,19 @@
  */
 export const apps = [
   {
+    slug: 'alias',
+    nameKey: 'alias.name',
+    subtitleKey: 'alias.subtitle',
+    descKey: 'alias.desc_short',
+    platform: 'Android',
+    status: 'released',
+    statusKey: 'alias.status',
+    tags: ['Android', 'Party', 'Word Game'],
+    icon: '/apps/alias/icon.png',
+    privacyRoute: (locale) => `/${locale}/alias/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/alias/offer`,
+  },
+  {
     slug: 'senso',
     nameKey: 'senso.name',
     subtitleKey: 'senso.subtitle',
