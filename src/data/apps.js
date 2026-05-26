@@ -30,6 +30,18 @@ export const apps = [
     privacyRoute: (locale) => `/${locale}/senso/privacy-policy`,
   },
   {
+    slug: 'ytaudit',
+    nameKey: 'ytaudit.name',
+    subtitleKey: 'ytaudit.subtitle',
+    descKey: 'ytaudit.desc_short',
+    platform: 'Android',
+    status: 'released',
+    statusKey: 'ytaudit.status',
+    tags: ['Android', 'YouTube', 'Analytics'],
+    icon: '/apps/ytaudit/icon.png',
+    privacyRoute: (locale) => `/${locale}/ytaudit/privacy-policy`,
+  },
+  {
     slug: 'movogra',
     nameKey: 'movogra.name',
     subtitleKey: 'movogra.subtitle',

@@ -33,6 +33,12 @@ const routes = [
     meta: { titleKey: 'movogra.privacy.title', app: 'movogra' },
   },
   {
+    path: '/:locale/ytaudit/privacy-policy',
+    name: 'ytaudit-privacy',
+    component: () => import('./pages/apps/ytaudit/YtAuditPrivacyPage.vue'),
+    meta: { titleKey: 'ytaudit.privacy.title', app: 'ytaudit' },
+  },
+  {
     path: '/:locale/alias/privacy-policy',
     name: 'alias-privacy',
     component: () => import('./pages/apps/alias/AliasPrivacyPage.vue'),
@@ -54,6 +60,10 @@ const routes = [
   {
     path: '/movogra/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/movogra/privacy-policy`,
+  },
+  {
+    path: '/ytaudit/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/ytaudit/privacy-policy`,
   },
   {
     path: '/alias/privacy-policy',

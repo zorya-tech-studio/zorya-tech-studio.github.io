@@ -18,6 +18,8 @@ const routes = [
   'uk/senso/privacy-policy',
   'en/movogra/privacy-policy',
   'uk/movogra/privacy-policy',
+  'en/ytaudit/privacy-policy',
+  'uk/ytaudit/privacy-policy',
   'en/alias/privacy-policy',
   'uk/alias/privacy-policy',
   'en/alias/offer',

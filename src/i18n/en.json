@@ -131,6 +131,38 @@
       "contact_text": "Questions about the terms of this Agreement can be sent to:"
     }
   },
+  "ytaudit": {
+    "name": "YT Audit",
+    "subtitle": "Math-based YouTube channel audit",
+    "desc_short": "Audit public YouTube channels via the official API: 70+ metrics and 50+ recommendations. No sign-in, all data stays on your device.",
+    "status": "Released",
+    "platform": "Android",
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Effective date",
+      "intro": "Zorya Tech Studio (\"we\", \"us\", \"our\") built the YT Audit app — a tool for math-based audits of public YouTube channels. This Privacy Policy explains how we handle information when you use the app.",
+      "collect_title": "Personal Data Collection",
+      "collect_text": "We do not collect any personal data. The app requires no registration, account, or sign-in with Google/YouTube. We do not request or store your name, email, phone number, or any other personally identifiable information.",
+      "storage_title": "Data Storage",
+      "storage_text": "All audit results, history, settings, and daily-limit counters are stored exclusively on your device (SharedPreferences for settings, Hive for audit history). No data is transmitted to our servers — we do not operate any server infrastructure for storing user data.",
+      "permissions_title": "Permissions",
+      "permissions_text": "YT Audit requests only the minimum permissions required. The app does not use the microphone, camera, location, contacts, or any other sensitive device data:",
+      "permissions_internet": "Internet — required to call the YouTube Data API v3 (fetching public channel metadata, playlists, and video statistics) and to load Google AdMob ads.",
+      "permissions_ad_id": "Advertising ID (AD_ID) — used by Google AdMob to serve relevant ads. You can reset or opt out of this identifier at any time in your device's Google settings.",
+      "youtube_title": "How We Use YouTube Data",
+      "youtube_text": "The app uses the YouTube Data API v3 with a server API key to fetch only public information about the channel you provide (URL or @handle): channel metadata, video list, view counts, and comment stats. YT Audit does NOT use OAuth and has no access to private data, private videos, analytics, or any information tied to your Google account. Use of YouTube data is governed by the YouTube Terms of Service and the Google Privacy Policy.",
+      "third_title": "Third-Party Services",
+      "third_text": "YT Audit displays ads via Google AdMob (a banner on main screens, a full-screen interstitial between audits, and rewarded ads for extra audits) and queries public data via the YouTube Data API. These services may collect data per their own policies:",
+      "third_admob": "displays ads. May collect device identifiers, IP address, and usage data for serving personalized or non-personalized ads.",
+      "third_youtube": "provides public channel data via the YouTube Data API v3. Requests are processed under the YouTube Terms of Service and the Google Privacy Policy.",
+      "children_title": "Children's Privacy",
+      "children_text": "YT Audit is not directed at children under the age of 13. We do not knowingly collect information from children under 13. If you believe your child has provided us with any information, please contact us and we will delete it.",
+      "changes_title": "Changes to This Policy",
+      "changes_text": "We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date.",
+      "contact_title": "Contact Us",
+      "contact_text": "If you have questions about this Privacy Policy, please contact us at:"
+    }
+  },
   "movogra": {
     "name": "МовоГра UA",
     "subtitle": "Improve your Ukrainian by playing",
