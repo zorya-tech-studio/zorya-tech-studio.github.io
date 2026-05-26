@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \":*)",
+      "Bash(node audit.cjs)",
+      "Bash(npx --yes lighthouse http://localhost:5174/en --output=json --output-path=./lighthouse-report.json --chrome-flags=\"--headless --no-sandbox\" --only-categories=performance,accessibility,best-practices,seo)",
+      "Bash(ls -la \"D:\\\\PROJECTS\\\\zorya-tech-studio.github.io\\\\public\"\" 2>/dev/null || echo \"public folder does not exist \")",
+      "Bash(npm install -D vite-plugin-sitemap)",
+      "Bash(npm uninstall vite-plugin-sitemap)",
+      "Bash(npm run build)"
+    ]
+  }
+}
