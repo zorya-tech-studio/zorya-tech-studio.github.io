@@ -53,4 +53,16 @@ export const apps = [
     icon: '/apps/movogra/icon.png',
     privacyRoute: (locale) => `/${locale}/movogra/privacy-policy`,
   },
+  {
+    slug: 'proverb',
+    nameKey: 'proverb.name',
+    subtitleKey: 'proverb.subtitle',
+    descKey: 'proverb.desc_short',
+    platform: 'Android',
+    status: 'released',
+    statusKey: 'proverb.status',
+    tags: ['Android', 'Quiz', 'Ukrainian'],
+    icon: '/apps/proverb/icon.png',
+    privacyRoute: (locale) => `/${locale}/proverb/privacy-policy`,
+  },
 ]

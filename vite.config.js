@@ -12,6 +12,7 @@ const PAGES = [
   { path: '/ytaudit/privacy-policy', changefreq: 'yearly', priority: 0.3 },
   { path: '/senso/privacy-policy', changefreq: 'yearly', priority: 0.3 },
   { path: '/movogra/privacy-policy', changefreq: 'yearly', priority: 0.3 },
+  { path: '/proverb/privacy-policy', changefreq: 'yearly', priority: 0.3 },
   { path: '/alias/privacy-policy', changefreq: 'yearly', priority: 0.3 },
   { path: '/alias/offer', changefreq: 'yearly', priority: 0.3 },
 ]
