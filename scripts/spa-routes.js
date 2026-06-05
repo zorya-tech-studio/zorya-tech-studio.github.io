@@ -26,6 +26,8 @@ const routes = [
   'uk/alias/privacy-policy',
   'en/alias/offer',
   'uk/alias/offer',
+  'en/sudokulens/privacy-policy',
+  'uk/sudokulens/privacy-policy',
 ]
 
 for (const route of routes) {

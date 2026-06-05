@@ -65,4 +65,18 @@ export const apps = [
     icon: '/apps/proverb/icon.png',
     privacyRoute: (locale) => `/${locale}/proverb/privacy-policy`,
   },
+  {
+    slug: 'sudokulens',
+    nameKey: 'sudokulens.name',
+    subtitleKey: 'sudokulens.subtitle',
+    descKey: 'sudokulens.desc_short',
+    platform: 'Android',
+    status: 'coming_soon',
+    statusKey: 'sudokulens.status',
+    tags: ['Android', 'Puzzle', 'OCR'],
+    // TODO: add the app icon at public/apps/sudokulens/icon.png (512×512 PNG)
+    // — until then this image will 404 on the homepage / projects page.
+    icon: '/apps/sudokulens/icon.png',
+    privacyRoute: (locale) => `/${locale}/sudokulens/privacy-policy`,
+  },
 ]

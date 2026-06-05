@@ -56,6 +56,12 @@ const routes = [
     component: () => import('./pages/apps/alias/AliasOfferPage.vue'),
     meta: { titleKey: 'alias.offer.title', app: 'alias' },
   },
+  {
+    path: '/:locale/sudokulens/privacy-policy',
+    name: 'sudokulens-privacy',
+    component: () => import('./pages/apps/sudokulens/SudokuLensPrivacyPage.vue'),
+    meta: { titleKey: 'sudokulens.privacy.title', app: 'sudokulens' },
+  },
   { path: '/', redirect: () => `/${i18n.global.locale.value}` },
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
@@ -82,6 +88,10 @@ const routes = [
   {
     path: '/alias/offer',
     redirect: () => `/${i18n.global.locale.value}/alias/offer`,
+  },
+  {
+    path: '/sudokulens/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/sudokulens/privacy-policy`,
   },
 ]
 
