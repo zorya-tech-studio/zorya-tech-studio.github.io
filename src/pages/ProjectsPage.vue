@@ -30,6 +30,7 @@ const homeUrl = computed(() => `/${locale.value}`)
           :to="app.privacyRoute(locale)"
           class="project-card"
         >
+          <span class="project-status">{{ t(app.statusKey) }}</span>
           <div class="project-header">
             <img
               :src="app.icon"
@@ -40,7 +41,6 @@ const homeUrl = computed(() => `/${locale.value}`)
             />
             <div class="project-heading">
               <h2 class="project-name">{{ t(app.nameKey) }}</h2>
-              <span class="project-status">{{ t(app.statusKey) }}</span>
             </div>
           </div>
           <p class="project-description">{{ t(app.descKey) }}</p>
@@ -88,6 +88,7 @@ const homeUrl = computed(() => `/${locale.value}`)
 }
 
 .project-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   background: var(--surface);
@@ -108,9 +109,10 @@ const homeUrl = computed(() => `/${locale.value}`)
 
 .project-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 16px;
   margin-bottom: 12px;
+  padding-right: 96px;
 }
 
 .project-icon {
@@ -142,7 +144,10 @@ const homeUrl = computed(() => `/${locale.value}`)
 }
 
 .project-status {
-  font-size: 0.8rem;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 0.72rem;
   font-weight: 600;
   color: #34d399;
   text-transform: uppercase;

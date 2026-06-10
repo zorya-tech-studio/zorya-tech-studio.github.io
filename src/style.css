@@ -10,8 +10,8 @@
   --glitch-dim: rgba(255, 45, 107, 0.12);
   --text: #e0e4ea;
   --text-dim: #9ca3af;
-  --font-heading: 'Cinzel', Georgia, serif;
-  --font-ui: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-heading: 'Exo 2', 'Segoe UI', sans-serif;
+  --font-ui: 'Inter', 'Segoe UI', sans-serif;
   --nav-height: 60px;
 }
 
