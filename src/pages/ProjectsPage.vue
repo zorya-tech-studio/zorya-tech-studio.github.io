@@ -31,8 +31,17 @@ const homeUrl = computed(() => `/${locale.value}`)
           class="project-card"
         >
           <div class="project-header">
-            <h2 class="project-name">{{ t(app.nameKey) }}</h2>
-            <span class="project-status">{{ t(app.statusKey) }}</span>
+            <img
+              :src="app.icon"
+              :alt="t(app.nameKey)"
+              class="project-icon"
+              width="56"
+              height="56"
+            />
+            <div class="project-heading">
+              <h2 class="project-name">{{ t(app.nameKey) }}</h2>
+              <span class="project-status">{{ t(app.statusKey) }}</span>
+            </div>
           </div>
           <p class="project-description">{{ t(app.descKey) }}</p>
           <div class="project-tags">
@@ -51,7 +60,7 @@ const homeUrl = computed(() => `/${locale.value}`)
 }
 
 .projects-container {
-  max-width: 720px;
+  max-width: 980px;
   margin: 0 auto;
 }
 
@@ -72,14 +81,15 @@ const homeUrl = computed(() => `/${locale.value}`)
 }
 
 .projects-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 24px;
   margin-bottom: 48px;
 }
 
 .project-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
   background: var(--surface);
   border: 1px solid var(--accent-dim);
   border-radius: 12px;
@@ -99,10 +109,24 @@ const homeUrl = computed(() => `/${locale.value}`)
 .project-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 16px;
   margin-bottom: 12px;
-  flex-wrap: wrap;
+}
+
+.project-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.project-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
 }
 
 .project-name {
