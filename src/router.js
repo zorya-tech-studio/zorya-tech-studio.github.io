@@ -69,6 +69,18 @@ const routes = [
     meta: { titleKey: 'alias.offer.title', app: 'alias' },
   },
   {
+    path: '/:locale/auto-obd2/privacy-policy',
+    name: 'auto-obd2-privacy',
+    component: () => import('./pages/apps/auto-obd2/AutoObd2PrivacyPage.vue'),
+    meta: { titleKey: 'autoObd2.privacy.title', app: 'auto-obd2' },
+  },
+  {
+    path: '/:locale/auto-obd2/offer',
+    name: 'auto-obd2-offer',
+    component: () => import('./pages/apps/auto-obd2/AutoObd2OfferPage.vue'),
+    meta: { titleKey: 'autoObd2.offer.title', app: 'auto-obd2' },
+  },
+  {
     path: '/:locale/sudokulens/privacy-policy',
     name: 'sudokulens-privacy',
     component: () => import('./pages/apps/sudokulens/SudokuLensPrivacyPage.vue'),
@@ -108,6 +120,14 @@ const routes = [
   {
     path: '/alias/offer',
     redirect: () => `/${i18n.global.locale.value}/alias/offer`,
+  },
+  {
+    path: '/auto-obd2/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/auto-obd2/privacy-policy`,
+  },
+  {
+    path: '/auto-obd2/offer',
+    redirect: () => `/${i18n.global.locale.value}/auto-obd2/offer`,
   },
   {
     path: '/sudokulens/privacy-policy',
