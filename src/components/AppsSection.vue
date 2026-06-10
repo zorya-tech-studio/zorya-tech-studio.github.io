@@ -47,10 +47,10 @@ const projectsUrl = computed(() => `/${locale.value}/projects`)
 
 <style scoped>
 .apps-grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  max-width: 520px;
+  max-width: 880px;
   margin: 0 auto;
 }
 
@@ -147,6 +147,13 @@ const projectsUrl = computed(() => `/${locale.value}/projects`)
 .app-badge--released {
   color: #34d399;
   background: rgba(52, 211, 153, 0.12);
+}
+
+@media (max-width: 640px) {
+  .apps-grid {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+  }
 }
 
 @media (max-width: 480px) {

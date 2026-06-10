@@ -82,7 +82,7 @@ const homeUrl = computed(() => `/${locale.value}`)
 
 .projects-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   margin-bottom: 48px;
 }
@@ -108,7 +108,7 @@ const homeUrl = computed(() => `/${locale.value}`)
 
 .project-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 16px;
   margin-bottom: 12px;
 }
@@ -133,7 +133,12 @@ const homeUrl = computed(() => `/${locale.value}`)
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 1.4rem;
+  line-height: 1.25;
   color: var(--text);
+  /* reserve two lines so single- and double-line names align across a row */
+  min-height: 2.5em;
+  display: flex;
+  align-items: center;
 }
 
 .project-status {
@@ -159,6 +164,7 @@ const homeUrl = computed(() => `/${locale.value}`)
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  margin-top: auto;
 }
 
 .projects-empty {
@@ -176,6 +182,12 @@ const homeUrl = computed(() => `/${locale.value}`)
   padding: 3px 10px;
   border-radius: 4px;
   letter-spacing: 0.3px;
+}
+
+@media (max-width: 640px) {
+  .projects-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
