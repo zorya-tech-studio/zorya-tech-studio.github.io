@@ -218,7 +218,7 @@
     "name": "SudokuLens",
     "subtitle": "Smart Sudoku Solver",
     "desc_short": "Solve any Sudoku instantly by scanning it with your camera or entering it manually. Supports 4×4 to 16×16 grids, step-by-step solving with techniques, a puzzle generator, 8 themes, and 8 languages.",
-    "status": "Coming soon",
+    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",

@@ -71,7 +71,7 @@ export const apps = [
     subtitleKey: 'sudokulens.subtitle',
     descKey: 'sudokulens.desc_short',
     platform: 'Android',
-    status: 'coming_soon',
+    status: 'released',
     statusKey: 'sudokulens.status',
     tags: ['Android', 'Puzzle', 'OCR'],
     icon: '/apps/sudokulens/icon.png',
