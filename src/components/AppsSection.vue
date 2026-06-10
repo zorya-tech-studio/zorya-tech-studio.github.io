@@ -17,12 +17,12 @@ const projectsUrl = computed(() => `/${locale.value}/projects`)
         :to="app.privacyRoute(locale)"
         class="app-card"
       >
+        <span class="app-badge app-badge--released">{{ t(app.statusKey) }}</span>
         <img :src="app.icon" :alt="t(app.nameKey)" class="app-icon" width="48" height="48" />
         <div class="app-info">
           <h3 class="app-name">{{ t(app.nameKey) }}</h3>
           <p class="app-desc">{{ t(app.descKey) }}</p>
         </div>
-        <span class="app-badge app-badge--released">{{ t(app.statusKey) }}</span>
       </router-link>
     </div>
     <div class="apps-cta">
@@ -55,10 +55,12 @@ const projectsUrl = computed(() => `/${locale.value}/projects`)
 }
 
 .app-card {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 20px;
   padding: 24px;
+  padding-right: 96px;
   background: var(--surface);
   border: 1px solid var(--accent-dim);
   border-radius: 12px;
@@ -134,7 +136,9 @@ const projectsUrl = computed(() => `/${locale.value}/projects`)
 }
 
 .app-badge {
-  flex-shrink: 0;
+  position: absolute;
+  top: 18px;
+  right: 18px;
   font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -158,14 +162,15 @@ const projectsUrl = computed(() => `/${locale.value}/projects`)
 
 @media (max-width: 480px) {
   .app-card {
-    flex-wrap: wrap;
     gap: 12px;
     padding: 16px;
+    padding-right: 16px;
+    padding-top: 44px;
   }
 
   .app-badge {
-    width: 100%;
-    text-align: center;
+    top: 14px;
+    right: 14px;
   }
 }
 </style>
