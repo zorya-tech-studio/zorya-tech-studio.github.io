@@ -5,6 +5,19 @@
  */
 export const apps = [
   {
+    slug: 'taro',
+    nameKey: 'taro.name',
+    subtitleKey: 'taro.subtitle',
+    descKey: 'taro.desc_short',
+    platform: 'Android',
+    status: 'released',
+    statusKey: 'taro.status',
+    tags: ['Android', 'Tarot', 'Reference'],
+    icon: '/apps/taro/icon.png',
+    privacyRoute: (locale) => `/${locale}/taro/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/taro/offer`,
+  },
+  {
     slug: 'alias',
     nameKey: 'alias.name',
     subtitleKey: 'alias.subtitle',

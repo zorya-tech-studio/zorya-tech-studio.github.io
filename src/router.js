@@ -21,6 +21,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/taro/privacy-policy',
+    name: 'taro-privacy',
+    component: () => import('./pages/apps/taro/TaroPrivacyPage.vue'),
+    meta: { titleKey: 'taro.privacy.title', app: 'taro' },
+  },
+  {
+    path: '/:locale/taro/offer',
+    name: 'taro-offer',
+    component: () => import('./pages/apps/taro/TaroOfferPage.vue'),
+    meta: { titleKey: 'taro.offer.title', app: 'taro' },
+  },
+  {
     path: '/:locale/senso/privacy-policy',
     name: 'senso-privacy',
     component: () => import('./pages/apps/senso/SensoPrivacyPage.vue'),
@@ -65,6 +77,14 @@ const routes = [
   { path: '/', redirect: () => `/${i18n.global.locale.value}` },
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
+  {
+    path: '/taro/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/taro/privacy-policy`,
+  },
+  {
+    path: '/taro/offer',
+    redirect: () => `/${i18n.global.locale.value}/taro/offer`,
+  },
   {
     path: '/senso/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/senso/privacy-policy`,
