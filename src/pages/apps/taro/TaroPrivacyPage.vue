@@ -35,7 +35,7 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
     </div>
 
     <p class="app-label">{{ t('taro.name') }} — {{ t('taro.subtitle') }}</p>
-    <p class="updated-date">{{ t('taro.privacy.updated') }}: 2026-06-10</p>
+    <p class="updated-date">{{ t('taro.privacy.updated') }}: 2026-06-11</p>
 
     <p class="intro-text">{{ t('taro.privacy.intro') }}</p>
 
