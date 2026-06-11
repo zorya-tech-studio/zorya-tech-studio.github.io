@@ -69,3 +69,20 @@ Uses `actions/deploy-pages` to deploy `dist/` to GitHub Pages.
 - Mobile-first responsive design
 - Minimal animations — starfield canvas, scroll fade-in, subtle hover transitions
 - `vite.config.js` base: `'/'` (org repo, served from root)
+
+## i18n — special characters (IMPORTANT)
+
+vue-i18n treats certain characters in message strings (`src/i18n/*.json`) as
+**syntax**, not literal text. If a translation contains one unescaped, the
+**production** build throws at runtime and **every page renders blank** (the
+error appears minified as `SyntaxError: 10` = `INVALID_LINKED_FORMAT`).
+
+- `@` → linked-message syntax (`@:key`). Escape a literal `@` as `{'@'}`.
+  Example: `@handle` must be written `{'@'}handle` (renders identically).
+- `{ }` → interpolation. For literal braces use `{'{'}` / `{'}'}`.
+- `|` → plural separator. Avoid bare `|` in plain messages.
+
+**This will NOT be caught locally:** `npm run build` succeeds (messages compile
+at runtime, JIT), and the dev-mode compiler in `node_modules` is lenient — it
+only crashes in the deployed prod build. So **manually scan new/edited strings
+for `@`, `{`, `}`, `|`** before pushing. If you add such a character, escape it.
