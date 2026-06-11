@@ -32,6 +32,16 @@ for (const locale of LOCALES) {
   }
 }
 
+// Локалізовані маршрути мають у router.js «дзеркальні» редіректи без префікса
+// локалі (напр. `/ytaudit/privacy-policy` -> `/:locale/ytaudit/privacy-policy`).
+// Ці редіректи спрацьовують ЛИШЕ в SPA на клієнті — на GitHub Pages прямий
+// захід на не-локалізований URL віддавав 404.html (HTTP 404), тому валідатори
+// (Google Play тощо) бачили «сторінку не знайдено». Генеруємо статичний 200 і
+// для них: сторінка завантажить SPA, а вже роутер зробить редирект на локаль.
+for (const seg of segments) {
+  if (seg) routes.push(seg)
+}
+
 for (const route of routes) {
   const dir = `dist/${route}`
   mkdirSync(dir, { recursive: true })

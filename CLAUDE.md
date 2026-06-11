@@ -70,6 +70,26 @@ Uses `actions/deploy-pages` to deploy `dist/` to GitHub Pages.
 - Minimal animations — starfield canvas, scroll fade-in, subtle hover transitions
 - `vite.config.js` base: `'/'` (org repo, served from root)
 
+## Routes & HTTP 200 — privacy/legal URLs (IMPORTANT)
+
+GitHub Pages is a **static** host: a URL returns HTTP 200 only if a real file
+exists at that path. The SPA's client-side redirects (`/foo` → `/:locale/foo`
+in `router.js`) do **not** help here — a direct hit on an un-prerendered path
+serves `404.html` with **HTTP status 404**, even though the page visually loads
+after the JS boots. External validators (Google Play privacy-policy checker,
+crawlers) read the **status code**, so they report "page not found".
+
+- `scripts/spa-routes.js` (runs after `vite build`) prerenders a static
+  `index.html` for **every** route so they all return 200 — both the
+  locale-prefixed paths (`/en/...`, `/uk/...`) **and** the bare redirect paths
+  (`/ytaudit/privacy-policy`). It parses `router.js` directly; adding a
+  `path: '/:locale/...'` route there is enough — no list to keep in sync.
+- **Rule:** any externally-referenced URL (privacy policy, terms, store
+  listings, Play Console declarations) must point at a path that
+  `spa-routes.js` prerenders. Verify after build: `ls dist/<path>/index.html`.
+- When giving a URL to an external service, the locale-prefixed form
+  (`/en/<app>/privacy-policy`) is safest — it maps to a fully prerendered page.
+
 ## i18n — special characters (IMPORTANT)
 
 vue-i18n treats certain characters in message strings (`src/i18n/*.json`) as
