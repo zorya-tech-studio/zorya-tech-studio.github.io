@@ -28,6 +28,10 @@ const routes = [
   'uk/alias/offer',
   'en/sudokulens/privacy-policy',
   'uk/sudokulens/privacy-policy',
+  'en/auto-obd2/privacy-policy',
+  'uk/auto-obd2/privacy-policy',
+  'en/auto-obd2/offer',
+  'uk/auto-obd2/offer',
 ]
 
 for (const route of routes) {
