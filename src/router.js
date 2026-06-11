@@ -51,6 +51,12 @@ const routes = [
     meta: { titleKey: 'ytaudit.privacy.title', app: 'ytaudit' },
   },
   {
+    path: '/:locale/ytaudit/terms-of-use',
+    name: 'ytaudit-terms',
+    component: () => import('./pages/apps/ytaudit/YtAuditOfferPage.vue'),
+    meta: { titleKey: 'ytaudit.offer.title', app: 'ytaudit' },
+  },
+  {
     path: '/:locale/proverb/privacy-policy',
     name: 'proverb-privacy',
     component: () => import('./pages/apps/proverb/ProverbPrivacyPage.vue'),
@@ -108,6 +114,10 @@ const routes = [
   {
     path: '/ytaudit/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/ytaudit/privacy-policy`,
+  },
+  {
+    path: '/ytaudit/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/ytaudit/terms-of-use`,
   },
   {
     path: '/proverb/privacy-policy',
