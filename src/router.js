@@ -92,6 +92,25 @@ const routes = [
     component: () => import('./pages/apps/sudokulens/SudokuLensPrivacyPage.vue'),
     meta: { titleKey: 'sudokulens.privacy.title', app: 'sudokulens' },
   },
+  {
+    path: '/:locale/zodiac-compatibility/privacy-policy',
+    name: 'zodiac-compatibility-privacy',
+    component: () => import('./pages/apps/zodiac-compatibility/ZodiacCompatibilityPrivacyPage.vue'),
+    meta: { titleKey: 'zodiacCompatibility.privacy.title', app: 'zodiac-compatibility' },
+  },
+  {
+    path: '/:locale/zodiac-compatibility/terms',
+    name: 'zodiac-compatibility-terms',
+    component: () => import('./pages/apps/zodiac-compatibility/ZodiacCompatibilityTermsPage.vue'),
+    meta: { titleKey: 'zodiacCompatibility.offer.title', app: 'zodiac-compatibility' },
+  },
+  {
+    path: '/:locale/zodiac-compatibility/disclaimer',
+    name: 'zodiac-compatibility-disclaimer',
+    component: () =>
+      import('./pages/apps/zodiac-compatibility/ZodiacCompatibilityDisclaimerPage.vue'),
+    meta: { titleKey: 'zodiacCompatibility.disclaimer.title', app: 'zodiac-compatibility' },
+  },
   { path: '/', redirect: () => `/${i18n.global.locale.value}` },
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
@@ -142,6 +161,18 @@ const routes = [
   {
     path: '/sudokulens/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/sudokulens/privacy-policy`,
+  },
+  {
+    path: '/zodiac-compatibility/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/zodiac-compatibility/privacy-policy`,
+  },
+  {
+    path: '/zodiac-compatibility/terms',
+    redirect: () => `/${i18n.global.locale.value}/zodiac-compatibility/terms`,
+  },
+  {
+    path: '/zodiac-compatibility/disclaimer',
+    redirect: () => `/${i18n.global.locale.value}/zodiac-compatibility/disclaimer`,
   },
 ]
 

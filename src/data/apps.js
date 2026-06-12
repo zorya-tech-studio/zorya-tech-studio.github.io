@@ -5,6 +5,19 @@
  */
 export const apps = [
   {
+    slug: 'zodiac-compatibility',
+    nameKey: 'zodiacCompatibility.name',
+    subtitleKey: 'zodiacCompatibility.subtitle',
+    descKey: 'zodiacCompatibility.desc_short',
+    platform: 'Android',
+    status: 'released',
+    statusKey: 'zodiacCompatibility.status',
+    tags: ['Android', 'Zodiac', 'Lifestyle'],
+    icon: '/apps/zodiac-compatibility/icon.png',
+    privacyRoute: (locale) => `/${locale}/zodiac-compatibility/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/zodiac-compatibility/terms`,
+  },
+  {
     slug: 'taro',
     nameKey: 'taro.name',
     subtitleKey: 'taro.subtitle',
