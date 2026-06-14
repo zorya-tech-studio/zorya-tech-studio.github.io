@@ -27,6 +27,12 @@ const routes = [
     meta: { titleKey: 'markdownReader.privacy.title', app: 'markdown-reader' },
   },
   {
+    path: '/:locale/markdown-reader/terms-of-use',
+    name: 'markdown-reader-terms',
+    component: () => import('./pages/apps/markdown-reader/MarkdownReaderTermsPage.vue'),
+    meta: { titleKey: 'markdownReader.terms.title', app: 'markdown-reader' },
+  },
+  {
     path: '/:locale/taro/privacy-policy',
     name: 'taro-privacy',
     component: () => import('./pages/apps/taro/TaroPrivacyPage.vue'),
@@ -120,6 +126,10 @@ const routes = [
   {
     path: '/markdown-reader/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/markdown-reader/privacy-policy`,
+  },
+  {
+    path: '/markdown-reader/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/markdown-reader/terms-of-use`,
   },
   { path: '/', redirect: () => `/${i18n.global.locale.value}` },
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },

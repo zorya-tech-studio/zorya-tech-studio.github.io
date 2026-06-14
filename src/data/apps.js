@@ -16,6 +16,7 @@ export const apps = [
     tags: ['Android', 'Markdown', 'Productivity'],
     icon: '/apps/markdown-reader/icon.png',
     privacyRoute: (locale) => `/${locale}/markdown-reader/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/markdown-reader/terms-of-use`,
   },
   {
     slug: 'zodiac-compatibility',
