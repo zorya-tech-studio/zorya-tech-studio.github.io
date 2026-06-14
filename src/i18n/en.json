@@ -397,6 +397,31 @@
       "contact_text": "If you have questions about this Privacy Policy, please contact us at:"
     }
   },
+  "chromatic": {
+    "name": "Chromatic",
+    "subtitle": "Color-and-word reaction arcade",
+    "desc_short": "A fast Stroop-style arcade for Android: tap the colour, not the word. Campaign levels, endless and daily modes, combos, stars, and reaction-time stats — all on-device.",
+    "status": "Released",
+    "platform": "Android",
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Effective date",
+      "intro": "Zorya Tech Studio (\"we\", \"us\", \"our\") built the Chromatic app — a color-and-word reaction arcade for Android. This Privacy Policy explains how we handle information when you use the app.",
+      "collect_title": "Personal Data Collection",
+      "collect_text": "We do not collect any personal data. The app requires no registration, account, or sign-in. We do not request or store your name, email, phone number, or any other personally identifiable information.",
+      "storage_title": "Data Storage",
+      "storage_text": "All progress, scores, settings, and reaction-time statistics are stored exclusively on your device (local Hive storage). No data is transmitted to our servers — we do not operate any server infrastructure for storing user data.",
+      "third_title": "Third-Party Services",
+      "third_text": "Chromatic displays ads via Google AdMob (a banner on the Home and Result screens, and an occasional full-screen interstitial between rounds, plus optional rewarded ads you choose to watch). AdMob may collect device identifiers, IP address, and usage data per its own policy:",
+      "third_admob": "displays ads. May collect device identifiers, IP address, and usage data for serving personalized or non-personalized ads.",
+      "children_title": "Children's Privacy",
+      "children_text": "Chromatic is not directed at children under the age of 13. We do not knowingly collect information from children under 13. If you believe your child has provided us with any information, please contact us and we will delete it.",
+      "changes_title": "Changes to This Policy",
+      "changes_text": "We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date.",
+      "contact_title": "Contact Us",
+      "contact_text": "If you have questions about this Privacy Policy, please contact us at:"
+    }
+  },
   "sudokulens": {
     "name": "SudokuLens",
     "subtitle": "Smart Sudoku Solver",

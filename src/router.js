@@ -135,6 +135,12 @@ const routes = [
     meta: { titleKey: 'sudokulens.privacy.title', app: 'sudokulens' },
   },
   {
+    path: '/:locale/chromatic/privacy-policy',
+    name: 'chromatic-privacy',
+    component: () => import('./pages/apps/chromatic/ChromaticPrivacyPage.vue'),
+    meta: { titleKey: 'chromatic.privacy.title', app: 'chromatic' },
+  },
+  {
     path: '/:locale/zodiac-compatibility/privacy-policy',
     name: 'zodiac-compatibility-privacy',
     component: () => import('./pages/apps/zodiac-compatibility/ZodiacCompatibilityPrivacyPage.vue'),
@@ -231,6 +237,10 @@ const routes = [
   {
     path: '/sudokulens/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/sudokulens/privacy-policy`,
+  },
+  {
+    path: '/chromatic/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/chromatic/privacy-policy`,
   },
   {
     path: '/zodiac-compatibility/privacy-policy',
