@@ -141,6 +141,12 @@ const routes = [
     meta: { titleKey: 'chromatic.privacy.title', app: 'chromatic' },
   },
   {
+    path: '/:locale/chromatic/offer',
+    name: 'chromatic-offer',
+    component: () => import('./pages/apps/chromatic/ChromaticOfferPage.vue'),
+    meta: { titleKey: 'chromatic.offer.title', app: 'chromatic' },
+  },
+  {
     path: '/:locale/zodiac-compatibility/privacy-policy',
     name: 'zodiac-compatibility-privacy',
     component: () => import('./pages/apps/zodiac-compatibility/ZodiacCompatibilityPrivacyPage.vue'),
@@ -241,6 +247,10 @@ const routes = [
   {
     path: '/chromatic/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/chromatic/privacy-policy`,
+  },
+  {
+    path: '/chromatic/offer',
+    redirect: () => `/${i18n.global.locale.value}/chromatic/offer`,
   },
   {
     path: '/zodiac-compatibility/privacy-policy',

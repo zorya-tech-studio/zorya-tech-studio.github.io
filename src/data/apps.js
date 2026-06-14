@@ -166,6 +166,7 @@ export const apps = [
     tags: ['Android', 'Arcade', 'Reaction'],
     icon: '/apps/chromatic/icon.png',
     privacyRoute: (locale) => `/${locale}/chromatic/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/chromatic/offer`,
   },
   {
     slug: 'sudokulens',
