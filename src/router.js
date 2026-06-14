@@ -63,6 +63,18 @@ const routes = [
     meta: { titleKey: 'taro.offer.title', app: 'taro' },
   },
   {
+    path: '/:locale/starguide/privacy-policy',
+    name: 'starguide-privacy',
+    component: () => import('./pages/apps/starguide/StarGuidePrivacyPage.vue'),
+    meta: { titleKey: 'starguide.privacy.title', app: 'starguide' },
+  },
+  {
+    path: '/:locale/starguide/offer',
+    name: 'starguide-offer',
+    component: () => import('./pages/apps/starguide/StarGuideOfferPage.vue'),
+    meta: { titleKey: 'starguide.offer.title', app: 'starguide' },
+  },
+  {
     path: '/:locale/senso/privacy-policy',
     name: 'senso-privacy',
     component: () => import('./pages/apps/senso/SensoPrivacyPage.vue'),
@@ -171,6 +183,14 @@ const routes = [
   {
     path: '/taro/offer',
     redirect: () => `/${i18n.global.locale.value}/taro/offer`,
+  },
+  {
+    path: '/starguide/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/starguide/privacy-policy`,
+  },
+  {
+    path: '/starguide/offer',
+    redirect: () => `/${i18n.global.locale.value}/starguide/offer`,
   },
   {
     path: '/senso/privacy-policy',
