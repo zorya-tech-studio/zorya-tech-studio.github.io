@@ -19,6 +19,10 @@ const filters = computed(() => {
   return ['all', ...CATEGORY_ORDER.filter((c) => present.has(c))]
 })
 
+// Number of apps per filter (the 'all' filter counts every app).
+const countFor = (f) =>
+  f === 'all' ? apps.length : apps.filter((app) => app.category === f).length
+
 const filteredApps = computed(() =>
   activeFilter.value === 'all' ? apps : apps.filter((app) => app.category === activeFilter.value),
 )
@@ -48,7 +52,7 @@ const filteredApps = computed(() =>
           :class="{ active: activeFilter === f }"
           @click="activeFilter = f"
         >
-          {{ t(`projects.filter.${f}`) }}
+          {{ t(`projects.filter.${f}`) }} ({{ countFor(f) }})
         </button>
       </div>
 
