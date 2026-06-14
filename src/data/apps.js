@@ -5,6 +5,18 @@
  */
 export const apps = [
   {
+    slug: 'markdown-reader',
+    nameKey: 'markdownReader.name',
+    subtitleKey: 'markdownReader.subtitle',
+    descKey: 'markdownReader.desc_short',
+    platform: 'Android',
+    status: 'released',
+    statusKey: 'markdownReader.status',
+    tags: ['Android', 'Markdown', 'Productivity'],
+    icon: '/apps/markdown-reader/icon.png',
+    privacyRoute: (locale) => `/${locale}/markdown-reader/privacy-policy`,
+  },
+  {
     slug: 'zodiac-compatibility',
     nameKey: 'zodiacCompatibility.name',
     subtitleKey: 'zodiacCompatibility.subtitle',
