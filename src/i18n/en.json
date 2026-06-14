@@ -526,7 +526,6 @@
       "permissions_title": "Permissions",
       "permissions_text": "The app requests a minimal set of permissions, used only for the features described below:",
       "permissions_internet": "Internet — used solely to load and display ads. Your file content is never uploaded.",
-      "permissions_notifications": "Notifications — used for optional local reminders that you can turn off at any time. Reminders are scheduled on-device and contain no personal data.",
       "third_title": "Third-Party Services",
       "third_text": "The app displays ads via Google AdMob. AdMob may collect device identifiers, IP address, and usage data per its own policy:",
       "third_admob": "displays ads. May collect device identifiers, IP address, and usage data for serving personalized or non-personalized ads.",

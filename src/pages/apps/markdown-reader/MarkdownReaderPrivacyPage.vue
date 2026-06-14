@@ -50,7 +50,6 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
       <p class="section-text">{{ t('markdownReader.privacy.permissions_text') }}</p>
       <ul class="permissions-list">
         <li>{{ t('markdownReader.privacy.permissions_internet') }}</li>
-        <li>{{ t('markdownReader.privacy.permissions_notifications') }}</li>
       </ul>
     </div>
 
