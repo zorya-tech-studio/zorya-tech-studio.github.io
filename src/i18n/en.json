@@ -29,7 +29,13 @@
     "title": "Projects",
     "subtitle": "What we're working on",
     "back": "Back to home",
-    "empty": "Projects are in development. Stay tuned!"
+    "empty": "Projects are in development. Stay tuned!",
+    "filter": {
+      "all": "All",
+      "games": "Games & Quizzes",
+      "tools": "Tools",
+      "lifestyle": "Lifestyle"
+    }
   },
   "senso": {
     "name": "Senso",

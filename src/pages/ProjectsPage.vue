@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 import { apps } from '../data/apps.js'
@@ -8,6 +8,20 @@ const { t } = useI18n()
 const route = useRoute()
 const locale = computed(() => route.params.locale || 'en')
 const homeUrl = computed(() => `/${locale.value}`)
+
+const activeFilter = ref('all')
+
+// Build the filter list dynamically from the categories actually present,
+// keeping a stable display order. 'all' always comes first.
+const CATEGORY_ORDER = ['games', 'tools', 'lifestyle']
+const filters = computed(() => {
+  const present = new Set(apps.map((app) => app.category))
+  return ['all', ...CATEGORY_ORDER.filter((c) => present.has(c))]
+})
+
+const filteredApps = computed(() =>
+  activeFilter.value === 'all' ? apps : apps.filter((app) => app.category === activeFilter.value),
+)
 </script>
 
 <template>
@@ -23,9 +37,24 @@ const homeUrl = computed(() => `/${locale.value}`)
 
       <p v-if="apps.length === 0" class="projects-empty">{{ t('projects.empty') }}</p>
 
-      <div v-else class="projects-list">
+      <div v-else class="projects-filters" role="tablist" aria-label="Filter projects">
+        <button
+          v-for="f in filters"
+          :key="f"
+          type="button"
+          role="tab"
+          :aria-selected="activeFilter === f"
+          class="filter-btn"
+          :class="{ active: activeFilter === f }"
+          @click="activeFilter = f"
+        >
+          {{ t(`projects.filter.${f}`) }}
+        </button>
+      </div>
+
+      <div v-if="apps.length > 0" class="projects-list">
         <router-link
-          v-for="app in apps"
+          v-for="app in filteredApps"
           :key="app.slug"
           :to="app.privacyRoute(locale)"
           class="project-card"
@@ -78,6 +107,41 @@ const homeUrl = computed(() => `/${locale.value}`)
   color: var(--text-dim);
   font-size: 1.05rem;
   margin-bottom: 48px;
+}
+
+.projects-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.filter-btn {
+  font-family: var(--font-body, inherit);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: var(--text-dim);
+  background: transparent;
+  border: 1px solid var(--accent-dim);
+  border-radius: 20px;
+  padding: 7px 18px;
+  cursor: pointer;
+  transition:
+    color 0.25s,
+    border-color 0.25s,
+    background 0.25s;
+}
+
+.filter-btn:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.filter-btn.active {
+  color: var(--bg);
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 .projects-list {
