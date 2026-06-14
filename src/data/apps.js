@@ -5,6 +5,20 @@
  */
 export const apps = [
   {
+    slug: 'molemap',
+    nameKey: 'molemap.name',
+    subtitleKey: 'molemap.subtitle',
+    descKey: 'molemap.desc_short',
+    platform: 'Android',
+    status: 'released',
+    statusKey: 'molemap.status',
+    category: 'lifestyle',
+    tags: ['Android', 'Folklore', 'Lifestyle'],
+    icon: '/apps/molemap/icon.png',
+    privacyRoute: (locale) => `/${locale}/molemap/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/molemap/terms`,
+  },
+  {
     slug: 'markdown-reader',
     nameKey: 'markdownReader.name',
     subtitleKey: 'markdownReader.subtitle',

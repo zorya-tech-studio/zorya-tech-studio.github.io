@@ -21,6 +21,24 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/molemap/privacy-policy',
+    name: 'molemap-privacy',
+    component: () => import('./pages/apps/molemap/MoleMapPrivacyPage.vue'),
+    meta: { titleKey: 'molemap.privacy.title', app: 'molemap' },
+  },
+  {
+    path: '/:locale/molemap/terms',
+    name: 'molemap-terms',
+    component: () => import('./pages/apps/molemap/MoleMapTermsPage.vue'),
+    meta: { titleKey: 'molemap.offer.title', app: 'molemap' },
+  },
+  {
+    path: '/:locale/molemap/disclaimer',
+    name: 'molemap-disclaimer',
+    component: () => import('./pages/apps/molemap/MoleMapDisclaimerPage.vue'),
+    meta: { titleKey: 'molemap.disclaimer.title', app: 'molemap' },
+  },
+  {
     path: '/:locale/markdown-reader/privacy-policy',
     name: 'markdown-reader-privacy',
     component: () => import('./pages/apps/markdown-reader/MarkdownReaderPrivacyPage.vue'),
@@ -130,6 +148,18 @@ const routes = [
   {
     path: '/markdown-reader/terms-of-use',
     redirect: () => `/${i18n.global.locale.value}/markdown-reader/terms-of-use`,
+  },
+  {
+    path: '/molemap/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/molemap/privacy-policy`,
+  },
+  {
+    path: '/molemap/terms',
+    redirect: () => `/${i18n.global.locale.value}/molemap/terms`,
+  },
+  {
+    path: '/molemap/disclaimer',
+    redirect: () => `/${i18n.global.locale.value}/molemap/disclaimer`,
   },
   { path: '/', redirect: () => `/${i18n.global.locale.value}` },
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
