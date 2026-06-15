@@ -32,8 +32,10 @@
     "empty": "Projects are in development. Stay tuned!",
     "filter": {
       "all": "All",
-      "games": "Games & Quizzes",
+      "games": "Games",
+      "quiz": "Quizzes",
       "tools": "Tools",
+      "reference": "Reference",
       "lifestyle": "Lifestyle"
     }
   },

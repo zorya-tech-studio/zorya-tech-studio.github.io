@@ -13,7 +13,7 @@ const activeFilter = ref('all')
 
 // Build the filter list dynamically from the categories actually present,
 // keeping a stable display order. 'all' always comes first.
-const CATEGORY_ORDER = ['games', 'tools', 'lifestyle']
+const CATEGORY_ORDER = ['games', 'quiz', 'tools', 'reference', 'lifestyle']
 const filters = computed(() => {
   const present = new Set(apps.map((app) => app.category))
   return ['all', ...CATEGORY_ORDER.filter((c) => present.has(c))]
