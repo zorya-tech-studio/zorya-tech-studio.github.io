@@ -129,6 +129,18 @@ const routes = [
     meta: { titleKey: 'autoObd2.offer.title', app: 'auto-obd2' },
   },
   {
+    path: '/:locale/hueroom/privacy-policy',
+    name: 'hueroom-privacy',
+    component: () => import('./pages/apps/hueroom/HueRoomPrivacyPage.vue'),
+    meta: { titleKey: 'hueroom.privacy.title', app: 'hueroom' },
+  },
+  {
+    path: '/:locale/hueroom/offer',
+    name: 'hueroom-offer',
+    component: () => import('./pages/apps/hueroom/HueRoomOfferPage.vue'),
+    meta: { titleKey: 'hueroom.offer.title', app: 'hueroom' },
+  },
+  {
     path: '/:locale/sudokulens/privacy-policy',
     name: 'sudokulens-privacy',
     component: () => import('./pages/apps/sudokulens/SudokuLensPrivacyPage.vue'),
@@ -243,6 +255,14 @@ const routes = [
   {
     path: '/sudokulens/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/sudokulens/privacy-policy`,
+  },
+  {
+    path: '/hueroom/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/hueroom/privacy-policy`,
+  },
+  {
+    path: '/hueroom/offer',
+    redirect: () => `/${i18n.global.locale.value}/hueroom/offer`,
   },
   {
     path: '/chromatic/privacy-policy',
