@@ -15,6 +15,8 @@ const PAGES = [
   { path: '/proverb/privacy-policy', changefreq: 'yearly', priority: 0.3 },
   { path: '/alias/privacy-policy', changefreq: 'yearly', priority: 0.3 },
   { path: '/alias/offer', changefreq: 'yearly', priority: 0.3 },
+  { path: '/taro/privacy-policy', changefreq: 'yearly', priority: 0.3 },
+  { path: '/taro/offer', changefreq: 'yearly', priority: 0.3 },
 ]
 
 function sitemapPlugin() {
