@@ -178,6 +178,18 @@ const routes = [
     meta: { titleKey: 'zodiacCompatibility.disclaimer.title', app: 'zodiac-compatibility' },
   },
   {
+    path: '/:locale/concrete-calculator/privacy-policy',
+    name: 'concrete-calculator-privacy',
+    component: () => import('./pages/apps/concrete-calculator/ConcreteCalculatorPrivacyPage.vue'),
+    meta: { titleKey: 'concreteCalculator.privacy.title', app: 'concrete-calculator' },
+  },
+  {
+    path: '/:locale/concrete-calculator/terms-of-use',
+    name: 'concrete-calculator-terms',
+    component: () => import('./pages/apps/concrete-calculator/ConcreteCalculatorTermsPage.vue'),
+    meta: { titleKey: 'concreteCalculator.terms.title', app: 'concrete-calculator' },
+  },
+  {
     path: '/markdown-reader/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/markdown-reader/privacy-policy`,
   },
@@ -196,6 +208,14 @@ const routes = [
   {
     path: '/molemap/disclaimer',
     redirect: () => `/${i18n.global.locale.value}/molemap/disclaimer`,
+  },
+  {
+    path: '/concrete-calculator/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/concrete-calculator/privacy-policy`,
+  },
+  {
+    path: '/concrete-calculator/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/concrete-calculator/terms-of-use`,
   },
   { path: '/', redirect: () => `/${i18n.global.locale.value}` },
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },

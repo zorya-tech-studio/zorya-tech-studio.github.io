@@ -17,6 +17,8 @@ const PAGES = [
   { path: '/alias/offer', changefreq: 'yearly', priority: 0.3 },
   { path: '/taro/privacy-policy', changefreq: 'yearly', priority: 0.3 },
   { path: '/taro/offer', changefreq: 'yearly', priority: 0.3 },
+  { path: '/concrete-calculator/privacy-policy', changefreq: 'yearly', priority: 0.3 },
+  { path: '/concrete-calculator/terms-of-use', changefreq: 'yearly', priority: 0.3 },
 ]
 
 function sitemapPlugin() {
