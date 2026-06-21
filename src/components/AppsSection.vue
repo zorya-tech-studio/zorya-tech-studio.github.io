@@ -17,11 +17,16 @@ const projectsUrl = computed(() => `/${locale.value}/projects`)
         :to="app.privacyRoute(locale)"
         class="app-card"
       >
-        <span class="app-badge app-badge--released">{{ t(app.statusKey) }}</span>
-        <img :src="app.icon" :alt="t(app.nameKey)" class="app-icon" width="48" height="48" />
-        <div class="app-info">
-          <h3 class="app-name">{{ t(app.nameKey) }}</h3>
-          <p class="app-desc">{{ t(app.descKey) }}</p>
+        <div class="app-card__head">
+          <img :src="app.icon" :alt="t(app.nameKey)" class="app-icon" width="52" height="52" />
+          <div class="app-head-text">
+            <h3 class="app-name">{{ t(app.nameKey) }}</h3>
+            <span class="app-badge app-badge--released">{{ t(app.statusKey) }}</span>
+          </div>
+        </div>
+        <p class="app-desc">{{ t(app.descKey) }}</p>
+        <div class="app-tags">
+          <span v-for="tag in app.tags" :key="tag" class="app-tag">{{ tag }}</span>
         </div>
       </router-link>
     </div>
@@ -57,51 +62,87 @@ const projectsUrl = computed(() => `/${locale.value}/projects`)
 .app-card {
   position: relative;
   display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 24px;
-  padding-right: 96px;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+  padding: 22px;
   background: var(--surface);
   border: 1px solid var(--accent-dim);
-  border-radius: 12px;
+  border-radius: 14px;
   transition:
     border-color 0.3s,
-    box-shadow 0.3s;
+    box-shadow 0.3s,
+    transform 0.3s;
   text-decoration: none;
   color: inherit;
 }
 
 .app-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 0 20px var(--accent-dim);
+  box-shadow: 0 6px 24px var(--accent-dim);
+  transform: translateY(-3px);
+}
+
+.app-card__head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
 }
 
 .app-icon {
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
   object-fit: cover;
 }
 
-.app-info {
-  flex: 1;
+.app-head-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
   min-width: 0;
 }
 
 .app-name {
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   color: var(--text);
-  letter-spacing: 1px;
-  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+  line-height: 1.25;
 }
 
 .app-desc {
+  flex: 1;
   color: var(--text-dim);
   font-size: 0.9rem;
-  line-height: 1.5;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.app-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.app-tag {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--text-dim);
+  padding: 3px 10px;
+  border: 1px solid var(--accent-dim);
+  border-radius: 20px;
+  white-space: nowrap;
 }
 
 .apps-cta {
@@ -136,14 +177,13 @@ const projectsUrl = computed(() => `/${locale.value}/projects`)
 }
 
 .app-badge {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  font-size: 0.72rem;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.66rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-  padding: 4px 12px;
+  padding: 3px 10px;
   border-radius: 20px;
   white-space: nowrap;
 }
@@ -162,15 +202,7 @@ const projectsUrl = computed(() => `/${locale.value}/projects`)
 
 @media (max-width: 480px) {
   .app-card {
-    gap: 12px;
     padding: 16px;
-    padding-right: 16px;
-    padding-top: 44px;
-  }
-
-  .app-badge {
-    top: 14px;
-    right: 14px;
   }
 }
 </style>
