@@ -190,6 +190,20 @@ const routes = [
     meta: { titleKey: 'concreteCalculator.terms.title', app: 'concrete-calculator' },
   },
   {
+    path: '/:locale/block-brick-calculator/privacy-policy',
+    name: 'block-brick-calculator-privacy',
+    component: () =>
+      import('./pages/apps/block-brick-calculator/BlockBrickCalculatorPrivacyPage.vue'),
+    meta: { titleKey: 'blockBrickCalculator.privacy.title', app: 'block-brick-calculator' },
+  },
+  {
+    path: '/:locale/block-brick-calculator/terms-of-use',
+    name: 'block-brick-calculator-terms',
+    component: () =>
+      import('./pages/apps/block-brick-calculator/BlockBrickCalculatorTermsPage.vue'),
+    meta: { titleKey: 'blockBrickCalculator.terms.title', app: 'block-brick-calculator' },
+  },
+  {
     path: '/:locale/dog-training-cards/privacy-policy',
     name: 'dog-training-cards-privacy',
     component: () => import('./pages/apps/dog-training-cards/DogTrainingCardsPrivacyPage.vue'),
@@ -240,6 +254,14 @@ const routes = [
   {
     path: '/concrete-calculator/terms-of-use',
     redirect: () => `/${i18n.global.locale.value}/concrete-calculator/terms-of-use`,
+  },
+  {
+    path: '/block-brick-calculator/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/block-brick-calculator/privacy-policy`,
+  },
+  {
+    path: '/block-brick-calculator/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/block-brick-calculator/terms-of-use`,
   },
   {
     path: '/dog-training-cards/privacy-policy',
