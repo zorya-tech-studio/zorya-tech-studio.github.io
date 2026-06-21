@@ -190,6 +190,18 @@ const routes = [
     meta: { titleKey: 'concreteCalculator.terms.title', app: 'concrete-calculator' },
   },
   {
+    path: '/:locale/dog-training-cards/privacy-policy',
+    name: 'dog-training-cards-privacy',
+    component: () => import('./pages/apps/dog-training-cards/DogTrainingCardsPrivacyPage.vue'),
+    meta: { titleKey: 'dogTraining.privacy.title', app: 'dog-training-cards' },
+  },
+  {
+    path: '/:locale/dog-training-cards/offer',
+    name: 'dog-training-cards-offer',
+    component: () => import('./pages/apps/dog-training-cards/DogTrainingCardsOfferPage.vue'),
+    meta: { titleKey: 'dogTraining.offer.title', app: 'dog-training-cards' },
+  },
+  {
     path: '/markdown-reader/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/markdown-reader/privacy-policy`,
   },
@@ -216,6 +228,14 @@ const routes = [
   {
     path: '/concrete-calculator/terms-of-use',
     redirect: () => `/${i18n.global.locale.value}/concrete-calculator/terms-of-use`,
+  },
+  {
+    path: '/dog-training-cards/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/dog-training-cards/privacy-policy`,
+  },
+  {
+    path: '/dog-training-cards/offer',
+    redirect: () => `/${i18n.global.locale.value}/dog-training-cards/offer`,
   },
   { path: '/', redirect: () => `/${i18n.global.locale.value}` },
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
