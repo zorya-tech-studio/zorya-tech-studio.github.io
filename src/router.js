@@ -202,6 +202,18 @@ const routes = [
     meta: { titleKey: 'dogTraining.offer.title', app: 'dog-training-cards' },
   },
   {
+    path: '/:locale/human-tetris/privacy-policy',
+    name: 'human-tetris-privacy',
+    component: () => import('./pages/apps/human-tetris/HumanTetrisPrivacyPage.vue'),
+    meta: { titleKey: 'humanTetris.privacy.title', app: 'human-tetris' },
+  },
+  {
+    path: '/:locale/human-tetris/offer',
+    name: 'human-tetris-offer',
+    component: () => import('./pages/apps/human-tetris/HumanTetrisOfferPage.vue'),
+    meta: { titleKey: 'humanTetris.offer.title', app: 'human-tetris' },
+  },
+  {
     path: '/markdown-reader/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/markdown-reader/privacy-policy`,
   },
@@ -236,6 +248,14 @@ const routes = [
   {
     path: '/dog-training-cards/offer',
     redirect: () => `/${i18n.global.locale.value}/dog-training-cards/offer`,
+  },
+  {
+    path: '/human-tetris/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/human-tetris/privacy-policy`,
+  },
+  {
+    path: '/human-tetris/offer',
+    redirect: () => `/${i18n.global.locale.value}/human-tetris/offer`,
   },
   { path: '/', redirect: () => `/${i18n.global.locale.value}` },
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
