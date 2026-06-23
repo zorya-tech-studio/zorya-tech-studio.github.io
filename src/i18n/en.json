@@ -547,6 +547,8 @@
       "third_title": "Third-Party Services",
       "third_text": "Human Tetris displays ads via Google AdMob (a banner during play, occasional full-screen interstitials between levels, an optional rewarded ad you choose to watch to skip or continue, and an app-open ad on resume). Before showing personalized ads in applicable regions, the app presents Google's consent (UMP) form. AdMob may collect device identifiers, IP address, and usage data per its own policy:",
       "third_admob": "displays ads. May collect device identifiers, IP address, and usage data for serving personalized or non-personalized ads.",
+      "youtube_title": "YouTube Channel Content",
+      "youtube_text": "The app can show the latest videos from our public YouTube channel. To do this it loads the channel's public feed and video thumbnails directly from YouTube, and opens videos in the YouTube app or browser. These requests are handled by Google/YouTube under its own privacy policy. We do not send YouTube any personal information about you.",
       "notifications_title": "Notifications",
       "notifications_text": "The app may offer an optional daily reminder to keep moving. Any such reminders are scheduled and shown entirely on your device — no data leaves the device to deliver them. On Android 13 and later the system asks for your permission first, and you can turn reminders off at any time in the app or device settings.",
       "children_title": "Children's Privacy",

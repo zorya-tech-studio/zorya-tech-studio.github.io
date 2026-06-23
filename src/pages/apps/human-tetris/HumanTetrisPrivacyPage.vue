@@ -31,7 +31,7 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
     </div>
 
     <p class="app-label">{{ t('humanTetris.name') }} — {{ t('humanTetris.subtitle') }}</p>
-    <p class="updated-date">{{ t('humanTetris.privacy.updated') }}: 2026-06-22</p>
+    <p class="updated-date">{{ t('humanTetris.privacy.updated') }}: 2026-06-23</p>
 
     <p class="intro-text">{{ t('humanTetris.privacy.intro') }}</p>
 
@@ -61,6 +61,11 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
           — {{ t('humanTetris.privacy.third_admob') }}
         </li>
       </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2 class="section-heading">{{ t('humanTetris.privacy.youtube_title') }}</h2>
+      <p class="section-text">{{ t('humanTetris.privacy.youtube_text') }}</p>
     </div>
 
     <div class="policy-section">
