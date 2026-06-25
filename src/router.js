@@ -216,6 +216,19 @@ const routes = [
     meta: { titleKey: 'dogTraining.offer.title', app: 'dog-training-cards' },
   },
   {
+    path: '/:locale/cat-training-behavior/privacy-policy',
+    name: 'cat-training-behavior-privacy',
+    component: () =>
+      import('./pages/apps/cat-training-behavior/CatTrainingBehaviorPrivacyPage.vue'),
+    meta: { titleKey: 'catTraining.privacy.title', app: 'cat-training-behavior' },
+  },
+  {
+    path: '/:locale/cat-training-behavior/offer',
+    name: 'cat-training-behavior-offer',
+    component: () => import('./pages/apps/cat-training-behavior/CatTrainingBehaviorOfferPage.vue'),
+    meta: { titleKey: 'catTraining.offer.title', app: 'cat-training-behavior' },
+  },
+  {
     path: '/:locale/human-tetris/privacy-policy',
     name: 'human-tetris-privacy',
     component: () => import('./pages/apps/human-tetris/HumanTetrisPrivacyPage.vue'),
@@ -270,6 +283,14 @@ const routes = [
   {
     path: '/dog-training-cards/offer',
     redirect: () => `/${i18n.global.locale.value}/dog-training-cards/offer`,
+  },
+  {
+    path: '/cat-training-behavior/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/cat-training-behavior/privacy-policy`,
+  },
+  {
+    path: '/cat-training-behavior/offer',
+    redirect: () => `/${i18n.global.locale.value}/cat-training-behavior/offer`,
   },
   {
     path: '/human-tetris/privacy-policy',
