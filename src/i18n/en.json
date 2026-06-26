@@ -1003,6 +1003,51 @@
       "contact_text": "If you have questions, please contact us at:"
     }
   },
+  "gravelCalculator": {
+    "name": "Gravel & Material Calculator",
+    "subtitle": "Volume, weight & cost of materials",
+    "desc_short": "Estimate the volume, weight and cost of gravel, crushed stone, sand, soil, road base and other landscaping or construction materials. Works fully offline, metric or imperial.",
+    "status": "Released",
+    "platform": "Android",
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Effective date",
+      "intro": "Zorya Tech Studio (\"we\", \"us\", \"our\") built Gravel & Material Calculator — a tool that estimates the volume, weight and cost of landscaping and construction materials on Android. This Privacy Policy explains how we handle information when you use the app.",
+      "collect_title": "Personal Data Collection",
+      "collect_text": "We do not collect any personal data. The app requires no registration, account, or sign-in. We do not request or store your name, email, phone number, or any other personally identifiable information.",
+      "storage_title": "Data Storage",
+      "storage_text": "Your saved calculations, history, custom materials, settings and preferences are stored exclusively on your device. All calculations run locally. We do not operate any server infrastructure for storing user content, and your data is never transmitted to us.",
+      "permissions_title": "Permissions",
+      "permissions_text": "The app requests a minimal set of permissions, used only for the features described below:",
+      "permissions_internet": "Internet — used solely to load ads and request consent. Your calculations and saved data are never uploaded.",
+      "third_title": "Third-Party Services",
+      "third_text": "The app displays ads via Google AdMob. AdMob may collect device identifiers, IP address, and usage data per its own policy:",
+      "third_admob": "displays ads. May collect device identifiers, IP address, and usage data for serving personalized or non-personalized ads.",
+      "children_title": "Children's Privacy",
+      "children_text": "The app is not directed at children under the age of 13. We do not knowingly collect information from children under 13. If you believe your child has provided us with any information, please contact us and we will delete it.",
+      "changes_title": "Changes to This Policy",
+      "changes_text": "We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date.",
+      "contact_title": "Contact Us",
+      "contact_text": "If you have questions about this Privacy Policy, please contact us at:"
+    },
+    "terms": {
+      "title": "Terms of Use",
+      "updated": "Effective date",
+      "intro": "Gravel & Material Calculator is an estimation tool for Android, built by Zorya Tech Studio. By installing or using the app, you agree to these Terms of Use.",
+      "use_title": "Use of the App",
+      "use_text": "The app helps you estimate the volume, weight and approximate cost of gravel, stone, sand, soil and other materials. It is provided for planning and informational purposes only.",
+      "accuracy_title": "Estimates & Accuracy",
+      "accuracy_text": "All results are approximate and depend on the values you enter, rounding, material density, compaction, real-world waste, and local material standards. Densities are nominal guidance, not measured values. For critical work, always confirm quantities with your supplier.",
+      "warranty_title": "No Warranty",
+      "warranty_text": "The app is provided \"as is\" without warranties of any kind. Zorya Tech Studio is not liable for material over- or under-ordering, cost differences, or any damages arising from use of the app.",
+      "ads_title": "Advertising",
+      "ads_text": "The app may display advertisements through Google AdMob. Ad-related data handling is described in our Privacy Policy.",
+      "acceptance_title": "Acceptance",
+      "acceptance_text": "By using this app, you agree to these terms. If you do not agree, please discontinue use of the app.",
+      "contact_title": "Contact",
+      "contact_text": "Questions about these Terms of Use can be sent to:"
+    }
+  },
   "concreteCalculator": {
     "name": "Concrete Calculator & Mix",
     "subtitle": "Volume, bags, mix ratio & cost",

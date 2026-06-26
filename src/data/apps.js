@@ -5,6 +5,20 @@
  */
 export const apps = [
   {
+    slug: 'gravel-calculator',
+    nameKey: 'gravelCalculator.name',
+    subtitleKey: 'gravelCalculator.subtitle',
+    descKey: 'gravelCalculator.desc_short',
+    platform: 'Android',
+    status: 'released',
+    statusKey: 'gravelCalculator.status',
+    category: 'tools',
+    tags: ['Android', 'Construction', 'Calculator'],
+    icon: '/apps/gravel-calculator/icon.png',
+    privacyRoute: (locale) => `/${locale}/gravel-calculator/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/gravel-calculator/terms-of-use`,
+  },
+  {
     slug: 'concrete-calculator',
     nameKey: 'concreteCalculator.name',
     subtitleKey: 'concreteCalculator.subtitle',

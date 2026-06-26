@@ -190,6 +190,18 @@ const routes = [
     meta: { titleKey: 'concreteCalculator.terms.title', app: 'concrete-calculator' },
   },
   {
+    path: '/:locale/gravel-calculator/privacy-policy',
+    name: 'gravel-calculator-privacy',
+    component: () => import('./pages/apps/gravel-calculator/GravelCalculatorPrivacyPage.vue'),
+    meta: { titleKey: 'gravelCalculator.privacy.title', app: 'gravel-calculator' },
+  },
+  {
+    path: '/:locale/gravel-calculator/terms-of-use',
+    name: 'gravel-calculator-terms',
+    component: () => import('./pages/apps/gravel-calculator/GravelCalculatorTermsPage.vue'),
+    meta: { titleKey: 'gravelCalculator.terms.title', app: 'gravel-calculator' },
+  },
+  {
     path: '/:locale/block-brick-calculator/privacy-policy',
     name: 'block-brick-calculator-privacy',
     component: () =>
@@ -267,6 +279,14 @@ const routes = [
   {
     path: '/concrete-calculator/terms-of-use',
     redirect: () => `/${i18n.global.locale.value}/concrete-calculator/terms-of-use`,
+  },
+  {
+    path: '/gravel-calculator/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/gravel-calculator/privacy-policy`,
+  },
+  {
+    path: '/gravel-calculator/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/gravel-calculator/terms-of-use`,
   },
   {
     path: '/block-brick-calculator/privacy-policy',
