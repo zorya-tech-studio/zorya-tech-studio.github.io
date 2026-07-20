@@ -1,192 +1,738 @@
+/* =============================================================================
+   Zorya Tech Studio — Design System "Night → Dawn"
+   Чиста CSS, без UI-фреймворків. Усі токени — у :root.
+   ============================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+
+/* -----------------------------------------------------------------------------
+   1. ТОКЕНИ
+   -------------------------------------------------------------------------- */
 :root {
-  --bg: #07090e;
-  --bg-nav: rgba(7, 9, 14, 0.8);
-  --surface: #0d1117;
-  --surface-light: #151b25;
-  --accent: #00f0ff;
-  --accent-dim: rgba(0, 240, 255, 0.12);
-  --accent-glow: rgba(0, 240, 255, 0.3);
-  --glitch: #ff2d6b;
-  --glitch-dim: rgba(255, 45, 107, 0.12);
-  --text: #e0e4ea;
-  --text-dim: #9ca3af;
-  --font-heading: 'Exo 2', 'Segoe UI', sans-serif;
-  --font-ui: 'Inter', 'Segoe UI', sans-serif;
-  --nav-height: 60px;
+  /* --- Кольори: фон і поверхні (ніч) --- */
+  --bg: #0a0d14; /* базовий фон сторінки (ніч) */
+  --surface-1: #111520; /* картки, панелі */
+  --surface-2: #181d2a; /* вкладені елементи, теги, hover-поверхні */
+  --hairline: #242a38; /* бордери, роздільники */
+  --hairline-strong: #303849; /* hover скролбара / сильніший бордер */
+
+  /* --- Текст --- */
+  --text: #edeff4; /* основний, контраст ~13:1 на --bg (AAA) */
+  --text-strong: #ffffff; /* акцентні заголовки на темному */
+  --text-muted: #a6adbd; /* приглушений, контраст ~6:1 (AA) */
+  --text-faint: #6e7686; /* дуже приглушений: дати, breadcrumb-роздільники */
+  --text-body: #c7cdda; /* довгі юридичні тексти (трохи світліше за muted) */
+
+  /* --- Акценти --- */
+  --accent: #f2b65a; /* «зоря / світанок» — тепле золото, ~8:1 на --bg (AA) */
+  --accent-hover: #f6c87e; /* світліше золото для hover лінків */
+  --accent-2: #8fa3d8; /* світанкове небо — допоміжний, лише для ейбрів/оку */
+
+  /* --- Стани --- */
+  --success: #5fbe8e; /* бейдж "released" */
+  --success-bg: rgba(95, 190, 142, 0.12);
+  --focus-ring: rgba(242, 182, 90, 0.6); /* focus-visible контур */
+
+  /* --- Акцентні напівпрозорі (для glow/бордерів на hover) --- */
+  --accent-soft: rgba(242, 182, 90, 0.4);
+  --accent-faint: rgba(242, 182, 90, 0.15);
+
+  /* --- Типографіка --- */
+  --font-heading: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+
+  /* Модульна шкала (clamp для адаптиву) */
+  --fs-xs: 13px;
+  --fs-sm: 15px;
+  --fs-base: 17px; /* body */
+  --fs-md: clamp(18px, 2.4vw, 20px);
+  --fs-lg: clamp(20px, 3vw, 26px);
+  --fs-xl: clamp(24px, 4vw, 34px);
+  --fs-2xl: clamp(28px, 5vw, 44px); /* section-title */
+  --fs-3xl: clamp(32px, 6vw, 52px); /* page h1 */
+  --fs-hero: clamp(38px, 8vw, 82px); /* hero */
+
+  --lh-tight: 1.1;
+  --lh-snug: 1.35;
+  --lh-normal: 1.6;
+  --lh-loose: 1.75; /* довгі юридичні абзаци */
+
+  --ls-tight: -0.03em; /* великі заголовки */
+  --ls-snug: -0.02em;
+  --ls-normal: -0.01em;
+  --ls-eyebrow: 0.04em; /* маленькі UPPERCASE-ейбри */
+
+  /* --- Spacing (base-4) --- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+
+  /* Горизонтальний відступ контенту (адаптивний) */
+  --gutter: clamp(20px, 5vw, 56px);
+  --maxw: 1180px; /* максимальна ширина контенту */
+  --maxw-doc: 68ch; /* ширина рядка юридичного документа */
+
+  /* --- Радіуси (уніфіковано: 3 рівні + pill) --- */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-pill: 999px;
+
+  /* --- Тіні (м'які, реалістичні; жодного неону) --- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--accent-faint);
+
+  /* --- Transitions (єдина тривалість/крива) --- */
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --t-fast: 180ms var(--ease); /* колір/бордер */
+  --t-slow: 260ms var(--ease); /* трансформи, блюр */
+  --t-reveal: 700ms var(--ease); /* scroll fade-in */
+
+  /* --- Layout --- */
+  --nav-h: 60px;
 }
 
+/* -----------------------------------------------------------------------------
+   2. РЕЗЕТИ
+   -------------------------------------------------------------------------- */
 *,
 *::before,
 *::after {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--nav-height);
+  scroll-padding-top: var(--nav-h);
+  /* Always reserve the scrollbar gutter so content doesn't shift/jump when
+     a page's height changes (e.g. short page → tall page after load). */
+  scrollbar-gutter: stable;
+  overflow-y: scroll;
 }
 
 body {
-  font-family: var(--font-ui);
+  margin: 0;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-snug);
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 a {
   color: var(--accent);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color var(--t-fast);
 }
-
 a:hover {
-  color: var(--glitch);
+  color: var(--accent-hover);
 }
 
-img {
-  max-width: 100%;
+button {
+  font-family: inherit;
+}
+
+img,
+svg {
   display: block;
+  max-width: 100%;
 }
 
+/* -----------------------------------------------------------------------------
+   3. ДОСТУПНІСТЬ
+   -------------------------------------------------------------------------- */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+/* прибираємо кільце, коли клацають мишею */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* skip-link (у App.vue) */
+.skip-link {
+  position: absolute;
+  left: var(--sp-4);
+  top: -60px;
+  z-index: 1000;
+  background: var(--surface-1);
+  border: 1px solid var(--hairline);
+  color: var(--text);
+  padding: 10px 16px;
+  border-radius: var(--r-sm);
+  transition: top var(--t-fast);
+}
+.skip-link:focus {
+  top: var(--sp-4);
+}
+
+/* ::selection */
+::selection {
+  background: rgba(242, 182, 90, 0.28);
+  color: #fff;
+}
+
+/* кастомний скролбар */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--hairline) var(--bg);
+}
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--hairline);
+  border-radius: var(--r-pill);
+  border: 3px solid var(--bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hairline-strong);
+}
+
+/* -----------------------------------------------------------------------------
+   4. УТИЛІТИ (збережені класи, оновлені під нову систему)
+   -------------------------------------------------------------------------- */
+
+/* Секція-обгортка */
 .section {
-  padding: 100px 24px;
-  max-width: 960px;
+  max-width: var(--maxw);
   margin: 0 auto;
+  padding: clamp(80px, 12vw, 140px) var(--gutter);
 }
 
+/* Ейбр над заголовком секції (заміна UPPERCASE-неону) */
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  color: var(--accent-2);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  margin-bottom: var(--sp-4);
+}
+.section-eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--accent-2);
+  opacity: 0.6;
+}
+
+/* Заголовок секції */
 .section-title {
   font-family: var(--font-heading);
-  font-weight: 600;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  font-size: 2rem;
-  color: var(--accent);
-  margin-bottom: 40px;
-  text-align: center;
-  text-shadow: 0 0 8px var(--accent-glow);
-  position: relative;
-}
-
-/* Glitch hover on section titles */
-.section-title::after {
-  content: '';
-  position: absolute;
-  left: 30%;
-  right: 30%;
-  bottom: -4px;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--accent),
-    var(--glitch),
-    var(--accent),
-    transparent
-  );
-  background-size: 200% 100%;
-  opacity: 0.4;
-  animation: gradient-slide 3s linear infinite;
-}
-
-@keyframes gradient-slide {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 200% 50%;
-  }
+  font-weight: 500;
+  font-size: var(--fs-2xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-snug);
+  color: var(--text);
 }
 
 /* Breadcrumbs */
 .breadcrumbs {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 32px;
-  font-family: var(--font-ui);
-  font-size: 0.85rem;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  font-size: var(--fs-xs);
+  color: var(--text-faint);
+  margin-bottom: var(--sp-5);
 }
-
 .breadcrumbs a {
-  color: var(--text-dim);
-  transition: color 0.2s;
+  color: var(--text-muted);
 }
-
 .breadcrumbs a:hover {
   color: var(--accent);
 }
-
+.breadcrumbs .sep,
 .breadcrumbs .breadcrumb-sep {
-  color: var(--text-dim);
-  font-size: 0.8rem;
+  color: var(--text-faint);
+}
+.breadcrumbs [aria-current='page'],
+.breadcrumbs .breadcrumb-current {
+  color: var(--text);
 }
 
-.breadcrumbs .breadcrumb-current {
+/* Scroll fade-in (IntersectionObserver додає .is-visible) */
+.fade-section {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity var(--t-reveal),
+    transform var(--t-reveal);
+  will-change: opacity, transform;
+}
+.fade-section.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Кнопка-контур (напр. "View All Projects") */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  background: none;
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-pill);
+  color: var(--text);
+  font-family: var(--font-heading);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  padding: 11px 20px;
+  cursor: pointer;
+  transition:
+    border-color var(--t-fast),
+    background var(--t-fast);
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  background: var(--surface-1);
+}
+.btn-outline .arrow {
   color: var(--accent);
 }
 
-/* Glitch flicker utility */
-@keyframes glitch-flicker {
-  0%,
-  92%,
-  94%,
-  98%,
-  100% {
-    opacity: 1;
-  }
-  93% {
-    opacity: 0.6;
-  }
-  95% {
-    opacity: 0.9;
-    transform: translateX(1px);
-  }
-  97% {
-    opacity: 0.7;
-    transform: translateX(-1px);
-  }
-  99% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Scroll fade-in animation */
-.fade-section {
-  opacity: 0;
-  transform: translateY(24px);
+/* Картка застосунку (спільна для Apps та Projects) */
+.app-card {
+  display: block;
+  background: var(--surface-1);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
+  padding: var(--sp-5);
+  text-decoration: none;
   transition:
-    opacity 0.7s ease-out,
-    transform 0.7s ease-out;
+    transform var(--t-slow),
+    border-color var(--t-slow),
+    box-shadow var(--t-slow);
+}
+.app-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-soft);
+  box-shadow: var(--shadow-hover);
+}
+.app-card__icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 13px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--bg);
+  object-fit: cover;
+}
+.app-card__title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--text);
+}
+.app-card__desc {
+  font-size: 14.5px;
+  line-height: var(--lh-snug);
+  color: var(--text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.fade-section.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+/* Бейдж "released" */
+.badge-released {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--success);
+  background: var(--success-bg);
+  border-radius: var(--r-pill);
+  padding: 3px 9px;
+}
+.badge-released::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: var(--r-pill);
+  background: var(--success);
 }
 
-::selection {
+/* Тег */
+.tag {
+  font-size: 12px;
+  color: var(--text-muted);
+  background: var(--surface-2);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-pill);
+  padding: 4px 11px;
+}
+
+/* Сітка карток (2 кол. → 1 на моб.) */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--sp-5);
+}
+
+/* Фільтр-таб (ProjectsPage) */
+.filter-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--surface-1);
+  border: 1px solid var(--hairline);
+  color: var(--text-muted);
+  font-family: var(--font-heading);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  padding: 9px 16px;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+.filter-tab:hover {
+  border-color: var(--accent-soft);
+  color: var(--text);
+}
+.filter-tab[aria-selected='true'] {
   background: var(--accent);
+  border-color: var(--accent);
   color: var(--bg);
 }
-
-::-webkit-scrollbar {
-  width: 6px;
+.filter-tab .count {
+  font-size: 12px;
+  opacity: 0.7;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--bg);
+/* -----------------------------------------------------------------------------
+   5. ДОВГИЙ ДОКУМЕНТ — спільна типографіка (.legal-doc)
+   -------------------------------------------------------------------------- */
+.legal-doc {
+  max-width: var(--maxw-doc);
+}
+.legal-doc > h1 {
+  font-size: var(--fs-3xl);
+  letter-spacing: var(--ls-tight);
+  margin-bottom: var(--sp-3);
+}
+.legal-doc .updated {
+  font-size: 14px;
+  color: var(--text-faint);
+  margin: 0 0 var(--sp-7);
+}
+.legal-doc p {
+  font-size: var(--fs-base);
+  line-height: var(--lh-loose);
+  color: var(--text-body);
+  margin: 0 0 var(--sp-5);
+}
+.legal-doc h2 {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: var(--ls-normal);
+  margin: var(--sp-7) 0 var(--sp-4);
+  padding-top: var(--sp-5);
+  border-top: 1px solid var(--hairline);
+}
+.legal-doc h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 30px 0 10px;
+  padding-left: var(--sp-4);
+  border-left: 2px solid var(--accent);
+}
+.legal-doc ul,
+.legal-doc ol {
+  margin: 0 0 var(--sp-5);
+  padding-left: 22px;
+  color: var(--text-body);
+  font-size: var(--fs-base);
+  line-height: 1.9;
+}
+.legal-doc li {
+  margin-bottom: 6px;
+}
+.legal-doc a {
+  border-bottom: 1px solid transparent;
+}
+.legal-doc a:hover {
+  border-bottom-color: var(--accent-hover);
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--surface-light);
-  border-radius: 3px;
+/* -----------------------------------------------------------------------------
+   5b. ЮРИДИЧНІ СТОРІНКИ — legacy-класи (PrivacyPage + src/pages/apps/*)
+   Ці 39 сторінок мають однакову розмітку; стилі задані глобально тут,
+   щоб не дублювати їх у кожному scoped-блоці. Оформлення = стиль .legal-doc.
+   -------------------------------------------------------------------------- */
+.privacy-page,
+.offer-page,
+.terms-page,
+.disclaimer-page {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: calc(var(--nav-h) + var(--sp-8)) var(--gutter) var(--sp-9);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-dim);
+/* Обмеження ширини рядка для комфортного читання (широкий фрейм, вузький текст).
+   Роздільники/заголовки лишаються на всю ширину → «редакційний» лейаут. */
+.privacy-page p,
+.offer-page p,
+.terms-page p,
+.disclaimer-page p,
+.privacy-page ul,
+.offer-page ul,
+.terms-page ul,
+.disclaimer-page ul,
+.intro-text,
+.app-label {
+  max-width: var(--maxw-doc);
+}
+
+/* Шапка документа: заголовок + перемикач мови */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-3);
+}
+.header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.page-title {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: var(--fs-3xl);
+  letter-spacing: var(--ls-tight);
+  line-height: var(--lh-tight);
+  color: var(--text);
+}
+
+/* Перемикач мови / службові лінки у шапці документа */
+.lang-toggle,
+.header-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text-muted);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-pill);
+  padding: 7px 16px;
+  transition:
+    color var(--t-fast),
+    border-color var(--t-fast),
+    background var(--t-fast);
+}
+.lang-toggle:hover,
+.header-link:hover {
+  color: var(--text);
+  border-color: var(--accent-soft);
+  background: var(--surface-1);
+}
+
+.app-label {
+  color: var(--text-muted);
+  font-size: var(--fs-md);
+  font-weight: 500;
+  margin: 0 0 var(--sp-1);
+}
+
+.updated-date {
+  color: var(--text-faint);
+  font-size: 14px;
+  margin: 0 0 var(--sp-7);
+}
+
+.intro-text {
+  color: var(--text);
+  font-size: var(--fs-md);
+  line-height: var(--lh-loose);
+  margin-bottom: var(--sp-7);
+}
+
+.policy-section {
+  margin-bottom: var(--sp-7);
+}
+
+.section-heading {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: var(--ls-normal);
+  color: var(--text);
+  margin-bottom: var(--sp-4);
+  padding-top: var(--sp-6);
+  border-top: 1px solid var(--hairline);
+}
+
+.section-text {
+  color: var(--text-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-loose);
+  margin-bottom: var(--sp-4);
+}
+
+/* Вкладені підсекції (головна PrivacyPage) */
+.subsection {
+  margin-left: var(--sp-4);
+  padding-left: var(--sp-4);
+  border-left: 2px solid var(--accent);
+  margin-bottom: var(--sp-4);
+}
+.subsection-heading {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--text);
+  margin-bottom: var(--sp-1);
+}
+.subsection-text {
+  color: var(--text-body);
+  line-height: var(--lh-loose);
+  font-size: var(--fs-sm);
+}
+
+/* Списки в документах */
+.permissions-list,
+.third-party-list,
+.rules-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.permissions-list li,
+.third-party-list li,
+.rules-list li {
+  color: var(--text-body);
+  line-height: var(--lh-loose);
+  margin-bottom: var(--sp-2);
+}
+.permissions-list li {
+  padding-left: var(--sp-4);
+  border-left: 2px solid var(--accent-faint);
+  margin-bottom: var(--sp-3);
+}
+.third-party-list a,
+.inline-link {
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+  transition:
+    color var(--t-fast),
+    border-color var(--t-fast);
+}
+.third-party-list a:hover,
+.inline-link:hover {
+  color: var(--accent-hover);
+  border-bottom-color: var(--accent-hover);
+}
+
+.contact-email {
+  display: inline-block;
+  margin-top: var(--sp-2);
+  color: var(--accent);
+  font-weight: 500;
+}
+.contact-email:hover {
+  color: var(--accent-hover);
+}
+
+@media (max-width: 480px) {
+  .privacy-page,
+  .offer-page,
+  .terms-page,
+  .disclaimer-page {
+    padding: calc(var(--nav-h) + var(--sp-5)) var(--gutter) var(--sp-7);
+  }
+  .subsection {
+    margin-left: var(--sp-2);
+    padding-left: var(--sp-3);
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   6. АДАПТИВ
+   -------------------------------------------------------------------------- */
+@media (max-width: 720px) {
+  .section {
+    padding: clamp(56px, 14vw, 90px) var(--gutter);
+  }
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 480px) {
+  :root {
+    --fs-base: 16px;
+  }
+}
+@media (max-width: 380px) {
+  :root {
+    --gutter: 18px;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   7. REDUCED MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .fade-section {
+    opacity: 1;
+    transform: none;
+  }
 }

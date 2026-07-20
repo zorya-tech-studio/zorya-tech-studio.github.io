@@ -4,7 +4,8 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <section id="about" class="section">
+  <section id="about" class="section about">
+    <p class="section-eyebrow">{{ t('about.eyebrow') }}</p>
     <h2 class="section-title">{{ t('about.title') }}</h2>
     <div class="about-text">
       <p>{{ t('about.p1') }}</p>
@@ -14,18 +15,24 @@ const { t } = useI18n()
 </template>
 
 <style scoped>
-.about-text {
-  max-width: 620px;
-  margin: 0 auto;
-  text-align: center;
+.about {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  align-items: center;
+  text-align: center;
+}
+
+.about-text {
+  max-width: 660px;
+  margin-top: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
 }
 
 .about-text p {
-  font-size: 1.05rem;
-  color: var(--text);
-  line-height: 1.8;
+  font-size: var(--fs-md);
+  color: var(--text-muted);
+  line-height: var(--lh-loose);
 }
 </style>

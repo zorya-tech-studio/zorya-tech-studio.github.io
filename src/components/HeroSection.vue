@@ -2,18 +2,20 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const heroEl = ref(null)
 const canvasEl = ref(null)
+const contentEl = ref(null)
 let ctx
 let animationId = null
 let stars = []
 let sprites = {}
+let constellations = []
 
 // Tunables — kept low for steady 60fps on mid-tier hardware.
 const STAR_COUNT = 140
-const CURSOR_GLOW_RADIUS = 120 // px — within this distance, stars brighten + grow
-const CURSOR_PUSH_RADIUS = 100 // px — within this distance, stars drift away
+const CURSOR_GLOW_RADIUS = 90 // px — within this distance, stars brighten + grow
+const CURSOR_PUSH_RADIUS = 90 // px — within this distance, stars drift away
 const CURSOR_PUSH_RADIUS_SQ = CURSOR_PUSH_RADIUS * CURSOR_PUSH_RADIUS
 const CURSOR_GLOW_RADIUS_SQ = CURSOR_GLOW_RADIUS * CURSOR_GLOW_RADIUS
 
@@ -52,9 +54,9 @@ function makeSprite(r, g, b) {
 
 function buildSprites() {
   sprites = {
-    cyan: makeSprite(0, 240, 255),
-    white: makeSprite(230, 230, 240),
-    magenta: makeSprite(255, 80, 140),
+    // "Night → Dawn": warm starlight + occasional golden dawn-star.
+    white: makeSprite(233, 238, 247),
+    gold: makeSprite(242, 182, 90),
   }
 }
 
@@ -63,10 +65,8 @@ function buildSprites() {
 // ──────────────────────────────────────────────────────────────────────
 
 function pickColor() {
-  const r = Math.random()
-  if (r < 0.75) return 'cyan'
-  if (r < 0.95) return 'white'
-  return 'magenta'
+  // ~86% warm white starlight, ~14% golden dawn-stars.
+  return Math.random() < 0.86 ? 'white' : 'gold'
 }
 
 function createStar(w, h) {
@@ -99,6 +99,316 @@ function initStars(w, h) {
 }
 
 // ──────────────────────────────────────────────────────────────────────
+// Constellations. A handful of recognisable star patterns, drawn as
+// brighter node-stars linked by faint accent lines. Coordinates are in a
+// normalised 0–1 local box; each placement scales + offsets them onto the
+// hero, biased to the sides so the central title stays clear.
+// ──────────────────────────────────────────────────────────────────────
+
+const CONSTELLATION_SHAPES = [
+  {
+    name: { uk: 'Велика Ведмедиця', en: 'Ursa Major' },
+    // Ursa Major — the Big Dipper / «Великий Віз».
+    nodes: [
+      [0.02, 0.34],
+      [0.24, 0.28],
+      [0.45, 0.34],
+      [0.63, 0.46],
+      [0.66, 0.68],
+      [0.87, 0.74],
+      [0.98, 0.5],
+    ],
+    links: [
+      [0, 1],
+      [1, 2],
+      [2, 3],
+      [3, 4],
+      [4, 5],
+      [5, 6],
+      [6, 3],
+    ],
+  },
+  {
+    name: { uk: 'Кассіопея', en: 'Cassiopeia' },
+    // Cassiopeia — the "W".
+    nodes: [
+      [0.02, 0.3],
+      [0.27, 0.7],
+      [0.5, 0.32],
+      [0.74, 0.72],
+      [0.98, 0.28],
+    ],
+    links: [
+      [0, 1],
+      [1, 2],
+      [2, 3],
+      [3, 4],
+    ],
+  },
+  {
+    name: { uk: 'Оріон', en: 'Orion' },
+    // Orion — belt + shoulders/feet.
+    nodes: [
+      [0.18, 0.05],
+      [0.82, 0.14],
+      [0.42, 0.45],
+      [0.5, 0.5],
+      [0.58, 0.55],
+      [0.1, 0.95],
+      [0.9, 0.88],
+    ],
+    links: [
+      [0, 2],
+      [1, 4],
+      [2, 3],
+      [3, 4],
+      [2, 5],
+      [4, 6],
+    ],
+  },
+  {
+    name: { uk: 'Лебідь', en: 'Cygnus' },
+    // Cygnus — the Northern Cross.
+    nodes: [
+      [0.5, 0.02],
+      [0.5, 0.4],
+      [0.5, 0.72],
+      [0.5, 0.98],
+      [0.16, 0.5],
+      [0.84, 0.56],
+    ],
+    links: [
+      [0, 1],
+      [1, 2],
+      [2, 3],
+      [4, 1],
+      [1, 5],
+    ],
+  },
+  {
+    name: { uk: 'Ліра', en: 'Lyra' },
+    // Lyra — small parallelogram + top star.
+    nodes: [
+      [0.5, 0.04],
+      [0.28, 0.42],
+      [0.72, 0.5],
+      [0.36, 0.82],
+      [0.8, 0.9],
+    ],
+    links: [
+      [0, 1],
+      [0, 2],
+      [1, 3],
+      [2, 4],
+      [3, 4],
+    ],
+  },
+  {
+    name: { uk: 'Лев', en: 'Leo' },
+    // Leo — the "sickle" + triangle.
+    nodes: [
+      [0.06, 0.28],
+      [0.2, 0.12],
+      [0.36, 0.2],
+      [0.34, 0.44],
+      [0.62, 0.52],
+      [0.94, 0.44],
+      [0.7, 0.82],
+    ],
+    links: [
+      [0, 1],
+      [1, 2],
+      [2, 3],
+      [3, 4],
+      [4, 5],
+      [4, 6],
+      [5, 6],
+    ],
+  },
+  {
+    name: { uk: 'Трикутник', en: 'Triangulum' },
+    // Triangulum — a simple triangle.
+    nodes: [
+      [0.5, 0.06],
+      [0.05, 0.9],
+      [0.95, 0.82],
+    ],
+    links: [
+      [0, 1],
+      [1, 2],
+      [2, 0],
+    ],
+  },
+]
+
+// Reveal-animation timing (ms). Constellations cascade in on load: each one
+// starts a beat after the previous, its node-stars pop in one by one, and the
+// linking lines then draw themselves between the lit nodes.
+const CON_REVEAL_STAGGER = 320 // between successive constellations
+const NODE_REVEAL_STAGGER = 90 // between node-stars within one constellation
+const NODE_REVEAL_DUR = 520 // a single node's fade/scale-in
+const LINK_REVEAL_DUR = 420 // a single link's draw-in
+
+const easeOut = (p) => 1 - (1 - p) * (1 - p) * (1 - p)
+
+function buildConstellations(w, h) {
+  constellations = []
+  // Skip on very small viewports — the field alone reads better there.
+  if (w < 560) return
+
+  // Keep constellations out of the central title band.
+  const bandTop = h * 0.32
+  const bandBottom = h * 0.68
+  const bandLeft = w * 0.24
+  const bandRight = w * 0.76
+
+  // Shuffle all shapes, then take as many as fit the viewport.
+  const order = CONSTELLATION_SHAPES.map((_, i) => i)
+  for (let i = order.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[order[i], order[j]] = [order[j], order[i]]
+  }
+  const count = w < 900 ? 4 : Math.min(order.length, 7)
+  const picks = order.slice(0, count)
+
+  // Gap kept between constellation bounding boxes (and the title band).
+  const pad = Math.min(w, h) * 0.05
+  const placed = [] // {x0, y0, x1, y1} boxes already occupied
+
+  const overlaps = (a, b) =>
+    a.x0 < b.x1 + pad && a.x1 + pad > b.x0 && a.y0 < b.y1 + pad && a.y1 + pad > b.y0
+
+  const band = { x0: bandLeft, y0: bandTop, x1: bandRight, y1: bandBottom }
+
+  for (let k = 0; k < picks.length; k++) {
+    const shape = CONSTELLATION_SHAPES[picks[k]]
+    const scale = Math.min(w, h) * (0.13 + Math.random() * 0.1)
+
+    let box = null
+    for (let tries = 0; tries < 40; tries++) {
+      const ox = Math.random() * (w - scale)
+      const oy = Math.random() * (h - scale * 0.9)
+      const candidate = { x0: ox, y0: oy, x1: ox + scale, y1: oy + scale * 0.9 }
+      if (overlaps(candidate, band)) continue
+      let clash = false
+      for (let p = 0; p < placed.length; p++) {
+        if (overlaps(candidate, placed[p])) {
+          clash = true
+          break
+        }
+      }
+      if (!clash) {
+        box = candidate
+        break
+      }
+    }
+    // Couldn't find a free spot — skip this one rather than overlap.
+    if (!box) continue
+    placed.push(box)
+
+    // Cascade this constellation in after the ones already placed.
+    const conDelay = constellations.length * CON_REVEAL_STAGGER
+
+    const nodes = shape.nodes.map(([nx, ny], i) => ({
+      x: box.x0 + nx * scale,
+      y: box.y0 + ny * scale,
+      twinkleOffset: Math.random() * Math.PI * 2,
+      twinkleSpeed: 0.0006 + Math.random() * 0.0009,
+      revealDelay: conDelay + i * NODE_REVEAL_STAGGER,
+    }))
+
+    // A link starts drawing just after its later endpoint has lit up.
+    const links = shape.links.map(([a, b]) => ({
+      a,
+      b,
+      revealDelay: Math.max(nodes[a].revealDelay, nodes[b].revealDelay) + NODE_REVEAL_DUR * 0.4,
+    }))
+
+    constellations.push({
+      name: shape.name,
+      nodes,
+      links,
+      color: Math.random() < 0.5 ? 'white' : 'gold',
+      box,
+      appearStart: null, // stamped on the first frame this one is drawn
+    })
+  }
+}
+
+function drawConstellations(time) {
+  for (let c = 0; c < constellations.length; c++) {
+    const con = constellations[c]
+    const nodes = con.nodes
+    const b = con.box
+
+    // Stamp the reveal clock on the first frame this one is drawn. For
+    // reduced-motion users the whole reveal is collapsed to "already done".
+    if (con.appearStart === null) con.appearStart = prefersReducedMotion ? -1e9 : time
+    const elapsed = time - con.appearStart
+
+    // Is the cursor hovering this constellation's box?
+    const hover =
+      cursorActive && mouseX >= b.x0 && mouseX <= b.x1 && mouseY >= b.y0 && mouseY <= b.y1
+
+    // Ease the highlight in/out for a soft feel.
+    con.hoverT = (con.hoverT || 0) + ((hover ? 1 : 0) - (con.hoverT || 0)) * 0.12
+    const hi = con.hoverT
+
+    // Faint linking lines, gently pulsing as one; brighter on hover. Each
+    // link grows from its first node toward its second as it reveals.
+    const linePulse = 0.5 + 0.5 * Math.sin(time * 0.0006 + c * 1.7)
+    const baseLineAlpha = 0.05 + linePulse * 0.09 + hi * 0.4
+    ctx.lineWidth = 1 + hi * 0.6
+    for (let l = 0; l < con.links.length; l++) {
+      const link = con.links[l]
+      const lp = easeOut(Math.min(1, Math.max(0, (elapsed - link.revealDelay) / LINK_REVEAL_DUR)))
+      if (lp <= 0) continue
+      const a = nodes[link.a]
+      const bb = nodes[link.b]
+      ctx.strokeStyle =
+        con.color === 'gold'
+          ? `rgba(242, 182, 90, ${baseLineAlpha * lp})`
+          : `rgba(160, 214, 255, ${baseLineAlpha * lp})`
+      ctx.beginPath()
+      ctx.moveTo(a.x, a.y)
+      ctx.lineTo(a.x + (bb.x - a.x) * lp, a.y + (bb.y - a.y) * lp)
+      ctx.stroke()
+    }
+
+    // Node stars — brighter, own twinkle; grow slightly on hover. Each pops
+    // in (fade + scale) on its staggered reveal beat.
+    const sprite = sprites[con.color]
+    for (let n = 0; n < nodes.length; n++) {
+      const nd = nodes[n]
+      const np = easeOut(Math.min(1, Math.max(0, (elapsed - nd.revealDelay) / NODE_REVEAL_DUR)))
+      if (np <= 0) continue
+      const twinkle = 0.6 + 0.4 * Math.sin(time * nd.twinkleSpeed + nd.twinkleOffset)
+      const drawSize = 2.6 * 6 * (1 + hi * 0.35) * (0.3 + 0.7 * np)
+      ctx.globalAlpha = Math.min(1, (0.55 + twinkle * 0.45 + hi * 0.3) * np)
+      ctx.drawImage(sprite, nd.x - drawSize / 2, nd.y - drawSize / 2, drawSize, drawSize)
+    }
+
+    // Name label — fades in on hover, centred above the box.
+    if (hi > 0.02) {
+      const label = con.name[locale.value] || con.name.en
+      ctx.globalAlpha = Math.min(1, hi)
+      ctx.font = '600 14px "Space Grotesk", system-ui, sans-serif'
+      ctx.textAlign = 'center'
+      ctx.textBaseline = 'alphabetic'
+      const lx = (b.x0 + b.x1) / 2
+      const ly = b.y0 - 8
+      ctx.fillStyle = 'rgba(7, 9, 14, 0.6)'
+      const tw = ctx.measureText(label).width
+      ctx.fillRect(lx - tw / 2 - 8, ly - 16, tw + 16, 22)
+      ctx.fillStyle = con.color === 'gold' ? 'rgba(242, 200, 130, 1)' : 'rgba(200, 232, 255, 1)'
+      ctx.fillText(label, lx, ly)
+    }
+  }
+  ctx.globalAlpha = 1
+  ctx.textAlign = 'left'
+}
+
+// ──────────────────────────────────────────────────────────────────────
 // Frame loop.
 // ──────────────────────────────────────────────────────────────────────
 
@@ -109,6 +419,8 @@ function draw(time) {
   const h = canvas.clientHeight
 
   ctx.clearRect(0, 0, w, h)
+
+  drawConstellations(time)
 
   for (let i = 0; i < stars.length; i++) {
     const s = stars[i]
@@ -135,7 +447,7 @@ function draw(time) {
       // Repulsion (drift away).
       if (distSq < CURSOR_PUSH_RADIUS_SQ && distSq > 0.5) {
         const dist = Math.sqrt(distSq)
-        const push = (1 - dist / CURSOR_PUSH_RADIUS) * 0.45
+        const push = (1 - dist / CURSOR_PUSH_RADIUS) * 0.25
         s.vx += (dx / dist) * push
         s.vy += (dy / dist) * push
       }
@@ -225,6 +537,7 @@ function applySize() {
   canvas.style.height = h + 'px'
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
   initStars(w, h)
+  buildConstellations(w, h)
   // For reduced-motion users, render a single frame so the field is
   // still visible (just static).
   if (prefersReducedMotion) draw(0)
@@ -251,6 +564,28 @@ function onVisibilityChange() {
 
 let intersectionObserver = null
 let reducedMotionMql = null
+
+// ──────────────────────────────────────────────────────────────────────
+// Parallax + fade of hero content on scroll (starfield stays behind → depth).
+// ──────────────────────────────────────────────────────────────────────
+let parallaxTicking = false
+
+function applyParallax() {
+  parallaxTicking = false
+  const el = contentEl.value
+  if (!el) return
+  const y = window.scrollY
+  if (y > window.innerHeight) return // hero already off-screen
+  const opacity = Math.max(0, 1 - y / 480)
+  el.style.transform = `translateY(${y * 0.35}px)`
+  el.style.opacity = String(opacity)
+}
+
+function onParallaxScroll() {
+  if (parallaxTicking || prefersReducedMotion) return
+  parallaxTicking = true
+  requestAnimationFrame(applyParallax)
+}
 
 onMounted(() => {
   ctx = canvasEl.value.getContext('2d')
@@ -290,6 +625,7 @@ onMounted(() => {
   window.addEventListener('resize', onResize, { passive: true })
   heroEl.value.addEventListener('pointermove', onPointerMove, { passive: true })
   heroEl.value.addEventListener('pointerleave', onPointerLeave, { passive: true })
+  window.addEventListener('scroll', onParallaxScroll, { passive: true })
 
   if (!prefersReducedMotion) startAnimation()
 })
@@ -299,6 +635,7 @@ onUnmounted(() => {
   if (intersectionObserver) intersectionObserver.disconnect()
   document.removeEventListener('visibilitychange', onVisibilityChange)
   window.removeEventListener('resize', onResize)
+  window.removeEventListener('scroll', onParallaxScroll)
   if (heroEl.value) {
     heroEl.value.removeEventListener('pointermove', onPointerMove)
     heroEl.value.removeEventListener('pointerleave', onPointerLeave)
@@ -310,50 +647,14 @@ onUnmounted(() => {
 <template>
   <section id="hero" ref="heroEl" class="hero">
     <canvas ref="canvasEl" class="hero-canvas" aria-hidden="true" />
-    <div class="hero-content">
-      <!-- Star logo -->
+    <div ref="contentEl" class="hero-content">
+      <!-- Dawn-star logo -->
       <div class="logo-wrapper">
-        <svg
-          class="hero-logo"
-          viewBox="0 0 120 120"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-        >
-          <!-- Outer glow circle -->
-          <circle cx="60" cy="60" r="56" stroke="rgba(0,240,255,0.08)" stroke-width="1" />
-          <circle cx="60" cy="60" r="48" stroke="rgba(0,240,255,0.05)" stroke-width="0.5" />
-          <!-- 8-pointed star -->
+        <svg class="hero-logo" viewBox="0 0 64 64" aria-hidden="true">
           <path
-            d="
-            M60 8 L66 46 L98 30 L74 54 L112 60 L74 66 L98 90 L66 74 L60 112 L54 74 L22 90 L46 66 L8 60 L46 54 L22 30 L54 46 Z
-          "
-            fill="url(#starGrad)"
-            opacity="0.9"
+            d="M32 3 C 34.5 23, 41 29.5, 61 32 C 41 34.5, 34.5 41, 32 61 C 29.5 41, 23 34.5, 3 32 C 23 29.5, 29.5 23, 32 3 Z"
+            fill="currentColor"
           />
-          <!-- Inner bright star -->
-          <path
-            d="
-            M60 28 L64 52 L84 40 L72 56 L96 60 L72 64 L84 80 L64 68 L60 92 L56 68 L36 80 L48 64 L24 60 L48 56 L36 40 L56 52 Z
-          "
-            fill="url(#starInner)"
-            opacity="0.6"
-          />
-          <!-- Center dot -->
-          <circle cx="60" cy="60" r="4" fill="#00f0ff" opacity="0.9" />
-          <circle cx="60" cy="60" r="2" fill="#ffffff" opacity="0.9" />
-          <defs>
-            <radialGradient id="starGrad" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#00f0ff" />
-              <stop offset="70%" stop-color="#00a0cc" />
-              <stop offset="100%" stop-color="#005577" stop-opacity="0.3" />
-            </radialGradient>
-            <radialGradient id="starInner" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#ffffff" />
-              <stop offset="50%" stop-color="#00f0ff" />
-              <stop offset="100%" stop-color="#00a0cc" stop-opacity="0" />
-            </radialGradient>
-          </defs>
         </svg>
       </div>
       <h1 class="hero-title">Zorya Tech Studio</h1>
@@ -380,11 +681,25 @@ onUnmounted(() => {
 .hero {
   position: relative;
   height: 100vh;
-  min-height: 500px;
+  min-height: 620px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+/* Тепла смуга світанку біля «горизонту» знизу */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 80% at 50% 118%,
+    rgba(242, 182, 90, 0.16) 0%,
+    rgba(143, 163, 216, 0.06) 30%,
+    transparent 62%
+  );
 }
 
 .hero-canvas {
@@ -397,118 +712,98 @@ onUnmounted(() => {
   position: relative;
   z-index: 3;
   text-align: center;
-  padding: 0 24px;
+  padding: 0 var(--gutter);
   pointer-events: none;
+  animation: zFadeUp 900ms var(--ease) both;
 }
 
 /* Logo */
 .logo-wrapper {
   display: flex;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: var(--sp-6);
 }
 
 .hero-logo {
-  width: 90px;
-  height: 90px;
-  filter: drop-shadow(0 0 16px rgba(0, 240, 255, 0.35)) drop-shadow(0 0 40px rgba(0, 240, 255, 0.1));
-  animation: logo-pulse 4s ease-in-out infinite;
+  width: 58px;
+  height: 58px;
+  color: var(--accent);
+  filter: drop-shadow(0 0 20px rgba(242, 182, 90, 0.6));
+  animation: zStarPulse 5.5s var(--ease) infinite;
 }
 
-@keyframes logo-pulse {
+@keyframes zStarPulse {
   0%,
   100% {
-    filter: drop-shadow(0 0 16px rgba(0, 240, 255, 0.35))
-      drop-shadow(0 0 40px rgba(0, 240, 255, 0.1));
-    transform: scale(1);
+    opacity: 0.55;
   }
   50% {
-    filter: drop-shadow(0 0 24px rgba(0, 240, 255, 0.5))
-      drop-shadow(0 0 60px rgba(0, 240, 255, 0.15));
-    transform: scale(1.03);
+    opacity: 1;
   }
 }
 
 /* Title */
 .hero-title {
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: clamp(2.2rem, 7vw, 4.2rem);
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  line-height: 1.2;
-  margin-bottom: 16px;
-  background: linear-gradient(
-    90deg,
-    #00f0ff 0%,
-    #00c8ff 15%,
-    #a855f7 35%,
-    #ff2d6b 50%,
-    #e8b84b 65%,
-    #00f0ff 80%,
-    #00c8ff 100%
-  );
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: title-gradient 6s linear infinite;
-  filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.25))
-    drop-shadow(0 0 60px rgba(0, 240, 255, 0.08));
-}
-
-@keyframes title-gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 200% 50%;
-  }
+  font-weight: 500;
+  font-size: var(--fs-hero);
+  letter-spacing: var(--ls-tight);
+  line-height: var(--lh-tight);
+  color: var(--text);
+  margin-bottom: var(--sp-4);
 }
 
 .hero-tagline {
-  font-family: var(--font-ui);
+  font-family: var(--font-body);
   font-weight: 400;
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
-  color: var(--text-dim);
-  letter-spacing: 3px;
-  text-transform: uppercase;
+  font-size: var(--fs-md);
+  color: var(--text-muted);
+  max-width: 540px;
+  margin: 0 auto;
 }
 
 /* Scroll hint */
 .scroll-hint {
   position: absolute;
-  bottom: 32px;
+  bottom: var(--sp-6);
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
-  color: var(--accent);
-  opacity: 0.5;
-  animation: scroll-bounce 2s ease-in-out infinite;
+  color: var(--text-faint);
+  animation: zBounce 2.4s var(--ease) infinite;
   pointer-events: auto;
-  transition: opacity 0.2s;
+  transition: color var(--t-fast);
 }
 
 .scroll-hint:hover {
-  opacity: 1;
   color: var(--accent);
 }
 
-@keyframes scroll-bounce {
+@keyframes zFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes zBounce {
   0%,
   100% {
     transform: translateX(-50%) translateY(0);
-    opacity: 0.5;
   }
   50% {
-    transform: translateX(-50%) translateY(8px);
-    opacity: 0.9;
+    transform: translateX(-50%) translateY(7px);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-logo,
   .hero-title,
+  .hero-content,
   .scroll-hint {
     animation: none;
   }

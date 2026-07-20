@@ -11,16 +11,21 @@
     "tagline": "Crafting mobile experiences with care"
   },
   "about": {
+    "eyebrow": "About the studio",
     "title": "About",
     "p1": "Zorya Tech Studio is an independent mobile development studio. We build apps that combine thoughtful design with solid engineering.",
     "p2": "Our goal is to create useful everyday tools with attention to detail and user experience."
   },
   "apps": {
+    "eyebrow": "Selected projects",
     "title": "Apps",
     "view_all": "View All Projects"
   },
   "contact": {
-    "title": "Contact"
+    "eyebrow": "Get in touch",
+    "title": "Contact",
+    "lead": "Have a question or an idea? We'd love to hear from you.",
+    "email_label": "Email"
   },
   "breadcrumb": {
     "home": "Home"

@@ -86,7 +86,15 @@ onUnmounted(() => {
 <template>
   <nav :class="['navbar', { scrolled, 'menu-open': menuOpen }]" aria-label="Main navigation">
     <div class="nav-inner">
-      <router-link :to="homeUrl" class="nav-logo" @click="closeMenu">Zorya Tech Studio</router-link>
+      <router-link :to="homeUrl" class="nav-logo" @click="closeMenu">
+        <svg class="nav-logo__star" viewBox="0 0 64 64" width="20" height="20" aria-hidden="true">
+          <path
+            d="M32 3 C 34.5 23, 41 29.5, 61 32 C 41 34.5, 34.5 41, 32 61 C 29.5 41, 23 34.5, 3 32 C 23 29.5, 29.5 23, 32 3 Z"
+            fill="currentColor"
+          />
+        </svg>
+        <span>Zorya Tech Studio</span>
+      </router-link>
       <div class="nav-right">
         <ul v-if="isHome" class="nav-links nav-links-inline">
           <li>
@@ -197,84 +205,99 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   z-index: 100;
-  height: var(--nav-height);
+  height: var(--nav-h);
   display: flex;
   align-items: center;
+  background: rgba(10, 13, 20, 0.25);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid transparent;
   transition:
-    background 0.3s,
-    backdrop-filter 0.3s;
+    background var(--t-slow),
+    border-color var(--t-slow);
 }
 
 .navbar.scrolled,
 .navbar.menu-open {
-  background: var(--bg-nav);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--accent-dim);
+  background: rgba(10, 13, 20, 0.82);
+  border-bottom-color: var(--hairline);
 }
 
 .nav-inner {
   width: 100%;
-  max-width: 960px;
+  max-width: var(--maxw);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 16px;
+  color: var(--text);
+  letter-spacing: var(--ls-snug);
+}
+
+.nav-logo__star {
   color: var(--accent);
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  filter: drop-shadow(0 0 6px rgba(242, 182, 90, 0.45));
 }
 
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: var(--sp-5);
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 28px;
+  gap: var(--sp-6);
   margin: 0;
   padding: 0;
 }
 
 .nav-links a {
-  font-family: var(--font-ui);
+  font-family: var(--font-body);
   font-weight: 500;
-  font-size: 0.95rem;
-  color: var(--text-dim);
-  letter-spacing: 0.5px;
-  transition: color 0.2s;
+  font-size: 14px;
+  color: var(--text-muted);
+  transition: color var(--t-fast);
 }
 
-.nav-links a:hover {
-  color: var(--accent);
+.nav-links a:hover,
+.nav-links a.router-link-active {
+  color: var(--text);
 }
 
 .lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
   background: none;
-  border: 1px solid var(--accent-dim);
-  border-radius: 4px;
-  padding: 4px 10px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-pill);
+  padding: 5px 12px;
   cursor: pointer;
-  font-family: var(--font-ui);
-  font-size: 0.75rem;
+  font-family: var(--font-heading);
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 1px;
-  color: var(--text-dim);
-  transition: border-color 0.2s;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  transition:
+    border-color var(--t-fast),
+    color var(--t-fast);
 }
 
 .lang-toggle:hover {
-  border-color: var(--accent);
+  border-color: var(--accent-soft);
+  color: var(--text);
 }
 
 .lang-toggle .active {
@@ -283,7 +306,7 @@ onUnmounted(() => {
 
 .lang-sep {
   margin: 0 2px;
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
 /* ── Hamburger ─────────────────────────────────────────────────────── */
@@ -294,15 +317,15 @@ onUnmounted(() => {
   width: 40px;
   height: 40px;
   background: none;
-  border: 1px solid var(--accent-dim);
-  border-radius: 6px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-sm);
   cursor: pointer;
   padding: 0;
-  transition: border-color 0.2s;
+  transition: border-color var(--t-fast);
 }
 
 .menu-toggle:hover {
-  border-color: var(--accent);
+  border-color: var(--accent-soft);
 }
 
 .menu-toggle .bar {
@@ -310,7 +333,7 @@ onUnmounted(() => {
   left: 50%;
   width: 18px;
   height: 1.5px;
-  background: var(--text-dim);
+  background: var(--text-muted);
   border-radius: 1px;
   transform-origin: center;
   transition:
@@ -332,7 +355,7 @@ onUnmounted(() => {
 }
 
 .menu-toggle[aria-expanded='true'] {
-  border-color: var(--accent);
+  border-color: var(--accent-soft);
 }
 
 .menu-toggle[aria-expanded='true'] .bar {
@@ -358,10 +381,8 @@ onUnmounted(() => {
   top: 100%;
   left: 0;
   right: 0;
-  background: var(--bg-nav);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--accent-dim);
+  background: var(--surface-1);
+  border-bottom: 1px solid var(--hairline);
   max-height: 0;
   overflow: hidden;
   visibility: hidden;
@@ -390,23 +411,24 @@ onUnmounted(() => {
 
 .nav-links-mobile a {
   display: block;
-  padding: 14px 24px;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  padding: 15px 24px;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: var(--ls-snug);
   border-left: 2px solid transparent;
   transition:
-    color 0.2s,
-    border-color 0.2s,
-    background 0.2s;
+    color var(--t-fast),
+    border-color var(--t-fast),
+    background var(--t-fast);
 }
 
 .nav-links-mobile a:hover,
 .nav-links-mobile a:focus-visible {
-  color: var(--accent);
+  color: var(--text);
   border-left-color: var(--accent);
-  background: rgba(0, 240, 255, 0.04);
-  outline: none;
+  background: var(--surface-2);
 }
 
 @media (max-width: 720px) {
