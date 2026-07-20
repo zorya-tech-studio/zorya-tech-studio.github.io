@@ -9,7 +9,7 @@ Deployed to GitHub Pages at https://zorya-tech-studio.github.io/
 
 - Vite + Vue 3 (Composition API, `<script setup>`)
 - Pure CSS — no UI frameworks (no Tailwind, no Bootstrap)
-- Google Fonts: Cinzel (headings) + Space Grotesk (UI text)
+- Google Fonts: Space Grotesk (headings) + Manrope (body text)
 
 ## Commands
 
@@ -41,17 +41,24 @@ src/
 └── pages/
     ├── HomePage.vue        ← main landing page (all sections)
     ├── PrivacyPage.vue     ← privacy policy
-    └── ProjectsPage.vue    ← projects listing
+    ├── ProjectsPage.vue    ← projects listing
+    └── apps/               ← per-app privacy policy & terms pages
 ```
 
 ## Design Tokens (CSS Variables)
 
 All colors and fonts are defined in `src/style.css` via `:root` CSS variables.
 
-- Background: `--bg: #07090e`
-- Accent (cyan): `--accent: #00f0ff`
-- Glitch (pink): `--glitch: #ff2d6b`
-- Text: `--text: #e0e4ea`, dim: `--text-dim: #9ca3af`
+Visual theme is **night → dawn**: dark navy sky, warm gold accent, soft realistic
+shadows. **No neon, no glitch, no cyan** — those belong to an earlier design.
+
+- Background (night): `--bg: #0a0d14`; surfaces `--surface-1: #111520`, `--surface-2: #181d2a`
+- Accent (dawn gold): `--accent: #f2b65a`, hover `--accent-hover: #f6c87e`
+- Secondary (dawn sky): `--accent-2: #8fa3d8`
+- Text: `--text: #edeff4`, muted `--text-muted: #a6adbd`, faint `--text-faint: #6e7686`
+- Hairlines: `--hairline: #242a38`
+
+See `docs/youtube-banner-prompts.md` for the brand look described in prose.
 
 ## Deployment
 
