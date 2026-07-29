@@ -1012,7 +1012,7 @@
     "name": "Ohm's Law Calculator & Tools",
     "subtitle": "Electrical calculations, offline",
     "desc_short": "Ohm's law, power and kVA, resistor colour codes, series and parallel, voltage drop, wire size, LED resistors, energy cost and unit conversion. Everything recalculates as you type, works fully offline, and speaks 30+ languages.",
-    "status": "Coming soon",
+    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
