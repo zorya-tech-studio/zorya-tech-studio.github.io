@@ -202,6 +202,18 @@ const routes = [
     meta: { titleKey: 'gravelCalculator.terms.title', app: 'gravel-calculator' },
   },
   {
+    path: '/:locale/resistor-color-code/privacy-policy',
+    name: 'resistor-color-code-privacy',
+    component: () => import('./pages/apps/resistor-color-code/ResistorColorCodePrivacyPage.vue'),
+    meta: { titleKey: 'resistorColorCode.privacy.title', app: 'resistor-color-code' },
+  },
+  {
+    path: '/:locale/resistor-color-code/terms-of-use',
+    name: 'resistor-color-code-terms',
+    component: () => import('./pages/apps/resistor-color-code/ResistorColorCodeTermsPage.vue'),
+    meta: { titleKey: 'resistorColorCode.terms.title', app: 'resistor-color-code' },
+  },
+  {
     path: '/:locale/ohms-law-calculator/privacy-policy',
     name: 'ohms-law-calculator-privacy',
     component: () => import('./pages/apps/ohms-law-calculator/OhmsLawCalculatorPrivacyPage.vue'),
@@ -299,6 +311,14 @@ const routes = [
   {
     path: '/gravel-calculator/terms-of-use',
     redirect: () => `/${i18n.global.locale.value}/gravel-calculator/terms-of-use`,
+  },
+  {
+    path: '/resistor-color-code/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/resistor-color-code/privacy-policy`,
+  },
+  {
+    path: '/resistor-color-code/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/resistor-color-code/terms-of-use`,
   },
   {
     path: '/ohms-law-calculator/privacy-policy',

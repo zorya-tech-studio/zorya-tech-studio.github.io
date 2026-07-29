@@ -5,6 +5,20 @@
  */
 export const apps = [
   {
+    slug: 'resistor-color-code',
+    nameKey: 'resistorColorCode.name',
+    subtitleKey: 'resistorColorCode.subtitle',
+    descKey: 'resistorColorCode.desc_short',
+    platform: 'Android',
+    status: 'released',
+    statusKey: 'resistorColorCode.status',
+    category: 'tools',
+    tags: ['Android', 'Electronics', 'Calculator'],
+    icon: '/apps/resistor-color-code/icon.png',
+    privacyRoute: (locale) => `/${locale}/resistor-color-code/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/resistor-color-code/terms-of-use`,
+  },
+  {
     slug: 'ohms-law-calculator',
     nameKey: 'ohmsLawCalculator.name',
     subtitleKey: 'ohmsLawCalculator.subtitle',
