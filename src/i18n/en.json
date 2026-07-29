@@ -25,7 +25,8 @@
     "eyebrow": "Get in touch",
     "title": "Contact",
     "lead": "Have a question or an idea? We'd love to hear from you.",
-    "email_label": "Email"
+    "email_label": "Email",
+    "youtube_label": "YouTube"
   },
   "breadcrumb": {
     "home": "Home"

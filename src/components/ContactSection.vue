@@ -35,6 +35,25 @@ const privacyUrl = computed(() => `/${locale.value}/privacy`)
           <span class="contact-item__value">zoryatechstudio@gmail.com</span>
         </span>
       </a>
+
+      <a
+        href="https://www.youtube.com/@zorya-tech-studio"
+        class="app-card contact-item"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="contact-item__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path
+              d="M23.5 6.9a3 3 0 0 0-2.1-2.1C19.5 4.3 12 4.3 12 4.3s-7.5 0-9.4.5A3 3 0 0 0 .5 6.9 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.1 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.1ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"
+            />
+          </svg>
+        </span>
+        <span class="contact-item__text">
+          <span class="contact-item__label">{{ t('contact.youtube_label') }}</span>
+          <span class="contact-item__value">@zorya-tech-studio</span>
+        </span>
+      </a>
     </div>
 
     <footer class="contact-footer">
@@ -72,7 +91,9 @@ const privacyUrl = computed(() => `/${locale.value}/privacy`)
 
 .contact-grid {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: var(--sp-4);
   max-width: 720px;
   margin: 0 auto;
 }
@@ -82,7 +103,7 @@ const privacyUrl = computed(() => `/${locale.value}/privacy`)
   align-items: center;
   gap: var(--sp-4);
   text-align: left;
-  width: 100%;
+  flex: 1 1 300px;
   max-width: 420px;
 }
 
