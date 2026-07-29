@@ -202,6 +202,18 @@ const routes = [
     meta: { titleKey: 'gravelCalculator.terms.title', app: 'gravel-calculator' },
   },
   {
+    path: '/:locale/ohms-law-calculator/privacy-policy',
+    name: 'ohms-law-calculator-privacy',
+    component: () => import('./pages/apps/ohms-law-calculator/OhmsLawCalculatorPrivacyPage.vue'),
+    meta: { titleKey: 'ohmsLawCalculator.privacy.title', app: 'ohms-law-calculator' },
+  },
+  {
+    path: '/:locale/ohms-law-calculator/terms-of-use',
+    name: 'ohms-law-calculator-terms',
+    component: () => import('./pages/apps/ohms-law-calculator/OhmsLawCalculatorTermsPage.vue'),
+    meta: { titleKey: 'ohmsLawCalculator.terms.title', app: 'ohms-law-calculator' },
+  },
+  {
     path: '/:locale/block-brick-calculator/privacy-policy',
     name: 'block-brick-calculator-privacy',
     component: () =>
@@ -287,6 +299,14 @@ const routes = [
   {
     path: '/gravel-calculator/terms-of-use',
     redirect: () => `/${i18n.global.locale.value}/gravel-calculator/terms-of-use`,
+  },
+  {
+    path: '/ohms-law-calculator/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/ohms-law-calculator/privacy-policy`,
+  },
+  {
+    path: '/ohms-law-calculator/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/ohms-law-calculator/terms-of-use`,
   },
   {
     path: '/block-brick-calculator/privacy-policy',

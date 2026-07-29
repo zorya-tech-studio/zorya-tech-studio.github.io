@@ -1008,6 +1008,53 @@
       "contact_text": "If you have questions, please contact us at:"
     }
   },
+  "ohmsLawCalculator": {
+    "name": "Ohm's Law Calculator & Tools",
+    "subtitle": "Electrical calculations, offline",
+    "desc_short": "Ohm's law, power and kVA, resistor colour codes, series and parallel, voltage drop, wire size, LED resistors, energy cost and unit conversion. Everything recalculates as you type, works fully offline, and speaks 30+ languages.",
+    "status": "Coming soon",
+    "platform": "Android",
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Effective date",
+      "intro": "Zorya Tech Studio (\"we\", \"us\", \"our\") built Ohm's Law Calculator & Tools — a set of electrical calculators for Android. This Privacy Policy explains how we handle information when you use the app.",
+      "collect_title": "Personal Data Collection",
+      "collect_text": "We do not collect any personal data. The app requires no registration, account, or sign-in. We do not request or store your name, email, phone number, or any other personally identifiable information.",
+      "storage_title": "Data Storage",
+      "storage_text": "Your calculation history, chosen language, unit preferences and settings are stored exclusively on your device. Every calculation runs locally, including the formula reference, which is bundled with the app rather than fetched. We operate no server infrastructure for user content, and your data is never transmitted to us.",
+      "permissions_title": "Permissions",
+      "permissions_text": "The app requests a minimal set of permissions, used only for the features described below:",
+      "permissions_internet": "Internet — used solely to load ads and request advertising consent. Your calculations and history are never uploaded. With no connection at all, every calculator still works.",
+      "third_title": "Third-Party Services",
+      "third_text": "The app displays ads via Google AdMob. AdMob may collect device identifiers, IP address, and usage data per its own policy:",
+      "third_admob": "displays ads. May collect device identifiers, IP address, and usage data for serving personalized or non-personalized ads. Your consent choice is collected through Google's UMP consent form and can be changed at any time from the app's settings.",
+      "children_title": "Children's Privacy",
+      "children_text": "The app is not directed at children under the age of 13. We do not knowingly collect information from children under 13. If you believe your child has provided us with any information, please contact us and we will delete it.",
+      "changes_title": "Changes to This Policy",
+      "changes_text": "We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date.",
+      "contact_title": "Contact Us",
+      "contact_text": "If you have questions about this Privacy Policy, please contact us at:"
+    },
+    "terms": {
+      "title": "Terms of Use",
+      "updated": "Effective date",
+      "intro": "Ohm's Law Calculator & Tools is a calculation tool for Android, built by Zorya Tech Studio. By installing or using the app, you agree to these Terms of Use.",
+      "use_title": "Use of the App",
+      "use_text": "The app calculates Ohm's law, electrical power and kVA, resistor colour codes and SMD markings, series and parallel networks, voltage drop, wire size, LED series resistors, energy cost and unit conversions. It is provided for educational and planning purposes only.",
+      "accuracy_title": "Results & Accuracy",
+      "accuracy_text": "The formulas are standard and the results are computed without intermediate rounding, but a result is only ever as good as the values you enter. Real conductors, components and installations depart from ideal figures through tolerance, temperature, ageing and installation method. Always verify a result against the datasheet, the equipment rating and an actual measurement before acting on it.",
+      "safety_title": "Electrical Safety",
+      "safety_text": "This app is not a substitute for a qualified electrician, and it is not a code compliance tool. The ampacity, wire size and voltage drop tables are general reference values and are not presented as conforming to NEC, IEC, or any national wiring regulation. Work on mains electricity is dangerous and in most jurisdictions is legally restricted to licensed professionals. Never rely on a calculation from this app alone when sizing protective devices or conductors for a real installation.",
+      "warranty_title": "No Warranty",
+      "warranty_text": "The app is provided \"as is\" without warranties of any kind. Zorya Tech Studio is not liable for component damage, incorrect conductor or protection sizing, injury, or any other damages arising from use of the app.",
+      "ads_title": "Advertising",
+      "ads_text": "The app may display advertisements through Google AdMob, and offers an optional rewarded ad that removes ads for a limited time. There is no subscription and no in-app purchase. Ad-related data handling is described in our Privacy Policy.",
+      "acceptance_title": "Acceptance",
+      "acceptance_text": "By using this app, you agree to these terms. If you do not agree, please discontinue use of the app.",
+      "contact_title": "Contact",
+      "contact_text": "Questions about these Terms of Use can be sent to:"
+    }
+  },
   "gravelCalculator": {
     "name": "Gravel & Material Calculator",
     "subtitle": "Volume, weight & cost of materials",

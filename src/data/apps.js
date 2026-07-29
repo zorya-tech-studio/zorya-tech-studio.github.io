@@ -5,6 +5,20 @@
  */
 export const apps = [
   {
+    slug: 'ohms-law-calculator',
+    nameKey: 'ohmsLawCalculator.name',
+    subtitleKey: 'ohmsLawCalculator.subtitle',
+    descKey: 'ohmsLawCalculator.desc_short',
+    platform: 'Android',
+    status: 'released',
+    statusKey: 'ohmsLawCalculator.status',
+    category: 'tools',
+    tags: ['Android', 'Electronics', 'Calculator'],
+    icon: '/apps/ohms-law-calculator/icon.png',
+    privacyRoute: (locale) => `/${locale}/ohms-law-calculator/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/ohms-law-calculator/terms-of-use`,
+  },
+  {
     slug: 'gravel-calculator',
     nameKey: 'gravelCalculator.name',
     subtitleKey: 'gravelCalculator.subtitle',
