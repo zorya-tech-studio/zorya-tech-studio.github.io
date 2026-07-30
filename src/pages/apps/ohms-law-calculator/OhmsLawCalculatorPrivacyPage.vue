@@ -33,7 +33,7 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
     <p class="app-label">
       {{ t('ohmsLawCalculator.name') }} — {{ t('ohmsLawCalculator.subtitle') }}
     </p>
-    <p class="updated-date">{{ t('ohmsLawCalculator.privacy.updated') }}: 2026-07-29</p>
+    <p class="updated-date">{{ t('ohmsLawCalculator.privacy.updated') }}: 2026-07-30</p>
 
     <p class="intro-text">{{ t('ohmsLawCalculator.privacy.intro') }}</p>
 
@@ -66,6 +66,22 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
           — {{ t('ohmsLawCalculator.privacy.third_admob') }}
         </li>
       </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2 class="section-heading">{{ t('ohmsLawCalculator.privacy.datasafety_title') }}</h2>
+      <p class="section-text">{{ t('ohmsLawCalculator.privacy.datasafety_text') }}</p>
+      <ul class="permissions-list">
+        <li>{{ t('ohmsLawCalculator.privacy.datasafety_location') }}</li>
+        <li>{{ t('ohmsLawCalculator.privacy.datasafety_ids') }}</li>
+        <li>{{ t('ohmsLawCalculator.privacy.datasafety_activity') }}</li>
+        <li>{{ t('ohmsLawCalculator.privacy.datasafety_diagnostics') }}</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2 class="section-heading">{{ t('ohmsLawCalculator.privacy.deletion_title') }}</h2>
+      <p class="section-text">{{ t('ohmsLawCalculator.privacy.deletion_text') }}</p>
     </div>
 
     <div class="policy-section">
