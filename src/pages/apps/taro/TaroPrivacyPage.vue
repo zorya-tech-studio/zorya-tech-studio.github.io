@@ -35,7 +35,7 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
     </div>
 
     <p class="app-label">{{ t('taro.name') }} — {{ t('taro.subtitle') }}</p>
-    <p class="updated-date">{{ t('taro.privacy.updated') }}: 2026-06-11</p>
+    <p class="updated-date">{{ t('taro.privacy.updated') }}: 2026-07-31</p>
 
     <p class="intro-text">{{ t('taro.privacy.intro') }}</p>
 
@@ -53,6 +53,8 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
       <h2 class="section-heading">{{ t('taro.privacy.permissions_title') }}</h2>
       <p class="section-text">{{ t('taro.privacy.permissions_text') }}</p>
       <ul class="permissions-list">
+        <li>{{ t('taro.privacy.permissions_internet') }}</li>
+        <li>{{ t('taro.privacy.permissions_ad_id') }}</li>
         <li>{{ t('taro.privacy.permissions_notifications') }}</li>
       </ul>
     </div>
