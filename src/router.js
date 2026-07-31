@@ -202,6 +202,18 @@ const routes = [
     meta: { titleKey: 'gravelCalculator.terms.title', app: 'gravel-calculator' },
   },
   {
+    path: '/:locale/kpop-dance-lessons/privacy-policy',
+    name: 'kpop-dance-lessons-privacy',
+    component: () => import('./pages/apps/kpop-dance-lessons/KpopDanceLessonsPrivacyPage.vue'),
+    meta: { titleKey: 'kpopDanceLessons.privacy.title', app: 'kpop-dance-lessons' },
+  },
+  {
+    path: '/:locale/kpop-dance-lessons/offer',
+    name: 'kpop-dance-lessons-offer',
+    component: () => import('./pages/apps/kpop-dance-lessons/KpopDanceLessonsOfferPage.vue'),
+    meta: { titleKey: 'kpopDanceLessons.offer.title', app: 'kpop-dance-lessons' },
+  },
+  {
     path: '/:locale/resistor-color-code/privacy-policy',
     name: 'resistor-color-code-privacy',
     component: () => import('./pages/apps/resistor-color-code/ResistorColorCodePrivacyPage.vue'),
@@ -311,6 +323,14 @@ const routes = [
   {
     path: '/gravel-calculator/terms-of-use',
     redirect: () => `/${i18n.global.locale.value}/gravel-calculator/terms-of-use`,
+  },
+  {
+    path: '/kpop-dance-lessons/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/kpop-dance-lessons/privacy-policy`,
+  },
+  {
+    path: '/kpop-dance-lessons/offer',
+    redirect: () => `/${i18n.global.locale.value}/kpop-dance-lessons/offer`,
   },
   {
     path: '/resistor-color-code/privacy-policy',

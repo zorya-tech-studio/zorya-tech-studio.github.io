@@ -5,6 +5,20 @@
  */
 export const apps = [
   {
+    slug: 'kpop-dance-lessons',
+    nameKey: 'kpopDanceLessons.name',
+    subtitleKey: 'kpopDanceLessons.subtitle',
+    descKey: 'kpopDanceLessons.desc_short',
+    platform: 'Android',
+    status: 'released',
+    statusKey: 'kpopDanceLessons.status',
+    category: 'lifestyle',
+    tags: ['Android', 'Dance', 'Lessons'],
+    icon: '/apps/kpop-dance-lessons/icon.png',
+    privacyRoute: (locale) => `/${locale}/kpop-dance-lessons/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/kpop-dance-lessons/offer`,
+  },
+  {
     slug: 'resistor-color-code',
     nameKey: 'resistorColorCode.name',
     subtitleKey: 'resistorColorCode.subtitle',
