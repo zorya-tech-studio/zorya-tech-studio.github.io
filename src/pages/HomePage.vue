@@ -3,6 +3,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import HeroSection from '../components/HeroSection.vue'
 import AboutSection from '../components/AboutSection.vue'
 import AppsSection from '../components/AppsSection.vue'
+import ServicesPromoSection from '../components/ServicesPromoSection.vue'
 import ContactSection from '../components/ContactSection.vue'
 
 let observer
@@ -223,6 +224,9 @@ onUnmounted(() => {
     </div>
     <div class="fade-section">
       <AppsSection />
+    </div>
+    <div class="fade-section">
+      <ServicesPromoSection />
     </div>
     <div class="fade-section">
       <ContactSection />

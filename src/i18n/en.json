@@ -2,6 +2,7 @@
   "nav": {
     "about": "About",
     "apps": "Apps",
+    "services": "Services",
     "contact": "Contact",
     "switch_lang": "Switch language",
     "view_privacy": "Privacy Policy",
@@ -44,6 +45,51 @@
       "reference": "Reference",
       "lifestyle": "Lifestyle"
     }
+  },
+  "services": {
+    "meta_title": "App & Web Development Services",
+    "meta_description": "Custom mobile apps, websites, desktop utilities and small Rust programs from Zorya Tech Studio.",
+    "eyebrow": "Development services",
+    "title": "Let’s build your idea",
+    "lead": "Need an app, a website or a focused software tool? Tell us what you want to create, and we’ll help turn the idea into a reliable, thoughtfully designed product.",
+    "cta": "Discuss your project",
+    "email_subject": "New development project",
+    "email_note": "Development enquiries only:",
+    "home_eyebrow": "Have an idea?",
+    "home_title": "We also build products for clients",
+    "home_lead": "If you need an app, website or small custom program, we can design and develop a focused solution for your idea or business.",
+    "home_cta": "Explore our services",
+    "home_email_cta": "Email us",
+    "home_types_label": "Development services",
+    "home_types": {
+      "mobile": "Mobile apps",
+      "web": "Websites & web apps",
+      "software": "Desktop & Rust utilities"
+    },
+    "types_eyebrow": "What we build",
+    "types_title": "From idea to working product",
+    "types_lead": "We focus on practical digital products with clear interfaces, solid engineering and attention to detail.",
+    "items": {
+      "mobile": {
+        "title": "Mobile apps",
+        "description": "Android and cross-platform apps: utilities, educational products, lifestyle apps, business tools, content apps, calculators and MVPs."
+      },
+      "web": {
+        "title": "Websites & web apps",
+        "description": "Landing pages, company websites, portfolios, product pages and lightweight interactive web applications that work well on every screen."
+      },
+      "desktop": {
+        "title": "Small desktop programs",
+        "description": "Focused Windows, macOS or Linux utilities for automation, data processing, internal workflows and everyday tasks."
+      },
+      "rust": {
+        "title": "Rust utilities",
+        "description": "Small, fast and dependable command-line tools, system utilities, file processors, converters and automation programs written in Rust."
+      }
+    },
+    "contact_eyebrow": "Have a project in mind?",
+    "contact_title": "Tell us what you need",
+    "contact_text": "Describe your idea, target platform, key features and expected timeline. We’ll review it and reply by email to discuss the next steps."
   },
   "senso": {
     "name": "Senso",

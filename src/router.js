@@ -4,6 +4,8 @@ import i18n from './i18n/index.js'
 const LOCALES = ['uk', 'en']
 
 const SITE_NAME = 'Zorya Tech Studio'
+const DEFAULT_DESCRIPTION =
+  'Zorya Tech Studio — Independent mobile app studio. We craft mobile experiences with care.'
 
 const routes = [
   { path: '/:locale', name: 'home', component: () => import('./pages/HomePage.vue') },
@@ -18,6 +20,12 @@ const routes = [
     name: 'projects',
     component: () => import('./pages/ProjectsPage.vue'),
     meta: { titleKey: 'projects.title' },
+  },
+  {
+    path: '/:locale/services',
+    name: 'services',
+    component: () => import('./pages/ServicesPage.vue'),
+    meta: { titleKey: 'services.meta_title', descriptionKey: 'services.meta_description' },
   },
   // App-specific routes
   {
@@ -445,6 +453,7 @@ const routes = [
   { path: '/', redirect: () => `/${i18n.global.locale.value}` },
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
+  { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
   {
     path: '/taro/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/taro/privacy-policy`,
@@ -566,6 +575,13 @@ router.afterEach((to) => {
   const canonical = document.getElementById('canonical')
   if (canonical) {
     canonical.href = `https://zorya-tech-studio.github.io${to.path}`
+  }
+
+  const description = document.querySelector('meta[name="description"]')
+  if (description) {
+    description.content = to.meta.descriptionKey
+      ? i18n.global.t(to.meta.descriptionKey)
+      : DEFAULT_DESCRIPTION
   }
 })
 
