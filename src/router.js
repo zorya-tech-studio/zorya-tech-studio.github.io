@@ -21,6 +21,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/hair-care-routine/privacy-policy',
+    name: 'hair-care-routine-privacy',
+    component: () => import('./pages/apps/hair-care-routine/HairCareRoutinePrivacyPage.vue'),
+    meta: { titleKey: 'hairCareRoutine.privacy.title', app: 'hair-care-routine' },
+  },
+  {
+    path: '/:locale/hair-care-routine/offer',
+    name: 'hair-care-routine-offer',
+    component: () => import('./pages/apps/hair-care-routine/HairCareRoutineOfferPage.vue'),
+    meta: { titleKey: 'hairCareRoutine.offer.title', app: 'hair-care-routine' },
+  },
+  {
     path: '/:locale/molemap/privacy-policy',
     name: 'molemap-privacy',
     component: () => import('./pages/apps/molemap/MoleMapPrivacyPage.vue'),
@@ -301,6 +313,14 @@ const routes = [
     name: 'human-tetris-offer',
     component: () => import('./pages/apps/human-tetris/HumanTetrisOfferPage.vue'),
     meta: { titleKey: 'humanTetris.offer.title', app: 'human-tetris' },
+  },
+  {
+    path: '/hair-care-routine/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/hair-care-routine/privacy-policy`,
+  },
+  {
+    path: '/hair-care-routine/offer',
+    redirect: () => `/${i18n.global.locale.value}/hair-care-routine/offer`,
   },
   {
     path: '/markdown-reader/privacy-policy',

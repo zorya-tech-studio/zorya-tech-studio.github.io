@@ -5,6 +5,20 @@
  */
 export const apps = [
   {
+    slug: 'hair-care-routine',
+    nameKey: 'hairCareRoutine.name',
+    subtitleKey: 'hairCareRoutine.subtitle',
+    descKey: 'hairCareRoutine.desc_short',
+    platform: 'Android',
+    status: 'released',
+    statusKey: 'hairCareRoutine.status',
+    category: 'lifestyle',
+    tags: ['Android', 'Hair Care', 'Routine'],
+    icon: '/apps/hair-care-routine/icon.png',
+    privacyRoute: (locale) => `/${locale}/hair-care-routine/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/hair-care-routine/offer`,
+  },
+  {
     slug: 'landscaping-calculator',
     nameKey: 'landscapingCalculator.name',
     subtitleKey: 'landscapingCalculator.subtitle',
