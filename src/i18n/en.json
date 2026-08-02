@@ -1230,6 +1230,52 @@
       "contact_text": "Questions about these Terms of Use can be sent to:"
     }
   },
+  "landscapingCalculator": {
+    "name": "Landscaping Calculator: Mulch",
+    "subtitle": "Mulch, soil, gravel and paver estimates",
+    "desc_short": "Turn your measurements into the exact material order: mulch, topsoil, gravel, sand, pavers, sod, seed and concrete, in cubic yards, cubic metres, tons, bags and money. Every result shows the formula behind it, densities are editable, projects and PDF estimates are free. Works fully offline in 45 languages.",
+    "status": "Coming soon",
+    "platform": "Android",
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Effective date",
+      "intro": "Zorya Tech Studio (\"we\", \"us\", \"our\") built Landscaping Calculator: Mulch — a tool that estimates the volume, weight and cost of landscaping materials on Android. This Privacy Policy explains how we handle information when you use the app.",
+      "collect_title": "Personal Data Collection",
+      "collect_text": "We do not collect any personal data. The app requires no registration, account, or sign-in. We do not request or store your name, email, phone number, or any other personally identifiable information.",
+      "storage_title": "Data Storage",
+      "storage_text": "Your saved projects, sections, custom materials, prices, settings and preferences are stored exclusively on your device. All calculations run locally. We do not operate any server infrastructure for storing user content, and your data is never transmitted to us. Estimates you share or export as PDF leave the device only when you choose to send them.",
+      "permissions_title": "Permissions",
+      "permissions_text": "The app requests a minimal set of permissions, used only for the features described below:",
+      "permissions_internet": "Internet — used solely to load ads and request consent. Your projects and saved data are never uploaded.",
+      "permissions_ad_id": "Advertising ID — used by Google AdMob to serve ads. It is not linked to any of your calculations.",
+      "third_title": "Third-Party Services",
+      "third_text": "The app displays ads via Google AdMob. AdMob may collect device identifiers, IP address, and usage data per its own policy:",
+      "third_admob": "displays ads. May collect device identifiers, IP address, and usage data for serving personalized or non-personalized ads.",
+      "children_title": "Children's Privacy",
+      "children_text": "The app is not directed at children under the age of 13. We do not knowingly collect information from children under 13. If you believe your child has provided us with any information, please contact us and we will delete it.",
+      "changes_title": "Changes to This Policy",
+      "changes_text": "We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date.",
+      "contact_title": "Contact Us",
+      "contact_text": "If you have questions about this Privacy Policy, please contact us at:"
+    },
+    "terms": {
+      "title": "Terms of Use",
+      "updated": "Effective date",
+      "intro": "Landscaping Calculator: Mulch is an estimation tool for Android, built by Zorya Tech Studio. By installing or using the app, you agree to these Terms of Use.",
+      "use_title": "Use of the App",
+      "use_text": "The app helps you estimate the volume, weight, bag count and approximate cost of mulch, topsoil, gravel, sand, pavers, sod, grass seed and concrete. It is provided for planning and informational purposes only.",
+      "accuracy_title": "Estimates & Accuracy",
+      "accuracy_text": "All results are approximate and depend on the values you enter, rounding, material density, moisture, compaction, real-world waste and local material standards. Densities are nominal guidance, not measured values, and can be edited by you. For critical work, always confirm quantities, bag coverage and delivery volumes with your supplier before ordering.",
+      "warranty_title": "No Warranty",
+      "warranty_text": "The app is provided \"as is\" without warranties of any kind. Zorya Tech Studio is not liable for material over- or under-ordering, cost differences, or any damages arising from use of the app.",
+      "ads_title": "Advertising",
+      "ads_text": "The app may display advertisements through Google AdMob, including an optional rewarded video that removes ads for a short period. No feature is ever locked behind an ad: saving projects, the number of projects, PDF export, custom materials and calculation accuracy are always free. Ad-related data handling is described in our Privacy Policy.",
+      "acceptance_title": "Acceptance",
+      "acceptance_text": "By using this app, you agree to these terms. If you do not agree, please discontinue use of the app.",
+      "contact_title": "Contact",
+      "contact_text": "Questions about these Terms of Use can be sent to:"
+    }
+  },
   "concreteCalculator": {
     "name": "Concrete Calculator & Mix",
     "subtitle": "Volume, bags, mix ratio & cost",

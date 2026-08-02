@@ -190,6 +190,20 @@ const routes = [
     meta: { titleKey: 'concreteCalculator.terms.title', app: 'concrete-calculator' },
   },
   {
+    path: '/:locale/landscaping-calculator/privacy-policy',
+    name: 'landscaping-calculator-privacy',
+    component: () =>
+      import('./pages/apps/landscaping-calculator/LandscapingCalculatorPrivacyPage.vue'),
+    meta: { titleKey: 'landscapingCalculator.privacy.title', app: 'landscaping-calculator' },
+  },
+  {
+    path: '/:locale/landscaping-calculator/terms-of-use',
+    name: 'landscaping-calculator-terms',
+    component: () =>
+      import('./pages/apps/landscaping-calculator/LandscapingCalculatorTermsPage.vue'),
+    meta: { titleKey: 'landscapingCalculator.terms.title', app: 'landscaping-calculator' },
+  },
+  {
     path: '/:locale/gravel-calculator/privacy-policy',
     name: 'gravel-calculator-privacy',
     component: () => import('./pages/apps/gravel-calculator/GravelCalculatorPrivacyPage.vue'),
@@ -315,6 +329,14 @@ const routes = [
   {
     path: '/concrete-calculator/terms-of-use',
     redirect: () => `/${i18n.global.locale.value}/concrete-calculator/terms-of-use`,
+  },
+  {
+    path: '/landscaping-calculator/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/landscaping-calculator/privacy-policy`,
+  },
+  {
+    path: '/landscaping-calculator/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/landscaping-calculator/terms-of-use`,
   },
   {
     path: '/gravel-calculator/privacy-policy',

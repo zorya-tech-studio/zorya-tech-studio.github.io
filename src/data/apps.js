@@ -5,6 +5,20 @@
  */
 export const apps = [
   {
+    slug: 'landscaping-calculator',
+    nameKey: 'landscapingCalculator.name',
+    subtitleKey: 'landscapingCalculator.subtitle',
+    descKey: 'landscapingCalculator.desc_short',
+    platform: 'Android',
+    status: 'released',
+    statusKey: 'landscapingCalculator.status',
+    category: 'tools',
+    tags: ['Android', 'Landscaping', 'Calculator'],
+    icon: '/apps/landscaping-calculator/icon.png',
+    privacyRoute: (locale) => `/${locale}/landscaping-calculator/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/landscaping-calculator/terms-of-use`,
+  },
+  {
     slug: 'kpop-dance-lessons',
     nameKey: 'kpopDanceLessons.name',
     subtitleKey: 'kpopDanceLessons.subtitle',
