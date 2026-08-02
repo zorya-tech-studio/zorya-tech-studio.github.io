@@ -5,6 +5,20 @@
  */
 export const apps = [
   {
+    slug: 'lux-meter',
+    nameKey: 'luxMeter.name',
+    subtitleKey: 'luxMeter.subtitle',
+    descKey: 'luxMeter.desc_short',
+    platform: 'Android',
+    status: 'released',
+    statusKey: 'luxMeter.status',
+    category: 'tools',
+    tags: ['Android', 'Light Meter', 'Plants'],
+    icon: '/apps/lux-meter/icon.png',
+    privacyRoute: (locale) => `/${locale}/lux-meter/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/lux-meter/terms-of-use`,
+  },
+  {
     slug: 'hair-care-routine',
     nameKey: 'hairCareRoutine.name',
     subtitleKey: 'hairCareRoutine.subtitle',

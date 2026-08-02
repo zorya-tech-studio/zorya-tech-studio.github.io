@@ -21,6 +21,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/lux-meter/privacy-policy',
+    name: 'lux-meter-privacy',
+    component: () => import('./pages/apps/lux-meter/LuxMeterPrivacyPage.vue'),
+    meta: { titleKey: 'luxMeter.privacy.title', app: 'lux-meter' },
+  },
+  {
+    path: '/:locale/lux-meter/terms-of-use',
+    name: 'lux-meter-terms',
+    component: () => import('./pages/apps/lux-meter/LuxMeterTermsPage.vue'),
+    meta: { titleKey: 'luxMeter.terms.title', app: 'lux-meter' },
+  },
+  {
     path: '/:locale/hair-care-routine/privacy-policy',
     name: 'hair-care-routine-privacy',
     component: () => import('./pages/apps/hair-care-routine/HairCareRoutinePrivacyPage.vue'),
@@ -313,6 +325,14 @@ const routes = [
     name: 'human-tetris-offer',
     component: () => import('./pages/apps/human-tetris/HumanTetrisOfferPage.vue'),
     meta: { titleKey: 'humanTetris.offer.title', app: 'human-tetris' },
+  },
+  {
+    path: '/lux-meter/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/lux-meter/privacy-policy`,
+  },
+  {
+    path: '/lux-meter/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/lux-meter/terms-of-use`,
   },
   {
     path: '/hair-care-routine/privacy-policy',
