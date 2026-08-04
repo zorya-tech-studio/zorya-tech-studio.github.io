@@ -81,7 +81,7 @@ Uses `actions/deploy-pages` to deploy `dist/` to GitHub Pages.
 
 Every app on the site is presented as **released**, in every locale, even if it is not on Google Play yet. No "Незабаром", "Coming soon", "Реліз", "Опубліковано", "beta", "в розробці" — a visitor must never see one app labelled differently from another.
 
-- The badge text is **not** per-app. It comes from the shared `app_status.<status>` key in `src/i18n/*.json`, rendered as `t(\`app_status.${app.status}\`)`in`AppsSection.vue`and`ProjectsPage.vue`.
+- The badge text is **not** per-app. It comes from the shared `app_status.<status>` key in `src/i18n/*.json`, rendered from `app.status` in `AppsSection.vue` and `ProjectsPage.vue`.
 - A new entry in `src/data/apps.js` sets `status: 'released'` and **nothing else** — there is no `statusKey` field any more, so there is no per-app string to get out of sync. Do not reintroduce one.
 - uk: `Випущено`. en: `Released`. `app_status` deliberately holds that one key and nothing else. If a different status ever becomes necessary, add it once for both locales and apply it to the whole set — never to a single app.
 
