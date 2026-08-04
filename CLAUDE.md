@@ -77,6 +77,24 @@ Uses `actions/deploy-pages` to deploy `dist/` to GitHub Pages.
 - Minimal animations — starfield canvas, scroll fade-in, subtle hover transitions
 - `vite.config.js` base: `'/'` (org repo, served from root)
 
+## App status badge — one wording for everyone (IMPORTANT)
+
+Every app on the site is presented as **released**, in every locale, even if it is not on Google Play yet. No "Незабаром", "Coming soon", "Реліз", "Опубліковано", "beta", "в розробці" — a visitor must never see one app labelled differently from another.
+
+- The badge text is **not** per-app. It comes from the shared `app_status.<status>` key in `src/i18n/*.json`, rendered as `t(\`app_status.${app.status}\`)`in`AppsSection.vue`and`ProjectsPage.vue`.
+- A new entry in `src/data/apps.js` sets `status: 'released'` and **nothing else** — there is no `statusKey` field any more, so there is no per-app string to get out of sync. Do not reintroduce one.
+- uk: `Випущено`. en: `Released`. `app_status` deliberately holds that one key and nothing else. If a different status ever becomes necessary, add it once for both locales and apply it to the whole set — never to a single app.
+
+## App categories
+
+`category` in `src/data/apps.js` drives the filter tabs on the Projects page. The tab list is built dynamically from the categories actually present, so adding a category means three things and no more:
+
+1. Set `category: '<key>'` on the app entries.
+2. Add the key to `CATEGORY_ORDER` in `src/pages/ProjectsPage.vue` (display order; a key missing here never renders a tab).
+3. Add `projects.filter.<key>` to **both** `uk.json` and `en.json`.
+
+Current keys: `games`, `quiz`, `tools`, `calculators`, `reference`, `pets`, `lifestyle`, `esoteric`. Keep buckets meaningful — a category with a single app is noise; fold it into a neighbour instead.
+
 ## Routes & HTTP 200 — privacy/legal URLs (IMPORTANT)
 
 GitHub Pages is a **static** host: a URL returns HTTP 200 only if a real file

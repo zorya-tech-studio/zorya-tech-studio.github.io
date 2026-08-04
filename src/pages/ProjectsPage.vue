@@ -13,7 +13,16 @@ const activeFilter = ref('all')
 
 // Build the filter list dynamically from the categories actually present,
 // keeping a stable display order. 'all' always comes first.
-const CATEGORY_ORDER = ['games', 'quiz', 'tools', 'reference', 'lifestyle']
+const CATEGORY_ORDER = [
+  'games',
+  'quiz',
+  'tools',
+  'calculators',
+  'reference',
+  'pets',
+  'lifestyle',
+  'esoteric',
+]
 const filters = computed(() => {
   const present = new Set(apps.map((app) => app.category))
   return ['all', ...CATEGORY_ORDER.filter((c) => present.has(c))]
@@ -75,7 +84,7 @@ const filteredApps = computed(() =>
             />
             <div class="app-card__meta">
               <h2 class="app-card__title">{{ t(app.nameKey) }}</h2>
-              <span class="badge-released">{{ t(app.statusKey) }}</span>
+              <span class="badge-released">{{ t(`app_status.${app.status}`) }}</span>
             </div>
           </div>
           <p class="app-card__desc">{{ t(app.descKey) }}</p>

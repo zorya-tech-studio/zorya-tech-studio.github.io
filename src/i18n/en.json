@@ -44,8 +44,11 @@
       "games": "Games",
       "quiz": "Quizzes",
       "tools": "Tools",
+      "calculators": "Calculators",
       "reference": "Reference",
-      "lifestyle": "Lifestyle"
+      "pets": "Pets",
+      "lifestyle": "Lifestyle",
+      "esoteric": "Esoteric"
     }
   },
   "services": {
@@ -97,7 +100,6 @@
     "name": "Senso",
     "subtitle": "Smart sensors in your pocket",
     "desc_short": "An Android measurement toolkit: level, lux meter, decibel meter, compass. All calculations run on-device.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -127,7 +129,6 @@
     "name": "Tarot Cards: Learn & Reflect",
     "subtitle": "Tarot for reflection & study",
     "desc_short": "An offline self-reflection tarot app: all 78 Rider-Waite-Smith cards, a daily card, spreads (1 / 3 / Celtic Cross), card meanings, a study mode (flashcards, quiz, spaced repetition) and a journal. 52 languages. No accounts, no tracking — your content stays on your device. Free and ad-supported.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -197,7 +198,6 @@
     "name": "Star Guide: Sky Atlas",
     "subtitle": "An offline astronomy guide & sky map",
     "desc_short": "An offline stargazing encyclopedia and interactive sky map for Android. Browse constellations, stars, planets and deep-sky objects from a bundled database that works without internet, and explore the night sky with an interactive map. Ad-supported, no accounts, no sign-in.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -267,7 +267,6 @@
     "name": "Alias",
     "subtitle": "Party word game for friends",
     "desc_short": "A pass-and-play party word game with 35+ categories and 14 languages. Explain words to your team without using them — beat the clock.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -337,7 +336,6 @@
     "name": "YouTube Audit",
     "subtitle": "Math-based YouTube channel audit",
     "desc_short": "Audit public YouTube channels via the official API: 70+ metrics and 50+ recommendations. No sign-in, all data stays on your device.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -408,7 +406,6 @@
     "name": "МовоГра UA",
     "subtitle": "Improve your Ukrainian by playing",
     "desc_short": "A mobile quiz app for practicing Ukrainian language. 9 categories, 1040+ questions with explanations.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -434,7 +431,6 @@
     "name": "Народна Мудрість",
     "subtitle": "Ukrainian Proverbs Quiz",
     "desc_short": "A quiz game built on Ukrainian proverbs and sayings. 777 proverbs with explanations, levels, achievements, and daily challenges.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -459,7 +455,6 @@
     "name": "Chromatic",
     "subtitle": "Color-and-word reaction arcade",
     "desc_short": "A fast Stroop-style arcade for Android: tap the colour, not the word. Campaign levels, endless and daily modes, combos, stars, and reaction-time stats — all on-device.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -523,7 +518,6 @@
     "name": "Cat Training & Behavior",
     "subtitle": "Positive cat training and behavior in 5-minute lessons",
     "desc_short": "Understand your cat and build good habits with short, friendly daily lessons based on positive, reward-based training. Easy step-by-step cards (clicker basics, come when called, target training, carrier and handling comfort, scratching-post habits, play routines and more), 5-minute practice timers with a built-in clicker, progress tracking with streaks and badges, and handy checklists. Every card includes a safety note. Educational only — not a substitute for a veterinarian or certified behavior professional. Works offline, no account needed.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -588,7 +582,6 @@
     "name": "Dog Training Cards",
     "subtitle": "Positive dog training in 5-minute lessons",
     "desc_short": "Teach your dog basic commands and good habits with short, friendly daily lessons built on positive, reward-based training. Easy step-by-step cards (sit, down, stay, come, leave it, tricks, manners and more), 5-minute practice timers with a built-in clicker, progress tracking with streaks and badges, and handy checklists. Works offline, no account needed.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -653,7 +646,6 @@
     "name": "Human Tetris",
     "subtitle": "Strike the pose, beat the wall",
     "desc_short": "Strike a pose to fit the hole in the wall before it arrives! Human Tetris turns the viral hole-in-the-wall challenge into a fast, funny party game for the whole family. It is honor-system fun with no camera — you decide if you made it through. Includes a 20-level campaign that gets trickier as harder poses mix in, an endless Free Mode with selectable difficulty and backgrounds, 50+ pose silhouettes across Easy, Medium, Hard and Extra, bright visuals with light and dark themes, sound, haptics and encouraging cheers you can toggle anytime, and optional daily reminders. Quick to learn, hard to put down.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -725,7 +717,6 @@
     "name": "HueRoom",
     "subtitle": "Interior color palettes & color theory",
     "desc_short": "Curated interior color palettes for every room and style — with the color theory behind each one (harmony type, temperature, the 60-30-10 rule). Browse by style, room, mood and season, extract a palette from a photo and match it to a style, find the closest paint-brand colors, and save your own. Works offline.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -793,7 +784,6 @@
     "name": "SudokuLens",
     "subtitle": "Smart Sudoku Solver",
     "desc_short": "Solve any Sudoku instantly by scanning it with your camera or entering it manually. Supports 4×4 to 16×16 grids, step-by-step solving with techniques, a puzzle generator, 8 themes, and 8 languages.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -820,7 +810,6 @@
     "name": "OBD2 Auto Codes",
     "subtitle": "Offline OBD-II trouble code reference",
     "desc_short": "An offline Android reference for OBD-II / DTC fault codes with plain-language explanations, likely causes, favorites, and quick Google / YouTube search links.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -891,7 +880,6 @@
     "name": "Zodiac Match",
     "subtitle": "Zodiac sign compatibility",
     "desc_short": "A lighthearted app to explore compatibility among all 12 zodiac signs in love, marriage, friendship, and work. 144 combinations, 27 languages, offline data. Ad-supported.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -975,7 +963,6 @@
     "name": "Mole Map",
     "subtitle": "Mole meanings",
     "desc_short": "A playful app that explores folklore meanings of moles on an interactive body map. Daily \"mole of the day\", light & dark themes, English and Ukrainian, fully offline. For entertainment only — not medical advice. Ad-supported.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -1063,7 +1050,6 @@
     "name": "Hair Care Routine & Masks",
     "subtitle": "DIY hair masks, tips and a simple routine planner",
     "desc_short": "Build a simple, consistent hair care routine at home with DIY hair masks, natural ingredient guides, wash day tips, scalp care habits and weekly routine checklists. Save favorite masks, tips and ingredients, log treatments in a local care journal, and set a gentle daily reminder to stay consistent. Designed for every hair type — straight, wavy, curly, coily, dry, oily, colored or damaged. Lifestyle and educational use only, not medical advice. Works in 15+ languages.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -1132,7 +1118,6 @@
     "name": "Kpop Dance Lessons & Practice",
     "subtitle": "Learn K-pop inspired dance step by step",
     "desc_short": "Learn K-pop inspired dance at home, at your own pace, with no experience needed. Short beginner lessons break every move into simple 8-counts, plus easy routines, daily dance challenges, a built-in practice timer with a metronome, a 7-day starter path, favorites, progress tracking and optional daily reminders. All choreography is original and educational — no official songs, music videos, artist or group names, or copyrighted routines. Works offline in 29 languages.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -1203,7 +1188,6 @@
     "name": "Resistor Color Code & SMD Calc",
     "subtitle": "Read any resistor in seconds",
     "desc_short": "Tap the bands you see and get the resistance, tolerance and range instantly — or type a value and get every valid colour code back. SMD codes, EIA-96, E-series, Ohm’s law, LED and divider calculators, a practice quiz and a colorblind mode. Built on IEC 60062:2016 and works fully offline.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -1251,7 +1235,6 @@
     "name": "Ohm's Law Calculator & Tools",
     "subtitle": "Electrical calculations, offline",
     "desc_short": "Ohm's law, power and kVA, resistor colour codes, series and parallel, voltage drop, wire size, LED resistors, energy cost and unit conversion. Everything recalculates as you type, works fully offline, and speaks 30+ languages.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -1306,7 +1289,6 @@
     "name": "Gravel & Material Calculator",
     "subtitle": "Volume, weight & cost of materials",
     "desc_short": "Estimate the volume, weight and cost of gravel, crushed stone, sand, soil, road base and other landscaping or construction materials. Works fully offline, metric or imperial.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -1351,7 +1333,6 @@
     "name": "Landscaping Calculator: Mulch",
     "subtitle": "Mulch, soil, gravel and paver estimates",
     "desc_short": "Turn your measurements into the exact material order: mulch, topsoil, gravel, sand, pavers, sod, seed and concrete, in cubic yards, cubic metres, tons, bags and money. Every result shows the formula behind it, densities are editable, projects and PDF estimates are free. Works fully offline in 45 languages.",
-    "status": "Coming soon",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -1397,7 +1378,6 @@
     "name": "Concrete Calculator & Mix",
     "subtitle": "Volume, bags, mix ratio & cost",
     "desc_short": "Estimate concrete volume, ready-mix bags, a waste-adjusted order quantity and cost for slabs, footings, columns and more. Works fully offline, metric or imperial.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -1442,7 +1422,6 @@
     "name": "Block & Brick Calculator",
     "subtitle": "Blocks, bricks, mortar, concrete & cost",
     "desc_short": "Estimate blocks, bricks, mortar, concrete, gravel and finishing materials with a waste factor and cost — 16 calculators in one. Works fully offline, metric or imperial.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -1488,7 +1467,6 @@
     "name": "Markdown Reader & Editor",
     "subtitle": "Write & preview Markdown, on-device",
     "desc_short": "Create, read, and edit Markdown files on Android with a live preview. All files stay on your device — no account, no cloud.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -1554,7 +1532,6 @@
     "name": "Lux Meter: Light Meter, PPFD",
     "subtitle": "Lux and light meter for plants, rooms and photography",
     "desc_short": "Measure light in lux with your phone's ambient light sensor — for indoor plants, rooms, workspaces and photography. Read live lux with min, average and max values, switch to foot-candles, and create plant profiles with a target range that tells you instantly whether a spot is too dim, good or too bright. Grow-light mode estimates PPFD (PAR) and DLI from your light source and daily light hours. Photography mode converts light into EV and suggested exposure settings. Save readings, log a session over time and export to CSV. An optional camera mode estimates colour temperature. Works offline, no account required, available in 50+ languages. An estimation tool, not a certified laboratory instrument.",
-    "status": "Released",
     "platform": "Android",
     "privacy": {
       "title": "Privacy Policy",
@@ -1621,5 +1598,8 @@
       "contact_title": "Contact Information",
       "contact_text": "Questions about the terms of this Agreement can be sent to:"
     }
+  },
+  "app_status": {
+    "released": "Released"
   }
 }

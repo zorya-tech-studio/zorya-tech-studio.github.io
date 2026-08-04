@@ -54,7 +54,7 @@ const featuredApps = computed(() => apps.slice(0, HOMEPAGE_APPS_LIMIT))
           />
           <div class="app-card__meta">
             <h3 class="app-card__title">{{ t(app.nameKey) }}</h3>
-            <span class="badge-released">{{ t(app.statusKey) }}</span>
+            <span class="badge-released">{{ t(`app_status.${app.status}`) }}</span>
           </div>
         </div>
         <p class="app-card__desc">{{ t(app.descKey) }}</p>
