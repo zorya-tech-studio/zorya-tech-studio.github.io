@@ -51,6 +51,16 @@
       "esoteric": "Esoteric"
     }
   },
+  "opensource": {
+    "eyebrow": "Open Source",
+    "title": "Open-source projects",
+    "lead": "Tools we built for our own needs and released publicly. Free and open-source — use them, fork them, send changes.",
+    "link": "View on GitHub",
+    "items": {
+      "claude_meter": "A Claude subscription usage monitor for Windows and macOS. Session limits, weekly quotas and per-model usage — right in the system tray, no browser needed.",
+      "tg_harvest": "Exports messages from Telegram channels, groups and chats to JSON, CSV, Excel or HTML. Built on MTProto, with both a web UI and a CLI."
+    }
+  },
   "services": {
     "meta_title": "App & Web Development Services",
     "meta_description": "Custom mobile apps, websites, desktop utilities and small Rust programs from Zorya Tech Studio.",

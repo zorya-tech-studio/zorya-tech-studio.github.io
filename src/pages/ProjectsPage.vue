@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 import { apps } from '../data/apps.js'
+import OpenSourceSection from '../components/OpenSourceSection.vue'
 
 const { t } = useI18n()
 const route = useRoute()
@@ -93,6 +94,8 @@ const filteredApps = computed(() =>
           </div>
         </router-link>
       </div>
+
+      <OpenSourceSection />
     </div>
   </section>
 </template>
