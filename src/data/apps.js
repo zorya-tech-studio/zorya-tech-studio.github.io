@@ -5,6 +5,19 @@
  */
 export const apps = [
   {
+    slug: 'minesweeper',
+    nameKey: 'minesweeper.name',
+    subtitleKey: 'minesweeper.subtitle',
+    descKey: 'minesweeper.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'games',
+    tags: ['Android', 'Puzzle', 'No Guess'],
+    icon: '/apps/minesweeper/icon.png',
+    privacyRoute: (locale) => `/${locale}/minesweeper/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/minesweeper/offer`,
+  },
+  {
     slug: 'lux-meter',
     nameKey: 'luxMeter.name',
     subtitleKey: 'luxMeter.subtitle',
@@ -323,19 +336,6 @@ export const apps = [
     tags: ['Android', 'Puzzle', 'OCR'],
     icon: '/apps/sudokulens/icon.png',
     privacyRoute: (locale) => `/${locale}/sudokulens/privacy-policy`,
-  },
-  {
-    slug: 'minesweeper',
-    nameKey: 'minesweeper.name',
-    subtitleKey: 'minesweeper.subtitle',
-    descKey: 'minesweeper.desc_short',
-    platform: 'Android',
-    status: 'released',
-    category: 'games',
-    tags: ['Android', 'Puzzle', 'No Guess'],
-    icon: '/apps/minesweeper/icon.png',
-    privacyRoute: (locale) => `/${locale}/minesweeper/privacy-policy`,
-    offerRoute: (locale) => `/${locale}/minesweeper/offer`,
   },
   {
     slug: 'molemap',
