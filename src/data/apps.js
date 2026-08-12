@@ -350,4 +350,17 @@ export const apps = [
     privacyRoute: (locale) => `/${locale}/molemap/privacy-policy`,
     offerRoute: (locale) => `/${locale}/molemap/terms`,
   },
+  {
+    slug: 'health-calculator',
+    nameKey: 'healthCalculator.name',
+    subtitleKey: 'healthCalculator.subtitle',
+    descKey: 'healthCalculator.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'calculators',
+    tags: ['Android', 'BMI', 'Offline'],
+    icon: '/apps/health-calculator/icon.png',
+    privacyRoute: (locale) => `/${locale}/health-calculator/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/health-calculator/terms-of-use`,
+  },
 ]

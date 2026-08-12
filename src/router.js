@@ -71,6 +71,24 @@ const routes = [
     meta: { titleKey: 'molemap.disclaimer.title', app: 'molemap' },
   },
   {
+    path: '/:locale/health-calculator/privacy-policy',
+    name: 'health-calculator-privacy',
+    component: () => import('./pages/apps/health-calculator/HealthCalculatorPrivacyPage.vue'),
+    meta: { titleKey: 'healthCalculator.privacy.title', app: 'health-calculator' },
+  },
+  {
+    path: '/:locale/health-calculator/terms-of-use',
+    name: 'health-calculator-terms',
+    component: () => import('./pages/apps/health-calculator/HealthCalculatorTermsPage.vue'),
+    meta: { titleKey: 'healthCalculator.terms.title', app: 'health-calculator' },
+  },
+  {
+    path: '/:locale/health-calculator/disclaimer',
+    name: 'health-calculator-disclaimer',
+    component: () => import('./pages/apps/health-calculator/HealthCalculatorDisclaimerPage.vue'),
+    meta: { titleKey: 'healthCalculator.disclaimer.title', app: 'health-calculator' },
+  },
+  {
     path: '/:locale/markdown-reader/privacy-policy',
     name: 'markdown-reader-privacy',
     component: () => import('./pages/apps/markdown-reader/MarkdownReaderPrivacyPage.vue'),
@@ -453,6 +471,18 @@ const routes = [
   {
     path: '/cat-training-behavior/offer',
     redirect: () => `/${i18n.global.locale.value}/cat-training-behavior/offer`,
+  },
+  {
+    path: '/health-calculator/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/health-calculator/privacy-policy`,
+  },
+  {
+    path: '/health-calculator/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/health-calculator/terms-of-use`,
+  },
+  {
+    path: '/health-calculator/disclaimer',
+    redirect: () => `/${i18n.global.locale.value}/health-calculator/disclaimer`,
   },
   {
     path: '/human-tetris/privacy-policy',
