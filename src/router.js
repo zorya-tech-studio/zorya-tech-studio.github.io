@@ -191,6 +191,18 @@ const routes = [
     meta: { titleKey: 'chromatic.offer.title', app: 'chromatic' },
   },
   {
+    path: '/:locale/minesweeper/privacy-policy',
+    name: 'minesweeper-privacy',
+    component: () => import('./pages/apps/minesweeper/MinesweeperPrivacyPage.vue'),
+    meta: { titleKey: 'minesweeper.privacy.title', app: 'minesweeper' },
+  },
+  {
+    path: '/:locale/minesweeper/offer',
+    name: 'minesweeper-offer',
+    component: () => import('./pages/apps/minesweeper/MinesweeperOfferPage.vue'),
+    meta: { titleKey: 'minesweeper.offer.title', app: 'minesweeper' },
+  },
+  {
     path: '/:locale/zodiac-compatibility/privacy-policy',
     name: 'zodiac-compatibility-privacy',
     component: () => import('./pages/apps/zodiac-compatibility/ZodiacCompatibilityPrivacyPage.vue'),
@@ -525,6 +537,14 @@ const routes = [
   {
     path: '/chromatic/offer',
     redirect: () => `/${i18n.global.locale.value}/chromatic/offer`,
+  },
+  {
+    path: '/minesweeper/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/minesweeper/privacy-policy`,
+  },
+  {
+    path: '/minesweeper/offer',
+    redirect: () => `/${i18n.global.locale.value}/minesweeper/offer`,
   },
   {
     path: '/zodiac-compatibility/privacy-policy',
