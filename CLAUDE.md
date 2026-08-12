@@ -85,6 +85,14 @@ Every app on the site is presented as **released**, in every locale, even if it 
 - A new entry in `src/data/apps.js` sets `status: 'released'` and **nothing else** — there is no `statusKey` field any more, so there is no per-app string to get out of sync. Do not reintroduce one.
 - uk: `Випущено`. en: `Released`. `app_status` deliberately holds that one key and nothing else. If a different status ever becomes necessary, add it once for both locales and apply it to the whole set — never to a single app.
 
+## New apps go FIRST in the registry (IMPORTANT)
+
+`src/data/apps.js` is rendered in array order, and the homepage renders only the first `HOMEPAGE_APPS_LIMIT` entries (`apps.slice(0, HOMEPAGE_APPS_LIMIT)` in `AppsSection.vue`). There is no sort by date, no `featured` flag, no `order` field — position in the array **is** the ordering.
+
+- A newly released app is added at the **top** of the array, above every existing entry. Never append it at the bottom: appended, it is buried at the end of the Projects page and never appears on the homepage at all, which is the opposite of what a fresh release needs.
+- The newest app therefore leads both the homepage grid and the Projects list, and the array reads newest → oldest.
+- Do not introduce a sort field to express this. The array order is the single mechanism; adding a second one guarantees the two drift apart.
+
 ## App categories
 
 `category` in `src/data/apps.js` drives the filter tabs on the Projects page. The tab list is built dynamically from the categories actually present, so adding a category means three things and no more:

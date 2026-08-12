@@ -2,8 +2,26 @@
  * Centralized app registry.
  * Add new apps here — they will automatically appear on the Projects page,
  * the Apps section on the homepage, and in the router/sitemap.
+ *
+ * ORDER MATTERS: this array is rendered as-is, and the homepage shows only the
+ * first HOMEPAGE_APPS_LIMIT entries (AppsSection.vue). A newly released app
+ * goes at the TOP of this array, never appended at the bottom — appended, it
+ * would never reach the homepage at all.
  */
 export const apps = [
+  {
+    slug: 'health-calculator',
+    nameKey: 'healthCalculator.name',
+    subtitleKey: 'healthCalculator.subtitle',
+    descKey: 'healthCalculator.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'calculators',
+    tags: ['Android', 'BMI', 'Offline'],
+    icon: '/apps/health-calculator/icon.png',
+    privacyRoute: (locale) => `/${locale}/health-calculator/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/health-calculator/terms-of-use`,
+  },
   {
     slug: 'minesweeper',
     nameKey: 'minesweeper.name',
@@ -349,18 +367,5 @@ export const apps = [
     icon: '/apps/molemap/icon.png',
     privacyRoute: (locale) => `/${locale}/molemap/privacy-policy`,
     offerRoute: (locale) => `/${locale}/molemap/terms`,
-  },
-  {
-    slug: 'health-calculator',
-    nameKey: 'healthCalculator.name',
-    subtitleKey: 'healthCalculator.subtitle',
-    descKey: 'healthCalculator.desc_short',
-    platform: 'Android',
-    status: 'released',
-    category: 'calculators',
-    tags: ['Android', 'BMI', 'Offline'],
-    icon: '/apps/health-calculator/icon.png',
-    privacyRoute: (locale) => `/${locale}/health-calculator/privacy-policy`,
-    offerRoute: (locale) => `/${locale}/health-calculator/terms-of-use`,
   },
 ]
