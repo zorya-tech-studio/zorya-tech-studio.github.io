@@ -101,6 +101,18 @@ const routes = [
     meta: { titleKey: 'markdownReader.terms.title', app: 'markdown-reader' },
   },
   {
+    path: '/:locale/runes/privacy-policy',
+    name: 'runes-privacy',
+    component: () => import('./pages/apps/runes/RunesPrivacyPage.vue'),
+    meta: { titleKey: 'runes.privacy.title', app: 'runes' },
+  },
+  {
+    path: '/:locale/runes/offer',
+    name: 'runes-offer',
+    component: () => import('./pages/apps/runes/RunesOfferPage.vue'),
+    meta: { titleKey: 'runes.offer.title', app: 'runes' },
+  },
+  {
     path: '/:locale/taro/privacy-policy',
     name: 'taro-privacy',
     component: () => import('./pages/apps/taro/TaroPrivacyPage.vue'),

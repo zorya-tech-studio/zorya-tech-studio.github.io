@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'runes',
+    nameKey: 'runes.name',
+    subtitleKey: 'runes.subtitle',
+    descKey: 'runes.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'esoteric',
+    tags: ['Android', 'Elder Futhark', 'Offline'],
+    icon: '/apps/runes/icon.png',
+    privacyRoute: (locale) => `/${locale}/runes/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/runes/offer`,
+  },
+  {
     slug: 'health-calculator',
     nameKey: 'healthCalculator.name',
     subtitleKey: 'healthCalculator.subtitle',
