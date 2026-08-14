@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'truck-fault-codes',
+    nameKey: 'truckFaultCodes.name',
+    subtitleKey: 'truckFaultCodes.subtitle',
+    descKey: 'truckFaultCodes.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'reference',
+    tags: ['Android', 'J1939', 'Offline'],
+    icon: '/apps/truck-fault-codes/icon.png',
+    privacyRoute: (locale) => `/${locale}/truck-fault-codes/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/truck-fault-codes/terms-of-use`,
+  },
+  {
     slug: 'runes',
     nameKey: 'runes.name',
     subtitleKey: 'runes.subtitle',
