@@ -29,6 +29,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/parrot-training/privacy-policy',
+    name: 'parrot-training-privacy',
+    component: () => import('./pages/apps/parrot-training/ParrotTrainingPrivacyPage.vue'),
+    meta: { titleKey: 'parrotTraining.privacy.title', app: 'parrot-training' },
+  },
+  {
+    path: '/:locale/parrot-training/terms-of-use',
+    name: 'parrot-training-terms',
+    component: () => import('./pages/apps/parrot-training/ParrotTrainingTermsPage.vue'),
+    meta: { titleKey: 'parrotTraining.terms.title', app: 'parrot-training' },
+  },
+  {
     path: '/:locale/lux-meter/privacy-policy',
     name: 'lux-meter-privacy',
     component: () => import('./pages/apps/lux-meter/LuxMeterPrivacyPage.vue'),
@@ -559,6 +571,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/parrot-training/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/parrot-training/privacy-policy`,
+  },
+  {
+    path: '/parrot-training/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/parrot-training/terms-of-use`,
+  },
   {
     path: '/wire-size-calc/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/wire-size-calc/privacy-policy`,

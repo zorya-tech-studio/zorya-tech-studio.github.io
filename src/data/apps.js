@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'parrot-training',
+    nameKey: 'parrotTraining.name',
+    subtitleKey: 'parrotTraining.subtitle',
+    descKey: 'parrotTraining.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'pets',
+    tags: ['Android', 'Training', 'Offline'],
+    icon: '/apps/parrot-training/icon.png',
+    privacyRoute: (locale) => `/${locale}/parrot-training/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/parrot-training/terms-of-use`,
+  },
+  {
     slug: 'wire-size-calc',
     nameKey: 'wireSizeCalc.name',
     subtitleKey: 'wireSizeCalc.subtitle',
