@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'tire-size-calculator',
+    nameKey: 'tireSizeDecoder.name',
+    subtitleKey: 'tireSizeDecoder.subtitle',
+    descKey: 'tireSizeDecoder.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'reference',
+    tags: ['Android', 'DOT', 'Offline'],
+    icon: '/apps/tire-size-calculator/icon.png',
+    privacyRoute: (locale) => `/${locale}/tire-size-calculator/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/tire-size-calculator/terms-of-use`,
+  },
+  {
     slug: 'truck-fault-codes',
     nameKey: 'truckFaultCodes.name',
     subtitleKey: 'truckFaultCodes.subtitle',

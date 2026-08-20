@@ -101,6 +101,24 @@ const routes = [
     meta: { titleKey: 'markdownReader.terms.title', app: 'markdown-reader' },
   },
   {
+    path: '/:locale/tire-size-calculator/privacy-policy',
+    name: 'tire-size-calculator-privacy',
+    component: () => import('./pages/apps/tire-size-calculator/TireSizeCalculatorPrivacyPage.vue'),
+    meta: {
+      titleKey: 'tireSizeDecoder.privacy.title',
+      app: 'tire-size-calculator',
+    },
+  },
+  {
+    path: '/:locale/tire-size-calculator/terms-of-use',
+    name: 'tire-size-calculator-terms',
+    component: () => import('./pages/apps/tire-size-calculator/TireSizeCalculatorTermsPage.vue'),
+    meta: {
+      titleKey: 'tireSizeDecoder.terms.title',
+      app: 'tire-size-calculator',
+    },
+  },
+  {
     path: '/:locale/truck-fault-codes/privacy-policy',
     name: 'truck-fault-codes-privacy',
     component: () => import('./pages/apps/truck-fault-codes/TruckFaultCodesPrivacyPage.vue'),
@@ -523,6 +541,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/tire-size-calculator/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/tire-size-calculator/privacy-policy`,
+  },
+  {
+    path: '/tire-size-calculator/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/tire-size-calculator/terms-of-use`,
+  },
   {
     path: '/truck-fault-codes/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/truck-fault-codes/privacy-policy`,
