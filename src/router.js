@@ -101,6 +101,24 @@ const routes = [
     meta: { titleKey: 'markdownReader.terms.title', app: 'markdown-reader' },
   },
   {
+    path: '/:locale/wire-size-calc/privacy-policy',
+    name: 'wire-size-calc-privacy',
+    component: () => import('./pages/apps/wire-size-calc/WireSizeCalcPrivacyPage.vue'),
+    meta: {
+      titleKey: 'wireSizeCalc.privacy.title',
+      app: 'wire-size-calc',
+    },
+  },
+  {
+    path: '/:locale/wire-size-calc/terms-of-use',
+    name: 'wire-size-calc-terms',
+    component: () => import('./pages/apps/wire-size-calc/WireSizeCalcTermsPage.vue'),
+    meta: {
+      titleKey: 'wireSizeCalc.terms.title',
+      app: 'wire-size-calc',
+    },
+  },
+  {
     path: '/:locale/tire-size-calculator/privacy-policy',
     name: 'tire-size-calculator-privacy',
     component: () => import('./pages/apps/tire-size-calculator/TireSizeCalculatorPrivacyPage.vue'),
@@ -541,6 +559,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/wire-size-calc/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/wire-size-calc/privacy-policy`,
+  },
+  {
+    path: '/wire-size-calc/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/wire-size-calc/terms-of-use`,
+  },
   {
     path: '/tire-size-calculator/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/tire-size-calculator/privacy-policy`,

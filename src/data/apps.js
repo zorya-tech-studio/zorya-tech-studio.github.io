@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'wire-size-calc',
+    nameKey: 'wireSizeCalc.name',
+    subtitleKey: 'wireSizeCalc.subtitle',
+    descKey: 'wireSizeCalc.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'calculators',
+    tags: ['Android', 'Voltage Drop', 'Offline'],
+    icon: '/apps/wire-size-calc/icon.png',
+    privacyRoute: (locale) => `/${locale}/wire-size-calc/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/wire-size-calc/terms-of-use`,
+  },
+  {
     slug: 'tire-size-calculator',
     nameKey: 'tireSizeDecoder.name',
     subtitleKey: 'tireSizeDecoder.subtitle',
