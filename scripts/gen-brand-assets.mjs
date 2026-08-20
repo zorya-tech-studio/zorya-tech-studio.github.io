@@ -5,6 +5,7 @@
 //  • експортує оптимізовані logo.png / logo.webp (прозорі) та набір favicon
 // Запуск: node scripts/gen-brand-assets.mjs
 import sharp from 'sharp'
+import fs from 'node:fs/promises'
 
 const SRC = 'public/brand/logo.jpeg'
 const GOLD = [242, 182, 90] // --accent, бренд-золото
@@ -76,6 +77,39 @@ for (const size of [16, 32, 48, 180]) {
     .png({ compressionLevel: 9, palette: true })
     .toFile(`public/favicon-${size}.png`)
 }
+
+// 5b. favicon.ico — root fallback. Browsers, crawlers and bookmark UIs probe
+//     /favicon.ico directly, ignoring the <link> tags; without this file they
+//     keep showing whatever icon they cached earlier. ICO entries here are
+//     PNG-encoded, which every current browser reads.
+const icoSizes = [16, 32, 48]
+const icoPngs = await Promise.all(
+  icoSizes.map((size) =>
+    fresh()
+      .extract(iconR)
+      .resize(size, size, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
+      .png({ compressionLevel: 9 })
+      .toBuffer(),
+  ),
+)
+const icoHeader = Buffer.alloc(6 + 16 * icoSizes.length)
+icoHeader.writeUInt16LE(0, 0) // reserved
+icoHeader.writeUInt16LE(1, 2) // type: icon
+icoHeader.writeUInt16LE(icoSizes.length, 4)
+let icoOffset = icoHeader.length
+icoSizes.forEach((size, n) => {
+  const e = 6 + 16 * n
+  icoHeader.writeUInt8(size, e) // width (0 would mean 256)
+  icoHeader.writeUInt8(size, e + 1) // height
+  icoHeader.writeUInt8(0, e + 2) // palette colours
+  icoHeader.writeUInt8(0, e + 3) // reserved
+  icoHeader.writeUInt16LE(1, e + 4) // colour planes
+  icoHeader.writeUInt16LE(32, e + 6) // bits per pixel
+  icoHeader.writeUInt32LE(icoPngs[n].length, e + 8)
+  icoHeader.writeUInt32LE(icoOffset, e + 12)
+  icoOffset += icoPngs[n].length
+})
+await fs.writeFile('public/favicon.ico', Buffer.concat([icoHeader, ...icoPngs]))
 
 // apple-touch-icon: iOS ігнорує прозорість → кладемо зорю на суцільний навічний фон.
 const inner = 150
