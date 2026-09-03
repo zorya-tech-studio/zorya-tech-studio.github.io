@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'antysurzhyk',
+    nameKey: 'antysurzhyk.name',
+    subtitleKey: 'antysurzhyk.subtitle',
+    descKey: 'antysurzhyk.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'quiz',
+    tags: ['Android', 'Quiz', 'Ukrainian'],
+    icon: '/apps/antysurzhyk/icon.png',
+    privacyRoute: (locale) => `/${locale}/antysurzhyk/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/antysurzhyk/terms-of-use`,
+  },
+  {
     slug: 'parrot-training',
     nameKey: 'parrotTraining.name',
     subtitleKey: 'parrotTraining.subtitle',

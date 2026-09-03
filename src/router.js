@@ -29,6 +29,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/antysurzhyk/privacy-policy',
+    name: 'antysurzhyk-privacy',
+    component: () => import('./pages/apps/antysurzhyk/AntysurzhykPrivacyPage.vue'),
+    meta: { titleKey: 'antysurzhyk.privacy.title', app: 'antysurzhyk' },
+  },
+  {
+    path: '/:locale/antysurzhyk/terms-of-use',
+    name: 'antysurzhyk-terms',
+    component: () => import('./pages/apps/antysurzhyk/AntysurzhykTermsPage.vue'),
+    meta: { titleKey: 'antysurzhyk.terms.title', app: 'antysurzhyk' },
+  },
+  {
     path: '/:locale/parrot-training/privacy-policy',
     name: 'parrot-training-privacy',
     component: () => import('./pages/apps/parrot-training/ParrotTrainingPrivacyPage.vue'),
@@ -571,6 +583,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/antysurzhyk/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/antysurzhyk/privacy-policy`,
+  },
+  {
+    path: '/antysurzhyk/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/antysurzhyk/terms-of-use`,
+  },
   {
     path: '/parrot-training/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/parrot-training/privacy-policy`,
