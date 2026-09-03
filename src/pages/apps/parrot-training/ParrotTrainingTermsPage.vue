@@ -1,4 +1,4 @@
-﻿<script setup>
+<script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
@@ -34,7 +34,7 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
       </div>
     </div>
 
-    <p class="app-label">{{ t('parrotTraining.name') }} â€” {{ t('parrotTraining.subtitle') }}</p>
+    <p class="app-label">{{ t('parrotTraining.name') }} — {{ t('parrotTraining.subtitle') }}</p>
     <p class="updated-date">{{ t('parrotTraining.terms.updated') }}: 2026-08-20</p>
 
     <p class="intro-text">{{ t('parrotTraining.terms.intro') }}</p>
