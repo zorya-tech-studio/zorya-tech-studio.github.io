@@ -29,6 +29,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/angel-numbers/privacy-policy',
+    name: 'angel-numbers-privacy',
+    component: () => import('./pages/apps/angel-numbers/AngelNumbersPrivacyPage.vue'),
+    meta: { titleKey: 'angelNumbers.privacy.title', app: 'angel-numbers' },
+  },
+  {
+    path: '/:locale/angel-numbers/terms-of-use',
+    name: 'angel-numbers-terms',
+    component: () => import('./pages/apps/angel-numbers/AngelNumbersTermsPage.vue'),
+    meta: { titleKey: 'angelNumbers.terms.title', app: 'angel-numbers' },
+  },
+  {
     path: '/:locale/antysurzhyk/privacy-policy',
     name: 'antysurzhyk-privacy',
     component: () => import('./pages/apps/antysurzhyk/AntysurzhykPrivacyPage.vue'),
@@ -583,6 +595,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/angel-numbers/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/angel-numbers/privacy-policy`,
+  },
+  {
+    path: '/angel-numbers/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/angel-numbers/terms-of-use`,
+  },
   {
     path: '/antysurzhyk/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/antysurzhyk/privacy-policy`,

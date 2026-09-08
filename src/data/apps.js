@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'angel-numbers',
+    nameKey: 'angelNumbers.name',
+    subtitleKey: 'angelNumbers.subtitle',
+    descKey: 'angelNumbers.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'esoteric',
+    tags: ['Android', 'Numerology', 'Offline'],
+    icon: '/apps/angel-numbers/icon.png',
+    privacyRoute: (locale) => `/${locale}/angel-numbers/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/angel-numbers/terms-of-use`,
+  },
+  {
     slug: 'antysurzhyk',
     nameKey: 'antysurzhyk.name',
     subtitleKey: 'antysurzhyk.subtitle',
