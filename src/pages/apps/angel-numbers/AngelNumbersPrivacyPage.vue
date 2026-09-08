@@ -67,6 +67,7 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
         <li>{{ t('angelNumbers.privacy.permissions_ad_id') }}</li>
         <li>{{ t('angelNumbers.privacy.permissions_notifications') }}</li>
       </ul>
+      <p class="section-text">{{ t('angelNumbers.privacy.permissions_note') }}</p>
     </div>
 
     <div class="policy-section">
