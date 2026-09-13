@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'slavic-mythology',
+    nameKey: 'slavicMythology.name',
+    subtitleKey: 'slavicMythology.subtitle',
+    descKey: 'slavicMythology.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'reference',
+    tags: ['Android', 'Mythology', 'Offline'],
+    icon: '/apps/slavic-mythology/icon.png',
+    privacyRoute: (locale) => `/${locale}/slavic-mythology/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/slavic-mythology/terms-of-use`,
+  },
+  {
     slug: 'angel-numbers',
     nameKey: 'angelNumbers.name',
     subtitleKey: 'angelNumbers.subtitle',

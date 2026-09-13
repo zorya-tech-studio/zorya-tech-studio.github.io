@@ -29,6 +29,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/slavic-mythology/privacy-policy',
+    name: 'slavic-mythology-privacy',
+    component: () => import('./pages/apps/slavic-mythology/SlavicMythologyPrivacyPage.vue'),
+    meta: { titleKey: 'slavicMythology.privacy.title', app: 'slavic-mythology' },
+  },
+  {
+    path: '/:locale/slavic-mythology/terms-of-use',
+    name: 'slavic-mythology-terms',
+    component: () => import('./pages/apps/slavic-mythology/SlavicMythologyTermsPage.vue'),
+    meta: { titleKey: 'slavicMythology.terms.title', app: 'slavic-mythology' },
+  },
+  {
     path: '/:locale/angel-numbers/privacy-policy',
     name: 'angel-numbers-privacy',
     component: () => import('./pages/apps/angel-numbers/AngelNumbersPrivacyPage.vue'),
@@ -595,6 +607,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/slavic-mythology/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/slavic-mythology/privacy-policy`,
+  },
+  {
+    path: '/slavic-mythology/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/slavic-mythology/terms-of-use`,
+  },
   {
     path: '/angel-numbers/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/angel-numbers/privacy-policy`,
