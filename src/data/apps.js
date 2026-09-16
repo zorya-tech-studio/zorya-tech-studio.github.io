@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'hvac-calculator',
+    nameKey: 'hvacCalculator.name',
+    subtitleKey: 'hvacCalculator.subtitle',
+    descKey: 'hvacCalculator.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'calculators',
+    tags: ['Android', 'HVAC', 'Offline'],
+    icon: '/apps/hvac-calculator/icon.png',
+    privacyRoute: (locale) => `/${locale}/hvac-calculator/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/hvac-calculator/terms-of-use`,
+  },
+  {
     slug: 'slavic-mythology',
     nameKey: 'slavicMythology.name',
     subtitleKey: 'slavicMythology.subtitle',

@@ -29,6 +29,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/hvac-calculator/privacy-policy',
+    name: 'hvac-calculator-privacy',
+    component: () => import('./pages/apps/hvac-calculator/HvacCalculatorPrivacyPage.vue'),
+    meta: { titleKey: 'hvacCalculator.privacy.title', app: 'hvac-calculator' },
+  },
+  {
+    path: '/:locale/hvac-calculator/terms-of-use',
+    name: 'hvac-calculator-terms',
+    component: () => import('./pages/apps/hvac-calculator/HvacCalculatorTermsPage.vue'),
+    meta: { titleKey: 'hvacCalculator.terms.title', app: 'hvac-calculator' },
+  },
+  {
     path: '/:locale/slavic-mythology/privacy-policy',
     name: 'slavic-mythology-privacy',
     component: () => import('./pages/apps/slavic-mythology/SlavicMythologyPrivacyPage.vue'),
@@ -607,6 +619,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/hvac-calculator/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/hvac-calculator/privacy-policy`,
+  },
+  {
+    path: '/hvac-calculator/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/hvac-calculator/terms-of-use`,
+  },
   {
     path: '/slavic-mythology/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/slavic-mythology/privacy-policy`,
