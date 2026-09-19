@@ -29,6 +29,19 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/financial-calculators/privacy-policy',
+    name: 'financial-calculators-privacy',
+    component: () =>
+      import('./pages/apps/financial-calculators/FinancialCalculatorsPrivacyPage.vue'),
+    meta: { titleKey: 'financialCalculators.privacy.title', app: 'financial-calculators' },
+  },
+  {
+    path: '/:locale/financial-calculators/terms-of-use',
+    name: 'financial-calculators-terms',
+    component: () => import('./pages/apps/financial-calculators/FinancialCalculatorsTermsPage.vue'),
+    meta: { titleKey: 'financialCalculators.terms.title', app: 'financial-calculators' },
+  },
+  {
     path: '/:locale/hvac-calculator/privacy-policy',
     name: 'hvac-calculator-privacy',
     component: () => import('./pages/apps/hvac-calculator/HvacCalculatorPrivacyPage.vue'),
@@ -619,6 +632,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/financial-calculators/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/financial-calculators/privacy-policy`,
+  },
+  {
+    path: '/financial-calculators/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/financial-calculators/terms-of-use`,
+  },
   {
     path: '/hvac-calculator/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/hvac-calculator/privacy-policy`,

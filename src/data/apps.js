@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'financial-calculators',
+    nameKey: 'financialCalculators.name',
+    subtitleKey: 'financialCalculators.subtitle',
+    descKey: 'financialCalculators.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'calculators',
+    tags: ['Android', 'Finance', 'Loans'],
+    icon: '/apps/financial-calculators/icon.png',
+    privacyRoute: (locale) => `/${locale}/financial-calculators/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/financial-calculators/terms-of-use`,
+  },
+  {
     slug: 'hvac-calculator',
     nameKey: 'hvacCalculator.name',
     subtitleKey: 'hvacCalculator.subtitle',
