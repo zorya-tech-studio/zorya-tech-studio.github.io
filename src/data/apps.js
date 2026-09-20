@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'five-tibetan-rites',
+    nameKey: 'fiveTibetanRites.name',
+    subtitleKey: 'fiveTibetanRites.subtitle',
+    descKey: 'fiveTibetanRites.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'lifestyle',
+    tags: ['Android', 'Movement', 'Offline'],
+    icon: '/apps/five-tibetan-rites/icon.png',
+    privacyRoute: (locale) => `/${locale}/five-tibetan-rites/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/five-tibetan-rites/terms-of-use`,
+  },
+  {
     slug: 'financial-calculators',
     nameKey: 'financialCalculators.name',
     subtitleKey: 'financialCalculators.subtitle',

@@ -29,6 +29,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/five-tibetan-rites/privacy-policy',
+    name: 'five-tibetan-rites-privacy',
+    component: () => import('./pages/apps/five-tibetan-rites/FiveTibetanRitesPrivacyPage.vue'),
+    meta: { titleKey: 'fiveTibetanRites.privacy.title', app: 'five-tibetan-rites' },
+  },
+  {
+    path: '/:locale/five-tibetan-rites/terms-of-use',
+    name: 'five-tibetan-rites-terms',
+    component: () => import('./pages/apps/five-tibetan-rites/FiveTibetanRitesTermsPage.vue'),
+    meta: { titleKey: 'fiveTibetanRites.terms.title', app: 'five-tibetan-rites' },
+  },
+  {
     path: '/:locale/financial-calculators/privacy-policy',
     name: 'financial-calculators-privacy',
     component: () =>
@@ -632,6 +644,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/five-tibetan-rites/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/five-tibetan-rites/privacy-policy`,
+  },
+  {
+    path: '/five-tibetan-rites/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/five-tibetan-rites/terms-of-use`,
+  },
   {
     path: '/financial-calculators/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/financial-calculators/privacy-policy`,
