@@ -16,7 +16,7 @@ export const apps = [
     descKey: 'morseCode.desc_short',
     platform: 'Android',
     status: 'released',
-    category: 'quiz',
+    category: 'tools',
     tags: ['Android', 'Morse', 'CW'],
     icon: '/apps/morse-code/icon.png',
     privacyRoute: (locale) => `/${locale}/morse-code/privacy-policy`,
