@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'morse-code',
+    nameKey: 'morseCode.name',
+    subtitleKey: 'morseCode.subtitle',
+    descKey: 'morseCode.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'quiz',
+    tags: ['Android', 'Morse', 'CW'],
+    icon: '/apps/morse-code/icon.png',
+    privacyRoute: (locale) => `/${locale}/morse-code/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/morse-code/terms-of-use`,
+  },
+  {
     slug: 'pool-chemistry',
     nameKey: 'poolChemistry.name',
     subtitleKey: 'poolChemistry.subtitle',

@@ -29,6 +29,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/morse-code/privacy-policy',
+    name: 'morse-code-privacy',
+    component: () => import('./pages/apps/morse-code/MorseCodePrivacyPage.vue'),
+    meta: { titleKey: 'morseCode.privacy.title', app: 'morse-code' },
+  },
+  {
+    path: '/:locale/morse-code/terms-of-use',
+    name: 'morse-code-terms',
+    component: () => import('./pages/apps/morse-code/MorseCodeTermsPage.vue'),
+    meta: { titleKey: 'morseCode.terms.title', app: 'morse-code' },
+  },
+  {
     path: '/:locale/pool-chemistry/privacy-policy',
     name: 'pool-chemistry-privacy',
     component: () => import('./pages/apps/pool-chemistry/PoolChemistryPrivacyPage.vue'),
@@ -656,6 +668,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/morse-code/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/morse-code/privacy-policy`,
+  },
+  {
+    path: '/morse-code/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/morse-code/terms-of-use`,
+  },
   {
     path: '/pool-chemistry/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/pool-chemistry/privacy-policy`,
