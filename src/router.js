@@ -29,6 +29,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/pool-chemistry/privacy-policy',
+    name: 'pool-chemistry-privacy',
+    component: () => import('./pages/apps/pool-chemistry/PoolChemistryPrivacyPage.vue'),
+    meta: { titleKey: 'poolChemistry.privacy.title', app: 'pool-chemistry' },
+  },
+  {
+    path: '/:locale/pool-chemistry/terms-of-use',
+    name: 'pool-chemistry-terms',
+    component: () => import('./pages/apps/pool-chemistry/PoolChemistryTermsPage.vue'),
+    meta: { titleKey: 'poolChemistry.terms.title', app: 'pool-chemistry' },
+  },
+  {
     path: '/:locale/five-tibetan-rites/privacy-policy',
     name: 'five-tibetan-rites-privacy',
     component: () => import('./pages/apps/five-tibetan-rites/FiveTibetanRitesPrivacyPage.vue'),
@@ -644,6 +656,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/pool-chemistry/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/pool-chemistry/privacy-policy`,
+  },
+  {
+    path: '/pool-chemistry/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/pool-chemistry/terms-of-use`,
+  },
   {
     path: '/five-tibetan-rites/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/five-tibetan-rites/privacy-policy`,

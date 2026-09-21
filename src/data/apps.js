@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'pool-chemistry',
+    nameKey: 'poolChemistry.name',
+    subtitleKey: 'poolChemistry.subtitle',
+    descKey: 'poolChemistry.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'calculators',
+    tags: ['Android', 'Pool', 'Calculator'],
+    icon: '/apps/pool-chemistry/icon.png',
+    privacyRoute: (locale) => `/${locale}/pool-chemistry/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/pool-chemistry/terms-of-use`,
+  },
+  {
     slug: 'five-tibetan-rites',
     nameKey: 'fiveTibetanRites.name',
     subtitleKey: 'fiveTibetanRites.subtitle',
