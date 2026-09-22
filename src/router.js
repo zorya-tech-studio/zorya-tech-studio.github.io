@@ -29,6 +29,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/braille-alphabet/privacy-policy',
+    name: 'braille-alphabet-privacy',
+    component: () => import('./pages/apps/braille-alphabet/BrailleAlphabetPrivacyPage.vue'),
+    meta: { titleKey: 'brailleAlphabet.privacy.title', app: 'braille-alphabet' },
+  },
+  {
+    path: '/:locale/braille-alphabet/terms-of-use',
+    name: 'braille-alphabet-terms',
+    component: () => import('./pages/apps/braille-alphabet/BrailleAlphabetTermsPage.vue'),
+    meta: { titleKey: 'brailleAlphabet.terms.title', app: 'braille-alphabet' },
+  },
+  {
     path: '/:locale/morse-code/privacy-policy',
     name: 'morse-code-privacy',
     component: () => import('./pages/apps/morse-code/MorseCodePrivacyPage.vue'),
@@ -668,6 +680,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/braille-alphabet/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/braille-alphabet/privacy-policy`,
+  },
+  {
+    path: '/braille-alphabet/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/braille-alphabet/terms-of-use`,
+  },
   {
     path: '/morse-code/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/morse-code/privacy-policy`,

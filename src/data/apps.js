@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'braille-alphabet',
+    nameKey: 'brailleAlphabet.name',
+    subtitleKey: 'brailleAlphabet.subtitle',
+    descKey: 'brailleAlphabet.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'tools',
+    tags: ['Android', 'Braille', 'UEB'],
+    icon: '/apps/braille-alphabet/icon.png',
+    privacyRoute: (locale) => `/${locale}/braille-alphabet/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/braille-alphabet/terms-of-use`,
+  },
+  {
     slug: 'morse-code',
     nameKey: 'morseCode.name',
     subtitleKey: 'morseCode.subtitle',
