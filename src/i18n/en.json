@@ -2,6 +2,7 @@
   "nav": {
     "about": "About",
     "apps": "Apps",
+    "tools": "Tools",
     "services": "Services",
     "contact": "Contact",
     "switch_lang": "Switch language",
@@ -57,7 +58,6 @@
     "lead": "Tools we built for our own needs and released publicly. Free and open-source — use them, fork them, send changes.",
     "link": "View on GitHub",
     "items": {
-      "claude_meter": "A Claude subscription usage monitor for Windows and macOS. Session limits, weekly quotas and per-model usage — right in the system tray, no browser needed.",
       "tg_harvest": "Exports messages from Telegram channels, groups and chats to JSON, CSV, Excel or HTML. Built on MTProto, with both a web UI and a CLI."
     }
   },
@@ -2828,5 +2828,64 @@
       "contact_title": "Contact Information",
       "contact_text": "Questions about these Terms can be sent by email to:"
     }
+  },
+  "qrCodeToPhone": {
+    "name": "QR Code to Phone",
+    "subtitle": "Send any page to your phone in one click",
+    "desc_short": "A QR code for the current page, ready the moment you click the icon. Turns localhost into your LAN address for testing on a real phone, removes tracking parameters, makes Wi-Fi QR codes, reads QR codes from images and shows a full-screen code for a whole room. Works offline, collects nothing.",
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Effective date",
+      "intro": "QR Code to Phone (\"the extension\") is a Chrome extension made by Zorya Tech Studio (sole proprietor Klivak Vladyslav, Kyiv, Ukraine). This policy explains what the extension does with information on your device.",
+      "short_title": "Short version",
+      "short_text": "The extension does not collect, send, sell or share any data. It works fully offline and its security policy blocks all network requests.",
+      "processed_title": "What the extension processes on your device",
+      "processed_text": "Everything below stays on your device:",
+      "processed_tab": "The address and title of the current tab: only when you click the extension icon or press its shortcut. They are shown in the popup and turned into a QR code, and are gone when the popup closes.",
+      "processed_menu": "A link address, selected text or image address: only when you choose a QR Code to Phone item in the right-click menu. It passes through temporary browser session storage and is deleted as soon as the popup reads it (at most 10 seconds).",
+      "processed_text_tab": "Text and details you type in the Text tab (including email, phone, SMS, contact and location fields): kept in browser session storage until you close the browser.",
+      "processed_wifi": "Wi-Fi network name and password: kept only in the popup memory. If you open full-screen mode, they are held temporarily in session storage and deleted when that tab closes. The password is never saved.",
+      "processed_ip": "The local network IP address you enter for localhost links: kept in local extension storage until you clear it or remove the extension.",
+      "processed_settings": "Settings such as theme, link cleaning and PNG size: kept in Chrome sync storage, which Chrome may sync between your own devices if you use Chrome Sync.",
+      "processed_history": "History of recent QR codes: off by default. If you turn it on in settings, the last 20 codes (link or text and a short label) are kept in local extension storage on this device only, are never synced, and never include Wi-Fi codes. You can clear it at any time.",
+      "processed_scan": "Images you paste, drop or choose in the Scan tab: decoded in the popup on your device. The image is not uploaded, not stored and not sent anywhere.",
+      "processed_counter": "A usage counter: kept in local extension storage and used only to show a one-time rating request.",
+      "processed_note": "None of this information ever leaves your device through the extension.",
+      "notdo_title": "What the extension does not do",
+      "notdo_analytics": "No analytics, telemetry, crash reporting or tracking of any kind.",
+      "notdo_ads": "No ads.",
+      "notdo_accounts": "No accounts or sign-in.",
+      "notdo_pages": "No access to page content: the extension does not run scripts on websites.",
+      "notdo_selling": "No selling, transferring or sharing of data with anyone.",
+      "permissions_title": "Permissions",
+      "permissions_text": "The extension asks for the minimum set of permissions:",
+      "permissions_activeTab": "activeTab: to read the current tab address after you click the icon.",
+      "permissions_contextMenus": "contextMenus: to add the right-click menu items.",
+      "permissions_storage": "storage: to save your settings and to pass data between the extension's own pages.",
+      "limited_title": "Chrome Web Store Limited Use",
+      "limited_text": "The use of information by this extension complies with the Chrome Web Store User Data Policy, including the Limited Use requirements.",
+      "children_title": "Children's Privacy",
+      "children_text": "The extension does not collect any data, including from children.",
+      "changes_title": "Changes to This Policy",
+      "changes_text": "If this policy changes, the new version will be published at this address with a new date.",
+      "contact_title": "Contact Us",
+      "contact_text": "If you have questions about this Privacy Policy, please contact us at:"
+    }
+  },
+  "tools": {
+    "title": "Tools",
+    "eyebrow": "Software and tools",
+    "subtitle": "Extensions and other small, private tools we build",
+    "meta_description": "Tools and browser extensions by Zorya Tech Studio: private, offline software with no tracking and no accounts.",
+    "browser_title": "Chrome extensions",
+    "store": "Chrome Web Store",
+    "privacy": "Privacy policy",
+    "desktop_title": "Desktop apps",
+    "website": "Website"
+  },
+  "claudeMeter": {
+    "name": "ClaudeMeter",
+    "subtitle": "Claude usage in your system tray",
+    "desc_short": "A live monitor for your Claude subscription limits on Windows and macOS. See the 5-hour session, weekly quotas and per-model usage right in the tray or menu bar, with alerts at 50, 75 and 90 percent, a usage history dashboard and a floating mini widget. Free and open source."
   }
 }

@@ -11,15 +11,6 @@
  */
 export const openSourceProjects = [
   {
-    slug: 'claude-meter',
-    name: 'ClaudeMeter',
-    descKey: 'opensource.items.claude_meter',
-    icon: 'gauge',
-    license: 'MIT',
-    tags: ['Rust', 'Windows', 'macOS'],
-    url: 'https://github.com/klivak/claude-meter',
-  },
-  {
     slug: 'tg-harvest',
     name: 'TG Harvest',
     descKey: 'opensource.items.tg_harvest',

@@ -27,6 +27,18 @@ const routes = [
     component: () => import('./pages/ServicesPage.vue'),
     meta: { titleKey: 'services.meta_title', descriptionKey: 'services.meta_description' },
   },
+  {
+    path: '/:locale/tools',
+    name: 'tools',
+    component: () => import('./pages/ToolsPage.vue'),
+    meta: { titleKey: 'tools.title', descriptionKey: 'tools.meta_description' },
+  },
+  {
+    path: '/:locale/qr-code-to-phone/privacy-policy',
+    name: 'qr-code-to-phone-privacy',
+    component: () => import('./pages/extensions/QrCodeToPhonePrivacyPage.vue'),
+    meta: { titleKey: 'qrCodeToPhone.privacy.title', app: 'qr-code-to-phone' },
+  },
   // App-specific routes
   {
     path: '/:locale/braille-alphabet/privacy-policy',
@@ -680,6 +692,11 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  { path: '/tools', redirect: () => `/${i18n.global.locale.value}/tools` },
+  {
+    path: '/qr-code-to-phone/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/qr-code-to-phone/privacy-policy`,
+  },
   {
     path: '/braille-alphabet/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/braille-alphabet/privacy-policy`,

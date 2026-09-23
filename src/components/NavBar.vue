@@ -14,6 +14,7 @@ const togglerEl = ref(null)
 const isHome = computed(() => route.name === 'home')
 const homeUrl = computed(() => `/${locale.value}`)
 const servicesUrl = computed(() => `/${locale.value}/services`)
+const toolsUrl = computed(() => `/${locale.value}/tools`)
 
 function onScroll() {
   scrolled.value = window.scrollY > 20
@@ -105,6 +106,9 @@ onUnmounted(() => {
             <a href="#apps">{{ t('nav.apps') }}</a>
           </li>
           <li>
+            <router-link :to="toolsUrl">{{ t('nav.tools') }}</router-link>
+          </li>
+          <li>
             <router-link :to="servicesUrl">{{ t('nav.services') }}</router-link>
           </li>
           <li>
@@ -117,6 +121,9 @@ onUnmounted(() => {
           </li>
           <li>
             <router-link :to="homeUrl + '#apps'">{{ t('nav.apps') }}</router-link>
+          </li>
+          <li>
+            <router-link :to="toolsUrl">{{ t('nav.tools') }}</router-link>
           </li>
           <li>
             <router-link :to="servicesUrl">{{ t('nav.services') }}</router-link>
@@ -168,6 +175,15 @@ onUnmounted(() => {
           <li role="none">
             <router-link
               role="menuitem"
+              :to="toolsUrl"
+              :tabindex="menuOpen ? 0 : -1"
+              @click="onLinkClick"
+              >{{ t('nav.tools') }}</router-link
+            >
+          </li>
+          <li role="none">
+            <router-link
+              role="menuitem"
               :to="servicesUrl"
               :tabindex="menuOpen ? 0 : -1"
               @click="onLinkClick"
@@ -197,6 +213,15 @@ onUnmounted(() => {
               :tabindex="menuOpen ? 0 : -1"
               @click="onLinkClick"
               >{{ t('nav.apps') }}</router-link
+            >
+          </li>
+          <li role="none">
+            <router-link
+              role="menuitem"
+              :to="toolsUrl"
+              :tabindex="menuOpen ? 0 : -1"
+              @click="onLinkClick"
+              >{{ t('nav.tools') }}</router-link
             >
           </li>
           <li role="none">
@@ -417,7 +442,7 @@ onUnmounted(() => {
 }
 
 .mobile-panel.open {
-  max-height: 320px;
+  max-height: 380px;
   visibility: visible;
   transition:
     max-height 0.3s ease,
