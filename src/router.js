@@ -41,6 +41,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/cat-training-care/privacy-policy',
+    name: 'cat-training-care-privacy',
+    component: () => import('./pages/apps/cat-training-care/CatTrainingCarePrivacyPage.vue'),
+    meta: { titleKey: 'catTrainingCare.privacy.title', app: 'cat-training-care' },
+  },
+  {
+    path: '/:locale/cat-training-care/terms-of-use',
+    name: 'cat-training-care-terms',
+    component: () => import('./pages/apps/cat-training-care/CatTrainingCareTermsPage.vue'),
+    meta: { titleKey: 'catTrainingCare.terms.title', app: 'cat-training-care' },
+  },
+  {
     path: '/:locale/braille-alphabet/privacy-policy',
     name: 'braille-alphabet-privacy',
     component: () => import('./pages/apps/braille-alphabet/BrailleAlphabetPrivacyPage.vue'),
@@ -692,6 +704,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/cat-training-care/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/cat-training-care/privacy-policy`,
+  },
+  {
+    path: '/cat-training-care/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/cat-training-care/terms-of-use`,
+  },
   { path: '/tools', redirect: () => `/${i18n.global.locale.value}/tools` },
   {
     path: '/qr-code-to-phone/privacy-policy',

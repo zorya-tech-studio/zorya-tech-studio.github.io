@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'cat-training-care',
+    nameKey: 'catTrainingCare.name',
+    subtitleKey: 'catTrainingCare.subtitle',
+    descKey: 'catTrainingCare.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'pets',
+    tags: ['Android', 'Cats', 'Training'],
+    icon: '/apps/cat-training-care/icon.png',
+    privacyRoute: (locale) => `/${locale}/cat-training-care/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/cat-training-care/terms-of-use`,
+  },
+  {
     slug: 'braille-alphabet',
     nameKey: 'brailleAlphabet.name',
     subtitleKey: 'brailleAlphabet.subtitle',
