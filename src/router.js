@@ -41,6 +41,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/learn-excel-offline/privacy-policy',
+    name: 'learn-excel-offline-privacy',
+    component: () => import('./pages/apps/learn-excel-offline/LearnExcelOfflinePrivacyPage.vue'),
+    meta: { titleKey: 'learnExcelOffline.privacy.title', app: 'learn-excel-offline' },
+  },
+  {
+    path: '/:locale/learn-excel-offline/terms-of-use',
+    name: 'learn-excel-offline-terms',
+    component: () => import('./pages/apps/learn-excel-offline/LearnExcelOfflineTermsPage.vue'),
+    meta: { titleKey: 'learnExcelOffline.terms.title', app: 'learn-excel-offline' },
+  },
+  {
     path: '/:locale/cat-training-care/privacy-policy',
     name: 'cat-training-care-privacy',
     component: () => import('./pages/apps/cat-training-care/CatTrainingCarePrivacyPage.vue'),
@@ -704,6 +716,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/learn-excel-offline/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/learn-excel-offline/privacy-policy`,
+  },
+  {
+    path: '/learn-excel-offline/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/learn-excel-offline/terms-of-use`,
+  },
   {
     path: '/cat-training-care/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/cat-training-care/privacy-policy`,

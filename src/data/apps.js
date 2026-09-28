@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'learn-excel-offline',
+    nameKey: 'learnExcelOffline.name',
+    subtitleKey: 'learnExcelOffline.subtitle',
+    descKey: 'learnExcelOffline.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'reference',
+    tags: ['Android', 'Excel', 'Formulas'],
+    icon: '/apps/learn-excel-offline/icon.png',
+    privacyRoute: (locale) => `/${locale}/learn-excel-offline/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/learn-excel-offline/terms-of-use`,
+  },
+  {
     slug: 'cat-training-care',
     nameKey: 'catTrainingCare.name',
     subtitleKey: 'catTrainingCare.subtitle',
