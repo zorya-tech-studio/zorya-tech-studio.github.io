@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'biblia-reina-valera',
+    nameKey: 'bibliaReinaValera.name',
+    subtitleKey: 'bibliaReinaValera.subtitle',
+    descKey: 'bibliaReinaValera.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'reference',
+    tags: ['Android', 'Biblia', 'Reina Valera'],
+    icon: '/apps/biblia-reina-valera/icon.png',
+    privacyRoute: (locale) => `/${locale}/biblia-reina-valera/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/biblia-reina-valera/terms-of-use`,
+  },
+  {
     slug: 'learn-excel-offline',
     nameKey: 'learnExcelOffline.name',
     subtitleKey: 'learnExcelOffline.subtitle',

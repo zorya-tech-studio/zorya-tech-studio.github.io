@@ -41,6 +41,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/biblia-reina-valera/privacy-policy',
+    name: 'biblia-reina-valera-privacy',
+    component: () => import('./pages/apps/biblia-reina-valera/BibliaReinaValeraPrivacyPage.vue'),
+    meta: { titleKey: 'bibliaReinaValera.privacy.title', app: 'biblia-reina-valera' },
+  },
+  {
+    path: '/:locale/biblia-reina-valera/terms-of-use',
+    name: 'biblia-reina-valera-terms',
+    component: () => import('./pages/apps/biblia-reina-valera/BibliaReinaValeraTermsPage.vue'),
+    meta: { titleKey: 'bibliaReinaValera.terms.title', app: 'biblia-reina-valera' },
+  },
+  {
     path: '/:locale/learn-excel-offline/privacy-policy',
     name: 'learn-excel-offline-privacy',
     component: () => import('./pages/apps/learn-excel-offline/LearnExcelOfflinePrivacyPage.vue'),
@@ -716,6 +728,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/biblia-reina-valera/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/biblia-reina-valera/privacy-policy`,
+  },
+  {
+    path: '/biblia-reina-valera/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/biblia-reina-valera/terms-of-use`,
+  },
   {
     path: '/learn-excel-offline/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/learn-excel-offline/privacy-policy`,
