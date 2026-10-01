@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'kpop-piano',
+    nameKey: 'kpopPiano.name',
+    subtitleKey: 'kpopPiano.subtitle',
+    descKey: 'kpopPiano.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'games',
+    tags: ['Android', 'Rhythm Game', 'K-pop'],
+    icon: '/apps/kpop-piano/icon.png',
+    privacyRoute: (locale) => `/${locale}/kpop-piano/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/kpop-piano/terms-of-use`,
+  },
+  {
     slug: 'biblia-reina-valera',
     nameKey: 'bibliaReinaValera.name',
     subtitleKey: 'bibliaReinaValera.subtitle',

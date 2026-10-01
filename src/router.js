@@ -41,6 +41,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/kpop-piano/privacy-policy',
+    name: 'kpop-piano-privacy',
+    component: () => import('./pages/apps/kpop-piano/KpopPianoPrivacyPage.vue'),
+    meta: { titleKey: 'kpopPiano.privacy.title', app: 'kpop-piano' },
+  },
+  {
+    path: '/:locale/kpop-piano/terms-of-use',
+    name: 'kpop-piano-terms',
+    component: () => import('./pages/apps/kpop-piano/KpopPianoTermsPage.vue'),
+    meta: { titleKey: 'kpopPiano.terms.title', app: 'kpop-piano' },
+  },
+  {
     path: '/:locale/biblia-reina-valera/privacy-policy',
     name: 'biblia-reina-valera-privacy',
     component: () => import('./pages/apps/biblia-reina-valera/BibliaReinaValeraPrivacyPage.vue'),
@@ -728,6 +740,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/kpop-piano/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/kpop-piano/privacy-policy`,
+  },
+  {
+    path: '/kpop-piano/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/kpop-piano/terms-of-use`,
+  },
   {
     path: '/biblia-reina-valera/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/biblia-reina-valera/privacy-policy`,
