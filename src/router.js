@@ -41,6 +41,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/guitar-tuner/privacy-policy',
+    name: 'guitar-tuner-privacy',
+    component: () => import('./pages/apps/guitar-tuner/GuitarTunerPrivacyPage.vue'),
+    meta: { titleKey: 'guitarTuner.privacy.title', app: 'guitar-tuner' },
+  },
+  {
+    path: '/:locale/guitar-tuner/terms-of-use',
+    name: 'guitar-tuner-terms',
+    component: () => import('./pages/apps/guitar-tuner/GuitarTunerTermsPage.vue'),
+    meta: { titleKey: 'guitarTuner.terms.title', app: 'guitar-tuner' },
+  },
+  {
     path: '/:locale/kpop-piano/privacy-policy',
     name: 'kpop-piano-privacy',
     component: () => import('./pages/apps/kpop-piano/KpopPianoPrivacyPage.vue'),
@@ -740,6 +752,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/guitar-tuner/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/guitar-tuner/privacy-policy`,
+  },
+  {
+    path: '/guitar-tuner/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/guitar-tuner/terms-of-use`,
+  },
   {
     path: '/kpop-piano/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/kpop-piano/privacy-policy`,

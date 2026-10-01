@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'guitar-tuner',
+    nameKey: 'guitarTuner.name',
+    subtitleKey: 'guitarTuner.subtitle',
+    descKey: 'guitarTuner.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'tools',
+    tags: ['Android', 'Tuner', 'Metronome'],
+    icon: '/apps/guitar-tuner/icon.png',
+    privacyRoute: (locale) => `/${locale}/guitar-tuner/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/guitar-tuner/terms-of-use`,
+  },
+  {
     slug: 'kpop-piano',
     nameKey: 'kpopPiano.name',
     subtitleKey: 'kpopPiano.subtitle',
