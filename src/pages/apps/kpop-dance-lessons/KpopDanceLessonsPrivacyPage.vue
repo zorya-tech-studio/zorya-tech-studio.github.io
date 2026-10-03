@@ -31,7 +31,7 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
     </div>
 
     <p class="app-label">{{ t('kpopDanceLessons.name') }} — {{ t('kpopDanceLessons.subtitle') }}</p>
-    <p class="updated-date">{{ t('kpopDanceLessons.privacy.updated') }}: 2026-07-31</p>
+    <p class="updated-date">{{ t('kpopDanceLessons.privacy.updated') }}: 2026-10-03</p>
 
     <p class="intro-text">{{ t('kpopDanceLessons.privacy.intro') }}</p>
 
@@ -62,10 +62,19 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
     <div class="policy-section">
       <h2 class="section-heading">{{ t('kpopDanceLessons.privacy.third_title') }}</h2>
       <p class="section-text">{{ t('kpopDanceLessons.privacy.third_text') }}</p>
+      <p class="section-text">{{ t('kpopDanceLessons.privacy.third_unity') }}</p>
       <ul class="third-party-list">
         <li>
           <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener"
             >Google AdMob</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://unity.com/legal/game-player-and-app-user-privacy-policy"
+            target="_blank"
+            rel="noopener"
+            >Unity Ads</a
           >
         </li>
       </ul>
