@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'biblia-almeida',
+    nameKey: 'bibliaAlmeida.name',
+    subtitleKey: 'bibliaAlmeida.subtitle',
+    descKey: 'bibliaAlmeida.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'reference',
+    tags: ['Android', 'Bíblia', 'Almeida'],
+    icon: '/apps/biblia-almeida/icon.png',
+    privacyRoute: (locale) => `/${locale}/biblia-almeida/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/biblia-almeida/terms-of-use`,
+  },
+  {
     slug: 'guitar-tuner',
     nameKey: 'guitarTuner.name',
     subtitleKey: 'guitarTuner.subtitle',

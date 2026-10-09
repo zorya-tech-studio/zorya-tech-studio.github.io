@@ -41,6 +41,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/biblia-almeida/privacy-policy',
+    name: 'biblia-almeida-privacy',
+    component: () => import('./pages/apps/biblia-almeida/BibliaAlmeidaPrivacyPage.vue'),
+    meta: { titleKey: 'bibliaAlmeida.privacy.title', app: 'biblia-almeida' },
+  },
+  {
+    path: '/:locale/biblia-almeida/terms-of-use',
+    name: 'biblia-almeida-terms',
+    component: () => import('./pages/apps/biblia-almeida/BibliaAlmeidaTermsPage.vue'),
+    meta: { titleKey: 'bibliaAlmeida.terms.title', app: 'biblia-almeida' },
+  },
+  {
     path: '/:locale/guitar-tuner/privacy-policy',
     name: 'guitar-tuner-privacy',
     component: () => import('./pages/apps/guitar-tuner/GuitarTunerPrivacyPage.vue'),
@@ -767,6 +779,14 @@ const routes = [
   {
     path: '/kpop-piano/terms-of-use',
     redirect: () => `/${i18n.global.locale.value}/kpop-piano/terms-of-use`,
+  },
+  {
+    path: '/biblia-almeida/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/biblia-almeida/privacy-policy`,
+  },
+  {
+    path: '/biblia-almeida/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/biblia-almeida/terms-of-use`,
   },
   {
     path: '/biblia-reina-valera/privacy-policy',
