@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'rabbit-care',
+    nameKey: 'rabbitCare.name',
+    subtitleKey: 'rabbitCare.subtitle',
+    descKey: 'rabbitCare.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'pets',
+    tags: ['Android', 'Rabbits', 'Training'],
+    icon: '/apps/rabbit-care/icon.png',
+    privacyRoute: (locale) => `/${locale}/rabbit-care/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/rabbit-care/terms-of-use`,
+  },
+  {
     slug: 'lofi-generator',
     nameKey: 'lofiGenerator.name',
     subtitleKey: 'lofiGenerator.subtitle',

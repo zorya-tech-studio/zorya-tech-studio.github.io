@@ -41,6 +41,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/rabbit-care/privacy-policy',
+    name: 'rabbit-care-privacy',
+    component: () => import('./pages/apps/rabbit-care/RabbitCarePrivacyPage.vue'),
+    meta: { titleKey: 'rabbitCare.privacy.title', app: 'rabbit-care' },
+  },
+  {
+    path: '/:locale/rabbit-care/terms-of-use',
+    name: 'rabbit-care-terms',
+    component: () => import('./pages/apps/rabbit-care/RabbitCareTermsPage.vue'),
+    meta: { titleKey: 'rabbitCare.terms.title', app: 'rabbit-care' },
+  },
+  {
     path: '/:locale/lofi-generator/privacy-policy',
     name: 'lofi-generator-privacy',
     component: () => import('./pages/apps/lofi-generator/LofiGeneratorPrivacyPage.vue'),
@@ -776,6 +788,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/rabbit-care/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/rabbit-care/privacy-policy`,
+  },
+  {
+    path: '/rabbit-care/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/rabbit-care/terms-of-use`,
+  },
   {
     path: '/guitar-tuner/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/guitar-tuner/privacy-policy`,
