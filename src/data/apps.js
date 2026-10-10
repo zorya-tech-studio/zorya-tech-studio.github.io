@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'lofi-generator',
+    nameKey: 'lofiGenerator.name',
+    subtitleKey: 'lofiGenerator.subtitle',
+    descKey: 'lofiGenerator.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'lifestyle',
+    tags: ['Android', 'Lofi', 'Pomodoro'],
+    icon: '/apps/lofi-generator/icon.png',
+    privacyRoute: (locale) => `/${locale}/lofi-generator/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/lofi-generator/terms-of-use`,
+  },
+  {
     slug: 'biblia-almeida',
     nameKey: 'bibliaAlmeida.name',
     subtitleKey: 'bibliaAlmeida.subtitle',

@@ -41,6 +41,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/lofi-generator/privacy-policy',
+    name: 'lofi-generator-privacy',
+    component: () => import('./pages/apps/lofi-generator/LofiGeneratorPrivacyPage.vue'),
+    meta: { titleKey: 'lofiGenerator.privacy.title', app: 'lofi-generator' },
+  },
+  {
+    path: '/:locale/lofi-generator/terms-of-use',
+    name: 'lofi-generator-terms',
+    component: () => import('./pages/apps/lofi-generator/LofiGeneratorTermsPage.vue'),
+    meta: { titleKey: 'lofiGenerator.terms.title', app: 'lofi-generator' },
+  },
+  {
     path: '/:locale/biblia-almeida/privacy-policy',
     name: 'biblia-almeida-privacy',
     component: () => import('./pages/apps/biblia-almeida/BibliaAlmeidaPrivacyPage.vue'),
@@ -779,6 +791,14 @@ const routes = [
   {
     path: '/kpop-piano/terms-of-use',
     redirect: () => `/${i18n.global.locale.value}/kpop-piano/terms-of-use`,
+  },
+  {
+    path: '/lofi-generator/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/lofi-generator/privacy-policy`,
+  },
+  {
+    path: '/lofi-generator/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/lofi-generator/terms-of-use`,
   },
   {
     path: '/biblia-almeida/privacy-policy',
