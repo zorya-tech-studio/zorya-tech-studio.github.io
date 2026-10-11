@@ -3806,13 +3806,13 @@
     ]
   },
   "bluetoothFinder": {
-    "name": "Bluetooth Finder & BLE Scanner",
+    "name": "Bluetooth Finder: Lost Earbuds",
     "subtitle": "Find lost earbuds and devices nearby by signal strength, BLE scanner and GATT inspector",
     "desc_short": "Hot-cold radar to find lost Bluetooth devices nearby, plus BLE scanner, GATT inspector and heart rate monitor.",
     "privacy": {
       "title": "Privacy Policy",
       "updated": "Last updated",
-      "intro": "This policy explains what the app Bluetooth Finder & BLE Scanner (com.zoryatechstudio.bluetoothfinder, developed by Zorya Tech Studio) does with your data. It supplements the Zorya Tech Studio privacy policy.",
+      "intro": "This policy explains what the app Bluetooth Finder: Lost Earbuds (com.zoryatechstudio.bluetoothfinder, developed by Zorya Tech Studio) does with your data. It supplements the Zorya Tech Studio privacy policy.",
       "short_title": "The Short Version",
       "short_text": "The app works offline. It has no accounts and no servers of ours. It does not send your Bluetooth data, heart rate data or location anywhere. The only part of the app that uses the internet is Google’s advertising SDK (Google AdMob and its consent tool, the User Messaging Platform). The app contains no analytics and no crash reporting tools.",
       "storage_title": "What Stays on Your Device",
@@ -3861,7 +3861,7 @@
     "terms": {
       "title": "Terms of Use",
       "updated": "Last updated",
-      "intro": "These Terms govern your use of the app Bluetooth Finder & BLE Scanner (com.zoryatechstudio.bluetoothfinder), developed by Zorya Tech Studio. By installing or using the app you accept them. If you do not agree, please do not use the app.",
+      "intro": "These Terms govern your use of the app Bluetooth Finder: Lost Earbuds (com.zoryatechstudio.bluetoothfinder), developed by Zorya Tech Studio. By installing or using the app you accept them. If you do not agree, please do not use the app.",
       "license_title": "Use of the App",
       "license_text": "We grant you a personal, non-exclusive, non-transferable licence to use the app on your devices for personal, non-commercial purposes. You may not copy, modify, reverse engineer or redistribute the app, except where the law expressly allows it.",
       "finder_title": "What the Finder Can and Cannot Do",
