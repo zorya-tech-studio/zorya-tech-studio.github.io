@@ -41,6 +41,20 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/pickleball-scorekeeper/privacy-policy',
+    name: 'pickleball-scorekeeper-privacy',
+    component: () =>
+      import('./pages/apps/pickleball-scorekeeper/PickleballScorekeeperPrivacyPage.vue'),
+    meta: { titleKey: 'pickleballScorekeeper.privacy.title', app: 'pickleball-scorekeeper' },
+  },
+  {
+    path: '/:locale/pickleball-scorekeeper/terms-of-use',
+    name: 'pickleball-scorekeeper-terms',
+    component: () =>
+      import('./pages/apps/pickleball-scorekeeper/PickleballScorekeeperTermsPage.vue'),
+    meta: { titleKey: 'pickleballScorekeeper.terms.title', app: 'pickleball-scorekeeper' },
+  },
+  {
     path: '/:locale/cat-jam/privacy-policy',
     name: 'cat-jam-privacy',
     component: () => import('./pages/apps/cat-jam/CatJamPrivacyPage.vue'),
@@ -794,6 +808,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/pickleball-scorekeeper/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/pickleball-scorekeeper/privacy-policy`,
+  },
+  {
+    path: '/pickleball-scorekeeper/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/pickleball-scorekeeper/terms-of-use`,
+  },
   {
     path: '/cat-jam/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/cat-jam/privacy-policy`,

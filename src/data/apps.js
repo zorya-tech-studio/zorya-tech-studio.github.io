@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'pickleball-scorekeeper',
+    nameKey: 'pickleballScorekeeper.name',
+    subtitleKey: 'pickleballScorekeeper.subtitle',
+    descKey: 'pickleballScorekeeper.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'tools',
+    tags: ['Android', 'Pickleball', 'Scoreboard'],
+    icon: '/apps/pickleball-scorekeeper/icon.png',
+    privacyRoute: (locale) => `/${locale}/pickleball-scorekeeper/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/pickleball-scorekeeper/terms-of-use`,
+  },
+  {
     slug: 'cat-jam',
     nameKey: 'catJam.name',
     subtitleKey: 'catJam.subtitle',
