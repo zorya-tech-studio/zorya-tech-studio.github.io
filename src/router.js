@@ -41,6 +41,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/chicken-egg-tracker/privacy-policy',
+    name: 'chicken-egg-tracker-privacy',
+    component: () => import('./pages/apps/chicken-egg-tracker/ChickenEggTrackerPrivacyPage.vue'),
+    meta: { titleKey: 'chickenEggTracker.privacy.title', app: 'chicken-egg-tracker' },
+  },
+  {
+    path: '/:locale/chicken-egg-tracker/terms-of-use',
+    name: 'chicken-egg-tracker-terms',
+    component: () => import('./pages/apps/chicken-egg-tracker/ChickenEggTrackerTermsPage.vue'),
+    meta: { titleKey: 'chickenEggTracker.terms.title', app: 'chicken-egg-tracker' },
+  },
+  {
     path: '/:locale/pickleball-scorekeeper/privacy-policy',
     name: 'pickleball-scorekeeper-privacy',
     component: () =>
@@ -808,6 +820,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/chicken-egg-tracker/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/chicken-egg-tracker/privacy-policy`,
+  },
+  {
+    path: '/chicken-egg-tracker/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/chicken-egg-tracker/terms-of-use`,
+  },
   {
     path: '/pickleball-scorekeeper/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/pickleball-scorekeeper/privacy-policy`,

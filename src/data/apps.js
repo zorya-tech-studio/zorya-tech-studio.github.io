@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'chicken-egg-tracker',
+    nameKey: 'chickenEggTracker.name',
+    subtitleKey: 'chickenEggTracker.subtitle',
+    descKey: 'chickenEggTracker.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'lifestyle',
+    tags: ['Android', 'Chickens', 'Incubator'],
+    icon: '/apps/chicken-egg-tracker/icon.png',
+    privacyRoute: (locale) => `/${locale}/chicken-egg-tracker/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/chicken-egg-tracker/terms-of-use`,
+  },
+  {
     slug: 'pickleball-scorekeeper',
     nameKey: 'pickleballScorekeeper.name',
     subtitleKey: 'pickleballScorekeeper.subtitle',
