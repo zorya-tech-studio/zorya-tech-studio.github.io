@@ -15,6 +15,7 @@ const isHome = computed(() => route.name === 'home')
 const homeUrl = computed(() => `/${locale.value}`)
 const servicesUrl = computed(() => `/${locale.value}/services`)
 const toolsUrl = computed(() => `/${locale.value}/tools`)
+const watchFacesUrl = computed(() => `/${locale.value}/watch-faces`)
 
 function onScroll() {
   scrolled.value = window.scrollY > 20
@@ -106,6 +107,9 @@ onUnmounted(() => {
             <a href="#apps">{{ t('nav.apps') }}</a>
           </li>
           <li>
+            <router-link :to="watchFacesUrl">{{ t('nav.watchfaces') }}</router-link>
+          </li>
+          <li>
             <router-link :to="toolsUrl">{{ t('nav.tools') }}</router-link>
           </li>
           <li>
@@ -121,6 +125,9 @@ onUnmounted(() => {
           </li>
           <li>
             <router-link :to="homeUrl + '#apps'">{{ t('nav.apps') }}</router-link>
+          </li>
+          <li>
+            <router-link :to="watchFacesUrl">{{ t('nav.watchfaces') }}</router-link>
           </li>
           <li>
             <router-link :to="toolsUrl">{{ t('nav.tools') }}</router-link>
@@ -175,6 +182,15 @@ onUnmounted(() => {
           <li role="none">
             <router-link
               role="menuitem"
+              :to="watchFacesUrl"
+              :tabindex="menuOpen ? 0 : -1"
+              @click="onLinkClick"
+              >{{ t('nav.watchfaces') }}</router-link
+            >
+          </li>
+          <li role="none">
+            <router-link
+              role="menuitem"
               :to="toolsUrl"
               :tabindex="menuOpen ? 0 : -1"
               @click="onLinkClick"
@@ -213,6 +229,15 @@ onUnmounted(() => {
               :tabindex="menuOpen ? 0 : -1"
               @click="onLinkClick"
               >{{ t('nav.apps') }}</router-link
+            >
+          </li>
+          <li role="none">
+            <router-link
+              role="menuitem"
+              :to="watchFacesUrl"
+              :tabindex="menuOpen ? 0 : -1"
+              @click="onLinkClick"
+              >{{ t('nav.watchfaces') }}</router-link
             >
           </li>
           <li role="none">
@@ -442,7 +467,7 @@ onUnmounted(() => {
 }
 
 .mobile-panel.open {
-  max-height: 380px;
+  max-height: 440px;
   visibility: visible;
   transition:
     max-height 0.3s ease,

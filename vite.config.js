@@ -23,7 +23,8 @@ function routeSegments() {
 // changefreq/priority heuristics by page type.
 function sitemapMeta(seg) {
   if (seg === '') return { changefreq: 'monthly', priority: 1.0 } // home
-  if (seg === 'projects' || seg === 'tools') return { changefreq: 'monthly', priority: 0.7 }
+  if (seg === 'projects' || seg === 'tools' || seg === 'watch-faces')
+    return { changefreq: 'monthly', priority: 0.7 }
   return { changefreq: 'yearly', priority: 0.3 } // privacy / terms / offer / disclaimer
 }
 

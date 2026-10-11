@@ -28,6 +28,12 @@ const routes = [
     meta: { titleKey: 'services.meta_title', descriptionKey: 'services.meta_description' },
   },
   {
+    path: '/:locale/watch-faces',
+    name: 'watch-faces',
+    component: () => import('./pages/WatchFacesPage.vue'),
+    meta: { titleKey: 'watchfaces.title', descriptionKey: 'watchfaces.meta_description' },
+  },
+  {
     path: '/:locale/tools',
     name: 'tools',
     component: () => import('./pages/ToolsPage.vue'),

@@ -93,6 +93,14 @@ Every app on the site is presented as **released**, in every locale, even if it 
 - The newest app therefore leads both the homepage grid and the Projects list, and the array reads newest → oldest.
 - Do not introduce a sort field to express this. The array order is the single mechanism; adding a second one guarantees the two drift apart.
 
+## One shared privacy policy + apps pages list every released app (IMPORTANT)
+
+- The studio privacy policy `/:locale/privacy` (`src/pages/PrivacyPage.vue`, `privacy.*` keys) is the single policy shared by ALL apps: phone apps, games, tools and Wear OS watch faces. External URL: https://zorya-tech-studio.github.io/en/privacy
+- When adding an app, UPDATE this policy (scope, data, third-party services, "Last updated" date) instead of creating a new general policy. Never duplicate it. Existing per-app pages (`/:locale/<app>/privacy-policy`) are app-specific supplements that are already referenced from Play Console; keep them, but a new app that collects nothing special uses the shared URL.
+- Wear OS watch faces always use the shared URL, never a per-face page. Their privacy, support and terms live in `/:locale/privacy#watch-faces` and `/:locale/watch-faces` (`#support`, `#terms`).
+- Apps pages list every released app: phone apps in `src/data/apps.js` (Projects page), watch faces in `src/data/watchfaces.js` (`/:locale/watch-faces`, newest first). Add the entry when the app goes live on Google Play.
+- `/:locale/watch-faces` shows an "in development" message only while `watchFaces` is empty; it is a page-level message, not an app status badge, so it does not conflict with the single-wording badge rule above. Do not use brand names (other than Google Play / Wear OS) on that page.
+
 ## App categories
 
 `category` in `src/data/apps.js` drives the filter tabs on the Projects page. The tab list is built dynamically from the categories actually present, so adding a category means three things and no more:

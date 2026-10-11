@@ -7,7 +7,8 @@
     "contact": "Contact",
     "switch_lang": "Switch language",
     "view_privacy": "Privacy Policy",
-    "view_offer": "Terms of Use"
+    "view_offer": "Terms of Use",
+    "watchfaces": "Watch faces"
   },
   "hero": {
     "tagline": "Crafting mobile experiences with care"
@@ -1716,9 +1717,9 @@
   "privacy": {
     "title": "Privacy Policy",
     "updated": "Last updated",
-    "intro": "Zorya Tech Studio (\"we\", \"us\", \"our\") respects your privacy. This policy describes how we collect, use, and protect your information when using our mobile applications.",
+    "intro": "Zorya Tech Studio (\"we\", \"us\", \"our\") respects your privacy. This Privacy Policy applies to all apps, games, tools and Wear OS watch faces published by Zorya Tech Studio on Google Play and other stores. Some apps also have an app-specific page with extra details; such a page supplements this policy, and this policy applies to everything it does not cover.",
     "collect_title": "Information We Collect",
-    "collect_text": "Our apps do not require registration and do not collect personal information directly. However, our apps use third-party services that may automatically collect certain data:",
+    "collect_text": "Our apps do not require registration and do not collect personal information directly. However, some of our phone apps use third-party services that may automatically collect certain data:",
     "collect_firebase_title": "Firebase Analytics (Google)",
     "collect_firebase_text": "Collects anonymous usage data such as app opens, screen views, session duration, device model, OS version, country, and language. This data is used to understand how users interact with our apps and to improve functionality. No personally identifiable information is collected.",
     "collect_admob_title": "Google AdMob",
@@ -1732,9 +1733,17 @@
     "security_title": "Security",
     "security_text": "We take reasonable measures to protect your information, but no method of transmission over the Internet is completely secure.",
     "changes_title": "Changes to This Policy",
-    "changes_text": "We may update this policy from time to time. Any changes will be posted on this page with an updated date.",
+    "changes_text": "We may update this policy from time to time, for example when we publish a new app. Any changes will be posted on this page with an updated date.",
     "contact_title": "Contact Us",
-    "contact_text": "If you have questions about this privacy policy, contact us at:"
+    "contact_text": "If you have questions about this privacy policy or any of our apps, contact us at:",
+    "watchfaces_title": "Wear OS watch faces",
+    "watchfaces_text": "Our watch faces are built with the Watch Face Format and contain no executable code. They do not collect, store, process or share any personal or device data. They request no permissions, do not use the network, and contain no ads, no analytics and no third-party SDKs.",
+    "watchfaces_data_text": "Some watch faces display information such as battery level, steps, heart rate or weather through Wear OS complications. This information is provided by the system or by apps you choose on your watch, is rendered locally on the watch and is never sent to us or anyone else.",
+    "purchases_title": "Purchases",
+    "purchases_text": "Paid apps and watch faces are sold through Google Play, which processes the payment. We do not receive your payment details. The Google Privacy Policy applies to purchases.",
+    "children_title": "Children",
+    "children_text": "Unless an app-specific page says otherwise, our apps are not directed at children under 13 and we do not knowingly collect any data from them.",
+    "developer": "Developer: Zorya Tech Studio"
   },
   "luxMeter": {
     "name": "Lux Meter: Light Meter, PPFD",
@@ -3752,5 +3761,46 @@
       "contact_title": "Contact",
       "contact_text": "Questions about these Terms:"
     }
+  },
+  "watchfaces": {
+    "title": "Watch faces",
+    "eyebrow": "Wear OS",
+    "subtitle": "Clean, readable watch faces for round Wear OS watches",
+    "meta_description": "Watch faces for Wear OS by Zorya Tech Studio: no code, no permissions, no data collection.",
+    "status_title": "In development",
+    "status_text": "Our watch faces are in development and coming soon to Google Play for Wear OS.",
+    "about_text": "Every watch face is built with the Watch Face Format: it contains no executable code, requests no permissions, does not use the network and collects no data. Colors and complications are customizable right on the watch.",
+    "play": "Google Play",
+    "privacy_title": "Privacy",
+    "privacy_text": "All our apps and watch faces share one privacy policy.",
+    "privacy_link": "Privacy Policy",
+    "support_title": "Support",
+    "support_text": "Write to us and we will reply within 2 business days.",
+    "faq_title": "FAQ",
+    "faq": [
+      {
+        "q": "How do I apply a watch face?",
+        "a": "Install it from Google Play, then on your watch touch and hold the current face, swipe to the new one and tap it."
+      },
+      {
+        "q": "The watch face does not appear on my watch.",
+        "a": "Open Google Play on the watch, search for the watch face name and install it there. Make sure the watch runs Wear OS 4 or newer."
+      },
+      {
+        "q": "How do I change colors and complications?",
+        "a": "Touch and hold the watch face, tap Customize, then swipe between the options."
+      },
+      {
+        "q": "Can I get a refund?",
+        "a": "Google Play refunds purchases within 48 hours from the order history. After that, write to us with your order number."
+      }
+    ],
+    "terms_title": "Terms of use",
+    "terms": [
+      "Watch faces are licensed, not sold, to you for personal use on your devices under the Google Play Terms of Service.",
+      "You may not copy, modify, redistribute or resell the watch faces or their graphics.",
+      "Watch faces are provided \"as is\" without warranties. Complication data is supplied by your watch and third-party apps, and we are not responsible for its accuracy.",
+      "Refunds follow the Google Play refund policy."
+    ]
   }
 }
