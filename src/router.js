@@ -41,6 +41,12 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/cat-jam/privacy-policy',
+    name: 'cat-jam-privacy',
+    component: () => import('./pages/apps/cat-jam/CatJamPrivacyPage.vue'),
+    meta: { titleKey: 'catJam.privacy.title', app: 'cat-jam' },
+  },
+  {
     path: '/:locale/rabbit-care/privacy-policy',
     name: 'rabbit-care-privacy',
     component: () => import('./pages/apps/rabbit-care/RabbitCarePrivacyPage.vue'),
@@ -788,6 +794,10 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/cat-jam/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/cat-jam/privacy-policy`,
+  },
   {
     path: '/rabbit-care/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/rabbit-care/privacy-policy`,

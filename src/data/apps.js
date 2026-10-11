@@ -10,6 +10,18 @@
  */
 export const apps = [
   {
+    slug: 'cat-jam',
+    nameKey: 'catJam.name',
+    subtitleKey: 'catJam.subtitle',
+    descKey: 'catJam.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'games',
+    tags: ['Android', 'Puzzle', 'Cats'],
+    icon: '/apps/cat-jam/icon.png',
+    privacyRoute: (locale) => `/${locale}/cat-jam/privacy-policy`,
+  },
+  {
     slug: 'rabbit-care',
     nameKey: 'rabbitCare.name',
     subtitleKey: 'rabbitCare.subtitle',

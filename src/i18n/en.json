@@ -3574,5 +3574,43 @@
       "contact_title": "Contact Information",
       "contact_text": "Questions about these Terms can be sent by email to:"
     }
+  },
+  "catJam": {
+    "name": "Cat Jam: Kitty Escape Puzzle",
+    "subtitle": "Tap the cats in the right order and help them escape",
+    "desc_short": "A cozy logic puzzle about a traffic jam of cats: tap a cat and it runs the way it is looking, leaves the room and hops into the basket of its colour. Plan the order so nobody gets stuck, through hundreds of levels, a Daily Room, boosters and 40 cat breeds to collect. No account, progress stays on your device.",
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Last updated",
+      "intro": "This policy explains what the game Cat Jam (com.zoryatechstudio.catjam, developed by Zorya Tech Studio) does with your data.",
+      "short_title": "The Short Version",
+      "short_text": "The game has no accounts and no servers of ours, and it contains no analytics SDK. Your progress and settings stay on your device. The only third party involved is Google, because the game shows ads.",
+      "storage_title": "What Stays on Your Device",
+      "storage_text": "The following is stored locally, in the game’s private storage, and is never sent to us:",
+      "storage_progress": "game progress: completed levels, stars, fish, boosters, collected cat breeds and the Daily Room streak;",
+      "storage_settings": "settings: sound, vibration, language, the daily reminder on/off and its time.",
+      "storage_after": "We have no access to any of it and cannot restore it. It is removed when you uninstall the game.",
+      "ads_title": "Advertising",
+      "ads_text": "The game is free and financed by ads served by Google AdMob (Google Mobile Ads SDK). To show and measure ads, Google may collect your device’s advertising ID, device information (such as model and operating system), approximate location derived from your IP address, and data about your interactions with ads. Google acts as an independent controller of that data. Ads are never shown on the game field and are limited to content suitable for teens.",
+      "ads_google_policy": "Google’s privacy policy: https://policies.google.com/privacy",
+      "ads_google_partners": "How Google uses data from sites and apps that use its services: https://policies.google.com/technologies/partner-sites",
+      "ads_consent": "In the European Economic Area and the United Kingdom, the game asks for your consent before ads are personalised, using Google’s consent form (User Messaging Platform). Without consent you see only non-personalised ads. You can change that decision at any time in Settings → Privacy options.",
+      "ads_reset_id": "You can also reset or delete your advertising ID in your Android system settings, which limits ad personalisation across all apps.",
+      "notifications_title": "Notifications",
+      "notifications_text": "The optional daily reminder about the Daily Room is a local notification: it is scheduled on your device and no data is sent to us for it. The game works fully without the notification permission, and you can turn the reminder off or change its time in Settings.",
+      "not_title": "What the Game Does NOT Do",
+      "not_accounts": "no user accounts, no sign-in, no cloud sync;",
+      "not_permissions": "no access to camera, photos, files, contacts, location or microphone;",
+      "not_analytics": "no analytics, crash reporting or tracking SDKs: no gameplay data leaves your device;",
+      "not_selling": "no selling or sharing of your data with anyone.",
+      "children_title": "Children",
+      "children_text": "The game is intended for players aged 13 and older and is not directed at children under 13. We do not knowingly collect personal data from children.",
+      "rights_title": "Your Rights",
+      "rights_text": "Because we do not collect or hold your data, there is nothing on our side to export, correct or delete. Data on your device is under your control: uninstalling the game removes everything. For data Google processes for advertising, use the links above.",
+      "changes_title": "Changes",
+      "changes_text": "If this policy changes, the date at the top changes with it, and the updated version appears at this address.",
+      "contact_title": "Contact",
+      "contact_text": "Questions about this policy:"
+    }
   }
 }
