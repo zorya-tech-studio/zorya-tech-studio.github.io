@@ -47,6 +47,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/bluetooth-finder/privacy-policy',
+    name: 'bluetooth-finder-privacy',
+    component: () => import('./pages/apps/bluetooth-finder/BluetoothFinderPrivacyPage.vue'),
+    meta: { titleKey: 'bluetoothFinder.privacy.title', app: 'bluetooth-finder' },
+  },
+  {
+    path: '/:locale/bluetooth-finder/terms-of-use',
+    name: 'bluetooth-finder-terms',
+    component: () => import('./pages/apps/bluetooth-finder/BluetoothFinderTermsPage.vue'),
+    meta: { titleKey: 'bluetoothFinder.terms.title', app: 'bluetooth-finder' },
+  },
+  {
     path: '/:locale/chicken-egg-tracker/privacy-policy',
     name: 'chicken-egg-tracker-privacy',
     component: () => import('./pages/apps/chicken-egg-tracker/ChickenEggTrackerPrivacyPage.vue'),
@@ -826,6 +838,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/bluetooth-finder/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/bluetooth-finder/privacy-policy`,
+  },
+  {
+    path: '/bluetooth-finder/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/bluetooth-finder/terms-of-use`,
+  },
   {
     path: '/chicken-egg-tracker/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/chicken-egg-tracker/privacy-policy`,

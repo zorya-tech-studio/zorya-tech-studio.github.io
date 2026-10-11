@@ -12,7 +12,7 @@
 
     <h1 class="page-title">{{ $t('privacy.title') }}</h1>
 
-    <p class="updated-date">{{ $t('privacy.updated') }}: 2026-10-11</p>
+    <p class="updated-date">{{ $t('privacy.updated') }}: 2026-10-12</p>
 
     <p class="intro-text">{{ $t('privacy.intro') }}</p>
 
@@ -29,6 +29,11 @@
         <h3 class="subsection-heading">{{ $t('privacy.collect_admob_title') }}</h3>
         <p class="subsection-text">{{ $t('privacy.collect_admob_text') }}</p>
       </div>
+    </div>
+
+    <div id="bluetooth" class="policy-section">
+      <h2 class="section-heading">{{ $t('privacy.bluetooth_title') }}</h2>
+      <p class="section-text">{{ $t('privacy.bluetooth_text') }}</p>
     </div>
 
     <div id="watch-faces" class="policy-section">

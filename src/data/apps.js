@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'bluetooth-finder',
+    nameKey: 'bluetoothFinder.name',
+    subtitleKey: 'bluetoothFinder.subtitle',
+    descKey: 'bluetoothFinder.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'tools',
+    tags: ['Android', 'Bluetooth', 'BLE'],
+    icon: '/apps/bluetooth-finder/icon.png',
+    privacyRoute: (locale) => `/${locale}/bluetooth-finder/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/bluetooth-finder/terms-of-use`,
+  },
+  {
     slug: 'chicken-egg-tracker',
     nameKey: 'chickenEggTracker.name',
     subtitleKey: 'chickenEggTracker.subtitle',
