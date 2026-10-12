@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { apps } from '../data/apps.js'
+import { apps, iconThumb } from '../data/apps.js'
 
 const { t, locale } = useI18n()
 const projectsUrl = computed(() => `/${locale.value}/projects`)
@@ -46,11 +46,13 @@ const featuredApps = computed(() => apps.slice(0, HOMEPAGE_APPS_LIMIT))
       >
         <div class="app-card__head">
           <img
-            :src="app.icon"
+            :src="iconThumb(app)"
             :alt="t(app.nameKey)"
             class="app-card__icon"
             width="52"
             height="52"
+            loading="lazy"
+            decoding="async"
           />
           <div class="app-card__meta">
             <h3 class="app-card__title">{{ t(app.nameKey) }}</h3>

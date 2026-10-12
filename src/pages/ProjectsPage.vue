@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
-import { apps } from '../data/apps.js'
+import { apps, iconThumb } from '../data/apps.js'
 import OpenSourceSection from '../components/OpenSourceSection.vue'
 
 const { t } = useI18n()
@@ -77,11 +77,13 @@ const filteredApps = computed(() =>
         >
           <div class="app-card__head">
             <img
-              :src="app.icon"
+              :src="iconThumb(app)"
               :alt="t(app.nameKey)"
               class="app-card__icon"
               width="52"
               height="52"
+              loading="lazy"
+              decoding="async"
             />
             <div class="app-card__meta">
               <h2 class="app-card__title">{{ t(app.nameKey) }}</h2>
