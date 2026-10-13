@@ -10,4 +10,15 @@
 //   desc: { en: 'Short description.', uk: 'Короткий опис.' },
 //   playUrl: 'https://play.google.com/store/apps/details?id=<applicationId>',
 // },
-export const watchFaces = []
+export const watchFaces = [
+  {
+    slug: 'retro-backlight',
+    name: 'Retro LCD Digital Watch Face',
+    image: '/watchfaces/retro-backlight/main.png',
+    desc: {
+      en: 'Classic LCD sports watch with a real tap-on backlight, ghost segments, 16 LCD themes and 3 Always On modes.',
+      uk: 'Класичний LCD-годинник зі справжньою підсвіткою по тапу, «привидами» сегментів, 16 LCD-темами і 3 режимами Always On.',
+    },
+    playUrl: 'https://play.google.com/store/apps/details?id=com.zoryatechstudio.wf.retro_backlight',
+  },
+]
