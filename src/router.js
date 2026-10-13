@@ -47,6 +47,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/mexican-train/privacy-policy',
+    name: 'mexican-train-privacy',
+    component: () => import('./pages/apps/mexican-train/MexicanTrainPrivacyPage.vue'),
+    meta: { titleKey: 'mexicanTrain.privacy.title', app: 'mexican-train' },
+  },
+  {
+    path: '/:locale/mexican-train/terms-of-use',
+    name: 'mexican-train-terms',
+    component: () => import('./pages/apps/mexican-train/MexicanTrainTermsPage.vue'),
+    meta: { titleKey: 'mexicanTrain.terms.title', app: 'mexican-train' },
+  },
+  {
     path: '/:locale/bluetooth-finder/privacy-policy',
     name: 'bluetooth-finder-privacy',
     component: () => import('./pages/apps/bluetooth-finder/BluetoothFinderPrivacyPage.vue'),
@@ -838,6 +850,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/mexican-train/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/mexican-train/privacy-policy`,
+  },
+  {
+    path: '/mexican-train/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/mexican-train/terms-of-use`,
+  },
   {
     path: '/bluetooth-finder/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/bluetooth-finder/privacy-policy`,

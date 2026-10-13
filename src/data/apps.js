@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'mexican-train',
+    nameKey: 'mexicanTrain.name',
+    subtitleKey: 'mexicanTrain.subtitle',
+    descKey: 'mexicanTrain.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'games',
+    tags: ['Android', 'Dominoes', 'Score Keeper'],
+    icon: '/apps/mexican-train/icon.png',
+    privacyRoute: (locale) => `/${locale}/mexican-train/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/mexican-train/terms-of-use`,
+  },
+  {
     slug: 'bluetooth-finder',
     nameKey: 'bluetoothFinder.name',
     subtitleKey: 'bluetoothFinder.subtitle',
