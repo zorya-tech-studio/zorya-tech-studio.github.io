@@ -12,6 +12,16 @@
 // },
 export const watchFaces = [
   {
+    slug: 'moonlit-pumpkin',
+    name: 'Halloween Pumpkin Watch Face',
+    image: '/watchfaces/moonlit-pumpkin/main.png',
+    desc: {
+      en: 'Illustrated Halloween watch face: a big carved pumpkin glows on a misty hill under the full moon, with large digital time, 14 themes and a true black Always On mode.',
+      uk: 'Ілюстрований геловінський циферблат: великий різьблений гарбуз світиться на туманному пагорбі під повним місяцем, великий цифровий час, 14 тем і справжній чорний режим Always On.',
+    },
+    playUrl: 'https://play.google.com/store/apps/details?id=com.zoryatechstudio.wf.moonlit_pumpkin',
+  },
+  {
     slug: 'retro-backlight',
     name: 'Retro LCD Digital Watch Face',
     image: '/watchfaces/retro-backlight/main.png',
