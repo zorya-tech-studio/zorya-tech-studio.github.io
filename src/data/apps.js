@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'tile-calculator',
+    nameKey: 'tileCalculator.name',
+    subtitleKey: 'tileCalculator.subtitle',
+    descKey: 'tileCalculator.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'calculators',
+    tags: ['Android', 'Tile Layout', '3D'],
+    icon: '/apps/tile-calculator/icon.png',
+    privacyRoute: (locale) => `/${locale}/tile-calculator/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/tile-calculator/terms-of-use`,
+  },
+  {
     slug: 'mexican-train',
     nameKey: 'mexicanTrain.name',
     subtitleKey: 'mexicanTrain.subtitle',

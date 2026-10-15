@@ -47,6 +47,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/tile-calculator/privacy-policy',
+    name: 'tile-calculator-privacy',
+    component: () => import('./pages/apps/tile-calculator/TileCalculatorPrivacyPage.vue'),
+    meta: { titleKey: 'tileCalculator.privacy.title', app: 'tile-calculator' },
+  },
+  {
+    path: '/:locale/tile-calculator/terms-of-use',
+    name: 'tile-calculator-terms',
+    component: () => import('./pages/apps/tile-calculator/TileCalculatorTermsPage.vue'),
+    meta: { titleKey: 'tileCalculator.terms.title', app: 'tile-calculator' },
+  },
+  {
     path: '/:locale/mexican-train/privacy-policy',
     name: 'mexican-train-privacy',
     component: () => import('./pages/apps/mexican-train/MexicanTrainPrivacyPage.vue'),
@@ -850,6 +862,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/tile-calculator/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/tile-calculator/privacy-policy`,
+  },
+  {
+    path: '/tile-calculator/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/tile-calculator/terms-of-use`,
+  },
   {
     path: '/mexican-train/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/mexican-train/privacy-policy`,

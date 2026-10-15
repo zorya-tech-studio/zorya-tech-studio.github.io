@@ -12,7 +12,7 @@
 
     <h1 class="page-title">{{ $t('privacy.title') }}</h1>
 
-    <p class="updated-date">{{ $t('privacy.updated') }}: 2026-10-13</p>
+    <p class="updated-date">{{ $t('privacy.updated') }}: 2026-10-15</p>
 
     <p class="intro-text">{{ $t('privacy.intro') }}</p>
 
