@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'line-dance',
+    nameKey: 'lineDance.name',
+    subtitleKey: 'lineDance.subtitle',
+    descKey: 'lineDance.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'lifestyle',
+    tags: ['Android', 'Line Dance', '3D'],
+    icon: '/apps/line-dance/icon.png',
+    privacyRoute: (locale) => `/${locale}/line-dance/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/line-dance/terms-of-use`,
+  },
+  {
     slug: 'tile-calculator',
     nameKey: 'tileCalculator.name',
     subtitleKey: 'tileCalculator.subtitle',

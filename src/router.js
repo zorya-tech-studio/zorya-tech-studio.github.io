@@ -47,6 +47,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/line-dance/privacy-policy',
+    name: 'line-dance-privacy',
+    component: () => import('./pages/apps/line-dance/LineDancePrivacyPage.vue'),
+    meta: { titleKey: 'lineDance.privacy.title', app: 'line-dance' },
+  },
+  {
+    path: '/:locale/line-dance/terms-of-use',
+    name: 'line-dance-terms',
+    component: () => import('./pages/apps/line-dance/LineDanceTermsPage.vue'),
+    meta: { titleKey: 'lineDance.terms.title', app: 'line-dance' },
+  },
+  {
     path: '/:locale/tile-calculator/privacy-policy',
     name: 'tile-calculator-privacy',
     component: () => import('./pages/apps/tile-calculator/TileCalculatorPrivacyPage.vue'),
@@ -862,6 +874,14 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/line-dance/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/line-dance/privacy-policy`,
+  },
+  {
+    path: '/line-dance/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/line-dance/terms-of-use`,
+  },
   {
     path: '/tile-calculator/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/tile-calculator/privacy-policy`,
