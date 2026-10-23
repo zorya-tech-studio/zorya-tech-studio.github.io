@@ -47,6 +47,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/kings-corner/privacy-policy',
+    name: 'kings-corner-privacy',
+    component: () => import('./pages/apps/kings-corner/KingsCornerPrivacyPage.vue'),
+    meta: { titleKey: 'kingsCorner.privacy.title', app: 'kings-corner' },
+  },
+  {
+    path: '/:locale/kings-corner/terms-of-use',
+    name: 'kings-corner-terms',
+    component: () => import('./pages/apps/kings-corner/KingsCornerTermsPage.vue'),
+    meta: { titleKey: 'kingsCorner.terms.title', app: 'kings-corner' },
+  },
+  {
     path: '/:locale/line-dance/privacy-policy',
     name: 'line-dance-privacy',
     component: () => import('./pages/apps/line-dance/LineDancePrivacyPage.vue'),
@@ -874,6 +886,22 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/kings-corner/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/kings-corner/privacy-policy`,
+  },
+  {
+    path: '/kings-corner/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/kings-corner/terms-of-use`,
+  },
+  {
+    path: '/kings-corner/privacy',
+    redirect: () => `/${i18n.global.locale.value}/kings-corner/privacy-policy`,
+  },
+  {
+    path: '/kings-corner/terms',
+    redirect: () => `/${i18n.global.locale.value}/kings-corner/terms-of-use`,
+  },
   {
     path: '/line-dance/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/line-dance/privacy-policy`,

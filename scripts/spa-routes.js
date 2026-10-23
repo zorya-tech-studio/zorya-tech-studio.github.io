@@ -38,6 +38,10 @@ for (const locale of LOCALES) {
 // захід на не-локалізований URL віддавав 404.html (HTTP 404), тому валідатори
 // (Google Play тощо) бачили «сторінку не знайдено». Генеруємо статичний 200 і
 // для них: сторінка завантажить SPA, а вже роутер зробить редирект на локаль.
+// Short store/app URLs that only redirect (Play Console, AdMob and the Kings Corner app use them).
+const SHORT_REDIRECT_ROUTES = ['kings-corner/privacy', 'kings-corner/terms']
+for (const seg of SHORT_REDIRECT_ROUTES) routes.push(seg)
+
 for (const seg of segments) {
   if (seg) routes.push(seg)
 }

@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'kings-corner',
+    nameKey: 'kingsCorner.name',
+    subtitleKey: 'kingsCorner.subtitle',
+    descKey: 'kingsCorner.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'games',
+    tags: ['Android', 'Card Game', 'Offline'],
+    icon: '/apps/kings-corner/icon.png',
+    privacyRoute: (locale) => `/${locale}/kings-corner/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/kings-corner/terms-of-use`,
+  },
+  {
     slug: 'line-dance',
     nameKey: 'lineDance.name',
     subtitleKey: 'lineDance.subtitle',
