@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'ballet-beginners',
+    nameKey: 'balletBeginners.name',
+    subtitleKey: 'balletBeginners.subtitle',
+    descKey: 'balletBeginners.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'lifestyle',
+    tags: ['Android', 'Ballet', '3D'],
+    icon: '/apps/ballet-beginners/icon.png',
+    privacyRoute: (locale) => `/${locale}/ballet-beginners/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/ballet-beginners/terms-of-use`,
+  },
+  {
     slug: 'kings-corner',
     nameKey: 'kingsCorner.name',
     subtitleKey: 'kingsCorner.subtitle',

@@ -47,6 +47,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/ballet-beginners/privacy-policy',
+    name: 'ballet-beginners-privacy',
+    component: () => import('./pages/apps/ballet-beginners/BalletBeginnersPrivacyPage.vue'),
+    meta: { titleKey: 'balletBeginners.privacy.title', app: 'ballet-beginners' },
+  },
+  {
+    path: '/:locale/ballet-beginners/terms-of-use',
+    name: 'ballet-beginners-terms',
+    component: () => import('./pages/apps/ballet-beginners/BalletBeginnersTermsPage.vue'),
+    meta: { titleKey: 'balletBeginners.terms.title', app: 'ballet-beginners' },
+  },
+  {
     path: '/:locale/kings-corner/privacy-policy',
     name: 'kings-corner-privacy',
     component: () => import('./pages/apps/kings-corner/KingsCornerPrivacyPage.vue'),
@@ -901,6 +913,14 @@ const routes = [
   {
     path: '/kings-corner/terms',
     redirect: () => `/${i18n.global.locale.value}/kings-corner/terms-of-use`,
+  },
+  {
+    path: '/ballet-beginners/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/ballet-beginners/privacy-policy`,
+  },
+  {
+    path: '/ballet-beginners/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/ballet-beginners/terms-of-use`,
   },
   {
     path: '/line-dance/privacy-policy',
