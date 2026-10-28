@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'kalimba-tuner',
+    nameKey: 'kalimbaTuner.name',
+    subtitleKey: 'kalimbaTuner.subtitle',
+    descKey: 'kalimbaTuner.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'tools',
+    tags: ['Android', 'Kalimba', 'Tuner'],
+    icon: '/apps/kalimba-tuner/icon.png',
+    privacyRoute: (locale) => `/${locale}/kalimba-tuner/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/kalimba-tuner/terms-of-use`,
+  },
+  {
     slug: 'ballet-beginners',
     nameKey: 'balletBeginners.name',
     subtitleKey: 'balletBeginners.subtitle',

@@ -39,7 +39,14 @@ for (const locale of LOCALES) {
 // (Google Play тощо) бачили «сторінку не знайдено». Генеруємо статичний 200 і
 // для них: сторінка завантажить SPA, а вже роутер зробить редирект на локаль.
 // Short store/app URLs that only redirect (Play Console, AdMob and the Kings Corner app use them).
-const SHORT_REDIRECT_ROUTES = ['kings-corner/privacy', 'kings-corner/terms']
+const SHORT_REDIRECT_ROUTES = [
+  'kings-corner/privacy',
+  'kings-corner/terms',
+  'kalimba_tuner/privacy',
+  'kalimba_tuner/terms',
+  'kalimba-tuner/privacy',
+  'kalimba-tuner/terms',
+]
 for (const seg of SHORT_REDIRECT_ROUTES) routes.push(seg)
 
 for (const seg of segments) {

@@ -47,6 +47,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/kalimba-tuner/privacy-policy',
+    name: 'kalimba-tuner-privacy',
+    component: () => import('./pages/apps/kalimba-tuner/KalimbaTunerPrivacyPage.vue'),
+    meta: { titleKey: 'kalimbaTuner.privacy.title', app: 'kalimba-tuner' },
+  },
+  {
+    path: '/:locale/kalimba-tuner/terms-of-use',
+    name: 'kalimba-tuner-terms',
+    component: () => import('./pages/apps/kalimba-tuner/KalimbaTunerTermsPage.vue'),
+    meta: { titleKey: 'kalimbaTuner.terms.title', app: 'kalimba-tuner' },
+  },
+  {
     path: '/:locale/ballet-beginners/privacy-policy',
     name: 'ballet-beginners-privacy',
     component: () => import('./pages/apps/ballet-beginners/BalletBeginnersPrivacyPage.vue'),
@@ -898,6 +910,38 @@ const routes = [
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
   { path: '/projects', redirect: () => `/${i18n.global.locale.value}/projects` },
   { path: '/services', redirect: () => `/${i18n.global.locale.value}/services` },
+  {
+    path: '/kalimba-tuner/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/kalimba-tuner/privacy-policy`,
+  },
+  {
+    path: '/kalimba_tuner/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/kalimba-tuner/privacy-policy`,
+  },
+  {
+    path: '/kalimba-tuner/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/kalimba-tuner/terms-of-use`,
+  },
+  {
+    path: '/kalimba_tuner/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/kalimba-tuner/terms-of-use`,
+  },
+  {
+    path: '/kalimba-tuner/privacy',
+    redirect: () => `/${i18n.global.locale.value}/kalimba-tuner/privacy-policy`,
+  },
+  {
+    path: '/kalimba_tuner/privacy',
+    redirect: () => `/${i18n.global.locale.value}/kalimba-tuner/privacy-policy`,
+  },
+  {
+    path: '/kalimba-tuner/terms',
+    redirect: () => `/${i18n.global.locale.value}/kalimba-tuner/terms-of-use`,
+  },
+  {
+    path: '/kalimba_tuner/terms',
+    redirect: () => `/${i18n.global.locale.value}/kalimba-tuner/terms-of-use`,
+  },
   {
     path: '/kings-corner/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/kings-corner/privacy-policy`,
