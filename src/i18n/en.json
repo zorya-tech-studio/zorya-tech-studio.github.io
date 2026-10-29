@@ -1921,7 +1921,8 @@
     }
   },
   "app_status": {
-    "released": "Released"
+    "released": "Released",
+    "coming_soon": "Coming soon"
   },
   "wireSizeCalc": {
     "name": "Wire Size & Voltage Drop Calc",
@@ -4303,6 +4304,71 @@
       "s9_p1": "These Terms are governed by the laws applicable at the developer's place of business, without prejudice to mandatory consumer protection rights you have under the laws of your country of residence.",
       "s10_title": "Contact",
       "s10_p1": "Questions about these Terms:"
+    }
+  },
+  "kpopDance3d": {
+    "name": "Kpop Dance Mirror: 3D Moves",
+    "subtitle": "Learn K-pop dance moves with a 3D dancer you can rotate, slow down and mirror, with counts, 48 moves, 20 routines and a 30-day practice path",
+    "desc_short": "Learn K-pop dance with a 3D dancer: rotate, slow down and mirror every move, step by step with counts, offline.",
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Last updated",
+      "intro": "This policy describes how the Android app \"Kpop Dance Mirror: 3D Moves\" (package com.zoryatechstudio.kpopdance3d), published by Zorya Tech Studio (\"we\"), handles information.",
+      "short_title": "Summary",
+      "short_b1": "No account and no login. We do not ask for your name, email or any personal details.",
+      "short_b2": "We do not run our own server. Your progress stays on your device.",
+      "short_b3": "Moves, 3D motion and music are built into the app and work offline. The internet is used only to show ads.",
+      "short_b4": "Ads are served by Google AdMob, which may collect device data as described below.",
+      "storage_title": "Data stored on your device",
+      "storage_p1": "The app stores your practice progress (moves you have learned, loops and routines practiced, self-check results), 30-day path state, streak, badges and photocards, favorites, unlocked items and settings (language, theme, dancer and outfit choices, light-stick color, stage, sound, reminder time, graphics quality) locally on your device.",
+      "storage_p2": "You can export your progress as a JSON file through the Android share sheet and choose where to send or save it, and import it again with the system file picker. We do not receive exported files.",
+      "notifications_title": "Notifications",
+      "notifications_p1": "If you turn reminders on, the app asks for notification permission and schedules one daily practice reminder on your device (default 18:00). Reminders are created locally; no push server is used. You can turn them off in the app or in system settings.",
+      "voice_title": "Voice counts",
+      "voice_p1": "Spoken counts use the text-to-speech engine installed on your device. The app does not record audio and does not use the microphone or the camera.",
+      "ads_title": "Advertising (Google AdMob)",
+      "ads_p1": "The app shows ads from Google AdMob, the only ad network in this version (banner, native, interstitial, rewarded and app-open ads). AdMob may collect and process device or other identifiers (such as the advertising ID), approximate location derived from the IP address, app interactions and diagnostics to show, measure and protect ads. Ads never appear on the practice screens (Move Player, Routine Player, Random Practice).",
+      "ads_p2": "In the EEA, the UK and Switzerland, and where required by law, the app shows Google's consent form (User Messaging Platform) before personalized ads. You can change your choice at any time in Settings under Privacy options. Watching an optional rewarded video unlocks extra content on your device.",
+      "ads_p3": "More information: Google Privacy Policy https://policies.google.com/privacy and How Google uses information from apps that use its services https://policies.google.com/technologies/partner-sites, Google ads policy https://policies.google.com/technologies/ads.",
+      "permissions_title": "Permissions",
+      "permissions_b1": "Internet - to load ads.",
+      "permissions_b2": "Advertising ID - used by Google AdMob for advertising.",
+      "permissions_b3": "Notifications (Android 13+) - only for the optional daily reminder.",
+      "permissions_p1": "The app does not use location, camera, microphone, contacts or file storage permissions.",
+      "analytics_title": "Analytics",
+      "analytics_p1": "The app contains no analytics or crash-reporting SDK of our own.",
+      "children_title": "Children",
+      "children_p1": "The app is intended for users aged 13 and over and is not directed to children under 13. We do not knowingly collect personal information from children.",
+      "deletion_title": "Data deletion",
+      "deletion_p1": "We hold no personal data about you. To delete the data stored by the app, clear its data or uninstall it. For data processed by Google AdMob, use your Google and Android advertising settings.",
+      "changes_title": "Changes",
+      "changes_p1": "We may update this policy. The current version is always available at this page.",
+      "contact_title": "Contact",
+      "contact_text": "Questions about this policy:"
+    },
+    "terms": {
+      "title": "Terms of Use",
+      "updated": "Last updated",
+      "intro": "By installing or using \"Kpop Dance Mirror: 3D Moves\" (the \"app\"), published by Zorya Tech Studio (\"we\"), you agree to these terms.",
+      "app_title": "The app",
+      "app_p1": "The app teaches K-pop style dance moves with a 3D dancer, step-by-step counts, slow motion, mirror mode, routines, a 30-day practice path, a glossary and collectible photocards. It is free and supported by ads from Google AdMob. Some extra content can be unlocked by watching an optional rewarded video.",
+      "safety_title": "Safety and no medical advice",
+      "safety_p1": "Dance practice should feel like effort, never like pain. Stop if you feel sharp pain, dizziness or joint pain. If you have an injury, are pregnant or have a medical condition, ask a doctor or physiotherapist before you practice. You practice at your own risk.",
+      "safety_p2": "The app is entertainment and education. It is not professional dance instruction, does not diagnose, treat or prevent any condition and makes no weight-loss or health claims. Practice on a non-slip floor with enough free space, warm up first and move at a pace that is comfortable for you.",
+      "age_title": "Age",
+      "age_p1": "The app is intended for users aged 13 and over. Users under the age of majority in their country should use it with the consent of a parent or guardian.",
+      "data_title": "Your data",
+      "data_p1": "There is no account. Your progress is stored on your device; see the Privacy Policy. You are responsible for keeping any progress file you export. We cannot restore data lost by clearing app data or uninstalling. Items unlocked with rewarded videos are tied to your device installation.",
+      "content_title": "Content and licences",
+      "content_p1": "The app, its moves, routines, 3D characters, music generator, texts and design belong to Zorya Tech Studio or are used under permissive licences listed in Settings under Licenses. The app contains no official songs, artist or group names or copyrighted choreographies and is not affiliated with any artist, label or entertainment company.",
+      "adsterms_title": "Ads",
+      "adsterms_p1": "Ads are provided by Google AdMob and are subject to Google's terms and policies. We are not responsible for the content of third-party ads or the sites they link to.",
+      "liability_title": "No warranty and liability",
+      "liability_p1": "The app is provided \"as is\" without warranties of any kind. To the extent permitted by law, we are not liable for any injury, loss or damage arising from the use of the app or from dance practice. You may not copy, resell or redistribute the app's content or assets.",
+      "changes_title": "Changes",
+      "changes_p1": "We may update the app and these terms. Continued use after an update means you accept the updated terms.",
+      "contact_title": "Contact",
+      "contact_text": "Questions about these Terms:"
     }
   }
 }

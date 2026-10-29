@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'kpop-dance-3d',
+    nameKey: 'kpopDance3d.name',
+    subtitleKey: 'kpopDance3d.subtitle',
+    descKey: 'kpopDance3d.desc_short',
+    platform: 'Android',
+    status: 'coming_soon',
+    category: 'lifestyle',
+    tags: ['Android', 'Dance', '3D'],
+    icon: '/apps/kpop-dance-3d/icon.png',
+    privacyRoute: (locale) => `/${locale}/kpop-dance-3d/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/kpop-dance-3d/terms-of-use`,
+  },
+  {
     slug: 'kalimba-tuner',
     nameKey: 'kalimbaTuner.name',
     subtitleKey: 'kalimbaTuner.subtitle',
