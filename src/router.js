@@ -47,6 +47,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/recorder-fingering/privacy-policy',
+    name: 'recorder-fingering-privacy',
+    component: () => import('./pages/apps/recorder-fingering/RecorderFingeringPrivacyPage.vue'),
+    meta: { titleKey: 'recorderFingering.privacy.title', app: 'recorder-fingering' },
+  },
+  {
+    path: '/:locale/recorder-fingering/terms-of-use',
+    name: 'recorder-fingering-terms',
+    component: () => import('./pages/apps/recorder-fingering/RecorderFingeringTermsPage.vue'),
+    meta: { titleKey: 'recorderFingering.terms.title', app: 'recorder-fingering' },
+  },
+  {
     path: '/:locale/cube-solver-3d/privacy-policy',
     name: 'cube-solver-3d-privacy',
     component: () => import('./pages/apps/cube-solver-3d/CubeSolver3dPrivacyPage.vue'),
@@ -981,6 +993,38 @@ const routes = [
   {
     path: '/kings-corner/terms',
     redirect: () => `/${i18n.global.locale.value}/kings-corner/terms-of-use`,
+  },
+  {
+    path: '/recorder-fingering/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/recorder-fingering/privacy-policy`,
+  },
+  {
+    path: '/recorder-fingering/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/recorder-fingering/terms-of-use`,
+  },
+  {
+    path: '/recorder-fingering/privacy',
+    redirect: () => `/${i18n.global.locale.value}/recorder-fingering/privacy-policy`,
+  },
+  {
+    path: '/recorder-fingering/terms',
+    redirect: () => `/${i18n.global.locale.value}/recorder-fingering/terms-of-use`,
+  },
+  {
+    path: '/recorder_fingering/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/recorder-fingering/privacy-policy`,
+  },
+  {
+    path: '/recorder_fingering/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/recorder-fingering/terms-of-use`,
+  },
+  {
+    path: '/recorder_fingering/privacy',
+    redirect: () => `/${i18n.global.locale.value}/recorder-fingering/privacy-policy`,
+  },
+  {
+    path: '/recorder_fingering/terms',
+    redirect: () => `/${i18n.global.locale.value}/recorder-fingering/terms-of-use`,
   },
   {
     path: '/cube-solver-3d/privacy-policy',

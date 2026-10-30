@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'recorder-fingering',
+    nameKey: 'recorderFingering.name',
+    subtitleKey: 'recorderFingering.subtitle',
+    descKey: 'recorderFingering.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'tools',
+    tags: ['Android', 'Recorder', 'Fingering'],
+    icon: '/apps/recorder-fingering/icon.png',
+    privacyRoute: (locale) => `/${locale}/recorder-fingering/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/recorder-fingering/terms-of-use`,
+  },
+  {
     slug: 'cube-solver-3d',
     nameKey: 'cubeSolver3d.name',
     subtitleKey: 'cubeSolver3d.subtitle',
