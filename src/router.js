@@ -47,6 +47,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/cube-solver-3d/privacy-policy',
+    name: 'cube-solver-3d-privacy',
+    component: () => import('./pages/apps/cube-solver-3d/CubeSolver3dPrivacyPage.vue'),
+    meta: { titleKey: 'cubeSolver3d.privacy.title', app: 'cube-solver-3d' },
+  },
+  {
+    path: '/:locale/cube-solver-3d/terms-of-use',
+    name: 'cube-solver-3d-terms',
+    component: () => import('./pages/apps/cube-solver-3d/CubeSolver3dTermsPage.vue'),
+    meta: { titleKey: 'cubeSolver3d.terms.title', app: 'cube-solver-3d' },
+  },
+  {
     path: '/:locale/kpop-dance-3d/privacy-policy',
     name: 'kpop-dance-3d-privacy',
     component: () => import('./pages/apps/kpop-dance-3d/KpopDance3dPrivacyPage.vue'),
@@ -969,6 +981,38 @@ const routes = [
   {
     path: '/kings-corner/terms',
     redirect: () => `/${i18n.global.locale.value}/kings-corner/terms-of-use`,
+  },
+  {
+    path: '/cube-solver-3d/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/cube-solver-3d/privacy-policy`,
+  },
+  {
+    path: '/cube_solver_3d/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/cube-solver-3d/privacy-policy`,
+  },
+  {
+    path: '/cube-solver-3d/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/cube-solver-3d/terms-of-use`,
+  },
+  {
+    path: '/cube_solver_3d/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/cube-solver-3d/terms-of-use`,
+  },
+  {
+    path: '/cube-solver-3d/privacy',
+    redirect: () => `/${i18n.global.locale.value}/cube-solver-3d/privacy-policy`,
+  },
+  {
+    path: '/cube_solver_3d/privacy',
+    redirect: () => `/${i18n.global.locale.value}/cube-solver-3d/privacy-policy`,
+  },
+  {
+    path: '/cube-solver-3d/terms',
+    redirect: () => `/${i18n.global.locale.value}/cube-solver-3d/terms-of-use`,
+  },
+  {
+    path: '/cube_solver_3d/terms',
+    redirect: () => `/${i18n.global.locale.value}/cube-solver-3d/terms-of-use`,
   },
   {
     path: '/kpop-dance-3d/privacy-policy',

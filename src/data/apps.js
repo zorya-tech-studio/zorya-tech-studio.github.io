@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'cube-solver-3d',
+    nameKey: 'cubeSolver3d.name',
+    subtitleKey: 'cubeSolver3d.subtitle',
+    descKey: 'cubeSolver3d.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'tools',
+    tags: ['Android', 'Puzzle', '3D'],
+    icon: '/apps/cube-solver-3d/icon.png',
+    privacyRoute: (locale) => `/${locale}/cube-solver-3d/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/cube-solver-3d/terms-of-use`,
+  },
+  {
     slug: 'kpop-dance-3d',
     nameKey: 'kpopDance3d.name',
     subtitleKey: 'kpopDance3d.subtitle',
