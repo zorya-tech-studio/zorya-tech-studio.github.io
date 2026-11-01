@@ -33,7 +33,7 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
     </div>
 
     <p class="app-label">{{ t('tileCalculator.name') }} — {{ t('tileCalculator.subtitle') }}</p>
-    <p class="updated-date">{{ t('tileCalculator.privacy.updated') }}: 2026-10-15</p>
+    <p class="updated-date">{{ t('tileCalculator.privacy.updated') }}: 2026-11-01</p>
     <p class="intro-text">{{ t('tileCalculator.privacy.intro') }}</p>
 
     <div class="policy-section">
@@ -54,6 +54,10 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
     <div class="policy-section">
       <h2 class="section-heading">{{ t('tileCalculator.privacy.files_title') }}</h2>
       <p class="section-text">{{ t('tileCalculator.privacy.files_text') }}</p>
+    </div>
+    <div class="policy-section">
+      <h2 class="section-heading">{{ t('tileCalculator.privacy.notifications_title') }}</h2>
+      <p class="section-text">{{ t('tileCalculator.privacy.notifications_text') }}</p>
     </div>
     <div class="policy-section">
       <h2 class="section-heading">{{ t('tileCalculator.privacy.ads_title') }}</h2>
