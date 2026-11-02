@@ -47,6 +47,18 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/vocal-range-test/privacy-policy',
+    name: 'vocal-range-test-privacy',
+    component: () => import('./pages/apps/vocal-range-test/VocalRangeTestPrivacyPage.vue'),
+    meta: { titleKey: 'vocalRangeTest.privacy.title', app: 'vocal-range-test' },
+  },
+  {
+    path: '/:locale/vocal-range-test/terms-of-use',
+    name: 'vocal-range-test-terms',
+    component: () => import('./pages/apps/vocal-range-test/VocalRangeTestTermsPage.vue'),
+    meta: { titleKey: 'vocalRangeTest.terms.title', app: 'vocal-range-test' },
+  },
+  {
     path: '/:locale/recorder-fingering/privacy-policy',
     name: 'recorder-fingering-privacy',
     component: () => import('./pages/apps/recorder-fingering/RecorderFingeringPrivacyPage.vue'),
@@ -993,6 +1005,38 @@ const routes = [
   {
     path: '/kings-corner/terms',
     redirect: () => `/${i18n.global.locale.value}/kings-corner/terms-of-use`,
+  },
+  {
+    path: '/vocal-range-test/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/vocal-range-test/privacy-policy`,
+  },
+  {
+    path: '/vocal-range-test/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/vocal-range-test/terms-of-use`,
+  },
+  {
+    path: '/vocal-range-test/privacy',
+    redirect: () => `/${i18n.global.locale.value}/vocal-range-test/privacy-policy`,
+  },
+  {
+    path: '/vocal-range-test/terms',
+    redirect: () => `/${i18n.global.locale.value}/vocal-range-test/terms-of-use`,
+  },
+  {
+    path: '/vocal_range_test/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/vocal-range-test/privacy-policy`,
+  },
+  {
+    path: '/vocal_range_test/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/vocal-range-test/terms-of-use`,
+  },
+  {
+    path: '/vocal_range_test/privacy',
+    redirect: () => `/${i18n.global.locale.value}/vocal-range-test/privacy-policy`,
+  },
+  {
+    path: '/vocal_range_test/terms',
+    redirect: () => `/${i18n.global.locale.value}/vocal-range-test/terms-of-use`,
   },
   {
     path: '/recorder-fingering/privacy-policy',

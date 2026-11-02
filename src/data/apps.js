@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'vocal-range-test',
+    nameKey: 'vocalRangeTest.name',
+    subtitleKey: 'vocalRangeTest.subtitle',
+    descKey: 'vocalRangeTest.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'tools',
+    tags: ['Android', 'Singing', 'Vocal range'],
+    icon: '/apps/vocal-range-test/icon.png',
+    privacyRoute: (locale) => `/${locale}/vocal-range-test/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/vocal-range-test/terms-of-use`,
+  },
+  {
     slug: 'recorder-fingering',
     nameKey: 'recorderFingering.name',
     subtitleKey: 'recorderFingering.subtitle',
