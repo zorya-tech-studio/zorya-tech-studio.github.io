@@ -47,6 +47,22 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/crochet-row-counter/privacy-policy',
+    name: 'crochet-row-counter-privacy',
+    component: () => import('./pages/apps/crochet-row-counter/CrochetRowCounterPrivacyPage.vue'),
+    meta: { titleKey: 'crochetRowCounter.privacy.title', app: 'crochet-row-counter' },
+  },
+  {
+    path: '/:locale/crochet-row-counter/terms-of-use',
+    name: 'crochet-row-counter-terms',
+    component: () => import('./pages/apps/crochet-row-counter/CrochetRowCounterTermsPage.vue'),
+    meta: { titleKey: 'crochetRowCounter.terms.title', app: 'crochet-row-counter' },
+  },
+  {
+    path: '/:locale/crochet-row-counter/terms',
+    redirect: (to) => `/${to.params.locale}/crochet-row-counter/terms-of-use`,
+  },
+  {
     path: '/:locale/vocal-range-test/privacy-policy',
     name: 'vocal-range-test-privacy',
     component: () => import('./pages/apps/vocal-range-test/VocalRangeTestPrivacyPage.vue'),
@@ -1005,6 +1021,54 @@ const routes = [
   {
     path: '/kings-corner/terms',
     redirect: () => `/${i18n.global.locale.value}/kings-corner/terms-of-use`,
+  },
+  {
+    path: '/crochet-row-counter/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/crochet-row-counter/privacy-policy`,
+  },
+  {
+    path: '/crochet-row-counter/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/crochet-row-counter/terms-of-use`,
+  },
+  {
+    path: '/crochet-row-counter/privacy',
+    redirect: () => `/${i18n.global.locale.value}/crochet-row-counter/privacy-policy`,
+  },
+  {
+    path: '/crochet-row-counter/terms',
+    redirect: () => `/${i18n.global.locale.value}/crochet-row-counter/terms-of-use`,
+  },
+  {
+    path: '/crochet_row_counter/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/crochet-row-counter/privacy-policy`,
+  },
+  {
+    path: '/crochet_row_counter/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/crochet-row-counter/terms-of-use`,
+  },
+  {
+    path: '/crochet_row_counter/privacy',
+    redirect: () => `/${i18n.global.locale.value}/crochet-row-counter/privacy-policy`,
+  },
+  {
+    path: '/crochet_row_counter/terms',
+    redirect: () => `/${i18n.global.locale.value}/crochet-row-counter/terms-of-use`,
+  },
+  {
+    path: '/row-counter/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/crochet-row-counter/privacy-policy`,
+  },
+  {
+    path: '/row-counter/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/crochet-row-counter/terms-of-use`,
+  },
+  {
+    path: '/row-counter/privacy',
+    redirect: () => `/${i18n.global.locale.value}/crochet-row-counter/privacy-policy`,
+  },
+  {
+    path: '/row-counter/terms',
+    redirect: () => `/${i18n.global.locale.value}/crochet-row-counter/terms-of-use`,
   },
   {
     path: '/vocal-range-test/privacy-policy',

@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'crochet-row-counter',
+    nameKey: 'crochetRowCounter.name',
+    subtitleKey: 'crochetRowCounter.subtitle',
+    descKey: 'crochetRowCounter.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'lifestyle',
+    tags: ['Android', 'Crochet', 'Knitting'],
+    icon: '/apps/crochet-row-counter/icon.png',
+    privacyRoute: (locale) => `/${locale}/crochet-row-counter/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/crochet-row-counter/terms-of-use`,
+  },
+  {
     slug: 'vocal-range-test',
     nameKey: 'vocalRangeTest.name',
     subtitleKey: 'vocalRangeTest.subtitle',

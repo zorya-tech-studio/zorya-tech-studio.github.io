@@ -4556,5 +4556,56 @@
       "contact_title": "Contact",
       "contact_text": "Questions about these Terms:"
     }
+  },
+  "crochetRowCounter": {
+    "name": "Crochet Row Counter: Amigurumi",
+    "subtitle": "Row and stitch counter for crochet, knitting and amigurumi with pattern steps, reminders, widget and voice counting",
+    "desc_short": "Crochet row counter with patterns, reminders, widget, voice and free backup.",
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Last updated",
+      "intro": "This policy explains how the Row Counter app for Android (package com.zoryatechstudio.rowcounter), made by Zorya Tech Studio, handles your information. It supplements the Zorya Tech Studio privacy policy.",
+      "summary_title": "Summary",
+      "summary_p1": "The counting features work offline and need no account. If you turn on voice counting, the app asks for the microphone and recognises speech on your device; no audio or text is sent or stored. We do not run a server and do not receive or sell your data. The app shows ads through Google AdMob, and Google processes some data to do this, as described below.",
+      "storage_title": "Information stored on your device",
+      "storage_p1": "The following stays in the app's private storage on your device:",
+      "storage_b1": "Projects, counters, notes, checklists, timer data and statistics that you create.",
+      "storage_b2": "Your settings, such as language, theme and interface size.",
+      "storage_b3": "Photos that you add to a project.",
+      "storage_b4": "Safety snapshots of your data, created automatically before a backup is imported.",
+      "storage_p2": "This information is not sent to us. Deleting the app's data or uninstalling the app removes it from the device.",
+      "camera_title": "Camera and photos",
+      "camera_p1": "Adding a photo to a project is optional. When you choose this, your device's camera or photo picker opens and the app saves a copy of the image you select in its private storage. The app does not access your other photos and never uploads images.",
+      "backup_title": "Backups you create",
+      "backup_p1": "When you export a backup, the app creates a JSON file with your projects and opens your device's share sheet. You decide where the file goes, and that destination's own privacy terms apply. Backup files do not contain the photos themselves, only their location on the device.",
+      "sysbackup_title": "Android system backup",
+      "sysbackup_p1": "If Android backup is turned on for your device, Android may include the app's data in your personal device backup, which is managed by Google under your Google account. We cannot access that backup. You can control it in your device settings.",
+      "ads_title": "Advertising",
+      "ads_p1": "The app shows ads through Google AdMob. To serve and measure ads, and to prevent fraud, Google may collect and share your approximate location, advertising ID and other device identifiers, app interactions, and crash and diagnostic data. In regions where consent is required, the app asks for your choice first using Google's consent form, and you can change it in the app's settings. You can also reset or delete your advertising ID in your device settings. Your projects, notes and photos are never shared with ad networks. Google's policies: https://policies.google.com/privacy and https://policies.google.com/technologies/partner-sites",
+      "third_title": "Other third parties",
+      "third_p1": "The app has no analytics or crash reporting service of its own. Sharing and file selection are handled by your device's system components and the apps you choose.",
+      "children_title": "Children",
+      "children_p1": "The app is intended for users aged 13 and over. We do not knowingly collect personal information from children under 13.",
+      "choices_title": "Your choices",
+      "choices_p1": "You can edit or remove your projects in the app, export them at any time, and remove all data by uninstalling the app. Because we hold none of your data ourselves, we have nothing to provide, correct or delete on our side. Data processed for advertising is handled by Google under its policies.",
+      "changes_title": "Changes to this policy",
+      "changes_p1": "If a future version changes how data is handled, we will update this policy before that version is released and change the date above.",
+      "contact_title": "Contact",
+      "contact_text": "Questions about this policy:"
+    },
+    "terms": {
+      "title": "Terms of Use",
+      "updated": "Last updated",
+      "intro": "By using the Row Counter app (\"the app\") by Zorya Tech Studio, you agree to these terms.",
+      "b1": "The app is provided free of charge and is supported by ads.",
+      "b2": "You may use it for personal purposes. You may not copy, resell or reverse engineer it, except where the law allows this.",
+      "b3": "Your projects are stored on your device. You are responsible for keeping backups; the app includes a free export for this.",
+      "b4": "The app is provided \"as is\", without warranties. To the extent the law allows, we are not liable for lost data or other damages arising from its use. The calculator and guide are aids, and your pattern remains the final reference.",
+      "b5": "Ads are provided by third parties, and we are not responsible for their content.",
+      "b6": "We may update the app and these terms. Continuing to use the app means you accept the updated terms.",
+      "privacy_note": "Privacy is covered by the separate privacy policy.",
+      "contact_title": "Contact",
+      "contact_text": "Questions about these Terms:"
+    }
   }
 }
