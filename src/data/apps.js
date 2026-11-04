@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'survival-guide',
+    nameKey: 'survivalGuide.name',
+    subtitleKey: 'survivalGuide.subtitle',
+    descKey: 'survivalGuide.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'reference',
+    tags: ['Android', 'Survival', 'Emergency kit'],
+    icon: '/apps/survival-guide/icon.png',
+    privacyRoute: (locale) => `/${locale}/survival-guide/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/survival-guide/terms-of-use`,
+  },
+  {
     slug: 'crochet-row-counter',
     nameKey: 'crochetRowCounter.name',
     subtitleKey: 'crochetRowCounter.subtitle',

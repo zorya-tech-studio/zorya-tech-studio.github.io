@@ -47,6 +47,22 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/survival-guide/privacy-policy',
+    name: 'survival-guide-privacy',
+    component: () => import('./pages/apps/survival-guide/SurvivalGuidePrivacyPage.vue'),
+    meta: { titleKey: 'survivalGuide.privacy.title', app: 'survival-guide' },
+  },
+  {
+    path: '/:locale/survival-guide/terms-of-use',
+    name: 'survival-guide-terms',
+    component: () => import('./pages/apps/survival-guide/SurvivalGuideTermsPage.vue'),
+    meta: { titleKey: 'survivalGuide.terms.title', app: 'survival-guide' },
+  },
+  {
+    path: '/:locale/survival-guide/terms',
+    redirect: (to) => `/${to.params.locale}/survival-guide/terms-of-use`,
+  },
+  {
     path: '/:locale/crochet-row-counter/privacy-policy',
     name: 'crochet-row-counter-privacy',
     component: () => import('./pages/apps/crochet-row-counter/CrochetRowCounterPrivacyPage.vue'),
@@ -1021,6 +1037,38 @@ const routes = [
   {
     path: '/kings-corner/terms',
     redirect: () => `/${i18n.global.locale.value}/kings-corner/terms-of-use`,
+  },
+  {
+    path: '/survival-guide/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/survival-guide/privacy-policy`,
+  },
+  {
+    path: '/survival-guide/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/survival-guide/terms-of-use`,
+  },
+  {
+    path: '/survival-guide/privacy',
+    redirect: () => `/${i18n.global.locale.value}/survival-guide/privacy-policy`,
+  },
+  {
+    path: '/survival-guide/terms',
+    redirect: () => `/${i18n.global.locale.value}/survival-guide/terms-of-use`,
+  },
+  {
+    path: '/survival_guide/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/survival-guide/privacy-policy`,
+  },
+  {
+    path: '/survival_guide/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/survival-guide/terms-of-use`,
+  },
+  {
+    path: '/survival_guide/privacy',
+    redirect: () => `/${i18n.global.locale.value}/survival-guide/privacy-policy`,
+  },
+  {
+    path: '/survival_guide/terms',
+    redirect: () => `/${i18n.global.locale.value}/survival-guide/terms-of-use`,
   },
   {
     path: '/crochet-row-counter/privacy-policy',
