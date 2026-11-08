@@ -8,7 +8,7 @@ const route = useRoute()
 
 const locale = computed(() => route.params.locale || 'uk')
 const homeUrl = computed(() => `/${locale.value}`)
-const termsUrl = computed(() => `/${locale.value}/molemap/terms`)
+const termsUrl = computed(() => `/${locale.value}/molemap/terms-of-use`)
 const otherLocale = computed(() => (locale.value === 'uk' ? 'en' : 'uk'))
 const otherLocaleUrl = computed(() => `/${otherLocale.value}/molemap/privacy-policy`)
 const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))

@@ -8,7 +8,7 @@ const route = useRoute()
 
 const locale = computed(() => route.params.locale || 'uk')
 const homeUrl = computed(() => `/${locale.value}`)
-const offerUrl = computed(() => `/${locale.value}/auto-obd2/offer`)
+const offerUrl = computed(() => `/${locale.value}/auto-obd2/terms-of-use`)
 const otherLocale = computed(() => (locale.value === 'uk' ? 'en' : 'uk'))
 const otherLocaleUrl = computed(() => `/${otherLocale.value}/auto-obd2/privacy-policy`)
 const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))

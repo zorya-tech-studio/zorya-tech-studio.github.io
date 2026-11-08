@@ -8,7 +8,7 @@ const route = useRoute()
 
 const locale = computed(() => route.params.locale || 'uk')
 const homeUrl = computed(() => `/${locale.value}`)
-const termsUrl = computed(() => `/${locale.value}/zodiac-compatibility/terms`)
+const termsUrl = computed(() => `/${locale.value}/zodiac-compatibility/terms-of-use`)
 const otherLocale = computed(() => (locale.value === 'uk' ? 'en' : 'uk'))
 const otherLocaleUrl = computed(() => `/${otherLocale.value}/zodiac-compatibility/privacy-policy`)
 const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))

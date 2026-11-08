@@ -8,7 +8,7 @@ const route = useRoute()
 
 const locale = computed(() => route.params.locale || 'uk')
 const homeUrl = computed(() => `/${locale.value}`)
-const offerUrl = computed(() => `/${locale.value}/starguide/offer`)
+const offerUrl = computed(() => `/${locale.value}/starguide/terms-of-use`)
 const otherLocale = computed(() => (locale.value === 'uk' ? 'en' : 'uk'))
 const otherLocaleUrl = computed(() => `/${otherLocale.value}/starguide/privacy-policy`)
 const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
