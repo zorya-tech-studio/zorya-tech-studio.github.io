@@ -11,6 +11,7 @@
  *  - app legal pages show the Privacy | Terms header
  * URLs: scripts/legacy-urls.json (every URL the site ever served) + all current routes + all Terms URLs.
  *
+ * Live site: SITE_URL=https://zorya-tech-studio.github.io npm run check:urls (after a deploy).
  * Chromium: uses Playwright's browser; set CHROME=<path to chrome.exe> to use another one.
  */
 import http from 'http'
@@ -23,7 +24,9 @@ import { apps } from '../src/data/apps.js'
 
 const LOCALES = ['uk', 'en']
 
-if (!existsSync('dist/index.html')) {
+// SITE_URL=https://zorya-tech-studio.github.io npm run check:urls  -> test the live site instead of dist/.
+const LIVE = process.env.SITE_URL?.replace(/\/$/, '')
+if (!LIVE && !existsSync('dist/index.html')) {
   console.error('check-urls: dist/ not built — run `npm run build` first')
   process.exit(1)
 }
@@ -43,27 +46,29 @@ const TYPES = {
   '.txt': 'text/plain',
   '.jpg': 'image/jpeg',
 }
-const server = http
-  .createServer((req, res) => {
-    const u = decodeURIComponent(new URL(req.url, 'http://x').pathname)
-    let f = join('dist', u)
-    if (existsSync(f) && statSync(f).isDirectory()) {
-      if (!u.endsWith('/')) {
-        res.writeHead(301, { Location: u + '/' })
-        return res.end()
-      }
-      f = join(f, 'index.html')
-    }
-    if (existsSync(f) && statSync(f).isFile()) {
-      res.writeHead(200, { 'Content-Type': TYPES[extname(f)] || 'application/octet-stream' })
-      return res.end(readFileSync(f))
-    }
-    res.writeHead(404, { 'Content-Type': 'text/html' })
-    res.end(readFileSync('dist/404.html'))
-  })
-  .listen(0, '127.0.0.1')
-await new Promise((r) => server.once('listening', r))
-const BASE = `http://127.0.0.1:${server.address().port}`
+const server = LIVE
+  ? null
+  : http
+      .createServer((req, res) => {
+        const u = decodeURIComponent(new URL(req.url, 'http://x').pathname)
+        let f = join('dist', u)
+        if (existsSync(f) && statSync(f).isDirectory()) {
+          if (!u.endsWith('/')) {
+            res.writeHead(301, { Location: u + '/' })
+            return res.end()
+          }
+          f = join(f, 'index.html')
+        }
+        if (existsSync(f) && statSync(f).isFile()) {
+          res.writeHead(200, { 'Content-Type': TYPES[extname(f)] || 'application/octet-stream' })
+          return res.end(readFileSync(f))
+        }
+        res.writeHead(404, { 'Content-Type': 'text/html' })
+        res.end(readFileSync('dist/404.html'))
+      })
+      .listen(0, '127.0.0.1')
+if (server) await new Promise((r) => server.once('listening', r))
+const BASE = LIVE || `http://127.0.0.1:${server.address().port}`
 
 // --- URL list ---
 const urls = new Set(JSON.parse(readFileSync('scripts/legacy-urls.json', 'utf8')).urls)
@@ -107,7 +112,7 @@ try {
     console.error(
       'check-urls: no Chromium found. Run `npx playwright install chromium` or set CHROME=<path>.',
     )
-    server.close()
+    server?.close()
     process.exit(1)
   }
   browser = await chromium.launch({ executablePath: exe })
@@ -164,7 +169,7 @@ async function worker() {
 const started = Date.now()
 await Promise.all(Array.from({ length: 8 }, worker))
 await browser.close()
-server.close()
+server?.close()
 
 if (failures.length) {
   console.error(
