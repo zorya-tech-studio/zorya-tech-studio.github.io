@@ -8,6 +8,7 @@
  * no need to keep a duplicate list in sync here.
  */
 import { copyFileSync, mkdirSync, readFileSync } from 'fs'
+import { termsAliasPaths, termsPath, termsSlugs } from '../src/data/termsRoutes.js'
 
 const src = 'dist/index.html'
 
@@ -23,7 +24,14 @@ if (localePaths.length === 0) {
 }
 
 // '/:locale/foo/bar' -> 'foo/bar' ; '/:locale' -> '' (home)
-const segments = [...new Set(localePaths.map((p) => p.replace(/^\/:locale\/?/, '')))]
+// Segments with route params (e.g. 'terms/:slug') are not real folders; they are expanded below.
+const segments = [...new Set(localePaths.map((p) => p.replace(/^\/:locale\/?/, '')))].filter(
+  (seg) => !seg.includes(':'),
+)
+
+// Terms of Use routes are generated in router.js from termsRoutes.js: the canonical
+// /:locale/<slug>/terms-of-use and the old URLs that redirect to it all need a real file.
+segments.push(...termsSlugs().flatMap((slug) => [termsPath(slug), ...termsAliasPaths(slug)]))
 
 const routes = []
 for (const locale of LOCALES) {
@@ -71,11 +79,16 @@ const SHORT_REDIRECT_ROUTES = [
 ]
 for (const seg of SHORT_REDIRECT_ROUTES) routes.push(seg)
 
+// Every literal path without a locale in router.js (short redirects such as /kalimba_tuner/privacy-policy)
+// also needs a real file, otherwise GitHub Pages answers 404 before the SPA can redirect.
+const barePaths = [...routerSrc.matchAll(/path:\s*'\/([^':']+)'/g)].map((m) => m[1])
+routes.push(...barePaths)
+
 for (const seg of segments) {
   if (seg) routes.push(seg)
 }
 
-for (const route of routes) {
+for (const route of new Set(routes)) {
   const dir = `dist/${route}`
   mkdirSync(dir, { recursive: true })
   copyFileSync(src, `${dir}/index.html`)

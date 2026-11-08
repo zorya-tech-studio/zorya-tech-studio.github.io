@@ -1,9 +1,12 @@
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 import { apps, iconThumb } from '../data/apps.js'
+import AppLegalLinks from './AppLegalLinks.vue'
 
 const { t, locale } = useI18n()
+const router = useRouter()
 const projectsUrl = computed(() => `/${locale.value}/projects`)
 
 // Show only a curated subset on the homepage — the full catalogue lives on the Projects page.
@@ -18,7 +21,7 @@ const featuredApps = computed(() => apps.slice(0, HOMEPAGE_APPS_LIMIT))
         <p class="section-eyebrow">{{ t('apps.eyebrow') }}</p>
         <h2 class="section-title">{{ t('apps.title') }}</h2>
       </div>
-      <router-link :to="projectsUrl" class="btn-outline apps-view-all">
+      <router-link v-magnetic :to="projectsUrl" class="btn-outline apps-view-all">
         {{ t('apps.view_all') }}
         <svg
           class="arrow"
@@ -38,14 +41,17 @@ const featuredApps = computed(() => apps.slice(0, HOMEPAGE_APPS_LIMIT))
     </div>
 
     <div class="card-grid">
-      <router-link
-        v-for="app in featuredApps"
+      <div
+        v-for="(app, i) in featuredApps"
         :key="app.slug"
-        :to="app.privacyRoute(locale)"
-        class="app-card"
+        v-reveal="i"
+        v-tilt
+        class="app-card app-card--clickable"
+        @click="router.push(app.privacyRoute(locale))"
       >
         <div class="app-card__head">
           <img
+            v-icon-glow
             :src="iconThumb(app)"
             :alt="t(app.nameKey)"
             class="app-card__icon"
@@ -63,11 +69,12 @@ const featuredApps = computed(() => apps.slice(0, HOMEPAGE_APPS_LIMIT))
         <div class="app-card__tags">
           <span v-for="tag in app.tags" :key="tag" class="tag">{{ tag }}</span>
         </div>
-      </router-link>
+        <AppLegalLinks :locale="locale" :slug="app.slug" :privacy-to="app.privacyRoute(locale)" />
+      </div>
     </div>
 
     <div class="apps-foot">
-      <router-link :to="projectsUrl" class="btn-outline apps-view-all">
+      <router-link v-magnetic :to="projectsUrl" class="btn-outline apps-view-all">
         {{ t('apps.view_all') }}
         <svg
           class="arrow"
@@ -89,6 +96,11 @@ const featuredApps = computed(() => apps.slice(0, HOMEPAGE_APPS_LIMIT))
 </template>
 
 <style scoped>
+/* Ширша сітка, щоб «Політика конфіденційності · Умови використання» вміщались в один рядок */
+.apps.section {
+  max-width: 1300px;
+}
+
 .apps-head {
   display: flex;
   align-items: flex-end;

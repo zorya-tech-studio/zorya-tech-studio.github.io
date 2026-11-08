@@ -718,6 +718,197 @@ svg {
 }
 
 /* -----------------------------------------------------------------------------
+   6b. MOTION (див. src/motion.js)
+   -------------------------------------------------------------------------- */
+/* Світанок під час прокрутки: тепле світло з «горизонту» росте з --scroll-p */
+body::after {
+  content: '';
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 45vh;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 100% at 50% 130%,
+    rgba(242, 182, 90, 0.16) 0%,
+    rgba(242, 140, 90, 0.05) 45%,
+    transparent 75%
+  );
+  opacity: calc(var(--scroll-p, 0) * 0.9);
+}
+
+/* Лінія прочитання в NavBar вмикається лише на довгих сторінках */
+html.is-long-page .read-progress {
+  opacity: 0.85;
+}
+
+/* Текст лише для екранних читачів */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Скрол-підказка в банері зникає, щойно почали гортати */
+html.is-scrolled .scroll-hint {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Лінія перед надзаголовком секції витягується при появі секції */
+.section-eyebrow::before {
+  width: 26px;
+  transform-origin: left center;
+}
+.fade-section .section-eyebrow::before {
+  transform: scaleX(0);
+  transition: transform 900ms var(--ease) 250ms;
+}
+.fade-section.is-visible .section-eyebrow::before {
+  transform: none;
+}
+
+/* Іконка застосунку: підйом + світіння в тон іконки (--icon-glow ставить v-icon-glow) */
+.app-card__icon {
+  transition:
+    transform 450ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 450ms var(--ease);
+}
+.app-card:hover .app-card__icon {
+  transform: scale(1.08) rotate(-3deg);
+  box-shadow: 0 8px 26px -4px var(--icon-glow, rgba(242, 182, 90, 0.5));
+}
+
+/* Значок «Випущено»: крапка пульсує як індикатор «онлайн» */
+.badge-released::before {
+  animation: zOnline 2.6s ease-out infinite;
+}
+@keyframes zOnline {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--success) 70%, transparent);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 5px transparent;
+  }
+}
+
+/* Тепле світло за курсором */
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 420px;
+  height: 420px;
+  margin: -210px 0 0 -210px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(242, 182, 90, 0.045) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 600ms var(--ease);
+  will-change: transform;
+}
+.cursor-glow.is-on {
+  opacity: 1;
+}
+
+/* Поява елементів по черзі (v-reveal, затримка з --i) */
+.reveal:not(.is-in) {
+  opacity: 0;
+}
+.reveal.is-in {
+  animation: zReveal 700ms var(--ease) backwards;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+@keyframes zReveal {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.98);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* 3D-нахил картки + золотий відблиск по краю (v-tilt, лише мишка) */
+.app-card.tilt {
+  position: relative;
+  transform-style: preserve-3d;
+}
+.app-card.tilt:hover {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-4px);
+}
+.app-card.tilt::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  padding: 1px;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(242, 182, 90, 0.75),
+    transparent 60%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--t-slow);
+}
+.app-card.tilt:hover::after {
+  opacity: 1;
+}
+
+/* Магнітні кнопки (v-magnetic) */
+.magnetic {
+  translate: var(--mag-x, 0px) var(--mag-y, 0px);
+  transition:
+    translate 350ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color var(--t-fast),
+    background var(--t-fast);
+}
+
+/* Перестановка карток при зміні фільтра (TransitionGroup name="card") */
+.card-move {
+  transition: transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Переходи між сторінками (View Transitions API) */
+::view-transition-old(root) {
+  animation: zVtOut 220ms var(--ease) both;
+}
+::view-transition-new(root) {
+  animation: zVtIn 380ms var(--ease) both;
+}
+@keyframes zVtOut {
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+@keyframes zVtIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* -----------------------------------------------------------------------------
    7. REDUCED MOTION
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
@@ -731,8 +922,55 @@ svg {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
-  .fade-section {
+  .fade-section,
+  .reveal:not(.is-in) {
     opacity: 1;
     transform: none;
   }
+  body::after {
+    display: none;
+  }
+}
+
+/* App cards are clickable blocks (not links) so they can hold Privacy / Terms links inside. */
+.app-card--clickable {
+  cursor: pointer;
+}
+
+/* Same structure in every card of a row: head (2-line title) / 3-line description / tags / Privacy + Terms pinned to the bottom. */
+.card-grid > .app-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.card-grid > .app-card .app-card__head {
+  min-height: 72px;
+}
+.card-grid > .app-card .app-card__title {
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card-grid > .app-card .app-card__desc {
+  min-height: 3lh;
+}
+.card-grid > .app-card .app-legal {
+  margin-top: auto;
+  column-gap: 0.4rem;
+  font-size: 0.82rem;
+}
+@media (max-width: 860px) {
+  .card-grid > .app-card {
+    padding: 20px;
+  }
+  .card-grid > .app-card .app-legal {
+    column-gap: 0.3rem;
+    font-size: 12px;
+  }
+}
+.card-grid > .app-card .app-card__tags {
+  margin-bottom: var(--sp-4);
 }

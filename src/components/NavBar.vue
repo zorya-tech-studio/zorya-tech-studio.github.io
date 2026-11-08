@@ -270,10 +270,26 @@ onUnmounted(() => {
         </template>
       </ul>
     </div>
+    <span class="read-progress" aria-hidden="true" />
   </nav>
 </template>
 
 <style scoped>
+/* Тонка золота лінія прочитання — видима лише на довгих сторінках (html.is-long-page, правило в style.css) */
+.read-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-2), var(--accent));
+  transform-origin: left center;
+  transform: scaleX(var(--scroll-p, 0));
+  opacity: 0;
+  transition: opacity var(--t-slow);
+  pointer-events: none;
+}
+
 .navbar {
   position: fixed;
   top: 0;
@@ -504,6 +520,38 @@ onUnmounted(() => {
   color: var(--text);
   border-left-color: var(--accent);
   background: var(--surface-2);
+}
+
+/* Пункти мобільного меню з'являються по черзі */
+.menu-open .nav-links-mobile li {
+  animation: zMenuIn 420ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+.menu-open .nav-links-mobile li:nth-child(2) {
+  animation-delay: 45ms;
+}
+.menu-open .nav-links-mobile li:nth-child(3) {
+  animation-delay: 90ms;
+}
+.menu-open .nav-links-mobile li:nth-child(4) {
+  animation-delay: 135ms;
+}
+.menu-open .nav-links-mobile li:nth-child(5) {
+  animation-delay: 180ms;
+}
+.menu-open .nav-links-mobile li:nth-child(6) {
+  animation-delay: 225ms;
+}
+.menu-open .nav-links-mobile li:nth-child(7) {
+  animation-delay: 270ms;
+}
+.menu-open .nav-links-mobile li:nth-child(8) {
+  animation-delay: 315ms;
+}
+@keyframes zMenuIn {
+  from {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
 }
 
 @media (max-width: 720px) {

@@ -1,7 +1,20 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 const { t, locale } = useI18n()
+const EMAIL = 'zoryatechstudio@gmail.com'
+const copied = ref(false)
+let copiedTimer = null
+async function copyEmail() {
+  try {
+    await navigator.clipboard.writeText(EMAIL)
+  } catch {
+    return
+  }
+  copied.value = true
+  clearTimeout(copiedTimer)
+  copiedTimer = setTimeout(() => (copied.value = false), 1800)
+}
 const privacyUrl = computed(() => `/${locale.value}/privacy`)
 </script>
 
@@ -14,27 +27,62 @@ const privacyUrl = computed(() => `/${locale.value}/privacy`)
     </div>
 
     <div class="contact-grid">
-      <a href="mailto:zoryatechstudio@gmail.com" class="app-card contact-item">
-        <span class="contact-item__icon" aria-hidden="true">
+      <div class="contact-email">
+        <a href="mailto:zoryatechstudio@gmail.com" class="app-card contact-item">
+          <span class="contact-item__icon" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <polyline points="22,4 12,13 2,4" />
+            </svg>
+          </span>
+          <span class="contact-item__text">
+            <span class="contact-item__label">{{ t('contact.email_label') }}</span>
+            <span class="contact-item__value">zoryatechstudio@gmail.com</span>
+          </span>
+        </a>
+        <button type="button" :class="['copy-btn', { 'is-copied': copied }]" @click="copyEmail">
           <svg
+            v-if="!copied"
             viewBox="0 0 24 24"
-            width="22"
-            height="22"
+            width="14"
+            height="14"
             fill="none"
             stroke="currentColor"
-            stroke-width="1.6"
+            stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
+            aria-hidden="true"
           >
-            <rect x="2" y="4" width="20" height="16" rx="2" />
-            <polyline points="22,4 12,13 2,4" />
+            <rect x="9" y="9" width="12" height="12" rx="2" />
+            <path d="M5 15V5a2 2 0 0 1 2-2h10" />
           </svg>
-        </span>
-        <span class="contact-item__text">
-          <span class="contact-item__label">{{ t('contact.email_label') }}</span>
-          <span class="contact-item__value">zoryatechstudio@gmail.com</span>
-        </span>
-      </a>
+          <svg
+            v-else
+            class="copy-check"
+            viewBox="0 0 24 24"
+            width="14"
+            height="14"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <polyline points="5,12.5 10,17.5 19,7" />
+          </svg>
+          <span aria-live="polite">{{ copied ? t('contact.copied') : t('contact.copy') }}</span>
+        </button>
+      </div>
 
       <a
         href="https://www.youtube.com/@zorya-tech-studio"
@@ -115,6 +163,72 @@ const privacyUrl = computed(() => `/${locale.value}/privacy`)
   gap: var(--sp-4);
   max-width: 720px;
   margin: 0 auto;
+}
+
+.contact-email {
+  position: relative;
+  display: flex;
+  flex: 1 1 300px;
+  max-width: 470px;
+}
+.contact-email .contact-item {
+  flex: 1 1 auto;
+  max-width: none;
+  padding-right: 142px;
+}
+.copy-btn {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-pill);
+  background: var(--surface-2);
+  color: var(--text-muted);
+  font: 600 12px var(--font-body);
+  cursor: pointer;
+  opacity: 0;
+  transform: translate(6px, -50%);
+  transition:
+    opacity var(--t-fast),
+    transform var(--t-fast),
+    color var(--t-fast),
+    border-color var(--t-fast);
+}
+.contact-email:hover .copy-btn,
+.copy-btn:focus-visible,
+.copy-btn.is-copied {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+.copy-btn:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+.copy-btn.is-copied {
+  color: var(--success);
+  border-color: color-mix(in srgb, var(--success) 50%, var(--hairline));
+}
+.copy-check polyline {
+  stroke-dasharray: 24;
+  animation: zCheck 380ms var(--ease) both;
+}
+@keyframes zCheck {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@media (hover: none) {
+  .copy-btn {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
 }
 
 .contact-item {

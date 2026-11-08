@@ -1,12 +1,14 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { apps, iconThumb } from '../data/apps.js'
 import OpenSourceSection from '../components/OpenSourceSection.vue'
+import AppLegalLinks from '../components/AppLegalLinks.vue'
 
 const { t } = useI18n()
 const route = useRoute()
+const router = useRouter()
 const locale = computed(() => route.params.locale || 'en')
 const homeUrl = computed(() => `/${locale.value}`)
 
@@ -68,15 +70,18 @@ const filteredApps = computed(() =>
         </button>
       </div>
 
-      <div v-if="apps.length > 0" class="card-grid">
-        <router-link
-          v-for="app in filteredApps"
+      <TransitionGroup v-if="apps.length > 0" tag="div" name="card" class="card-grid">
+        <div
+          v-for="(app, i) in filteredApps"
           :key="app.slug"
-          :to="app.privacyRoute(locale)"
-          class="app-card project-card"
+          v-reveal="Math.min(i, 8)"
+          v-tilt
+          class="app-card project-card app-card--clickable"
+          @click="router.push(app.privacyRoute(locale))"
         >
           <div class="app-card__head">
             <img
+              v-icon-glow
               :src="iconThumb(app)"
               :alt="t(app.nameKey)"
               class="app-card__icon"
@@ -94,8 +99,9 @@ const filteredApps = computed(() =>
           <div class="app-card__tags">
             <span v-for="tag in app.tags" :key="tag" class="tag">{{ tag }}</span>
           </div>
-        </router-link>
-      </div>
+          <AppLegalLinks :locale="locale" :slug="app.slug" :privacy-to="app.privacyRoute(locale)" />
+        </div>
+      </TransitionGroup>
 
       <OpenSourceSection />
     </div>
@@ -109,7 +115,7 @@ const filteredApps = computed(() =>
 }
 
 .projects-container {
-  max-width: var(--maxw);
+  max-width: 1300px;
   margin: 0 auto;
 }
 

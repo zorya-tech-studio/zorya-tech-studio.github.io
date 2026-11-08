@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 import { watchFaces } from '../data/watchfaces.js'
+import AppLegalLinks from '../components/AppLegalLinks.vue'
 
 const FAQ_COUNT = 4
 const TERMS_COUNT = 4
@@ -36,6 +37,11 @@ const privacyUrl = computed(() => `/${locale.value}/privacy`)
           <a :href="face.playUrl" class="wf-link" target="_blank" rel="noopener">{{
             t('watchfaces.play')
           }}</a>
+          <AppLegalLinks
+            :locale="locale"
+            :slug="face.slug"
+            :privacy-to="`/${locale}/privacy#watch-faces`"
+          />
         </article>
       </div>
       <div v-else class="wf-status">

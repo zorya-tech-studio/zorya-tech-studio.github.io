@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t, locale } = useI18n()
@@ -587,7 +587,50 @@ function onParallaxScroll() {
   requestAnimationFrame(applyParallax)
 }
 
+// — Підзаголовок друкується по буквах (екранні читачі отримують повний текст одразу) —
+const taglineFull = computed(() => t('hero.tagline'))
+const typedLen = ref(0)
+const typing = ref(false)
+let typeTimer = null
+function typeTagline(delay = 1100) {
+  if (typeTimer) clearTimeout(typeTimer)
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    typedLen.value = taglineFull.value.length
+    return
+  }
+  typedLen.value = 0
+  typing.value = true
+  const tick = () => {
+    typedLen.value++
+    if (typedLen.value < taglineFull.value.length)
+      typeTimer = setTimeout(tick, 32 + Math.random() * 38)
+    else typing.value = false
+  }
+  typeTimer = setTimeout(tick, delay)
+}
+watch(taglineFull, () => typeTagline(150))
+
+// — Падаюча зірка: раз на 8–15 с, лише поки hero видно —
+const meteorEl = ref(null)
+let meteorTimer = null
+function scheduleMeteor() {
+  meteorTimer = setTimeout(fireMeteor, 8000 + Math.random() * 7000)
+}
+function fireMeteor() {
+  const el = meteorEl.value
+  if (el && isVisible && !prefersReducedMotion && !document.hidden) {
+    el.style.setProperty('--m-top', `${5 + Math.random() * 35}%`)
+    el.style.setProperty('--m-left', `${35 + Math.random() * 60}%`)
+    el.classList.remove('is-flying')
+    void el.offsetWidth
+    el.classList.add('is-flying')
+  }
+  scheduleMeteor()
+}
+
 onMounted(() => {
+  typeTagline()
+  meteorTimer = setTimeout(fireMeteor, 2500)
   ctx = canvasEl.value.getContext('2d')
   buildSprites()
 
@@ -631,6 +674,8 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  if (typeTimer) clearTimeout(typeTimer)
+  if (meteorTimer) clearTimeout(meteorTimer)
   stopAnimation()
   if (intersectionObserver) intersectionObserver.disconnect()
   document.removeEventListener('visibilitychange', onVisibilityChange)
@@ -647,9 +692,11 @@ onUnmounted(() => {
 <template>
   <section id="hero" ref="heroEl" class="hero">
     <canvas ref="canvasEl" class="hero-canvas" aria-hidden="true" />
+    <span ref="meteorEl" class="meteor" aria-hidden="true" />
     <div ref="contentEl" class="hero-content">
       <!-- Dawn-star logo -->
       <div class="logo-wrapper">
+        <span class="logo-flare" aria-hidden="true" />
         <svg class="hero-logo" viewBox="0 0 64 64" aria-hidden="true">
           <path
             d="M32 3 C 34.5 23, 41 29.5, 61 32 C 41 34.5, 34.5 41, 32 61 C 29.5 41, 23 34.5, 3 32 C 23 29.5, 29.5 23, 32 3 Z"
@@ -657,8 +704,21 @@ onUnmounted(() => {
           />
         </svg>
       </div>
-      <h1 class="hero-title">Zorya Tech Studio</h1>
-      <p class="hero-tagline">{{ t('hero.tagline') }}</p>
+      <h1 class="hero-title">
+        <span class="hero-word hero-word--zorya" style="--w: 0">Zorya</span>
+        <span class="hero-word" style="--w: 1">Tech</span>
+        <span class="hero-word" style="--w: 2">Studio</span>
+      </h1>
+      <p class="hero-tagline">
+        <span class="sr-only">{{ taglineFull }}</span>
+        <span class="tagline-box" aria-hidden="true">
+          <span class="tagline-ghost">{{ taglineFull }}</span>
+          <span class="tagline-typed"
+            >{{ taglineFull.slice(0, typedLen)
+            }}<span :class="['caret', typing ? 'is-typing' : 'is-done']"
+          /></span>
+        </span>
+      </p>
     </div>
     <a href="#about" class="scroll-hint" aria-label="Scroll down">
       <svg
@@ -746,11 +806,20 @@ onUnmounted(() => {
 .hero-title {
   font-family: var(--font-heading);
   font-weight: 500;
-  font-size: var(--fs-hero);
+  font-size: clamp(44px, 9.5vw, 104px);
   letter-spacing: var(--ls-tight);
   line-height: var(--lh-tight);
   color: var(--text);
-  margin-bottom: var(--sp-4);
+  margin-bottom: var(--sp-5);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 0.32em;
+}
+
+.tagline-box {
+  position: relative;
+  display: inline-block;
 }
 
 .hero-tagline {
@@ -760,6 +829,164 @@ onUnmounted(() => {
   color: var(--text-muted);
   max-width: 540px;
   margin: 0 auto;
+}
+
+/* Слова заголовка з'являються по одному, «Zorya» загоряється золотом */
+.hero-word {
+  display: inline-block;
+  animation: zWordIn 900ms var(--ease) both;
+  animation-delay: calc(250ms + var(--w) * 140ms);
+}
+.hero-word--zorya {
+  animation:
+    zWordIn 900ms var(--ease) both,
+    zDawnGlow 2.4s var(--ease) 700ms both;
+}
+@keyframes zWordIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+@keyframes zDawnGlow {
+  0% {
+    color: var(--text);
+    text-shadow: none;
+  }
+  45% {
+    color: var(--accent-hover);
+    text-shadow: 0 0 28px rgba(242, 182, 90, 0.55);
+  }
+  100% {
+    color: var(--accent);
+    text-shadow: 0 0 18px rgba(242, 182, 90, 0.25);
+  }
+}
+
+/* Зірка-логотип: повільне обертання + періодичний спалах променів */
+.logo-wrapper {
+  position: relative;
+}
+.hero-logo {
+  animation:
+    zStarPulse 5.5s var(--ease) infinite,
+    zStarSpin 48s linear infinite;
+}
+@keyframes zStarSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.logo-flare {
+  position: absolute;
+  top: 29px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.logo-flare::before,
+.logo-flare::after {
+  content: '';
+  position: absolute;
+  left: -90px;
+  top: -0.5px;
+  width: 180px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 226, 170, 0.9), transparent);
+  opacity: 0;
+  animation: zFlare 7s var(--ease) 1.6s infinite;
+}
+.logo-flare::after {
+  rotate: 90deg;
+}
+@keyframes zFlare {
+  0%,
+  80%,
+  100% {
+    opacity: 0;
+    scale: 0.2 1;
+  }
+  86% {
+    opacity: 1;
+    scale: 1 1;
+  }
+}
+
+/* Друкований підзаголовок: прихована «тінь» тримає висоту, щоб нічого не стрибало */
+.tagline-typed {
+  position: absolute;
+  inset: 0;
+}
+.tagline-ghost {
+  visibility: hidden;
+}
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-left: 2px;
+  margin-right: -4px; /* курсор не додає ширини → рядок не переноситься */
+  vertical-align: -0.15em;
+  background: var(--accent);
+  opacity: 0;
+}
+.caret.is-typing {
+  opacity: 1;
+}
+.caret.is-done {
+  animation: zCaret 1s steps(1) 3 forwards;
+}
+@keyframes zCaret {
+  0% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Падаюча зірка */
+.meteor {
+  position: absolute;
+  top: var(--m-top, 20%);
+  left: var(--m-left, 70%);
+  z-index: 2;
+  width: 140px;
+  height: 1.5px;
+  border-radius: 2px;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 236, 200, 0.95),
+    rgba(242, 182, 90, 0.4) 30%,
+    transparent
+  );
+  transform-origin: left center;
+  opacity: 0;
+}
+.meteor.is-flying {
+  animation: zMeteor 1.1s cubic-bezier(0.3, 0.6, 0.4, 1) forwards;
+}
+@keyframes zMeteor {
+  0% {
+    opacity: 0;
+    transform: rotate(-30deg) translateX(0) scaleX(0.3);
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-30deg) translateX(-380px) scaleX(1);
+  }
 }
 
 /* Scroll hint */
@@ -802,10 +1029,18 @@ onUnmounted(() => {
 
 @media (prefers-reduced-motion: reduce) {
   .hero-logo,
+  .hero-word,
+  .hero-word--zorya,
   .hero-title,
   .hero-content,
   .scroll-hint {
     animation: none;
+  }
+  .hero-word--zorya {
+    color: var(--accent);
+  }
+  .meteor {
+    display: none;
   }
 }
 </style>

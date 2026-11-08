@@ -80,7 +80,7 @@ export const apps = [
     subtitleKey: 'kpopDance3d.subtitle',
     descKey: 'kpopDance3d.desc_short',
     platform: 'Android',
-    status: 'coming_soon',
+    status: 'released',
     category: 'lifestyle',
     tags: ['Android', 'Dance', '3D'],
     icon: '/apps/kpop-dance-3d/icon.png',
@@ -500,7 +500,7 @@ export const apps = [
     tags: ['Android', 'Elder Futhark', 'Offline'],
     icon: '/apps/runes/icon.png',
     privacyRoute: (locale) => `/${locale}/runes/privacy-policy`,
-    offerRoute: (locale) => `/${locale}/runes/offer`,
+    offerRoute: (locale) => `/${locale}/runes/terms-of-use`,
   },
   {
     slug: 'health-calculator',
@@ -526,7 +526,7 @@ export const apps = [
     tags: ['Android', 'Puzzle', 'No Guess'],
     icon: '/apps/minesweeper/icon.png',
     privacyRoute: (locale) => `/${locale}/minesweeper/privacy-policy`,
-    offerRoute: (locale) => `/${locale}/minesweeper/offer`,
+    offerRoute: (locale) => `/${locale}/minesweeper/terms-of-use`,
   },
   {
     slug: 'lux-meter',
@@ -552,7 +552,7 @@ export const apps = [
     tags: ['Android', 'Hair Care', 'Routine'],
     icon: '/apps/hair-care-routine/icon.png',
     privacyRoute: (locale) => `/${locale}/hair-care-routine/privacy-policy`,
-    offerRoute: (locale) => `/${locale}/hair-care-routine/offer`,
+    offerRoute: (locale) => `/${locale}/hair-care-routine/terms-of-use`,
   },
   {
     slug: 'landscaping-calculator',
@@ -578,7 +578,7 @@ export const apps = [
     tags: ['Android', 'Dance', 'Lessons'],
     icon: '/apps/kpop-dance-lessons/icon.png',
     privacyRoute: (locale) => `/${locale}/kpop-dance-lessons/privacy-policy`,
-    offerRoute: (locale) => `/${locale}/kpop-dance-lessons/offer`,
+    offerRoute: (locale) => `/${locale}/kpop-dance-lessons/terms-of-use`,
   },
   {
     slug: 'resistor-color-code',
@@ -669,7 +669,7 @@ export const apps = [
     tags: ['Android', 'Zodiac', 'Lifestyle'],
     icon: '/apps/zodiac-compatibility/icon.png',
     privacyRoute: (locale) => `/${locale}/zodiac-compatibility/privacy-policy`,
-    offerRoute: (locale) => `/${locale}/zodiac-compatibility/terms`,
+    offerRoute: (locale) => `/${locale}/zodiac-compatibility/terms-of-use`,
   },
   {
     slug: 'taro',
@@ -682,7 +682,7 @@ export const apps = [
     tags: ['Android', 'Tarot', 'Reference'],
     icon: '/apps/taro/icon.png',
     privacyRoute: (locale) => `/${locale}/taro/privacy-policy`,
-    offerRoute: (locale) => `/${locale}/taro/offer`,
+    offerRoute: (locale) => `/${locale}/taro/terms-of-use`,
   },
   {
     slug: 'starguide',
@@ -695,7 +695,7 @@ export const apps = [
     tags: ['Android', 'Astronomy', 'Reference'],
     icon: '/apps/starguide/icon.png',
     privacyRoute: (locale) => `/${locale}/starguide/privacy-policy`,
-    offerRoute: (locale) => `/${locale}/starguide/offer`,
+    offerRoute: (locale) => `/${locale}/starguide/terms-of-use`,
   },
   {
     slug: 'alias',
@@ -708,7 +708,7 @@ export const apps = [
     tags: ['Android', 'Party', 'Word Game'],
     icon: '/apps/alias/icon.png',
     privacyRoute: (locale) => `/${locale}/alias/privacy-policy`,
-    offerRoute: (locale) => `/${locale}/alias/offer`,
+    offerRoute: (locale) => `/${locale}/alias/terms-of-use`,
   },
   {
     slug: 'auto-obd2',
@@ -721,7 +721,7 @@ export const apps = [
     tags: ['Android', 'Automotive', 'OBD-II'],
     icon: '/apps/auto-obd2/icon.png',
     privacyRoute: (locale) => `/${locale}/auto-obd2/privacy-policy`,
-    offerRoute: (locale) => `/${locale}/auto-obd2/offer`,
+    offerRoute: (locale) => `/${locale}/auto-obd2/terms-of-use`,
   },
   {
     slug: 'senso',
@@ -782,7 +782,7 @@ export const apps = [
     tags: ['Android', 'Arcade', 'Reaction'],
     icon: '/apps/chromatic/icon.png',
     privacyRoute: (locale) => `/${locale}/chromatic/privacy-policy`,
-    offerRoute: (locale) => `/${locale}/chromatic/offer`,
+    offerRoute: (locale) => `/${locale}/chromatic/terms-of-use`,
   },
   {
     slug: 'hueroom',
@@ -795,7 +795,7 @@ export const apps = [
     tags: ['Android', 'Interior', 'Color'],
     icon: '/apps/hueroom/icon.png',
     privacyRoute: (locale) => `/${locale}/hueroom/privacy-policy`,
-    offerRoute: (locale) => `/${locale}/hueroom/offer`,
+    offerRoute: (locale) => `/${locale}/hueroom/terms-of-use`,
   },
   {
     slug: 'cat-training-behavior',
@@ -808,7 +808,7 @@ export const apps = [
     tags: ['Android', 'Cats', 'Training'],
     icon: '/apps/cat-training-behavior/icon.png',
     privacyRoute: (locale) => `/${locale}/cat-training-behavior/privacy-policy`,
-    offerRoute: (locale) => `/${locale}/cat-training-behavior/offer`,
+    offerRoute: (locale) => `/${locale}/cat-training-behavior/terms-of-use`,
   },
   {
     slug: 'dog-training-cards',
@@ -821,7 +821,7 @@ export const apps = [
     tags: ['Android', 'Dogs', 'Training'],
     icon: '/apps/dog-training-cards/icon.png',
     privacyRoute: (locale) => `/${locale}/dog-training-cards/privacy-policy`,
-    offerRoute: (locale) => `/${locale}/dog-training-cards/offer`,
+    offerRoute: (locale) => `/${locale}/dog-training-cards/terms-of-use`,
   },
   {
     slug: 'human-tetris',
@@ -834,7 +834,7 @@ export const apps = [
     tags: ['Android', 'Party', 'Arcade'],
     icon: '/apps/human-tetris/icon.png',
     privacyRoute: (locale) => `/${locale}/human-tetris/privacy-policy`,
-    offerRoute: (locale) => `/${locale}/human-tetris/offer`,
+    offerRoute: (locale) => `/${locale}/human-tetris/terms-of-use`,
   },
   {
     slug: 'sudokulens',
@@ -859,7 +859,7 @@ export const apps = [
     tags: ['Android', 'Folklore', 'Lifestyle'],
     icon: '/apps/molemap/icon.png',
     privacyRoute: (locale) => `/${locale}/molemap/privacy-policy`,
-    offerRoute: (locale) => `/${locale}/molemap/terms`,
+    offerRoute: (locale) => `/${locale}/molemap/terms-of-use`,
   },
 ]
 

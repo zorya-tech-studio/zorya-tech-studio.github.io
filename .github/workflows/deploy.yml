@@ -31,6 +31,9 @@ jobs:
       - run: npm ci
       - run: npm run build
 
+      # Static checks (i18n syntax, app registry, Terms pages, a prerendered file for every URL). Deploy stops on failure.
+      - run: npm run check
+
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3

@@ -17,7 +17,10 @@
     "eyebrow": "About the studio",
     "title": "About",
     "p1": "Zorya Tech Studio is an independent mobile development studio. We build apps that combine thoughtful design with solid engineering.",
-    "p2": "Our goal is to create useful everyday tools with attention to detail and user experience."
+    "p2": "Our goal is to create useful everyday tools with attention to detail and user experience.",
+    "stat_apps": "apps",
+    "stat_categories": "categories",
+    "stat_languages": "site languages"
   },
   "apps": {
     "eyebrow": "Selected projects",
@@ -31,7 +34,9 @@
     "email_label": "Email",
     "youtube_label": "YouTube",
     "play_label": "Google Play",
-    "play_value": "All our apps"
+    "play_value": "All our apps",
+    "copy": "Copy",
+    "copied": "Copied"
   },
   "breadcrumb": {
     "home": "Home"
@@ -1921,8 +1926,7 @@
     }
   },
   "app_status": {
-    "released": "Released",
-    "coming_soon": "Coming soon"
+    "released": "Released"
   },
   "wireSizeCalc": {
     "name": "Wire Size & Voltage Drop Calc",
@@ -4663,5 +4667,8 @@
       "contact_title": "Contact",
       "contact_text": "Questions about these Terms:"
     }
+  },
+  "appTerms": {
+    "title": "Terms of Use"
   }
 }

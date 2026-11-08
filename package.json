@@ -10,7 +10,10 @@
     "prepare": "husky",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
-    "format": "prettier --write \"src/**/*.{js,vue,css}\" \"*.{js,json}\""
+    "format": "prettier --write \"src/**/*.{js,vue,css}\" \"*.{js,json}\"",
+    "check": "node scripts/check-site.mjs",
+    "check:urls": "node scripts/check-urls.mjs",
+    "test": "npm run lint && npm run build && npm run check && npm run check:urls"
   },
   "lint-staged": {
     "*.{js,vue}": [

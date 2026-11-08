@@ -1,0 +1,10 @@
+# Before pushing to main (= deploying to GitHub Pages) run the full local test suite:
+# lint, production build, static checks and the browser test of every URL (see CLAUDE.md "Tests before push").
+while read -r local_ref local_sha remote_ref remote_sha; do
+  if [ "$remote_ref" = "refs/heads/main" ]; then
+    echo "pre-push: pushing to main — running npm test"
+    npm test || { echo "pre-push: tests failed, push aborted. Fix the problems above (or push with --no-verify only if you are sure)."; exit 1; }
+    break
+  fi
+done
+exit 0

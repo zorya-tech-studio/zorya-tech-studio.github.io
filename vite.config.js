@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { writeFileSync, readFileSync } from 'fs'
 import { resolve } from 'path'
+import { termsPath, termsSlugs } from './src/data/termsRoutes.js'
 
 const HOSTNAME = 'https://zorya-tech-studio.github.io'
 const LOCALES = ['uk', 'en']
@@ -17,7 +18,9 @@ function routeSegments() {
     throw new Error('sitemap: no `/:locale` paths found in src/router.js — aborting')
   }
   // '/:locale/foo/bar' -> 'foo/bar' ; '/:locale' -> '' (home)
-  return [...new Set(localePaths.map((p) => p.replace(/^\/:locale\/?/, '')))]
+  const segs = [...new Set(localePaths.map((p) => p.replace(/^\/:locale\/?/, '')))]
+  // Terms of Use routes are generated in router.js; list only the canonical URL, not redirects.
+  return [...new Set([...segs.filter((s) => !s.includes(':')), ...termsSlugs().map(termsPath)])]
 }
 
 // changefreq/priority heuristics by page type.

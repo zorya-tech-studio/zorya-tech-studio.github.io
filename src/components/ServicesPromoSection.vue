@@ -24,7 +24,7 @@ const emailUrl = computed(() => {
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
           </router-link>
-          <a :href="emailUrl" class="btn-outline">{{ t('services.home_email_cta') }}</a>
+          <a v-magnetic :href="emailUrl" class="btn-outline">{{ t('services.home_email_cta') }}</a>
         </div>
       </div>
 

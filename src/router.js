@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import i18n from './i18n/index.js'
+import { termsAliasPaths, termsPath, termsSlugs } from './data/termsRoutes.js'
 
 const LOCALES = ['uk', 'en']
 
@@ -53,30 +54,10 @@ const routes = [
     meta: { titleKey: 'survivalGuide.privacy.title', app: 'survival-guide' },
   },
   {
-    path: '/:locale/survival-guide/terms-of-use',
-    name: 'survival-guide-terms',
-    component: () => import('./pages/apps/survival-guide/SurvivalGuideTermsPage.vue'),
-    meta: { titleKey: 'survivalGuide.terms.title', app: 'survival-guide' },
-  },
-  {
-    path: '/:locale/survival-guide/terms',
-    redirect: (to) => `/${to.params.locale}/survival-guide/terms-of-use`,
-  },
-  {
     path: '/:locale/crochet-row-counter/privacy-policy',
     name: 'crochet-row-counter-privacy',
     component: () => import('./pages/apps/crochet-row-counter/CrochetRowCounterPrivacyPage.vue'),
     meta: { titleKey: 'crochetRowCounter.privacy.title', app: 'crochet-row-counter' },
-  },
-  {
-    path: '/:locale/crochet-row-counter/terms-of-use',
-    name: 'crochet-row-counter-terms',
-    component: () => import('./pages/apps/crochet-row-counter/CrochetRowCounterTermsPage.vue'),
-    meta: { titleKey: 'crochetRowCounter.terms.title', app: 'crochet-row-counter' },
-  },
-  {
-    path: '/:locale/crochet-row-counter/terms',
-    redirect: (to) => `/${to.params.locale}/crochet-row-counter/terms-of-use`,
   },
   {
     path: '/:locale/vocal-range-test/privacy-policy',
@@ -85,22 +66,10 @@ const routes = [
     meta: { titleKey: 'vocalRangeTest.privacy.title', app: 'vocal-range-test' },
   },
   {
-    path: '/:locale/vocal-range-test/terms-of-use',
-    name: 'vocal-range-test-terms',
-    component: () => import('./pages/apps/vocal-range-test/VocalRangeTestTermsPage.vue'),
-    meta: { titleKey: 'vocalRangeTest.terms.title', app: 'vocal-range-test' },
-  },
-  {
     path: '/:locale/recorder-fingering/privacy-policy',
     name: 'recorder-fingering-privacy',
     component: () => import('./pages/apps/recorder-fingering/RecorderFingeringPrivacyPage.vue'),
     meta: { titleKey: 'recorderFingering.privacy.title', app: 'recorder-fingering' },
-  },
-  {
-    path: '/:locale/recorder-fingering/terms-of-use',
-    name: 'recorder-fingering-terms',
-    component: () => import('./pages/apps/recorder-fingering/RecorderFingeringTermsPage.vue'),
-    meta: { titleKey: 'recorderFingering.terms.title', app: 'recorder-fingering' },
   },
   {
     path: '/:locale/cube-solver-3d/privacy-policy',
@@ -109,22 +78,10 @@ const routes = [
     meta: { titleKey: 'cubeSolver3d.privacy.title', app: 'cube-solver-3d' },
   },
   {
-    path: '/:locale/cube-solver-3d/terms-of-use',
-    name: 'cube-solver-3d-terms',
-    component: () => import('./pages/apps/cube-solver-3d/CubeSolver3dTermsPage.vue'),
-    meta: { titleKey: 'cubeSolver3d.terms.title', app: 'cube-solver-3d' },
-  },
-  {
     path: '/:locale/kpop-dance-3d/privacy-policy',
     name: 'kpop-dance-3d-privacy',
     component: () => import('./pages/apps/kpop-dance-3d/KpopDance3dPrivacyPage.vue'),
     meta: { titleKey: 'kpopDance3d.privacy.title', app: 'kpop-dance-3d' },
-  },
-  {
-    path: '/:locale/kpop-dance-3d/terms-of-use',
-    name: 'kpop-dance-3d-terms',
-    component: () => import('./pages/apps/kpop-dance-3d/KpopDance3dTermsPage.vue'),
-    meta: { titleKey: 'kpopDance3d.terms.title', app: 'kpop-dance-3d' },
   },
   {
     path: '/:locale/kalimba-tuner/privacy-policy',
@@ -133,22 +90,10 @@ const routes = [
     meta: { titleKey: 'kalimbaTuner.privacy.title', app: 'kalimba-tuner' },
   },
   {
-    path: '/:locale/kalimba-tuner/terms-of-use',
-    name: 'kalimba-tuner-terms',
-    component: () => import('./pages/apps/kalimba-tuner/KalimbaTunerTermsPage.vue'),
-    meta: { titleKey: 'kalimbaTuner.terms.title', app: 'kalimba-tuner' },
-  },
-  {
     path: '/:locale/ballet-beginners/privacy-policy',
     name: 'ballet-beginners-privacy',
     component: () => import('./pages/apps/ballet-beginners/BalletBeginnersPrivacyPage.vue'),
     meta: { titleKey: 'balletBeginners.privacy.title', app: 'ballet-beginners' },
-  },
-  {
-    path: '/:locale/ballet-beginners/terms-of-use',
-    name: 'ballet-beginners-terms',
-    component: () => import('./pages/apps/ballet-beginners/BalletBeginnersTermsPage.vue'),
-    meta: { titleKey: 'balletBeginners.terms.title', app: 'ballet-beginners' },
   },
   {
     path: '/:locale/kings-corner/privacy-policy',
@@ -157,22 +102,10 @@ const routes = [
     meta: { titleKey: 'kingsCorner.privacy.title', app: 'kings-corner' },
   },
   {
-    path: '/:locale/kings-corner/terms-of-use',
-    name: 'kings-corner-terms',
-    component: () => import('./pages/apps/kings-corner/KingsCornerTermsPage.vue'),
-    meta: { titleKey: 'kingsCorner.terms.title', app: 'kings-corner' },
-  },
-  {
     path: '/:locale/line-dance/privacy-policy',
     name: 'line-dance-privacy',
     component: () => import('./pages/apps/line-dance/LineDancePrivacyPage.vue'),
     meta: { titleKey: 'lineDance.privacy.title', app: 'line-dance' },
-  },
-  {
-    path: '/:locale/line-dance/terms-of-use',
-    name: 'line-dance-terms',
-    component: () => import('./pages/apps/line-dance/LineDanceTermsPage.vue'),
-    meta: { titleKey: 'lineDance.terms.title', app: 'line-dance' },
   },
   {
     path: '/:locale/tile-calculator/privacy-policy',
@@ -181,22 +114,10 @@ const routes = [
     meta: { titleKey: 'tileCalculator.privacy.title', app: 'tile-calculator' },
   },
   {
-    path: '/:locale/tile-calculator/terms-of-use',
-    name: 'tile-calculator-terms',
-    component: () => import('./pages/apps/tile-calculator/TileCalculatorTermsPage.vue'),
-    meta: { titleKey: 'tileCalculator.terms.title', app: 'tile-calculator' },
-  },
-  {
     path: '/:locale/mexican-train/privacy-policy',
     name: 'mexican-train-privacy',
     component: () => import('./pages/apps/mexican-train/MexicanTrainPrivacyPage.vue'),
     meta: { titleKey: 'mexicanTrain.privacy.title', app: 'mexican-train' },
-  },
-  {
-    path: '/:locale/mexican-train/terms-of-use',
-    name: 'mexican-train-terms',
-    component: () => import('./pages/apps/mexican-train/MexicanTrainTermsPage.vue'),
-    meta: { titleKey: 'mexicanTrain.terms.title', app: 'mexican-train' },
   },
   {
     path: '/:locale/bluetooth-finder/privacy-policy',
@@ -205,22 +126,10 @@ const routes = [
     meta: { titleKey: 'bluetoothFinder.privacy.title', app: 'bluetooth-finder' },
   },
   {
-    path: '/:locale/bluetooth-finder/terms-of-use',
-    name: 'bluetooth-finder-terms',
-    component: () => import('./pages/apps/bluetooth-finder/BluetoothFinderTermsPage.vue'),
-    meta: { titleKey: 'bluetoothFinder.terms.title', app: 'bluetooth-finder' },
-  },
-  {
     path: '/:locale/chicken-egg-tracker/privacy-policy',
     name: 'chicken-egg-tracker-privacy',
     component: () => import('./pages/apps/chicken-egg-tracker/ChickenEggTrackerPrivacyPage.vue'),
     meta: { titleKey: 'chickenEggTracker.privacy.title', app: 'chicken-egg-tracker' },
-  },
-  {
-    path: '/:locale/chicken-egg-tracker/terms-of-use',
-    name: 'chicken-egg-tracker-terms',
-    component: () => import('./pages/apps/chicken-egg-tracker/ChickenEggTrackerTermsPage.vue'),
-    meta: { titleKey: 'chickenEggTracker.terms.title', app: 'chicken-egg-tracker' },
   },
   {
     path: '/:locale/pickleball-scorekeeper/privacy-policy',
@@ -228,13 +137,6 @@ const routes = [
     component: () =>
       import('./pages/apps/pickleball-scorekeeper/PickleballScorekeeperPrivacyPage.vue'),
     meta: { titleKey: 'pickleballScorekeeper.privacy.title', app: 'pickleball-scorekeeper' },
-  },
-  {
-    path: '/:locale/pickleball-scorekeeper/terms-of-use',
-    name: 'pickleball-scorekeeper-terms',
-    component: () =>
-      import('./pages/apps/pickleball-scorekeeper/PickleballScorekeeperTermsPage.vue'),
-    meta: { titleKey: 'pickleballScorekeeper.terms.title', app: 'pickleball-scorekeeper' },
   },
   {
     path: '/:locale/cat-jam/privacy-policy',
@@ -249,22 +151,10 @@ const routes = [
     meta: { titleKey: 'rabbitCare.privacy.title', app: 'rabbit-care' },
   },
   {
-    path: '/:locale/rabbit-care/terms-of-use',
-    name: 'rabbit-care-terms',
-    component: () => import('./pages/apps/rabbit-care/RabbitCareTermsPage.vue'),
-    meta: { titleKey: 'rabbitCare.terms.title', app: 'rabbit-care' },
-  },
-  {
     path: '/:locale/lofi-generator/privacy-policy',
     name: 'lofi-generator-privacy',
     component: () => import('./pages/apps/lofi-generator/LofiGeneratorPrivacyPage.vue'),
     meta: { titleKey: 'lofiGenerator.privacy.title', app: 'lofi-generator' },
-  },
-  {
-    path: '/:locale/lofi-generator/terms-of-use',
-    name: 'lofi-generator-terms',
-    component: () => import('./pages/apps/lofi-generator/LofiGeneratorTermsPage.vue'),
-    meta: { titleKey: 'lofiGenerator.terms.title', app: 'lofi-generator' },
   },
   {
     path: '/:locale/biblia-almeida/privacy-policy',
@@ -273,22 +163,10 @@ const routes = [
     meta: { titleKey: 'bibliaAlmeida.privacy.title', app: 'biblia-almeida' },
   },
   {
-    path: '/:locale/biblia-almeida/terms-of-use',
-    name: 'biblia-almeida-terms',
-    component: () => import('./pages/apps/biblia-almeida/BibliaAlmeidaTermsPage.vue'),
-    meta: { titleKey: 'bibliaAlmeida.terms.title', app: 'biblia-almeida' },
-  },
-  {
     path: '/:locale/guitar-tuner/privacy-policy',
     name: 'guitar-tuner-privacy',
     component: () => import('./pages/apps/guitar-tuner/GuitarTunerPrivacyPage.vue'),
     meta: { titleKey: 'guitarTuner.privacy.title', app: 'guitar-tuner' },
-  },
-  {
-    path: '/:locale/guitar-tuner/terms-of-use',
-    name: 'guitar-tuner-terms',
-    component: () => import('./pages/apps/guitar-tuner/GuitarTunerTermsPage.vue'),
-    meta: { titleKey: 'guitarTuner.terms.title', app: 'guitar-tuner' },
   },
   {
     path: '/:locale/kpop-piano/privacy-policy',
@@ -297,22 +175,10 @@ const routes = [
     meta: { titleKey: 'kpopPiano.privacy.title', app: 'kpop-piano' },
   },
   {
-    path: '/:locale/kpop-piano/terms-of-use',
-    name: 'kpop-piano-terms',
-    component: () => import('./pages/apps/kpop-piano/KpopPianoTermsPage.vue'),
-    meta: { titleKey: 'kpopPiano.terms.title', app: 'kpop-piano' },
-  },
-  {
     path: '/:locale/biblia-reina-valera/privacy-policy',
     name: 'biblia-reina-valera-privacy',
     component: () => import('./pages/apps/biblia-reina-valera/BibliaReinaValeraPrivacyPage.vue'),
     meta: { titleKey: 'bibliaReinaValera.privacy.title', app: 'biblia-reina-valera' },
-  },
-  {
-    path: '/:locale/biblia-reina-valera/terms-of-use',
-    name: 'biblia-reina-valera-terms',
-    component: () => import('./pages/apps/biblia-reina-valera/BibliaReinaValeraTermsPage.vue'),
-    meta: { titleKey: 'bibliaReinaValera.terms.title', app: 'biblia-reina-valera' },
   },
   {
     path: '/:locale/learn-excel-offline/privacy-policy',
@@ -321,22 +187,10 @@ const routes = [
     meta: { titleKey: 'learnExcelOffline.privacy.title', app: 'learn-excel-offline' },
   },
   {
-    path: '/:locale/learn-excel-offline/terms-of-use',
-    name: 'learn-excel-offline-terms',
-    component: () => import('./pages/apps/learn-excel-offline/LearnExcelOfflineTermsPage.vue'),
-    meta: { titleKey: 'learnExcelOffline.terms.title', app: 'learn-excel-offline' },
-  },
-  {
     path: '/:locale/cat-training-care/privacy-policy',
     name: 'cat-training-care-privacy',
     component: () => import('./pages/apps/cat-training-care/CatTrainingCarePrivacyPage.vue'),
     meta: { titleKey: 'catTrainingCare.privacy.title', app: 'cat-training-care' },
-  },
-  {
-    path: '/:locale/cat-training-care/terms-of-use',
-    name: 'cat-training-care-terms',
-    component: () => import('./pages/apps/cat-training-care/CatTrainingCareTermsPage.vue'),
-    meta: { titleKey: 'catTrainingCare.terms.title', app: 'cat-training-care' },
   },
   {
     path: '/:locale/braille-alphabet/privacy-policy',
@@ -345,22 +199,10 @@ const routes = [
     meta: { titleKey: 'brailleAlphabet.privacy.title', app: 'braille-alphabet' },
   },
   {
-    path: '/:locale/braille-alphabet/terms-of-use',
-    name: 'braille-alphabet-terms',
-    component: () => import('./pages/apps/braille-alphabet/BrailleAlphabetTermsPage.vue'),
-    meta: { titleKey: 'brailleAlphabet.terms.title', app: 'braille-alphabet' },
-  },
-  {
     path: '/:locale/morse-code/privacy-policy',
     name: 'morse-code-privacy',
     component: () => import('./pages/apps/morse-code/MorseCodePrivacyPage.vue'),
     meta: { titleKey: 'morseCode.privacy.title', app: 'morse-code' },
-  },
-  {
-    path: '/:locale/morse-code/terms-of-use',
-    name: 'morse-code-terms',
-    component: () => import('./pages/apps/morse-code/MorseCodeTermsPage.vue'),
-    meta: { titleKey: 'morseCode.terms.title', app: 'morse-code' },
   },
   {
     path: '/:locale/pool-chemistry/privacy-policy',
@@ -369,22 +211,10 @@ const routes = [
     meta: { titleKey: 'poolChemistry.privacy.title', app: 'pool-chemistry' },
   },
   {
-    path: '/:locale/pool-chemistry/terms-of-use',
-    name: 'pool-chemistry-terms',
-    component: () => import('./pages/apps/pool-chemistry/PoolChemistryTermsPage.vue'),
-    meta: { titleKey: 'poolChemistry.terms.title', app: 'pool-chemistry' },
-  },
-  {
     path: '/:locale/five-tibetan-rites/privacy-policy',
     name: 'five-tibetan-rites-privacy',
     component: () => import('./pages/apps/five-tibetan-rites/FiveTibetanRitesPrivacyPage.vue'),
     meta: { titleKey: 'fiveTibetanRites.privacy.title', app: 'five-tibetan-rites' },
-  },
-  {
-    path: '/:locale/five-tibetan-rites/terms-of-use',
-    name: 'five-tibetan-rites-terms',
-    component: () => import('./pages/apps/five-tibetan-rites/FiveTibetanRitesTermsPage.vue'),
-    meta: { titleKey: 'fiveTibetanRites.terms.title', app: 'five-tibetan-rites' },
   },
   {
     path: '/:locale/financial-calculators/privacy-policy',
@@ -394,22 +224,10 @@ const routes = [
     meta: { titleKey: 'financialCalculators.privacy.title', app: 'financial-calculators' },
   },
   {
-    path: '/:locale/financial-calculators/terms-of-use',
-    name: 'financial-calculators-terms',
-    component: () => import('./pages/apps/financial-calculators/FinancialCalculatorsTermsPage.vue'),
-    meta: { titleKey: 'financialCalculators.terms.title', app: 'financial-calculators' },
-  },
-  {
     path: '/:locale/hvac-calculator/privacy-policy',
     name: 'hvac-calculator-privacy',
     component: () => import('./pages/apps/hvac-calculator/HvacCalculatorPrivacyPage.vue'),
     meta: { titleKey: 'hvacCalculator.privacy.title', app: 'hvac-calculator' },
-  },
-  {
-    path: '/:locale/hvac-calculator/terms-of-use',
-    name: 'hvac-calculator-terms',
-    component: () => import('./pages/apps/hvac-calculator/HvacCalculatorTermsPage.vue'),
-    meta: { titleKey: 'hvacCalculator.terms.title', app: 'hvac-calculator' },
   },
   {
     path: '/:locale/slavic-mythology/privacy-policy',
@@ -418,22 +236,10 @@ const routes = [
     meta: { titleKey: 'slavicMythology.privacy.title', app: 'slavic-mythology' },
   },
   {
-    path: '/:locale/slavic-mythology/terms-of-use',
-    name: 'slavic-mythology-terms',
-    component: () => import('./pages/apps/slavic-mythology/SlavicMythologyTermsPage.vue'),
-    meta: { titleKey: 'slavicMythology.terms.title', app: 'slavic-mythology' },
-  },
-  {
     path: '/:locale/angel-numbers/privacy-policy',
     name: 'angel-numbers-privacy',
     component: () => import('./pages/apps/angel-numbers/AngelNumbersPrivacyPage.vue'),
     meta: { titleKey: 'angelNumbers.privacy.title', app: 'angel-numbers' },
-  },
-  {
-    path: '/:locale/angel-numbers/terms-of-use',
-    name: 'angel-numbers-terms',
-    component: () => import('./pages/apps/angel-numbers/AngelNumbersTermsPage.vue'),
-    meta: { titleKey: 'angelNumbers.terms.title', app: 'angel-numbers' },
   },
   {
     path: '/:locale/antysurzhyk/privacy-policy',
@@ -442,22 +248,10 @@ const routes = [
     meta: { titleKey: 'antysurzhyk.privacy.title', app: 'antysurzhyk' },
   },
   {
-    path: '/:locale/antysurzhyk/terms-of-use',
-    name: 'antysurzhyk-terms',
-    component: () => import('./pages/apps/antysurzhyk/AntysurzhykTermsPage.vue'),
-    meta: { titleKey: 'antysurzhyk.terms.title', app: 'antysurzhyk' },
-  },
-  {
     path: '/:locale/parrot-training/privacy-policy',
     name: 'parrot-training-privacy',
     component: () => import('./pages/apps/parrot-training/ParrotTrainingPrivacyPage.vue'),
     meta: { titleKey: 'parrotTraining.privacy.title', app: 'parrot-training' },
-  },
-  {
-    path: '/:locale/parrot-training/terms-of-use',
-    name: 'parrot-training-terms',
-    component: () => import('./pages/apps/parrot-training/ParrotTrainingTermsPage.vue'),
-    meta: { titleKey: 'parrotTraining.terms.title', app: 'parrot-training' },
   },
   {
     path: '/:locale/lux-meter/privacy-policy',
@@ -466,34 +260,16 @@ const routes = [
     meta: { titleKey: 'luxMeter.privacy.title', app: 'lux-meter' },
   },
   {
-    path: '/:locale/lux-meter/terms-of-use',
-    name: 'lux-meter-terms',
-    component: () => import('./pages/apps/lux-meter/LuxMeterTermsPage.vue'),
-    meta: { titleKey: 'luxMeter.terms.title', app: 'lux-meter' },
-  },
-  {
     path: '/:locale/hair-care-routine/privacy-policy',
     name: 'hair-care-routine-privacy',
     component: () => import('./pages/apps/hair-care-routine/HairCareRoutinePrivacyPage.vue'),
     meta: { titleKey: 'hairCareRoutine.privacy.title', app: 'hair-care-routine' },
   },
   {
-    path: '/:locale/hair-care-routine/offer',
-    name: 'hair-care-routine-offer',
-    component: () => import('./pages/apps/hair-care-routine/HairCareRoutineOfferPage.vue'),
-    meta: { titleKey: 'hairCareRoutine.offer.title', app: 'hair-care-routine' },
-  },
-  {
     path: '/:locale/molemap/privacy-policy',
     name: 'molemap-privacy',
     component: () => import('./pages/apps/molemap/MoleMapPrivacyPage.vue'),
     meta: { titleKey: 'molemap.privacy.title', app: 'molemap' },
-  },
-  {
-    path: '/:locale/molemap/terms',
-    name: 'molemap-terms',
-    component: () => import('./pages/apps/molemap/MoleMapTermsPage.vue'),
-    meta: { titleKey: 'molemap.offer.title', app: 'molemap' },
   },
   {
     path: '/:locale/molemap/disclaimer',
@@ -508,12 +284,6 @@ const routes = [
     meta: { titleKey: 'healthCalculator.privacy.title', app: 'health-calculator' },
   },
   {
-    path: '/:locale/health-calculator/terms-of-use',
-    name: 'health-calculator-terms',
-    component: () => import('./pages/apps/health-calculator/HealthCalculatorTermsPage.vue'),
-    meta: { titleKey: 'healthCalculator.terms.title', app: 'health-calculator' },
-  },
-  {
     path: '/:locale/health-calculator/disclaimer',
     name: 'health-calculator-disclaimer',
     component: () => import('./pages/apps/health-calculator/HealthCalculatorDisclaimerPage.vue'),
@@ -526,26 +296,11 @@ const routes = [
     meta: { titleKey: 'markdownReader.privacy.title', app: 'markdown-reader' },
   },
   {
-    path: '/:locale/markdown-reader/terms-of-use',
-    name: 'markdown-reader-terms',
-    component: () => import('./pages/apps/markdown-reader/MarkdownReaderTermsPage.vue'),
-    meta: { titleKey: 'markdownReader.terms.title', app: 'markdown-reader' },
-  },
-  {
     path: '/:locale/wire-size-calc/privacy-policy',
     name: 'wire-size-calc-privacy',
     component: () => import('./pages/apps/wire-size-calc/WireSizeCalcPrivacyPage.vue'),
     meta: {
       titleKey: 'wireSizeCalc.privacy.title',
-      app: 'wire-size-calc',
-    },
-  },
-  {
-    path: '/:locale/wire-size-calc/terms-of-use',
-    name: 'wire-size-calc-terms',
-    component: () => import('./pages/apps/wire-size-calc/WireSizeCalcTermsPage.vue'),
-    meta: {
-      titleKey: 'wireSizeCalc.terms.title',
       app: 'wire-size-calc',
     },
   },
@@ -559,15 +314,6 @@ const routes = [
     },
   },
   {
-    path: '/:locale/tire-size-calculator/terms-of-use',
-    name: 'tire-size-calculator-terms',
-    component: () => import('./pages/apps/tire-size-calculator/TireSizeCalculatorTermsPage.vue'),
-    meta: {
-      titleKey: 'tireSizeDecoder.terms.title',
-      app: 'tire-size-calculator',
-    },
-  },
-  {
     path: '/:locale/truck-fault-codes/privacy-policy',
     name: 'truck-fault-codes-privacy',
     component: () => import('./pages/apps/truck-fault-codes/TruckFaultCodesPrivacyPage.vue'),
@@ -577,22 +323,10 @@ const routes = [
     },
   },
   {
-    path: '/:locale/truck-fault-codes/terms-of-use',
-    name: 'truck-fault-codes-terms',
-    component: () => import('./pages/apps/truck-fault-codes/TruckFaultCodesTermsPage.vue'),
-    meta: { titleKey: 'truckFaultCodes.terms.title', app: 'truck-fault-codes' },
-  },
-  {
     path: '/:locale/runes/privacy-policy',
     name: 'runes-privacy',
     component: () => import('./pages/apps/runes/RunesPrivacyPage.vue'),
     meta: { titleKey: 'runes.privacy.title', app: 'runes' },
-  },
-  {
-    path: '/:locale/runes/offer',
-    name: 'runes-offer',
-    component: () => import('./pages/apps/runes/RunesOfferPage.vue'),
-    meta: { titleKey: 'runes.offer.title', app: 'runes' },
   },
   {
     path: '/:locale/taro/privacy-policy',
@@ -601,22 +335,10 @@ const routes = [
     meta: { titleKey: 'taro.privacy.title', app: 'taro' },
   },
   {
-    path: '/:locale/taro/offer',
-    name: 'taro-offer',
-    component: () => import('./pages/apps/taro/TaroOfferPage.vue'),
-    meta: { titleKey: 'taro.offer.title', app: 'taro' },
-  },
-  {
     path: '/:locale/starguide/privacy-policy',
     name: 'starguide-privacy',
     component: () => import('./pages/apps/starguide/StarGuidePrivacyPage.vue'),
     meta: { titleKey: 'starguide.privacy.title', app: 'starguide' },
-  },
-  {
-    path: '/:locale/starguide/offer',
-    name: 'starguide-offer',
-    component: () => import('./pages/apps/starguide/StarGuideOfferPage.vue'),
-    meta: { titleKey: 'starguide.offer.title', app: 'starguide' },
   },
   {
     path: '/:locale/senso/privacy-policy',
@@ -637,12 +359,6 @@ const routes = [
     meta: { titleKey: 'ytaudit.privacy.title', app: 'ytaudit' },
   },
   {
-    path: '/:locale/ytaudit/terms-of-use',
-    name: 'ytaudit-terms',
-    component: () => import('./pages/apps/ytaudit/YtAuditOfferPage.vue'),
-    meta: { titleKey: 'ytaudit.offer.title', app: 'ytaudit' },
-  },
-  {
     path: '/:locale/proverb/privacy-policy',
     name: 'proverb-privacy',
     component: () => import('./pages/apps/proverb/ProverbPrivacyPage.vue'),
@@ -655,34 +371,16 @@ const routes = [
     meta: { titleKey: 'alias.privacy.title', app: 'alias' },
   },
   {
-    path: '/:locale/alias/offer',
-    name: 'alias-offer',
-    component: () => import('./pages/apps/alias/AliasOfferPage.vue'),
-    meta: { titleKey: 'alias.offer.title', app: 'alias' },
-  },
-  {
     path: '/:locale/auto-obd2/privacy-policy',
     name: 'auto-obd2-privacy',
     component: () => import('./pages/apps/auto-obd2/AutoObd2PrivacyPage.vue'),
     meta: { titleKey: 'autoObd2.privacy.title', app: 'auto-obd2' },
   },
   {
-    path: '/:locale/auto-obd2/offer',
-    name: 'auto-obd2-offer',
-    component: () => import('./pages/apps/auto-obd2/AutoObd2OfferPage.vue'),
-    meta: { titleKey: 'autoObd2.offer.title', app: 'auto-obd2' },
-  },
-  {
     path: '/:locale/hueroom/privacy-policy',
     name: 'hueroom-privacy',
     component: () => import('./pages/apps/hueroom/HueRoomPrivacyPage.vue'),
     meta: { titleKey: 'hueroom.privacy.title', app: 'hueroom' },
-  },
-  {
-    path: '/:locale/hueroom/offer',
-    name: 'hueroom-offer',
-    component: () => import('./pages/apps/hueroom/HueRoomOfferPage.vue'),
-    meta: { titleKey: 'hueroom.offer.title', app: 'hueroom' },
   },
   {
     path: '/:locale/sudokulens/privacy-policy',
@@ -697,34 +395,16 @@ const routes = [
     meta: { titleKey: 'chromatic.privacy.title', app: 'chromatic' },
   },
   {
-    path: '/:locale/chromatic/offer',
-    name: 'chromatic-offer',
-    component: () => import('./pages/apps/chromatic/ChromaticOfferPage.vue'),
-    meta: { titleKey: 'chromatic.offer.title', app: 'chromatic' },
-  },
-  {
     path: '/:locale/minesweeper/privacy-policy',
     name: 'minesweeper-privacy',
     component: () => import('./pages/apps/minesweeper/MinesweeperPrivacyPage.vue'),
     meta: { titleKey: 'minesweeper.privacy.title', app: 'minesweeper' },
   },
   {
-    path: '/:locale/minesweeper/offer',
-    name: 'minesweeper-offer',
-    component: () => import('./pages/apps/minesweeper/MinesweeperOfferPage.vue'),
-    meta: { titleKey: 'minesweeper.offer.title', app: 'minesweeper' },
-  },
-  {
     path: '/:locale/zodiac-compatibility/privacy-policy',
     name: 'zodiac-compatibility-privacy',
     component: () => import('./pages/apps/zodiac-compatibility/ZodiacCompatibilityPrivacyPage.vue'),
     meta: { titleKey: 'zodiacCompatibility.privacy.title', app: 'zodiac-compatibility' },
-  },
-  {
-    path: '/:locale/zodiac-compatibility/terms',
-    name: 'zodiac-compatibility-terms',
-    component: () => import('./pages/apps/zodiac-compatibility/ZodiacCompatibilityTermsPage.vue'),
-    meta: { titleKey: 'zodiacCompatibility.offer.title', app: 'zodiac-compatibility' },
   },
   {
     path: '/:locale/zodiac-compatibility/disclaimer',
@@ -740,24 +420,11 @@ const routes = [
     meta: { titleKey: 'concreteCalculator.privacy.title', app: 'concrete-calculator' },
   },
   {
-    path: '/:locale/concrete-calculator/terms-of-use',
-    name: 'concrete-calculator-terms',
-    component: () => import('./pages/apps/concrete-calculator/ConcreteCalculatorTermsPage.vue'),
-    meta: { titleKey: 'concreteCalculator.terms.title', app: 'concrete-calculator' },
-  },
-  {
     path: '/:locale/landscaping-calculator/privacy-policy',
     name: 'landscaping-calculator-privacy',
     component: () =>
       import('./pages/apps/landscaping-calculator/LandscapingCalculatorPrivacyPage.vue'),
     meta: { titleKey: 'landscapingCalculator.privacy.title', app: 'landscaping-calculator' },
-  },
-  {
-    path: '/:locale/landscaping-calculator/terms-of-use',
-    name: 'landscaping-calculator-terms',
-    component: () =>
-      import('./pages/apps/landscaping-calculator/LandscapingCalculatorTermsPage.vue'),
-    meta: { titleKey: 'landscapingCalculator.terms.title', app: 'landscaping-calculator' },
   },
   {
     path: '/:locale/gravel-calculator/privacy-policy',
@@ -766,22 +433,10 @@ const routes = [
     meta: { titleKey: 'gravelCalculator.privacy.title', app: 'gravel-calculator' },
   },
   {
-    path: '/:locale/gravel-calculator/terms-of-use',
-    name: 'gravel-calculator-terms',
-    component: () => import('./pages/apps/gravel-calculator/GravelCalculatorTermsPage.vue'),
-    meta: { titleKey: 'gravelCalculator.terms.title', app: 'gravel-calculator' },
-  },
-  {
     path: '/:locale/kpop-dance-lessons/privacy-policy',
     name: 'kpop-dance-lessons-privacy',
     component: () => import('./pages/apps/kpop-dance-lessons/KpopDanceLessonsPrivacyPage.vue'),
     meta: { titleKey: 'kpopDanceLessons.privacy.title', app: 'kpop-dance-lessons' },
-  },
-  {
-    path: '/:locale/kpop-dance-lessons/offer',
-    name: 'kpop-dance-lessons-offer',
-    component: () => import('./pages/apps/kpop-dance-lessons/KpopDanceLessonsOfferPage.vue'),
-    meta: { titleKey: 'kpopDanceLessons.offer.title', app: 'kpop-dance-lessons' },
   },
   {
     path: '/:locale/resistor-color-code/privacy-policy',
@@ -790,22 +445,10 @@ const routes = [
     meta: { titleKey: 'resistorColorCode.privacy.title', app: 'resistor-color-code' },
   },
   {
-    path: '/:locale/resistor-color-code/terms-of-use',
-    name: 'resistor-color-code-terms',
-    component: () => import('./pages/apps/resistor-color-code/ResistorColorCodeTermsPage.vue'),
-    meta: { titleKey: 'resistorColorCode.terms.title', app: 'resistor-color-code' },
-  },
-  {
     path: '/:locale/ohms-law-calculator/privacy-policy',
     name: 'ohms-law-calculator-privacy',
     component: () => import('./pages/apps/ohms-law-calculator/OhmsLawCalculatorPrivacyPage.vue'),
     meta: { titleKey: 'ohmsLawCalculator.privacy.title', app: 'ohms-law-calculator' },
-  },
-  {
-    path: '/:locale/ohms-law-calculator/terms-of-use',
-    name: 'ohms-law-calculator-terms',
-    component: () => import('./pages/apps/ohms-law-calculator/OhmsLawCalculatorTermsPage.vue'),
-    meta: { titleKey: 'ohmsLawCalculator.terms.title', app: 'ohms-law-calculator' },
   },
   {
     path: '/:locale/block-brick-calculator/privacy-policy',
@@ -815,23 +458,10 @@ const routes = [
     meta: { titleKey: 'blockBrickCalculator.privacy.title', app: 'block-brick-calculator' },
   },
   {
-    path: '/:locale/block-brick-calculator/terms-of-use',
-    name: 'block-brick-calculator-terms',
-    component: () =>
-      import('./pages/apps/block-brick-calculator/BlockBrickCalculatorTermsPage.vue'),
-    meta: { titleKey: 'blockBrickCalculator.terms.title', app: 'block-brick-calculator' },
-  },
-  {
     path: '/:locale/dog-training-cards/privacy-policy',
     name: 'dog-training-cards-privacy',
     component: () => import('./pages/apps/dog-training-cards/DogTrainingCardsPrivacyPage.vue'),
     meta: { titleKey: 'dogTraining.privacy.title', app: 'dog-training-cards' },
-  },
-  {
-    path: '/:locale/dog-training-cards/offer',
-    name: 'dog-training-cards-offer',
-    component: () => import('./pages/apps/dog-training-cards/DogTrainingCardsOfferPage.vue'),
-    meta: { titleKey: 'dogTraining.offer.title', app: 'dog-training-cards' },
   },
   {
     path: '/:locale/cat-training-behavior/privacy-policy',
@@ -841,54 +471,26 @@ const routes = [
     meta: { titleKey: 'catTraining.privacy.title', app: 'cat-training-behavior' },
   },
   {
-    path: '/:locale/cat-training-behavior/offer',
-    name: 'cat-training-behavior-offer',
-    component: () => import('./pages/apps/cat-training-behavior/CatTrainingBehaviorOfferPage.vue'),
-    meta: { titleKey: 'catTraining.offer.title', app: 'cat-training-behavior' },
-  },
-  {
     path: '/:locale/human-tetris/privacy-policy',
     name: 'human-tetris-privacy',
     component: () => import('./pages/apps/human-tetris/HumanTetrisPrivacyPage.vue'),
     meta: { titleKey: 'humanTetris.privacy.title', app: 'human-tetris' },
   },
   {
-    path: '/:locale/human-tetris/offer',
-    name: 'human-tetris-offer',
-    component: () => import('./pages/apps/human-tetris/HumanTetrisOfferPage.vue'),
-    meta: { titleKey: 'humanTetris.offer.title', app: 'human-tetris' },
-  },
-  {
     path: '/lux-meter/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/lux-meter/privacy-policy`,
-  },
-  {
-    path: '/lux-meter/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/lux-meter/terms-of-use`,
   },
   {
     path: '/hair-care-routine/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/hair-care-routine/privacy-policy`,
   },
   {
-    path: '/hair-care-routine/offer',
-    redirect: () => `/${i18n.global.locale.value}/hair-care-routine/offer`,
-  },
-  {
     path: '/markdown-reader/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/markdown-reader/privacy-policy`,
   },
   {
-    path: '/markdown-reader/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/markdown-reader/terms-of-use`,
-  },
-  {
     path: '/molemap/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/molemap/privacy-policy`,
-  },
-  {
-    path: '/molemap/terms',
-    redirect: () => `/${i18n.global.locale.value}/molemap/terms`,
   },
   {
     path: '/molemap/disclaimer',
@@ -899,80 +501,40 @@ const routes = [
     redirect: () => `/${i18n.global.locale.value}/concrete-calculator/privacy-policy`,
   },
   {
-    path: '/concrete-calculator/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/concrete-calculator/terms-of-use`,
-  },
-  {
     path: '/landscaping-calculator/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/landscaping-calculator/privacy-policy`,
-  },
-  {
-    path: '/landscaping-calculator/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/landscaping-calculator/terms-of-use`,
   },
   {
     path: '/gravel-calculator/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/gravel-calculator/privacy-policy`,
   },
   {
-    path: '/gravel-calculator/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/gravel-calculator/terms-of-use`,
-  },
-  {
     path: '/kpop-dance-lessons/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/kpop-dance-lessons/privacy-policy`,
-  },
-  {
-    path: '/kpop-dance-lessons/offer',
-    redirect: () => `/${i18n.global.locale.value}/kpop-dance-lessons/offer`,
   },
   {
     path: '/resistor-color-code/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/resistor-color-code/privacy-policy`,
   },
   {
-    path: '/resistor-color-code/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/resistor-color-code/terms-of-use`,
-  },
-  {
     path: '/ohms-law-calculator/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/ohms-law-calculator/privacy-policy`,
-  },
-  {
-    path: '/ohms-law-calculator/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/ohms-law-calculator/terms-of-use`,
   },
   {
     path: '/block-brick-calculator/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/block-brick-calculator/privacy-policy`,
   },
   {
-    path: '/block-brick-calculator/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/block-brick-calculator/terms-of-use`,
-  },
-  {
     path: '/dog-training-cards/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/dog-training-cards/privacy-policy`,
-  },
-  {
-    path: '/dog-training-cards/offer',
-    redirect: () => `/${i18n.global.locale.value}/dog-training-cards/offer`,
   },
   {
     path: '/cat-training-behavior/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/cat-training-behavior/privacy-policy`,
   },
   {
-    path: '/cat-training-behavior/offer',
-    redirect: () => `/${i18n.global.locale.value}/cat-training-behavior/offer`,
-  },
-  {
     path: '/health-calculator/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/health-calculator/privacy-policy`,
-  },
-  {
-    path: '/health-calculator/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/health-calculator/terms-of-use`,
   },
   {
     path: '/health-calculator/disclaimer',
@@ -981,10 +543,6 @@ const routes = [
   {
     path: '/human-tetris/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/human-tetris/privacy-policy`,
-  },
-  {
-    path: '/human-tetris/offer',
-    redirect: () => `/${i18n.global.locale.value}/human-tetris/offer`,
   },
   { path: '/', redirect: () => `/${i18n.global.locale.value}` },
   { path: '/privacy', redirect: () => `/${i18n.global.locale.value}/privacy` },
@@ -999,10 +557,6 @@ const routes = [
     redirect: () => `/${i18n.global.locale.value}/kalimba-tuner/privacy-policy`,
   },
   {
-    path: '/kalimba-tuner/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/kalimba-tuner/terms-of-use`,
-  },
-  {
     path: '/kalimba_tuner/terms-of-use',
     redirect: () => `/${i18n.global.locale.value}/kalimba-tuner/terms-of-use`,
   },
@@ -1015,10 +569,6 @@ const routes = [
     redirect: () => `/${i18n.global.locale.value}/kalimba-tuner/privacy-policy`,
   },
   {
-    path: '/kalimba-tuner/terms',
-    redirect: () => `/${i18n.global.locale.value}/kalimba-tuner/terms-of-use`,
-  },
-  {
     path: '/kalimba_tuner/terms',
     redirect: () => `/${i18n.global.locale.value}/kalimba-tuner/terms-of-use`,
   },
@@ -1027,32 +577,16 @@ const routes = [
     redirect: () => `/${i18n.global.locale.value}/kings-corner/privacy-policy`,
   },
   {
-    path: '/kings-corner/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/kings-corner/terms-of-use`,
-  },
-  {
     path: '/kings-corner/privacy',
     redirect: () => `/${i18n.global.locale.value}/kings-corner/privacy-policy`,
-  },
-  {
-    path: '/kings-corner/terms',
-    redirect: () => `/${i18n.global.locale.value}/kings-corner/terms-of-use`,
   },
   {
     path: '/survival-guide/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/survival-guide/privacy-policy`,
   },
   {
-    path: '/survival-guide/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/survival-guide/terms-of-use`,
-  },
-  {
     path: '/survival-guide/privacy',
     redirect: () => `/${i18n.global.locale.value}/survival-guide/privacy-policy`,
-  },
-  {
-    path: '/survival-guide/terms',
-    redirect: () => `/${i18n.global.locale.value}/survival-guide/terms-of-use`,
   },
   {
     path: '/survival_guide/privacy-policy',
@@ -1075,16 +609,8 @@ const routes = [
     redirect: () => `/${i18n.global.locale.value}/crochet-row-counter/privacy-policy`,
   },
   {
-    path: '/crochet-row-counter/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/crochet-row-counter/terms-of-use`,
-  },
-  {
     path: '/crochet-row-counter/privacy',
     redirect: () => `/${i18n.global.locale.value}/crochet-row-counter/privacy-policy`,
-  },
-  {
-    path: '/crochet-row-counter/terms',
-    redirect: () => `/${i18n.global.locale.value}/crochet-row-counter/terms-of-use`,
   },
   {
     path: '/crochet_row_counter/privacy-policy',
@@ -1123,16 +649,8 @@ const routes = [
     redirect: () => `/${i18n.global.locale.value}/vocal-range-test/privacy-policy`,
   },
   {
-    path: '/vocal-range-test/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/vocal-range-test/terms-of-use`,
-  },
-  {
     path: '/vocal-range-test/privacy',
     redirect: () => `/${i18n.global.locale.value}/vocal-range-test/privacy-policy`,
-  },
-  {
-    path: '/vocal-range-test/terms',
-    redirect: () => `/${i18n.global.locale.value}/vocal-range-test/terms-of-use`,
   },
   {
     path: '/vocal_range_test/privacy-policy',
@@ -1155,16 +673,8 @@ const routes = [
     redirect: () => `/${i18n.global.locale.value}/recorder-fingering/privacy-policy`,
   },
   {
-    path: '/recorder-fingering/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/recorder-fingering/terms-of-use`,
-  },
-  {
     path: '/recorder-fingering/privacy',
     redirect: () => `/${i18n.global.locale.value}/recorder-fingering/privacy-policy`,
-  },
-  {
-    path: '/recorder-fingering/terms',
-    redirect: () => `/${i18n.global.locale.value}/recorder-fingering/terms-of-use`,
   },
   {
     path: '/recorder_fingering/privacy-policy',
@@ -1191,10 +701,6 @@ const routes = [
     redirect: () => `/${i18n.global.locale.value}/cube-solver-3d/privacy-policy`,
   },
   {
-    path: '/cube-solver-3d/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/cube-solver-3d/terms-of-use`,
-  },
-  {
     path: '/cube_solver_3d/terms-of-use',
     redirect: () => `/${i18n.global.locale.value}/cube-solver-3d/terms-of-use`,
   },
@@ -1207,10 +713,6 @@ const routes = [
     redirect: () => `/${i18n.global.locale.value}/cube-solver-3d/privacy-policy`,
   },
   {
-    path: '/cube-solver-3d/terms',
-    redirect: () => `/${i18n.global.locale.value}/cube-solver-3d/terms-of-use`,
-  },
-  {
     path: '/cube_solver_3d/terms',
     redirect: () => `/${i18n.global.locale.value}/cube-solver-3d/terms-of-use`,
   },
@@ -1219,64 +721,32 @@ const routes = [
     redirect: () => `/${i18n.global.locale.value}/kpop-dance-3d/privacy-policy`,
   },
   {
-    path: '/kpop-dance-3d/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/kpop-dance-3d/terms-of-use`,
-  },
-  {
     path: '/ballet-beginners/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/ballet-beginners/privacy-policy`,
-  },
-  {
-    path: '/ballet-beginners/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/ballet-beginners/terms-of-use`,
   },
   {
     path: '/line-dance/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/line-dance/privacy-policy`,
   },
   {
-    path: '/line-dance/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/line-dance/terms-of-use`,
-  },
-  {
     path: '/tile-calculator/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/tile-calculator/privacy-policy`,
-  },
-  {
-    path: '/tile-calculator/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/tile-calculator/terms-of-use`,
   },
   {
     path: '/mexican-train/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/mexican-train/privacy-policy`,
   },
   {
-    path: '/mexican-train/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/mexican-train/terms-of-use`,
-  },
-  {
     path: '/bluetooth-finder/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/bluetooth-finder/privacy-policy`,
-  },
-  {
-    path: '/bluetooth-finder/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/bluetooth-finder/terms-of-use`,
   },
   {
     path: '/chicken-egg-tracker/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/chicken-egg-tracker/privacy-policy`,
   },
   {
-    path: '/chicken-egg-tracker/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/chicken-egg-tracker/terms-of-use`,
-  },
-  {
     path: '/pickleball-scorekeeper/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/pickleball-scorekeeper/privacy-policy`,
-  },
-  {
-    path: '/pickleball-scorekeeper/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/pickleball-scorekeeper/terms-of-use`,
   },
   {
     path: '/cat-jam/privacy-policy',
@@ -1287,64 +757,32 @@ const routes = [
     redirect: () => `/${i18n.global.locale.value}/rabbit-care/privacy-policy`,
   },
   {
-    path: '/rabbit-care/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/rabbit-care/terms-of-use`,
-  },
-  {
     path: '/guitar-tuner/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/guitar-tuner/privacy-policy`,
-  },
-  {
-    path: '/guitar-tuner/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/guitar-tuner/terms-of-use`,
   },
   {
     path: '/kpop-piano/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/kpop-piano/privacy-policy`,
   },
   {
-    path: '/kpop-piano/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/kpop-piano/terms-of-use`,
-  },
-  {
     path: '/lofi-generator/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/lofi-generator/privacy-policy`,
-  },
-  {
-    path: '/lofi-generator/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/lofi-generator/terms-of-use`,
   },
   {
     path: '/biblia-almeida/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/biblia-almeida/privacy-policy`,
   },
   {
-    path: '/biblia-almeida/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/biblia-almeida/terms-of-use`,
-  },
-  {
     path: '/biblia-reina-valera/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/biblia-reina-valera/privacy-policy`,
-  },
-  {
-    path: '/biblia-reina-valera/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/biblia-reina-valera/terms-of-use`,
   },
   {
     path: '/learn-excel-offline/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/learn-excel-offline/privacy-policy`,
   },
   {
-    path: '/learn-excel-offline/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/learn-excel-offline/terms-of-use`,
-  },
-  {
     path: '/cat-training-care/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/cat-training-care/privacy-policy`,
-  },
-  {
-    path: '/cat-training-care/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/cat-training-care/terms-of-use`,
   },
   { path: '/tools', redirect: () => `/${i18n.global.locale.value}/tools` },
   {
@@ -1356,120 +794,64 @@ const routes = [
     redirect: () => `/${i18n.global.locale.value}/braille-alphabet/privacy-policy`,
   },
   {
-    path: '/braille-alphabet/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/braille-alphabet/terms-of-use`,
-  },
-  {
     path: '/morse-code/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/morse-code/privacy-policy`,
-  },
-  {
-    path: '/morse-code/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/morse-code/terms-of-use`,
   },
   {
     path: '/pool-chemistry/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/pool-chemistry/privacy-policy`,
   },
   {
-    path: '/pool-chemistry/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/pool-chemistry/terms-of-use`,
-  },
-  {
     path: '/five-tibetan-rites/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/five-tibetan-rites/privacy-policy`,
-  },
-  {
-    path: '/five-tibetan-rites/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/five-tibetan-rites/terms-of-use`,
   },
   {
     path: '/financial-calculators/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/financial-calculators/privacy-policy`,
   },
   {
-    path: '/financial-calculators/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/financial-calculators/terms-of-use`,
-  },
-  {
     path: '/hvac-calculator/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/hvac-calculator/privacy-policy`,
-  },
-  {
-    path: '/hvac-calculator/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/hvac-calculator/terms-of-use`,
   },
   {
     path: '/slavic-mythology/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/slavic-mythology/privacy-policy`,
   },
   {
-    path: '/slavic-mythology/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/slavic-mythology/terms-of-use`,
-  },
-  {
     path: '/angel-numbers/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/angel-numbers/privacy-policy`,
-  },
-  {
-    path: '/angel-numbers/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/angel-numbers/terms-of-use`,
   },
   {
     path: '/antysurzhyk/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/antysurzhyk/privacy-policy`,
   },
   {
-    path: '/antysurzhyk/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/antysurzhyk/terms-of-use`,
-  },
-  {
     path: '/parrot-training/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/parrot-training/privacy-policy`,
-  },
-  {
-    path: '/parrot-training/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/parrot-training/terms-of-use`,
   },
   {
     path: '/wire-size-calc/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/wire-size-calc/privacy-policy`,
   },
   {
-    path: '/wire-size-calc/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/wire-size-calc/terms-of-use`,
-  },
-  {
     path: '/tire-size-calculator/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/tire-size-calculator/privacy-policy`,
-  },
-  {
-    path: '/tire-size-calculator/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/tire-size-calculator/terms-of-use`,
   },
   {
     path: '/truck-fault-codes/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/truck-fault-codes/privacy-policy`,
   },
   {
-    path: '/truck-fault-codes/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/truck-fault-codes/terms-of-use`,
+    path: '/runes/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/runes/privacy-policy`,
   },
   {
     path: '/taro/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/taro/privacy-policy`,
   },
   {
-    path: '/taro/offer',
-    redirect: () => `/${i18n.global.locale.value}/taro/offer`,
-  },
-  {
     path: '/starguide/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/starguide/privacy-policy`,
-  },
-  {
-    path: '/starguide/offer',
-    redirect: () => `/${i18n.global.locale.value}/starguide/offer`,
   },
   {
     path: '/senso/privacy-policy',
@@ -1484,10 +866,6 @@ const routes = [
     redirect: () => `/${i18n.global.locale.value}/ytaudit/privacy-policy`,
   },
   {
-    path: '/ytaudit/terms-of-use',
-    redirect: () => `/${i18n.global.locale.value}/ytaudit/terms-of-use`,
-  },
-  {
     path: '/proverb/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/proverb/privacy-policy`,
   },
@@ -1496,16 +874,8 @@ const routes = [
     redirect: () => `/${i18n.global.locale.value}/alias/privacy-policy`,
   },
   {
-    path: '/alias/offer',
-    redirect: () => `/${i18n.global.locale.value}/alias/offer`,
-  },
-  {
     path: '/auto-obd2/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/auto-obd2/privacy-policy`,
-  },
-  {
-    path: '/auto-obd2/offer',
-    redirect: () => `/${i18n.global.locale.value}/auto-obd2/offer`,
   },
   {
     path: '/sudokulens/privacy-policy',
@@ -1516,38 +886,45 @@ const routes = [
     redirect: () => `/${i18n.global.locale.value}/hueroom/privacy-policy`,
   },
   {
-    path: '/hueroom/offer',
-    redirect: () => `/${i18n.global.locale.value}/hueroom/offer`,
-  },
-  {
     path: '/chromatic/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/chromatic/privacy-policy`,
-  },
-  {
-    path: '/chromatic/offer',
-    redirect: () => `/${i18n.global.locale.value}/chromatic/offer`,
   },
   {
     path: '/minesweeper/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/minesweeper/privacy-policy`,
   },
   {
-    path: '/minesweeper/offer',
-    redirect: () => `/${i18n.global.locale.value}/minesweeper/offer`,
-  },
-  {
     path: '/zodiac-compatibility/privacy-policy',
     redirect: () => `/${i18n.global.locale.value}/zodiac-compatibility/privacy-policy`,
-  },
-  {
-    path: '/zodiac-compatibility/terms',
-    redirect: () => `/${i18n.global.locale.value}/zodiac-compatibility/terms`,
   },
   {
     path: '/zodiac-compatibility/disclaimer',
     redirect: () => `/${i18n.global.locale.value}/zodiac-compatibility/disclaimer`,
   },
 ]
+
+// Terms of Use for every app and watch face, generated from src/data/termsRoutes.js:
+// /:locale/<slug>/terms-of-use (universal text, AppTermsPage.vue), plus redirects from the old
+// /<slug>/terms, /<slug>/offer and /terms/<slug> URLs (with and without the locale).
+for (const slug of termsSlugs()) {
+  routes.push({
+    path: `/:locale/${termsPath(slug)}`,
+    component: () => import('./pages/AppTermsPage.vue'),
+    meta: { titleKey: 'appTerms.title', app: slug, terms: true },
+  })
+  for (const alias of termsAliasPaths(slug)) {
+    routes.push({
+      path: `/:locale/${alias}`,
+      redirect: (to) => `/${to.params.locale}/${termsPath(slug)}`,
+    })
+  }
+  for (const seg of [termsPath(slug), ...termsAliasPaths(slug)]) {
+    routes.push({
+      path: `/${seg}`,
+      redirect: () => `/${i18n.global.locale.value}/${termsPath(slug)}`,
+    })
+  }
+}
 
 const router = createRouter({
   history: createWebHistory(),
