@@ -108,6 +108,16 @@ Every app on the site is presented as **released**, in every locale, even if it 
 - The shared header (`src/components/LegalTabs.vue`, mounted in `App.vue`) shows app icon + name, then the Privacy | Terms tabs, on any route with `meta.app`. A new app's privacy route must set `meta: { app: '<slug>' }`.
 - If a new app belongs to a risk group (health, electrical, vehicles…), add its slug to `PROFILES` in `appTerms.js`.
 
+## External URLs are always English `/en/` (IMPORTANT)
+
+Every URL given to an outside service — Play Console (privacy policy, Terms of Service / trader status link, app content declarations), AdMob, store listings, URLs inside the apps — uses the English locale and the canonical path:
+
+- `https://zorya-tech-studio.github.io/en/<slug>/privacy-policy`
+- `https://zorya-tech-studio.github.io/en/<slug>/terms-of-use`
+- watch faces: `https://zorya-tech-studio.github.io/en/privacy#watch-faces` and `https://zorya-tech-studio.github.io/en/<slug>/terms-of-use`
+
+Never `/uk/...`, never a locale-less short alias (`/<slug>/terms`), never an old path (`/offer`, `/terms/<slug>`), even if the app or an earlier declaration used one. When touching an app in Play Console that still has a `/uk/` or old-style URL, replace it with the `/en/` canonical URL. The `/uk/` pages and old paths stay online only so existing links keep working (see "Old URLs must keep working").
+
 ## Adding a new app — checklist (IMPORTANT)
 
 Every app must look and work the same: card with Privacy · Terms links, `/:locale/<slug>/privacy-policy` + `/:locale/<slug>/terms-of-use`, the shared header (icon, name, Privacy | Terms tabs). Copy an existing recent app (e.g. `survival-guide`) and follow these steps; `npm run check` enforces most of them.
