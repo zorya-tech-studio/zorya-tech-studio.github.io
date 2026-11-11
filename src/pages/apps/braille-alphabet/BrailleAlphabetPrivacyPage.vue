@@ -35,7 +35,7 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
     </div>
 
     <p class="app-label">{{ t('brailleAlphabet.name') }} — {{ t('brailleAlphabet.subtitle') }}</p>
-    <p class="updated-date">{{ t('brailleAlphabet.privacy.updated') }}: 2026-09-22</p>
+    <p class="updated-date">{{ t('brailleAlphabet.privacy.updated') }}: 2026-11-11</p>
     <p class="intro-text">{{ t('brailleAlphabet.privacy.intro') }}</p>
 
     <div class="policy-section">
