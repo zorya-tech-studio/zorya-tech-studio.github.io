@@ -4612,6 +4612,50 @@
       "contact_text": "Questions about these Terms:"
     }
   },
+  "chargingSpeed": {
+    "name": "Charging Speed: Charger Tester",
+    "subtitle": "Measure how fast your phone really charges: live watts, mA, volts and temperature, a repeatable 60-second charger and cable test, history, alerts and battery health",
+    "desc_short": "Charger and cable tester: live watts and mA, 60-second test with a grade, history, charge alerts and battery health estimate.",
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Last updated",
+      "intro": "This policy explains how the Charging Speed: Charger Tester app for Android (package com.zoryatechstudio.chargingspeed), made by Zorya Tech Studio, handles your information. It supplements the Zorya Tech Studio privacy policy.",
+      "summary_title": "Summary",
+      "summary_p1": "The app works offline. It has no account and no sign-up. Battery readings, test results, charging history, your gear list and settings are stored only on your device. We do not run a server and we do not receive this data. The app shows ads through Google AdMob, as described below. It has no analytics and no crash reporting service.",
+      "storage_title": "Information stored on your device",
+      "storage_p1": "The following stays in the app's private storage on your device:",
+      "storage_b1": "Battery readings (level, current, voltage, temperature, charging status), charger tests, charging sessions and their charts.",
+      "storage_b2": "Your gear list (chargers, cables, power banks) with the names you give them, the calibration result for your phone, alert settings and other preferences.",
+      "storage_b3": "Exports (JSON backup, CSV, PDF report), which are created only when you ask and are shared only through the share sheet that you choose.",
+      "storage_p2": "You can delete all data in Settings, Data, Delete all data, or by uninstalling the app.",
+      "ads_title": "Advertising (Google AdMob)",
+      "ads_p1": "The app shows ads provided by Google AdMob. Google may collect and process device identifiers (such as the advertising ID), approximate location derived from the IP address, app interaction data and diagnostics to show, measure and protect ads. In the EEA, the UK and Switzerland the app asks for your consent with Google's consent form (UMP) before personalized ads, and you can change your choice at any time in Settings, Privacy options. You can reset or delete your advertising ID in Android settings. Ads are never shown while a test or the live monitor is running.",
+      "notif_title": "Notifications and background work",
+      "notif_p1": "Charge alerts (target level, full, high temperature, slow charging, unplug reminder) are created locally on your device. While the phone is charging, a periodic background check reads one battery snapshot, and the optional Live charging monitor runs as a foreground service with a visible notification only after you turn it on. No server is involved, and you can turn all of this off in Settings.",
+      "perm_title": "Permissions",
+      "perm_p1": "The app requests only what its features need:",
+      "perm_b1": "Internet: ads and the consent form.",
+      "perm_b2": "Advertising ID: used by Google AdMob for ads.",
+      "perm_b3": "Notifications: only if you turn on alerts or the live monitor.",
+      "perm_b4": "Foreground service (special use): the optional Live charging monitor.",
+      "perm_b5": "Vibration: haptic feedback and the wireless sweet spot finder.",
+      "perm_p2": "The app does not request location, microphone, camera, contacts or storage access.",
+      "children_title": "Children",
+      "children_p1": "The app is intended for users aged 13 and over and is not directed at children under 13.",
+      "changes_title": "Changes",
+      "changes_p1": "We will update this policy when the app changes and show the new date on this page.",
+      "contact_title": "Contact",
+      "contact_text": "Questions about this policy:"
+    },
+    "terms": {
+      "b1": "The app measures and explains. It reads the battery data that your phone reports and shows charging power, current, voltage and temperature, test grades, history and a battery health estimate. It does not speed up charging, does not change how your phone or charger works, and does not extend battery life.",
+      "b2": "Accuracy. Values come from your phone's battery sensor and differ between phone models. Values labeled \"into battery\" are measured, \"phone total\" adds a baseline, and \"charger output\" is an estimate. Results may differ from a USB meter. Battery health is an estimate.",
+      "b3": "Testing chargers and cables. Use only chargers and cables that are in good condition. Stop and unplug if anything becomes hot, smells, sparks or is damaged. The app is not a safety certification of any charger, cable or power bank.",
+      "b4": "Ads and extras. The app is supported by ads and does not show them during tests. You can watch a short video to hide ads for a while or unlock extras. Basic measuring, testing, history, alerts and battery health stay free.",
+      "b5": "Not affiliated. The app is not affiliated with or endorsed by any phone, charger or battery maker or standards body. Names of technologies are used only to describe what is measured.",
+      "b6": "Age. The app is intended for users aged 13 and over."
+    }
+  },
   "survivalGuide": {
     "name": "Survival Guide Offline & Kit",
     "subtitle": "Offline survival guide with an emergency kit planner, supplies tracker with expiry reminders, first aid, quizzes and SOS tools",

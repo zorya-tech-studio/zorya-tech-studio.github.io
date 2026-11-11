@@ -48,6 +48,12 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/charging-speed/privacy-policy',
+    name: 'charging-speed-privacy',
+    component: () => import('./pages/apps/charging-speed/ChargingSpeedPrivacyPage.vue'),
+    meta: { titleKey: 'chargingSpeed.privacy.title', app: 'charging-speed' },
+  },
+  {
     path: '/:locale/survival-guide/privacy-policy',
     name: 'survival-guide-privacy',
     component: () => import('./pages/apps/survival-guide/SurvivalGuidePrivacyPage.vue'),
@@ -579,6 +585,14 @@ const routes = [
   {
     path: '/kings-corner/privacy',
     redirect: () => `/${i18n.global.locale.value}/kings-corner/privacy-policy`,
+  },
+  {
+    path: '/charging-speed/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/charging-speed/privacy-policy`,
+  },
+  {
+    path: '/charging-speed/privacy',
+    redirect: () => `/${i18n.global.locale.value}/charging-speed/privacy-policy`,
   },
   {
     path: '/survival-guide/privacy-policy',

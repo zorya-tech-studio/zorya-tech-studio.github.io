@@ -36,6 +36,7 @@ const PROFILES = {
     'health-calculator',
     'tire-size-calculator',
     'lux-meter',
+    'charging-speed',
     'senso',
     'bluetooth-finder',
     'vocal-range-test',

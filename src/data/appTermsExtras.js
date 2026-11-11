@@ -8,6 +8,18 @@
  * Block: { title?: key, paras?: key[], list?: key[] }
  */
 export const APP_TERMS_EXTRAS = {
+  'charging-speed': [
+    {
+      list: [
+        'chargingSpeed.terms.b1',
+        'chargingSpeed.terms.b2',
+        'chargingSpeed.terms.b3',
+        'chargingSpeed.terms.b4',
+        'chargingSpeed.terms.b5',
+        'chargingSpeed.terms.b6',
+      ],
+    },
+  ],
   'survival-guide': [
     {
       list: [

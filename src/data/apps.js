@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'charging-speed',
+    nameKey: 'chargingSpeed.name',
+    subtitleKey: 'chargingSpeed.subtitle',
+    descKey: 'chargingSpeed.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'tools',
+    tags: ['Android', 'Charger tester', 'Battery'],
+    icon: '/apps/charging-speed/icon.png',
+    privacyRoute: (locale) => `/${locale}/charging-speed/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/charging-speed/terms-of-use`,
+  },
+  {
     slug: 'survival-guide',
     nameKey: 'survivalGuide.name',
     subtitleKey: 'survivalGuide.subtitle',
