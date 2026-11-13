@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'denglisch',
+    nameKey: 'denglisch.name',
+    subtitleKey: 'denglisch.subtitle',
+    descKey: 'denglisch.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'reference',
+    tags: ['Android', 'German', 'Offline'],
+    icon: '/apps/denglisch/icon.png',
+    privacyRoute: (locale) => `/${locale}/denglisch/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/denglisch/terms-of-use`,
+  },
+  {
     slug: 'charging-speed',
     nameKey: 'chargingSpeed.name',
     subtitleKey: 'chargingSpeed.subtitle',

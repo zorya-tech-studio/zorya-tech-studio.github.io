@@ -48,6 +48,12 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/denglisch/privacy-policy',
+    name: 'denglisch-privacy',
+    component: () => import('./pages/apps/denglisch/DenglischPrivacyPage.vue'),
+    meta: { titleKey: 'denglisch.privacy.title', app: 'denglisch' },
+  },
+  {
     path: '/:locale/charging-speed/privacy-policy',
     name: 'charging-speed-privacy',
     component: () => import('./pages/apps/charging-speed/ChargingSpeedPrivacyPage.vue'),
@@ -585,6 +591,14 @@ const routes = [
   {
     path: '/kings-corner/privacy',
     redirect: () => `/${i18n.global.locale.value}/kings-corner/privacy-policy`,
+  },
+  {
+    path: '/denglisch/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/denglisch/privacy-policy`,
+  },
+  {
+    path: '/denglisch/privacy',
+    redirect: () => `/${i18n.global.locale.value}/denglisch/privacy-policy`,
   },
   {
     path: '/charging-speed/privacy-policy',

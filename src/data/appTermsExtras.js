@@ -8,6 +8,16 @@
  * Block: { title?: key, paras?: key[], list?: key[] }
  */
 export const APP_TERMS_EXTRAS = {
+  denglisch: [
+    {
+      list: [
+        'denglisch.terms.b1',
+        'denglisch.terms.b2',
+        'denglisch.terms.b3',
+        'denglisch.terms.b4',
+      ],
+    },
+  ],
   'charging-speed': [
     {
       list: [

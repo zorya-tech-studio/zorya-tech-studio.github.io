@@ -4612,6 +4612,48 @@
       "contact_text": "Questions about these Terms:"
     }
   },
+  "denglisch": {
+    "name": "Denglisch: English in German",
+    "subtitle": "English words in German, their German alternatives and the register where each form is at home: offline reference, text check, spaced repetition training and short games",
+    "desc_short": "Anglicisms in German explained: German alternatives with register notes, pseudo-anglicisms, text check, spaced repetition and games.",
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Last updated",
+      "intro": "This policy explains how the Denglisch: English in German app for Android (package com.zoryatechstudio.denglisch), made by Zorya Tech Studio, handles your information. It supplements the Zorya Tech Studio privacy policy.",
+      "summary_title": "Summary",
+      "summary_b1": "No account, no sign-up, no subscription. The dictionary content is stored in the app and works offline.",
+      "summary_b2": "Your learning progress stays on your device. We do not run servers and do not receive it.",
+      "summary_b3": "The app shows ads through Google AdMob. Consent is collected with Google's User Messaging Platform (UMP) where required.",
+      "summary_b4": "The app does not use Firebase, Crashlytics, Google Analytics or any other analytics service.",
+      "storage_title": "Data stored on your device",
+      "storage_p1": "The app keeps a local database with your progress: favourites, training cards and their review state, daily activity counts, settings (language, theme, reminder time) and the ad-free window end time. It stores only identifiers of dictionary entries, never your own texts.",
+      "storage_p2": "Text you paste, share into the app or open via the text selection menu for a text check is processed in memory on the device and is never saved or sent anywhere.",
+      "storage_p3": "If you use \"Export progress\", the app creates a backup file and hands it to the Android share sheet. Where that file goes (Files, Drive, email) is your choice; we never receive it. Uninstalling the app deletes all local data.",
+      "ads_title": "Advertising (Google AdMob)",
+      "ads_p1": "The app is funded by ads served by Google AdMob. To show and measure ads, Google may collect and process data such as the device advertising ID, IP address, approximate location derived from it, device and app information and ad interaction data. In the EEA, the UK and Switzerland the app asks for consent through Google's UMP consent form before personalised ads are requested; you can change your choice at any time in Settings, Privacy options. You can also reset or delete your advertising ID in Android settings. There are no full-screen ads during training sessions or game rounds.",
+      "ads_p2": "Google's use of data is governed by its own policy:",
+      "notif_title": "Notifications",
+      "notif_p1": "The optional daily reminder is scheduled locally on the device. No push service is involved.",
+      "feedback_title": "Feedback by email",
+      "feedback_p1": "If you tap \"Write to us\", your email app opens with our address and a few technical lines (app version, Android version, device model, app language, content version). Nothing is sent until you send the email yourself. We use emails only to answer and to fix problems, and delete them when they are no longer needed.",
+      "crash_title": "Crash reports",
+      "crash_p1": "The app contains no crash reporting SDK. If you have enabled sharing of usage and diagnostics in Android, Google Play may provide us with aggregated, anonymised crash statistics (Android vitals).",
+      "children_title": "Children",
+      "children_p1": "The app is intended for users aged 13 and over and is not directed at children.",
+      "rights_title": "Your rights",
+      "rights_p1": "Because we do not hold personal data about you on our side, there is nothing for us to access, correct or delete beyond the emails you may have sent us; write to us and we will delete them. For ad-related data, use the privacy options in the app and Google's controls.",
+      "changes_title": "Changes",
+      "changes_p1": "We will update this page when the app's data handling changes and change the date above.",
+      "contact_title": "Contact",
+      "contact_text": "Questions about this policy:"
+    },
+    "terms": {
+      "b1": "The app describes, it does not judge. It shows anglicisms used in German, their German alternatives and notes on the register where each form is usually at home. Register notes and examples are editorial descriptions of typical usage, not rules, and usage may differ by region, field and over time.",
+      "b2": "Text check. The text you check is processed only on your device and is never saved or sent. Highlighting is automatic and may miss words or mark words that are not anglicisms in your context.",
+      "b3": "Ads. The app is supported by ads and shows no full-screen ads during training or game rounds. You can watch a short video to hide ads for a few minutes or to unlock extended stats or the export of favourites. Search, entries, training, games and the text check stay free.",
+      "b4": "Age. The app is intended for users aged 13 and over."
+    }
+  },
   "chargingSpeed": {
     "name": "Charging Speed: Charger Tester",
     "subtitle": "Measure how fast your phone really charges: live watts, mA, volts and temperature, a repeatable 60-second charger and cable test, history, alerts and battery health",
