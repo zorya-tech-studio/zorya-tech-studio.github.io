@@ -48,6 +48,12 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/pyramid-cube-solver/privacy-policy',
+    name: 'pyramid-cube-solver-privacy',
+    component: () => import('./pages/apps/pyramid-cube-solver/PyramidCubeSolverPrivacyPage.vue'),
+    meta: { titleKey: 'pyramidCubeSolver.privacy.title', app: 'pyramid-cube-solver' },
+  },
+  {
     path: '/:locale/birthdate-hub/privacy-policy',
     name: 'birthdate-hub-privacy',
     component: () => import('./pages/apps/birthdate-hub/BirthdateHubPrivacyPage.vue'),
@@ -597,6 +603,14 @@ const routes = [
   {
     path: '/kings-corner/privacy',
     redirect: () => `/${i18n.global.locale.value}/kings-corner/privacy-policy`,
+  },
+  {
+    path: '/pyramid-cube-solver/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/pyramid-cube-solver/privacy-policy`,
+  },
+  {
+    path: '/pyramid-cube-solver/privacy',
+    redirect: () => `/${i18n.global.locale.value}/pyramid-cube-solver/privacy-policy`,
   },
   {
     path: '/birthdate-hub/privacy-policy',

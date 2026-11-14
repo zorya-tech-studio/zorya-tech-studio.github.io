@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'pyramid-cube-solver',
+    nameKey: 'pyramidCubeSolver.name',
+    subtitleKey: 'pyramidCubeSolver.subtitle',
+    descKey: 'pyramidCubeSolver.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'games',
+    tags: ['Android', 'Puzzle', 'Solver', 'Offline'],
+    icon: '/apps/pyramid-cube-solver/icon.png',
+    privacyRoute: (locale) => `/${locale}/pyramid-cube-solver/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/pyramid-cube-solver/terms-of-use`,
+  },
+  {
     slug: 'birthdate-hub',
     nameKey: 'birthdateHub.name',
     subtitleKey: 'birthdateHub.subtitle',

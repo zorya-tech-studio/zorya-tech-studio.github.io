@@ -4612,6 +4612,46 @@
       "contact_text": "Questions about these Terms:"
     }
   },
+  "pyramidCubeSolver": {
+    "name": "Pyramid Cube Solver: Tutorial",
+    "subtitle": "Solver and tutorial for the 4-color pyramid puzzle: enter the colors, get the shortest solution in 3D, learn beginner and L4E methods, 14 lessons, 19 algorithms, challenge levels and a daily puzzle, all offline",
+    "desc_short": "Enter the colors of your pyramid puzzle and get the shortest solution in 3D, plus lessons and challenges, offline.",
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Last updated",
+      "intro": "This policy explains how the Pyramid Cube Solver: Tutorial app for Android (Pyramid Solver, package com.zoryatechstudio.pyramidsolver), made by Zorya Tech Studio, handles your information. It supplements the Zorya Tech Studio privacy policy.",
+      "summary_title": "Summary",
+      "summary_b1": "The app works fully offline and has no accounts. We do not run servers and do not receive the puzzles you enter, your solves, your progress or anything else you do in the app.",
+      "summary_b2": "Solving runs on your device. The app does not use your device location, camera, microphone or contacts.",
+      "summary_b3": "The app shows ads through Google AdMob. Consent is collected with Google's consent form where required.",
+      "summary_b4": "The app has no analytics, no in-app purchases and no notifications.",
+      "storage_title": "Data stored on your device",
+      "storage_p1": "Saved puzzles, solve history, lesson and challenge progress, algorithm marks, unlocked items and settings are kept only in a local database on your device.",
+      "storage_p2": "You can export a backup file yourself in Settings and choose where to save or send it; the app never uploads it. Uninstalling the app or clearing its data deletes everything.",
+      "storage_p3": "When you share a solution image, it is created on your device and sent only to the app you choose in the share sheet.",
+      "ads_title": "Advertising (Google AdMob)",
+      "ads_p1": "The app shows ads from Google AdMob. AdMob may collect and process device identifiers (advertising ID), approximate location derived from your IP address, app interactions and diagnostics to show, measure and protect ads. Where required by law (for example in the EEA, the UK and Switzerland) you are asked for consent through Google's consent form (Google UMP) and can change your choice in Settings, Privacy options.",
+      "ads_p2": "Google's use of data is governed by its own policy:",
+      "ads_p3": "Rewarded videos are optional. They unlock ad-free time, extra themes, Expert challenge levels 8-11, hints and the share image. The solver, lessons, algorithms, challenge levels 1-7 and the daily puzzle never need a video.",
+      "notif_title": "Notifications",
+      "notif_p1": "The app does not send notifications.",
+      "children_title": "Children",
+      "children_p1": "The app is intended for users aged 13 and over and is not directed at children.",
+      "nature_title": "Independent app",
+      "nature_p1": "The app is an independent product of Zorya Tech Studio and is not affiliated with, endorsed by or sponsored by any puzzle brand, manufacturer or organization.",
+      "changes_title": "Changes",
+      "changes_p1": "We will update this page when the app's data handling changes and change the date above.",
+      "contact_title": "Contact",
+      "contact_text": "Questions about this policy:"
+    },
+    "terms": {
+      "b1": "The app helps you solve a 4-color pyramid puzzle: you enter the colors, it checks that the position is valid and shows a solution step by step in 3D, and it teaches beginner and L4E methods through lessons, algorithms, challenges and free play.",
+      "b2": "Solutions depend on the colors you enter. If a color is entered wrong, the solution will not fit your physical puzzle. Handle your physical puzzle with care; we are not responsible for damage to it.",
+      "b3": "All texts, illustrations, 3D graphics and lessons are original works of Zorya Tech Studio or used under licences listed in the app. The app is not affiliated with, endorsed by or sponsored by any puzzle brand, manufacturer or organization; product names belong to their owners.",
+      "b4": "The app is free and supported by ads. There are no in-app purchases. Rewarded videos are optional; unlocks granted by them are tied to your device installation. Solving, lessons and challenge levels 1-7 never need a video.",
+      "b5": "Shared solution images are for personal use. Age: the app is intended for users aged 13 and over."
+    }
+  },
   "birthdateHub": {
     "name": "Date of Birth Compatibility",
     "subtitle": "Compatibility by date of birth in nine systems, birth chart, numerology, destiny matrix, moon calendar, horoscopes from real transits, mantras and meditation sound, all offline",

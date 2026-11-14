@@ -8,6 +8,17 @@
  * Block: { title?: key, paras?: key[], list?: key[] }
  */
 export const APP_TERMS_EXTRAS = {
+  'pyramid-cube-solver': [
+    {
+      list: [
+        'pyramidCubeSolver.terms.b1',
+        'pyramidCubeSolver.terms.b2',
+        'pyramidCubeSolver.terms.b3',
+        'pyramidCubeSolver.terms.b4',
+        'pyramidCubeSolver.terms.b5',
+      ],
+    },
+  ],
   'birthdate-hub': [
     {
       list: [
