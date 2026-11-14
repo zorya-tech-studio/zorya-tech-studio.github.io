@@ -47,6 +47,7 @@ const PROFILES = {
     'ytaudit',
     'sudokulens',
     'cube-solver-3d',
+    'metal-detector',
   ],
   construction: [
     'tile-calculator',
@@ -55,8 +56,15 @@ const PROFILES = {
     'block-brick-calculator',
     'landscaping-calculator',
     'pool-chemistry',
+    'metal-detector',
   ],
-  electrical: ['wire-size-calc', 'ohms-law-calculator', 'resistor-color-code', 'hvac-calculator'],
+  electrical: [
+    'wire-size-calc',
+    'ohms-law-calculator',
+    'resistor-color-code',
+    'hvac-calculator',
+    'metal-detector',
+  ],
   financial: ['financial-calculators'],
   health: ['health-calculator', 'hair-care-routine', 'five-tibetan-rites'],
   physical: [

@@ -4612,6 +4612,47 @@
       "contact_text": "Questions about these Terms:"
     }
   },
+  "metalDetector": {
+    "name": "Magnetometer & Metal Detector",
+    "subtitle": "Find screws, nails, steel pipes and magnets with your phone's magnetic sensor: live dial, graph, stud & pipe mode, finds log and an honest guide, all offline",
+    "desc_short": "Find screws, nails, steel pipes and magnets with your phone's magnetic sensor. Live dial, graph, stud & pipe mode, honest guide.",
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Last updated",
+      "intro": "This policy explains how the Magnetometer & Metal Detector app for Android (Metal Detector, package com.zoryatechstudio.metaldetector), made by Zorya Tech Studio, handles your information. It supplements the Zorya Tech Studio privacy policy.",
+      "summary_title": "Summary",
+      "summary_b1": "The app works fully offline and has no accounts. We do not run servers and do not receive your readings, your finds log or anything else you do in the app.",
+      "summary_b2": "The app uses only the magnetic (compass) sensor of your phone. Readings are processed on your device and never uploaded. The app does not use your device location, camera, microphone or contacts.",
+      "summary_b3": "The app shows ads through Google AdMob. Consent is collected with Google's consent form where required.",
+      "summary_b4": "Anonymous crash reports are sent through Firebase Crashlytics. Analytics are off. The app has no in-app purchases and no notifications.",
+      "storage_title": "Data stored on your device",
+      "storage_p1": "Your finds log (readings, labels, notes), settings and unlocked items are kept only on your device.",
+      "storage_p2": "You can export a CSV file or a backup yourself and choose where to save or send it through the system share sheet; the app never uploads it. Uninstalling the app or clearing its data deletes everything.",
+      "ads_title": "Advertising (Google AdMob)",
+      "ads_p1": "The app shows ads from Google AdMob. AdMob may collect and process device identifiers (advertising ID), approximate location derived from your IP address, app interactions and diagnostics to show, measure and protect ads. Where required by law (for example in the EEA, the UK and Switzerland) you are asked for consent through Google's consent form (Google UMP) and can change your choice in Settings, Privacy options.",
+      "ads_p2": "Google's use of data is governed by its own policy:",
+      "ads_p3": "Rewarded videos are optional. They unlock ad-free time, the Pro graph, CSV export, sound packs and gauge skins. Detecting, the Stud & pipe mode, the log and the guide never need a video. No full-screen ad is shown while the sensor is running.",
+      "crash_title": "Crash reports (Firebase Crashlytics)",
+      "crash_p1": "The app uses Firebase Crashlytics to receive anonymous crash reports (stack trace, device model, OS version, app version). No account, no personal data and nothing about your readings or finds. Google Analytics is turned off.",
+      "notif_title": "Notifications",
+      "notif_p1": "The app does not send notifications.",
+      "children_title": "Children",
+      "children_p1": "The app is intended for users aged 13 and over and is not directed at children.",
+      "nature_title": "What the app measures",
+      "nature_p1": "The app reads the magnetic field around your phone. It finds iron, steel, nickel and magnets at a few centimeters, up to about 10-15 cm for larger steel objects. It does not detect gold, silver, copper or aluminum, it emits nothing and it does not measure radiation.",
+      "changes_title": "Changes",
+      "changes_p1": "We will update this page when the app's data handling changes and change the date above.",
+      "contact_title": "Contact",
+      "contact_text": "Questions about this policy:"
+    },
+    "terms": {
+      "b1": "The app turns the magnetic (compass) sensor of your phone into a simple detector for iron, steel, nickel and magnets: a live dial and graph, sound and vibration, a Stud & pipe mode, a finds log and a guide.",
+      "b2": "Range is limited to a few centimeters, up to about 10-15 cm for larger steel objects. The app does not detect gold, silver, copper, aluminum or other non-magnetic metals, it emits nothing and it does not measure radiation. Readings vary between phone models and are affected by nearby magnets, cases and electronics.",
+      "b3": "Safety before drilling: electrical cables, copper and plastic pipes are not reliably detected. Never rely on the app alone before drilling, nailing or cutting into walls, floors or ceilings. Always switch off the power and use a proper cable and pipe detector or ask a qualified professional.",
+      "b4": "The app is free and supported by ads. There are no in-app purchases. Rewarded videos are optional; unlocks granted by them are tied to your device installation. Detecting and the Stud & pipe mode never need a video.",
+      "b5": "Age: the app is intended for users aged 13 and over."
+    }
+  },
   "pyramidCubeSolver": {
     "name": "Pyramid Cube Solver: Tutorial",
     "subtitle": "Solver and tutorial for the 4-color pyramid puzzle: enter the colors, get the shortest solution in 3D, learn beginner and L4E methods, 14 lessons, 19 algorithms, challenge levels and a daily puzzle, all offline",

@@ -48,6 +48,12 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/metal-detector/privacy-policy',
+    name: 'metal-detector-privacy',
+    component: () => import('./pages/apps/metal-detector/MetalDetectorPrivacyPage.vue'),
+    meta: { titleKey: 'metalDetector.privacy.title', app: 'metal-detector' },
+  },
+  {
     path: '/:locale/pyramid-cube-solver/privacy-policy',
     name: 'pyramid-cube-solver-privacy',
     component: () => import('./pages/apps/pyramid-cube-solver/PyramidCubeSolverPrivacyPage.vue'),
@@ -603,6 +609,14 @@ const routes = [
   {
     path: '/kings-corner/privacy',
     redirect: () => `/${i18n.global.locale.value}/kings-corner/privacy-policy`,
+  },
+  {
+    path: '/metal-detector/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/metal-detector/privacy-policy`,
+  },
+  {
+    path: '/metal-detector/privacy',
+    redirect: () => `/${i18n.global.locale.value}/metal-detector/privacy-policy`,
   },
   {
     path: '/pyramid-cube-solver/privacy-policy',

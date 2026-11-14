@@ -8,6 +8,17 @@
  * Block: { title?: key, paras?: key[], list?: key[] }
  */
 export const APP_TERMS_EXTRAS = {
+  'metal-detector': [
+    {
+      list: [
+        'metalDetector.terms.b1',
+        'metalDetector.terms.b2',
+        'metalDetector.terms.b3',
+        'metalDetector.terms.b4',
+        'metalDetector.terms.b5',
+      ],
+    },
+  ],
   'pyramid-cube-solver': [
     {
       list: [

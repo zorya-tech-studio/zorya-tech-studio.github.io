@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'metal-detector',
+    nameKey: 'metalDetector.name',
+    subtitleKey: 'metalDetector.subtitle',
+    descKey: 'metalDetector.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'tools',
+    tags: ['Android', 'Magnetometer', 'Sensor', 'Offline'],
+    icon: '/apps/metal-detector/icon.png',
+    privacyRoute: (locale) => `/${locale}/metal-detector/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/metal-detector/terms-of-use`,
+  },
+  {
     slug: 'pyramid-cube-solver',
     nameKey: 'pyramidCubeSolver.name',
     subtitleKey: 'pyramidCubeSolver.subtitle',
