@@ -8,6 +8,17 @@
  * Block: { title?: key, paras?: key[], list?: key[] }
  */
 export const APP_TERMS_EXTRAS = {
+  'birthdate-hub': [
+    {
+      list: [
+        'birthdateHub.terms.b1',
+        'birthdateHub.terms.b2',
+        'birthdateHub.terms.b3',
+        'birthdateHub.terms.b4',
+        'birthdateHub.terms.b5',
+      ],
+    },
+  ],
   denglisch: [
     {
       list: [

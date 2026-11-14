@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'birthdate-hub',
+    nameKey: 'birthdateHub.name',
+    subtitleKey: 'birthdateHub.subtitle',
+    descKey: 'birthdateHub.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'esoteric',
+    tags: ['Android', 'Astrology', 'Numerology', 'Offline'],
+    icon: '/apps/birthdate-hub/icon.png',
+    privacyRoute: (locale) => `/${locale}/birthdate-hub/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/birthdate-hub/terms-of-use`,
+  },
+  {
     slug: 'denglisch',
     nameKey: 'denglisch.name',
     subtitleKey: 'denglisch.subtitle',

@@ -48,6 +48,12 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/birthdate-hub/privacy-policy',
+    name: 'birthdate-hub-privacy',
+    component: () => import('./pages/apps/birthdate-hub/BirthdateHubPrivacyPage.vue'),
+    meta: { titleKey: 'birthdateHub.privacy.title', app: 'birthdate-hub' },
+  },
+  {
     path: '/:locale/denglisch/privacy-policy',
     name: 'denglisch-privacy',
     component: () => import('./pages/apps/denglisch/DenglischPrivacyPage.vue'),
@@ -591,6 +597,14 @@ const routes = [
   {
     path: '/kings-corner/privacy',
     redirect: () => `/${i18n.global.locale.value}/kings-corner/privacy-policy`,
+  },
+  {
+    path: '/birthdate-hub/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/birthdate-hub/privacy-policy`,
+  },
+  {
+    path: '/birthdate-hub/privacy',
+    redirect: () => `/${i18n.global.locale.value}/birthdate-hub/privacy-policy`,
   },
   {
     path: '/denglisch/privacy-policy',

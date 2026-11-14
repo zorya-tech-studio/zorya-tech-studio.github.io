@@ -4612,6 +4612,47 @@
       "contact_text": "Questions about these Terms:"
     }
   },
+  "birthdateHub": {
+    "name": "Date of Birth Compatibility",
+    "subtitle": "Compatibility by date of birth in nine systems, birth chart, numerology, destiny matrix, moon calendar, horoscopes from real transits, mantras and meditation sound, all offline",
+    "desc_short": "Date of birth compatibility, numerology, birth chart and moon calendar, offline.",
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Last updated",
+      "intro": "This policy explains how the Date of Birth Compatibility app for Android (Birthdate Hub, package com.zoryatechstudio.birthdatehub), made by Zorya Tech Studio, handles your information. It supplements the Zorya Tech Studio privacy policy.",
+      "summary_title": "Summary",
+      "summary_b1": "The app works offline and has no accounts. We do not run servers and do not receive your name, the names or birth data of the people you add, your journal notes, your card draws or anything else you enter.",
+      "summary_b2": "All calculations run on your device. The app does not use your device location, camera or microphone.",
+      "summary_b3": "The app shows ads through Google AdMob. Consent is collected with Google's consent form where required.",
+      "summary_b4": "Anonymous crash reports are sent through Firebase Crashlytics. Analytics are off.",
+      "storage_title": "Data stored on your device",
+      "storage_p1": "Profiles (names, dates, times and places of birth), favorites, journal entries, card draws, japa and meditation history, settings and unlocked items are saved only on your device.",
+      "storage_p2": "You can export or import this data as a file in Settings, protect the app with a PIN or biometric lock, and delete everything with \"Delete all data\" or by uninstalling the app. A PIN is stored only as a protected hash in your device's secure storage.",
+      "storage_p3": "The place of birth is chosen from a city list stored in the app; your device location is never used. When you share a card or a PDF, it is created on your device and sent only to the app you choose in the share sheet.",
+      "ads_title": "Advertising (Google AdMob)",
+      "ads_p1": "The app shows ads from Google AdMob. AdMob may collect and process device identifiers (advertising ID), approximate location derived from your IP address, app interactions and diagnostics to show, measure and protect ads. In the EEA, the UK and Switzerland you are asked for consent through Google's consent form and can change your choice in Settings, Privacy options.",
+      "ads_p2": "Google's use of data is governed by its own policy:",
+      "notif_title": "Notifications",
+      "notif_p1": "Reminders are created locally on your device; you can turn each type off in Settings. No push service is involved.",
+      "crash_title": "Crash reports (Firebase Crashlytics)",
+      "crash_p1": "The app uses Firebase Crashlytics to receive anonymous crash reports (stack trace, device model, OS version, app version). No account, no personal data and nothing about the content you enter. Google Analytics is turned off.",
+      "children_title": "Children",
+      "children_p1": "The app is intended for users aged 13 and over and is not directed at children.",
+      "nature_title": "Nature of the content",
+      "nature_p1": "The app is for self-reflection and entertainment. It does not give medical, financial or legal advice and does not predict the future.",
+      "changes_title": "Changes",
+      "changes_p1": "We will update this page when the app's data handling changes and change the date above.",
+      "contact_title": "Contact",
+      "contact_text": "Questions about this policy:"
+    },
+    "terms": {
+      "b1": "The app calculates astrological, numerological and calendar information from the data you enter and shows original interpretive texts for self-reflection and entertainment. It is not medical, psychological, financial, legal or any other professional advice and does not predict events.",
+      "b2": "Calculations follow published astronomical algorithms and documented traditional methods; traditions differ, and the app names the method it uses. Results depend on the accuracy of the data you enter.",
+      "b3": "All texts, illustrations, card designs, generated sounds and graphics are original works of Zorya Tech Studio or used under permissive licences listed in Settings, Licenses. Quotes come from public-domain translations named next to them. Mantras are traditional public-domain texts with our own translations. The app is not affiliated with any astrologer, author, school, organization or other app.",
+      "b4": "The app is free and supported by ads. Rewarded videos are optional; unlocks granted by them are tied to your device installation. Basic results are never behind a video.",
+      "b5": "Shared cards and PDF reports are for personal use. Age: the app is intended for users aged 13 and over."
+    }
+  },
   "denglisch": {
     "name": "Denglisch: English in German",
     "subtitle": "English words in German, their German alternatives and the register where each form is at home: offline reference, text check, spaced repetition training and short games",
