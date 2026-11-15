@@ -48,6 +48,12 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/spectrum-analyzer/privacy-policy',
+    name: 'spectrum-analyzer-privacy',
+    component: () => import('./pages/apps/spectrum-analyzer/SpectrumAnalyzerPrivacyPage.vue'),
+    meta: { titleKey: 'spectrumAnalyzer.privacy.title', app: 'spectrum-analyzer' },
+  },
+  {
     path: '/:locale/metal-detector/privacy-policy',
     name: 'metal-detector-privacy',
     component: () => import('./pages/apps/metal-detector/MetalDetectorPrivacyPage.vue'),
@@ -609,6 +615,30 @@ const routes = [
   {
     path: '/kings-corner/privacy',
     redirect: () => `/${i18n.global.locale.value}/kings-corner/privacy-policy`,
+  },
+  {
+    path: '/spectrum-analyzer/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/spectrum-analyzer/privacy-policy`,
+  },
+  {
+    path: '/spectrum-analyzer/privacy',
+    redirect: () => `/${i18n.global.locale.value}/spectrum-analyzer/privacy-policy`,
+  },
+  {
+    path: '/spectrum_analyzer/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/spectrum-analyzer/privacy-policy`,
+  },
+  {
+    path: '/spectrum_analyzer/privacy',
+    redirect: () => `/${i18n.global.locale.value}/spectrum-analyzer/privacy-policy`,
+  },
+  {
+    path: '/spectrum_analyzer/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/spectrum-analyzer/terms-of-use`,
+  },
+  {
+    path: '/spectrum_analyzer/terms',
+    redirect: () => `/${i18n.global.locale.value}/spectrum-analyzer/terms-of-use`,
   },
   {
     path: '/metal-detector/privacy-policy',

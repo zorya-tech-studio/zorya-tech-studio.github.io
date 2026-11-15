@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'spectrum-analyzer',
+    nameKey: 'spectrumAnalyzer.name',
+    subtitleKey: 'spectrumAnalyzer.subtitle',
+    descKey: 'spectrumAnalyzer.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'tools',
+    tags: ['Android', 'Audio', 'FFT', 'RTA'],
+    icon: '/apps/spectrum-analyzer/icon.png',
+    privacyRoute: (locale) => `/${locale}/spectrum-analyzer/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/spectrum-analyzer/terms-of-use`,
+  },
+  {
     slug: 'metal-detector',
     nameKey: 'metalDetector.name',
     subtitleKey: 'metalDetector.subtitle',

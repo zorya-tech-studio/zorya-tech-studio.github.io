@@ -8,6 +8,17 @@
  * Block: { title?: key, paras?: key[], list?: key[] }
  */
 export const APP_TERMS_EXTRAS = {
+  'spectrum-analyzer': [
+    {
+      list: [
+        'spectrumAnalyzer.terms.b1',
+        'spectrumAnalyzer.terms.b2',
+        'spectrumAnalyzer.terms.b3',
+        'spectrumAnalyzer.terms.b4',
+        'spectrumAnalyzer.terms.b5',
+      ],
+    },
+  ],
   'metal-detector': [
     {
       list: [

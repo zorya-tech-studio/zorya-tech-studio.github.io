@@ -66,7 +66,7 @@ const PROFILES = {
     'metal-detector',
   ],
   financial: ['financial-calculators'],
-  health: ['health-calculator', 'hair-care-routine', 'five-tibetan-rites'],
+  health: ['health-calculator', 'hair-care-routine', 'five-tibetan-rites', 'spectrum-analyzer'],
   physical: [
     'ballet-beginners',
     'line-dance',

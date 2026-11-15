@@ -4612,6 +4612,46 @@
       "contact_text": "Questions about these Terms:"
     }
   },
+  "spectrumAnalyzer": {
+    "name": "Spectrum Analyzer: Octave RTA",
+    "subtitle": "Audio spectrum analyzer with live FFT, octave RTA, spectrogram and a signal generator: snapshots, compare, honest estimates, all on device",
+    "desc_short": "Audio spectrum analyzer with live FFT, octave RTA, spectrogram and a generator",
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Last updated",
+      "intro": "This policy explains how the Spectrum Analyzer: Octave RTA app for Android (package com.zoryatechstudio.spectrumanalyzer), made by Zorya Tech Studio, handles your information. It supplements the Zorya Tech Studio privacy policy.",
+      "summary_title": "Summary",
+      "summary_b1": "The app has no accounts. We do not run servers and do not receive your sound, your snapshots or anything else you do in the app.",
+      "summary_b2": "The app uses the microphone only to analyze sound on your device in real time. Audio is never recorded, stored or sent anywhere.",
+      "summary_b3": "The app shows ads through Google AdMob. Consent is collected with Google's consent form (UMP) where required.",
+      "summary_b4": "Technical crash reports are sent through Firebase Crashlytics. Analytics are off. The app sends no notifications.",
+      "storage_title": "Data stored on your device",
+      "storage_p1": "Saved snapshots contain only numbers (frequency levels and settings) and a small preview image. Settings are also stored on the device.",
+      "storage_p2": "Snapshots stay on your device until you delete them or share them yourself through the system share sheet; the app never uploads them. Uninstalling the app or clearing its data deletes everything.",
+      "ads_title": "Advertising (Google AdMob)",
+      "ads_p1": "The app shows ads from Google AdMob. Google may collect and use device identifiers (such as the advertising ID) and usage data to show and measure ads. In the EEA, the UK and Switzerland we ask for your consent through Google's consent form (Google UMP); you can change your choice in Settings, Privacy options.",
+      "ads_p2": "Google's use of data is governed by its own policy:",
+      "ads_p3": "Version 1.0 uses no other ad networks (no mediation). Rewarded videos are optional. No full-screen ad is shown while the microphone or the generator is active.",
+      "crash_title": "Crash reports (Firebase Crashlytics)",
+      "crash_p1": "If the app crashes, technical crash data (device model, Android version, app version, stack trace) may be sent to Firebase Crashlytics by Google to help us fix problems. It contains no audio and no snapshots. Google Analytics is turned off.",
+      "crash_p2": "Firebase privacy information:",
+      "notif_title": "Notifications",
+      "notif_p1": "The app does not send notifications.",
+      "children_title": "Children",
+      "children_p1": "The app is intended for users aged 13 and over and is not directed at children.",
+      "changes_title": "Changes",
+      "changes_p1": "We will update this page when the app's data handling changes and change the date above.",
+      "contact_title": "Contact",
+      "contact_text": "Questions about this policy:"
+    },
+    "terms": {
+      "b1": "The app is provided for general, educational and hobby use: a live FFT spectrum, an octave RTA, a spectrogram, snapshots and a signal generator.",
+      "b2": "Measurements are approximate: phone microphones are not calibrated measurement instruments, and levels in dB SPL are estimates unless you calibrate them with a sound level meter.",
+      "b3": "The app is not a medical or hearing device and must not be used to judge whether a sound is safe for hearing. Use the signal generator at safe levels; high levels can damage speakers and hearing.",
+      "b4": "The app is free and supported by ads. Rewarded videos are optional; unlocks granted by them are temporary and tied to your device installation.",
+      "b5": "Age: the app is intended for users aged 13 and over."
+    }
+  },
   "metalDetector": {
     "name": "Magnetometer & Metal Detector",
     "subtitle": "Find screws, nails, steel pipes and magnets with your phone's magnetic sensor: live dial, graph, stud & pipe mode, finds log and an honest guide, all offline",
