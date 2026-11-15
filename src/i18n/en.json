@@ -4697,13 +4697,13 @@
     }
   },
   "birthdateHub": {
-    "name": "Date of Birth Compatibility",
+    "name": "Natal Chart & Compatibility",
     "subtitle": "Compatibility by date of birth in nine systems, birth chart, numerology, destiny matrix, moon calendar, horoscopes from real transits, mantras and meditation sound, all offline",
-    "desc_short": "Date of birth compatibility, numerology, birth chart and moon calendar, offline.",
+    "desc_short": "Natal chart, astrology compatibility, numerology, destiny matrix and moon calendar, offline.",
     "privacy": {
       "title": "Privacy Policy",
       "updated": "Last updated",
-      "intro": "This policy explains how the Date of Birth Compatibility app for Android (Birthdate Hub, package com.zoryatechstudio.birthdatehub), made by Zorya Tech Studio, handles your information. It supplements the Zorya Tech Studio privacy policy.",
+      "intro": "This policy explains how the Natal Chart & Compatibility app for Android (Birthdate Hub, package com.zoryatechstudio.birthdatehub), made by Zorya Tech Studio, handles your information. It supplements the Zorya Tech Studio privacy policy.",
       "summary_title": "Summary",
       "summary_b1": "The app works offline and has no accounts. We do not run servers and do not receive your name, the names or birth data of the people you add, your journal notes, your card draws or anything else you enter.",
       "summary_b2": "All calculations run on your device. The app does not use your device location, camera or microphone.",
