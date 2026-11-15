@@ -8,6 +8,17 @@
  * Block: { title?: key, paras?: key[], list?: key[] }
  */
 export const APP_TERMS_EXTRAS = {
+  'english-idioms': [
+    {
+      list: [
+        'englishIdioms.terms.b1',
+        'englishIdioms.terms.b2',
+        'englishIdioms.terms.b3',
+        'englishIdioms.terms.b4',
+        'englishIdioms.terms.b5',
+      ],
+    },
+  ],
   'spectrum-analyzer': [
     {
       list: [

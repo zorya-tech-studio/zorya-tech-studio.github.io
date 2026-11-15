@@ -1728,7 +1728,7 @@
     "collect_firebase_title": "Firebase Analytics (Google)",
     "collect_firebase_text": "Collects anonymous usage data such as app opens, screen views, session duration, device model, OS version, country, and language. This data is used to understand how users interact with our apps and to improve functionality. No personally identifiable information is collected.",
     "collect_crashlytics_title": "Firebase Crashlytics (Google)",
-    "collect_crashlytics_text": "Some apps, such as Spectrum Analyzer: Octave RTA and Magnetometer & Metal Detector, use Firebase Crashlytics instead of analytics. If the app crashes, technical crash data (device model, Android version, app version, stack trace) may be sent to Google to help us fix the problem. It contains no personal data, no audio and no sensor readings. Analytics are turned off in these apps.",
+    "collect_crashlytics_text": "Some apps, such as Spectrum Analyzer: Octave RTA, Magnetometer & Metal Detector and English Idioms & Phrasal Verbs, use Firebase Crashlytics instead of analytics. If the app crashes, technical crash data (device model, Android version, app version, stack trace) may be sent to Google to help us fix the problem. It contains no personal data, no audio and no sensor readings. Analytics are turned off in these apps.",
     "collect_admob_title": "Google AdMob",
     "collect_admob_text": "Displays ads within our apps. AdMob may collect device identifiers, IP address, and usage data to serve personalized or non-personalized ads. You can opt out of personalized ads in your device settings. Where consent is required (for example in the EEA and the UK), our apps ask for it through Google’s consent message (User Messaging Platform), and you can change your choice in the app’s privacy options.",
     "use_title": "How We Use Information",
@@ -4616,6 +4616,48 @@
       "privacy_note": "Privacy is covered by the separate privacy policy.",
       "contact_title": "Contact",
       "contact_text": "Questions about these Terms:"
+    }
+  },
+  "englishIdioms": {
+    "name": "English Idioms & Phrasal Verbs",
+    "subtitle": "English idioms and phrasal verbs explained in your language: offline reference, spaced repetition training and short drills, progress kept on your device",
+    "desc_short": "Offline idioms and phrasal verbs reference with explanations in 30+ languages, spaced repetition and short drills.",
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Last updated",
+      "intro": "This policy explains how the English Idioms & Phrasal Verbs app for Android (package com.zoryatechstudio.englishidioms), made by Zorya Tech Studio, handles your information. It supplements the Zorya Tech Studio privacy policy.",
+      "summary_title": "Summary",
+      "summary_b1": "No account, no sign-in and no server of our own. All idioms, phrasal verbs, explanations and games are inside the app and work offline.",
+      "summary_b2": "Your progress, favourites, decks, notes and settings are stored only on your device. We never receive them.",
+      "summary_b3": "The app shows ads through Google AdMob. Consent is collected with Google's User Messaging Platform (UMP) where required. Rewarded videos are optional and no content is locked behind them.",
+      "summary_b4": "Anonymous crash reports are sent through Firebase Crashlytics. Google Analytics is turned off.",
+      "storage_title": "Data stored on your device",
+      "storage_p1": "Your learning progress, review schedule, favourites, decks, notes, statistics and settings (language, theme, daily goal, reminder) are stored only on your device. We never receive them.",
+      "storage_p2": "If Android backup is turned on in your phone settings, Android may include this progress in your own Google backup so it survives a phone change; that backup is managed by Google under your account, and we have no access to it. Uninstalling the app or clearing its data deletes the progress unless it is restored from that backup.",
+      "ads_title": "Advertising (Google AdMob)",
+      "ads_p1": "The app is free and shows ads from Google AdMob. To serve and measure ads, the Google Mobile Ads SDK may collect device identifiers (such as the advertising ID), approximate location derived from the IP address, and information about ad interactions.",
+      "ads_p2": "Google's use of data is governed by its own policy:",
+      "ads_p3": "In the European Economic Area, the United Kingdom and Switzerland, the app asks for your consent through Google's User Messaging Platform (UMP) before personalised ads are shown. You can change your choice at any time in Settings, Ads and privacy. Without consent, only non-personalised ads are shown. Watching a rewarded video is always optional: it gives a short ad-free period or unlocks a cosmetic extra (accent colours, a year-of-practice view), and no learning content is locked behind it.",
+      "crash_title": "Crash reports (Firebase Crashlytics)",
+      "crash_p1": "The app uses Firebase Crashlytics to receive anonymous crash reports (stack trace, device model, OS version, app version). No account, no personal data, nothing about how you use the app's content. Google Analytics for Firebase is turned off.",
+      "crash_p2": "Firebase privacy information:",
+      "notif_title": "Notifications",
+      "notif_p1": "If you turn on the daily reminder, the app schedules one local notification on your device at 19:00 when you have cards to review. It is created on the device; no push server is involved. You can turn it off in Settings or in the Android notification settings.",
+      "feedback_title": "Feedback by email",
+      "feedback_p1": "If you write to us from Settings, \"Write to us\", your mail app opens a message to us. It contains the technical lines app version, Android version, device model and app language, which you can read and delete before sending. We use your email only to answer you.",
+      "children_title": "Children",
+      "children_p1": "The app is intended for users aged 13 and over and is not directed at children under 13. It does not knowingly collect their personal data.",
+      "changes_title": "Changes",
+      "changes_p1": "We will update this page when the app's data handling changes and change the date above.",
+      "contact_title": "Contact",
+      "contact_text": "Questions about this policy:"
+    },
+    "terms": {
+      "b1": "The app is a free trainer for English idioms and phrasal verbs with explanations in your language. It works offline and needs no account.",
+      "b2": "Content. All explanations, example sentences and notes in the app are written by us for learning purposes. We take care to make them accurate, but we do not guarantee that every explanation fits every context. You may use the app for personal learning; you may not copy, extract or republish its content or database.",
+      "b3": "Ads. The app is supported by ads (Google AdMob). A rewarded video is optional: it gives a short ad-free period or unlocks an optional extra such as accent colours, and no learning content is locked behind it.",
+      "b4": "Your data. Your progress is stored only on your device. Uninstalling the app or clearing its data removes it, unless it is restored from your own Android backup. To the extent permitted by law, we are not liable for lost progress.",
+      "b5": "Age. The app is intended for users aged 13 and over."
     }
   },
   "spectrumAnalyzer": {

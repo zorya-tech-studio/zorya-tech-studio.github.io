@@ -48,6 +48,12 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/english-idioms/privacy-policy',
+    name: 'english-idioms-privacy',
+    component: () => import('./pages/apps/english-idioms/EnglishIdiomsPrivacyPage.vue'),
+    meta: { titleKey: 'englishIdioms.privacy.title', app: 'english-idioms' },
+  },
+  {
     path: '/:locale/spectrum-analyzer/privacy-policy',
     name: 'spectrum-analyzer-privacy',
     component: () => import('./pages/apps/spectrum-analyzer/SpectrumAnalyzerPrivacyPage.vue'),
@@ -615,6 +621,30 @@ const routes = [
   {
     path: '/kings-corner/privacy',
     redirect: () => `/${i18n.global.locale.value}/kings-corner/privacy-policy`,
+  },
+  {
+    path: '/english-idioms/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/english-idioms/privacy-policy`,
+  },
+  {
+    path: '/english-idioms/privacy',
+    redirect: () => `/${i18n.global.locale.value}/english-idioms/privacy-policy`,
+  },
+  {
+    path: '/english_idioms/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/english-idioms/privacy-policy`,
+  },
+  {
+    path: '/english_idioms/privacy',
+    redirect: () => `/${i18n.global.locale.value}/english-idioms/privacy-policy`,
+  },
+  {
+    path: '/english_idioms/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/english-idioms/terms-of-use`,
+  },
+  {
+    path: '/english_idioms/terms',
+    redirect: () => `/${i18n.global.locale.value}/english-idioms/terms-of-use`,
   },
   {
     path: '/spectrum-analyzer/privacy-policy',

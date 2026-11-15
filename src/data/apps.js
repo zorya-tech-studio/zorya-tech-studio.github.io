@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'english-idioms',
+    nameKey: 'englishIdioms.name',
+    subtitleKey: 'englishIdioms.subtitle',
+    descKey: 'englishIdioms.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'reference',
+    tags: ['Android', 'English', 'Idioms', 'Phrasal verbs'],
+    icon: '/apps/english-idioms/icon.png',
+    privacyRoute: (locale) => `/${locale}/english-idioms/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/english-idioms/terms-of-use`,
+  },
+  {
     slug: 'spectrum-analyzer',
     nameKey: 'spectrumAnalyzer.name',
     subtitleKey: 'spectrumAnalyzer.subtitle',
