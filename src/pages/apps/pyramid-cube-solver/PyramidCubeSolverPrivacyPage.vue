@@ -35,7 +35,7 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
     <p class="app-label">
       {{ t('pyramidCubeSolver.name') }} — {{ t('pyramidCubeSolver.subtitle') }}
     </p>
-    <p class="updated-date">{{ t('pyramidCubeSolver.privacy.updated') }}: 2026-11-14</p>
+    <p class="updated-date">{{ t('pyramidCubeSolver.privacy.updated') }}: 2026-11-15</p>
     <p class="intro-text">{{ t('pyramidCubeSolver.privacy.intro') }}</p>
     <div class="policy-section">
       <h2 class="section-heading">{{ t('pyramidCubeSolver.privacy.summary_title') }}</h2>
@@ -65,6 +65,19 @@ const otherLocaleLabel = computed(() => (locale.value === 'uk' ? 'EN' : 'UK'))
         >
       </p>
       <p class="section-text">{{ t('pyramidCubeSolver.privacy.ads_p3') }}</p>
+    </div>
+    <div class="policy-section">
+      <h2 class="section-heading">{{ t('pyramidCubeSolver.privacy.crash_title') }}</h2>
+      <p class="section-text">{{ t('pyramidCubeSolver.privacy.crash_p1') }}</p>
+      <p class="section-text">
+        {{ t('pyramidCubeSolver.privacy.crash_p2') }}
+        <a
+          href="https://firebase.google.com/support/privacy"
+          target="_blank"
+          rel="noopener noreferrer"
+          >firebase.google.com/support/privacy</a
+        >
+      </p>
     </div>
     <div class="policy-section">
       <h2 class="section-heading">{{ t('pyramidCubeSolver.privacy.notif_title') }}</h2>
