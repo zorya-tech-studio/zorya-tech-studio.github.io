@@ -12,7 +12,7 @@
 
     <h1 class="page-title">{{ $t('privacy.title') }}</h1>
 
-    <p class="updated-date">{{ $t('privacy.updated') }}: 2026-10-15</p>
+    <p class="updated-date">{{ $t('privacy.updated') }}: 2026-11-16</p>
 
     <p class="intro-text">{{ $t('privacy.intro') }}</p>
 
@@ -26,9 +26,24 @@
       </div>
 
       <div class="subsection">
+        <h3 class="subsection-heading">{{ $t('privacy.collect_crashlytics_title') }}</h3>
+        <p class="subsection-text">{{ $t('privacy.collect_crashlytics_text') }}</p>
+      </div>
+
+      <div class="subsection">
         <h3 class="subsection-heading">{{ $t('privacy.collect_admob_title') }}</h3>
         <p class="subsection-text">{{ $t('privacy.collect_admob_text') }}</p>
       </div>
+    </div>
+
+    <div id="microphone" class="policy-section">
+      <h2 class="section-heading">{{ $t('privacy.microphone_title') }}</h2>
+      <p class="section-text">{{ $t('privacy.microphone_text') }}</p>
+    </div>
+
+    <div id="sensors" class="policy-section">
+      <h2 class="section-heading">{{ $t('privacy.sensors_title') }}</h2>
+      <p class="section-text">{{ $t('privacy.sensors_text') }}</p>
     </div>
 
     <div id="bluetooth" class="policy-section">
@@ -56,6 +71,12 @@
             >Firebase Analytics</a
           >
           — Google Privacy Policy
+        </li>
+        <li>
+          <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener"
+            >Firebase Crashlytics</a
+          >
+          - Firebase Privacy and Security
         </li>
         <li>
           <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener"
