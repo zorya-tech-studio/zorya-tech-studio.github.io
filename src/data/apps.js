@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'pinochle',
+    nameKey: 'pinochle.name',
+    subtitleKey: 'pinochle.subtitle',
+    descKey: 'pinochle.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'games',
+    tags: ['Android', 'Card Game', 'Pinochle', 'Offline'],
+    icon: '/apps/pinochle/icon.png',
+    privacyRoute: (locale) => `/${locale}/pinochle/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/pinochle/terms-of-use`,
+  },
+  {
     slug: 'harbor-noir',
     nameKey: 'harborNoir.name',
     subtitleKey: 'harborNoir.subtitle',

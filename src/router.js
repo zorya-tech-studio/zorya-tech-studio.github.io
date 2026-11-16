@@ -48,6 +48,12 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/pinochle/privacy-policy',
+    name: 'pinochle-privacy',
+    component: () => import('./pages/apps/pinochle/PinochlePrivacyPage.vue'),
+    meta: { titleKey: 'pinochle.privacy.title', app: 'pinochle' },
+  },
+  {
     path: '/:locale/harbor-noir/privacy-policy',
     name: 'harbor-noir-privacy',
     component: () => import('./pages/apps/harbor-noir/HarborNoirPrivacyPage.vue'),
@@ -627,6 +633,14 @@ const routes = [
   {
     path: '/kings-corner/privacy',
     redirect: () => `/${i18n.global.locale.value}/kings-corner/privacy-policy`,
+  },
+  {
+    path: '/pinochle/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/pinochle/privacy-policy`,
+  },
+  {
+    path: '/pinochle/privacy',
+    redirect: () => `/${i18n.global.locale.value}/pinochle/privacy-policy`,
   },
   {
     path: '/harbor-noir/privacy-policy',

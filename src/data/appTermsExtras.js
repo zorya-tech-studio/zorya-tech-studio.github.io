@@ -8,6 +8,17 @@
  * Block: { title?: key, paras?: key[], list?: key[] }
  */
 export const APP_TERMS_EXTRAS = {
+  pinochle: [
+    {
+      list: [
+        'pinochle.terms.b1',
+        'pinochle.terms.b2',
+        'pinochle.terms.b3',
+        'pinochle.terms.b4',
+        'pinochle.terms.b5',
+      ],
+    },
+  ],
   'harbor-noir': [
     {
       list: [
