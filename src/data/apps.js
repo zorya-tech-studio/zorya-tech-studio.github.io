@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'harbor-noir',
+    nameKey: 'harborNoir.name',
+    subtitleKey: 'harborNoir.subtitle',
+    descKey: 'harborNoir.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'games',
+    tags: ['Android', 'Detective', 'Story', 'Offline'],
+    icon: '/apps/harbor-noir/icon.png',
+    privacyRoute: (locale) => `/${locale}/harbor-noir/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/harbor-noir/terms-of-use`,
+  },
+  {
     slug: 'english-idioms',
     nameKey: 'englishIdioms.name',
     subtitleKey: 'englishIdioms.subtitle',

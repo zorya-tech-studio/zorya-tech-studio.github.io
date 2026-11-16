@@ -48,6 +48,12 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/harbor-noir/privacy-policy',
+    name: 'harbor-noir-privacy',
+    component: () => import('./pages/apps/harbor-noir/HarborNoirPrivacyPage.vue'),
+    meta: { titleKey: 'harborNoir.privacy.title', app: 'harbor-noir' },
+  },
+  {
     path: '/:locale/english-idioms/privacy-policy',
     name: 'english-idioms-privacy',
     component: () => import('./pages/apps/english-idioms/EnglishIdiomsPrivacyPage.vue'),
@@ -621,6 +627,30 @@ const routes = [
   {
     path: '/kings-corner/privacy',
     redirect: () => `/${i18n.global.locale.value}/kings-corner/privacy-policy`,
+  },
+  {
+    path: '/harbor-noir/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/harbor-noir/privacy-policy`,
+  },
+  {
+    path: '/harbor-noir/privacy',
+    redirect: () => `/${i18n.global.locale.value}/harbor-noir/privacy-policy`,
+  },
+  {
+    path: '/harbor_noir/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/harbor-noir/privacy-policy`,
+  },
+  {
+    path: '/harbor_noir/privacy',
+    redirect: () => `/${i18n.global.locale.value}/harbor-noir/privacy-policy`,
+  },
+  {
+    path: '/harbor_noir/terms-of-use',
+    redirect: () => `/${i18n.global.locale.value}/harbor-noir/terms-of-use`,
+  },
+  {
+    path: '/harbor_noir/terms',
+    redirect: () => `/${i18n.global.locale.value}/harbor-noir/terms-of-use`,
   },
   {
     path: '/english-idioms/privacy-policy',

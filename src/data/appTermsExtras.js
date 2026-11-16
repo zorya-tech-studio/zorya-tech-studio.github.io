@@ -8,6 +8,17 @@
  * Block: { title?: key, paras?: key[], list?: key[] }
  */
 export const APP_TERMS_EXTRAS = {
+  'harbor-noir': [
+    {
+      list: [
+        'harborNoir.terms.b1',
+        'harborNoir.terms.b2',
+        'harborNoir.terms.b3',
+        'harborNoir.terms.b4',
+        'harborNoir.terms.b5',
+      ],
+    },
+  ],
   'english-idioms': [
     {
       list: [
