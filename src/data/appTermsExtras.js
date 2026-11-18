@@ -8,6 +8,17 @@
  * Block: { title?: key, paras?: key[], list?: key[] }
  */
 export const APP_TERMS_EXTRAS = {
+  'trumpet-fingering': [
+    {
+      list: [
+        'trumpetFingering.terms.b1',
+        'trumpetFingering.terms.b2',
+        'trumpetFingering.terms.b3',
+        'trumpetFingering.terms.b4',
+        'trumpetFingering.terms.b5',
+      ],
+    },
+  ],
   pinochle: [
     {
       list: [

@@ -42,6 +42,7 @@ const PROFILES = {
     'vocal-range-test',
     'guitar-tuner',
     'kalimba-tuner',
+    'trumpet-fingering',
     'chicken-egg-tracker',
     'pickleball-scorekeeper',
     'ytaudit',

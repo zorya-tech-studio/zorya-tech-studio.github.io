@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'trumpet-fingering',
+    nameKey: 'trumpetFingering.name',
+    subtitleKey: 'trumpetFingering.subtitle',
+    descKey: 'trumpetFingering.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'tools',
+    tags: ['Android', 'Trumpet', 'Tuner', 'Music'],
+    icon: '/apps/trumpet-fingering/icon.png',
+    privacyRoute: (locale) => `/${locale}/trumpet-fingering/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/trumpet-fingering/terms-of-use`,
+  },
+  {
     slug: 'pinochle',
     nameKey: 'pinochle.name',
     subtitleKey: 'pinochle.subtitle',

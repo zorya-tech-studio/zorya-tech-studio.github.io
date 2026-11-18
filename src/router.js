@@ -48,6 +48,12 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/trumpet-fingering/privacy-policy',
+    name: 'trumpet-fingering-privacy',
+    component: () => import('./pages/apps/trumpet-fingering/TrumpetFingeringPrivacyPage.vue'),
+    meta: { titleKey: 'trumpetFingering.privacy.title', app: 'trumpet-fingering' },
+  },
+  {
     path: '/:locale/pinochle/privacy-policy',
     name: 'pinochle-privacy',
     component: () => import('./pages/apps/pinochle/PinochlePrivacyPage.vue'),
@@ -633,6 +639,14 @@ const routes = [
   {
     path: '/kings-corner/privacy',
     redirect: () => `/${i18n.global.locale.value}/kings-corner/privacy-policy`,
+  },
+  {
+    path: '/trumpet-fingering/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/trumpet-fingering/privacy-policy`,
+  },
+  {
+    path: '/trumpet-fingering/privacy',
+    redirect: () => `/${i18n.global.locale.value}/trumpet-fingering/privacy-policy`,
   },
   {
     path: '/pinochle/privacy-policy',
