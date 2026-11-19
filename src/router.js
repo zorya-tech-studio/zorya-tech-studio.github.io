@@ -48,6 +48,12 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/piano-tuner/privacy-policy',
+    name: 'piano-tuner-privacy',
+    component: () => import('./pages/apps/piano-tuner/PianoTunerPrivacyPage.vue'),
+    meta: { titleKey: 'pianoTuner.privacy.title', app: 'piano-tuner' },
+  },
+  {
     path: '/:locale/harmonica/privacy-policy',
     name: 'harmonica-privacy',
     component: () => import('./pages/apps/harmonica/HarmonicaPrivacyPage.vue'),
@@ -693,6 +699,14 @@ const routes = [
   {
     path: '/ocarina/privacy',
     redirect: () => `/${i18n.global.locale.value}/ocarina/privacy-policy`,
+  },
+  {
+    path: '/piano-tuner/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/piano-tuner/privacy-policy`,
+  },
+  {
+    path: '/piano-tuner/privacy',
+    redirect: () => `/${i18n.global.locale.value}/piano-tuner/privacy-policy`,
   },
   {
     path: '/baglama/privacy-policy',

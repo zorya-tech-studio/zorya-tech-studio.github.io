@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'piano-tuner',
+    nameKey: 'pianoTuner.name',
+    subtitleKey: 'pianoTuner.subtitle',
+    descKey: 'pianoTuner.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'tools',
+    tags: ['Android', 'Piano', 'Tuner', 'Tuning check', 'Music'],
+    icon: '/apps/piano-tuner/icon.png',
+    privacyRoute: (locale) => `/${locale}/piano-tuner/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/piano-tuner/terms-of-use`,
+  },
+  {
     slug: 'ocarina',
     nameKey: 'ocarina.name',
     subtitleKey: 'ocarina.subtitle',

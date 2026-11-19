@@ -8,6 +8,17 @@
  * Block: { title?: key, paras?: key[], list?: key[] }
  */
 export const APP_TERMS_EXTRAS = {
+  'piano-tuner': [
+    {
+      list: [
+        'pianoTuner.terms.b1',
+        'pianoTuner.terms.b2',
+        'pianoTuner.terms.b3',
+        'pianoTuner.terms.b4',
+        'pianoTuner.terms.b5',
+      ],
+    },
+  ],
   ocarina: [
     {
       list: [
