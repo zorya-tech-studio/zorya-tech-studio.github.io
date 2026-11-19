@@ -8,6 +8,17 @@
  * Block: { title?: key, paras?: key[], list?: key[] }
  */
 export const APP_TERMS_EXTRAS = {
+  baglama: [
+    {
+      list: [
+        'baglama.terms.b1',
+        'baglama.terms.b2',
+        'baglama.terms.b3',
+        'baglama.terms.b4',
+        'baglama.terms.b5',
+      ],
+    },
+  ],
   'trumpet-fingering': [
     {
       list: [

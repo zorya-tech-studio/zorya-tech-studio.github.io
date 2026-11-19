@@ -48,6 +48,12 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/baglama/privacy-policy',
+    name: 'baglama-privacy',
+    component: () => import('./pages/apps/baglama/BaglamaPrivacyPage.vue'),
+    meta: { titleKey: 'baglama.privacy.title', app: 'baglama' },
+  },
+  {
     path: '/:locale/trumpet-fingering/privacy-policy',
     name: 'trumpet-fingering-privacy',
     component: () => import('./pages/apps/trumpet-fingering/TrumpetFingeringPrivacyPage.vue'),
@@ -639,6 +645,14 @@ const routes = [
   {
     path: '/kings-corner/privacy',
     redirect: () => `/${i18n.global.locale.value}/kings-corner/privacy-policy`,
+  },
+  {
+    path: '/baglama/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/baglama/privacy-policy`,
+  },
+  {
+    path: '/baglama/privacy',
+    redirect: () => `/${i18n.global.locale.value}/baglama/privacy-policy`,
   },
   {
     path: '/trumpet-fingering/privacy-policy',

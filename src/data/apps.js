@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'baglama',
+    nameKey: 'baglama.name',
+    subtitleKey: 'baglama.subtitle',
+    descKey: 'baglama.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'tools',
+    tags: ['Android', 'Baglama', 'Saz', 'Tuner', 'Music'],
+    icon: '/apps/baglama/icon.png',
+    privacyRoute: (locale) => `/${locale}/baglama/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/baglama/terms-of-use`,
+  },
+  {
     slug: 'trumpet-fingering',
     nameKey: 'trumpetFingering.name',
     subtitleKey: 'trumpetFingering.subtitle',

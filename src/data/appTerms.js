@@ -43,6 +43,7 @@ const PROFILES = {
     'guitar-tuner',
     'kalimba-tuner',
     'trumpet-fingering',
+    'baglama',
     'chicken-egg-tracker',
     'pickleball-scorekeeper',
     'ytaudit',
