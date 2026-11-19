@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'saxophone',
+    nameKey: 'saxophone.name',
+    subtitleKey: 'saxophone.subtitle',
+    descKey: 'saxophone.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'tools',
+    tags: ['Android', 'Saxophone', 'Tuner', 'Music'],
+    icon: '/apps/saxophone/icon.png',
+    privacyRoute: (locale) => `/${locale}/saxophone/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/saxophone/terms-of-use`,
+  },
+  {
     slug: 'harmonium',
     nameKey: 'harmonium.name',
     subtitleKey: 'harmonium.subtitle',

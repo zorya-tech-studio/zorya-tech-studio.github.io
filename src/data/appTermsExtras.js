@@ -8,6 +8,18 @@
  * Block: { title?: key, paras?: key[], list?: key[] }
  */
 export const APP_TERMS_EXTRAS = {
+  saxophone: [
+    {
+      list: [
+        'saxophone.terms.b1',
+        'saxophone.terms.b2',
+        'saxophone.terms.b3',
+        'saxophone.terms.b4',
+        'saxophone.terms.b5',
+        'saxophone.terms.b6',
+      ],
+    },
+  ],
   harmonium: [
     {
       list: [

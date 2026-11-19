@@ -48,6 +48,12 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/saxophone/privacy-policy',
+    name: 'saxophone-privacy',
+    component: () => import('./pages/apps/saxophone/SaxophonePrivacyPage.vue'),
+    meta: { titleKey: 'saxophone.privacy.title', app: 'saxophone' },
+  },
+  {
     path: '/:locale/harmonium/privacy-policy',
     name: 'harmonium-privacy',
     component: () => import('./pages/apps/harmonium/HarmoniumPrivacyPage.vue'),
@@ -667,6 +673,14 @@ const routes = [
   {
     path: '/baglama/privacy',
     redirect: () => `/${i18n.global.locale.value}/baglama/privacy-policy`,
+  },
+  {
+    path: '/saxophone/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/saxophone/privacy-policy`,
+  },
+  {
+    path: '/saxophone/privacy',
+    redirect: () => `/${i18n.global.locale.value}/saxophone/privacy-policy`,
   },
   {
     path: '/trumpet-fingering/privacy-policy',
