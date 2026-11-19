@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'harmonica',
+    nameKey: 'harmonica.name',
+    subtitleKey: 'harmonica.subtitle',
+    descKey: 'harmonica.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'tools',
+    tags: ['Android', 'Harmonica', 'Tuner', 'Tabs', 'Music'],
+    icon: '/apps/harmonica/icon.png',
+    privacyRoute: (locale) => `/${locale}/harmonica/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/harmonica/terms-of-use`,
+  },
+  {
     slug: 'saxophone',
     nameKey: 'saxophone.name',
     subtitleKey: 'saxophone.subtitle',
