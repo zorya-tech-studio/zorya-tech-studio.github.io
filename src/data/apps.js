@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'ocarina',
+    nameKey: 'ocarina.name',
+    subtitleKey: 'ocarina.subtitle',
+    descKey: 'ocarina.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'tools',
+    tags: ['Android', 'Ocarina', 'Tuner', 'Music', 'Learning'],
+    icon: '/apps/ocarina/icon.png',
+    privacyRoute: (locale) => `/${locale}/ocarina/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/ocarina/terms-of-use`,
+  },
+  {
     slug: 'harmonica',
     nameKey: 'harmonica.name',
     subtitleKey: 'harmonica.subtitle',

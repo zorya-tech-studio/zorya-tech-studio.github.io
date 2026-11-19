@@ -66,6 +66,12 @@ const routes = [
     meta: { titleKey: 'harmonium.privacy.title', app: 'harmonium' },
   },
   {
+    path: '/:locale/ocarina/privacy-policy',
+    name: 'ocarina-privacy',
+    component: () => import('./pages/apps/ocarina/OcarinaPrivacyPage.vue'),
+    meta: { titleKey: 'ocarina.privacy.title', app: 'ocarina' },
+  },
+  {
     path: '/:locale/baglama/privacy-policy',
     name: 'baglama-privacy',
     component: () => import('./pages/apps/baglama/BaglamaPrivacyPage.vue'),
@@ -679,6 +685,14 @@ const routes = [
   {
     path: '/harmonica/privacy',
     redirect: () => `/${i18n.global.locale.value}/harmonica/privacy-policy`,
+  },
+  {
+    path: '/ocarina/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/ocarina/privacy-policy`,
+  },
+  {
+    path: '/ocarina/privacy',
+    redirect: () => `/${i18n.global.locale.value}/ocarina/privacy-policy`,
   },
   {
     path: '/baglama/privacy-policy',

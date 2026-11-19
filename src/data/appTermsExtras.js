@@ -8,6 +8,17 @@
  * Block: { title?: key, paras?: key[], list?: key[] }
  */
 export const APP_TERMS_EXTRAS = {
+  ocarina: [
+    {
+      list: [
+        'ocarina.terms.b1',
+        'ocarina.terms.b2',
+        'ocarina.terms.b3',
+        'ocarina.terms.b4',
+        'ocarina.terms.b5',
+      ],
+    },
+  ],
   harmonica: [
     {
       list: [

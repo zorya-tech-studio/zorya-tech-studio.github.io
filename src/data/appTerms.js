@@ -45,6 +45,7 @@ const PROFILES = {
     'trumpet-fingering',
     'saxophone',
     'baglama',
+    'ocarina',
     'harmonica',
     'harmonium',
     'chicken-egg-tracker',
