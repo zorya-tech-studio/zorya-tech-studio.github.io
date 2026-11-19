@@ -8,6 +8,17 @@
  * Block: { title?: key, paras?: key[], list?: key[] }
  */
 export const APP_TERMS_EXTRAS = {
+  harmonium: [
+    {
+      list: [
+        'harmonium.terms.b1',
+        'harmonium.terms.b2',
+        'harmonium.terms.b3',
+        'harmonium.terms.b4',
+        'harmonium.terms.b5',
+      ],
+    },
+  ],
   baglama: [
     {
       list: [

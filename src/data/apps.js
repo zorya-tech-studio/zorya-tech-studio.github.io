@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'harmonium',
+    nameKey: 'harmonium.name',
+    subtitleKey: 'harmonium.subtitle',
+    descKey: 'harmonium.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'tools',
+    tags: ['Android', 'Harmonium', 'Sargam', 'Raag', 'Music'],
+    icon: '/apps/harmonium/icon.png',
+    privacyRoute: (locale) => `/${locale}/harmonium/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/harmonium/terms-of-use`,
+  },
+  {
     slug: 'baglama',
     nameKey: 'baglama.name',
     subtitleKey: 'baglama.subtitle',

@@ -44,6 +44,7 @@ const PROFILES = {
     'kalimba-tuner',
     'trumpet-fingering',
     'baglama',
+    'harmonium',
     'chicken-egg-tracker',
     'pickleball-scorekeeper',
     'ytaudit',

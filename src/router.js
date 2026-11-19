@@ -48,6 +48,12 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/harmonium/privacy-policy',
+    name: 'harmonium-privacy',
+    component: () => import('./pages/apps/harmonium/HarmoniumPrivacyPage.vue'),
+    meta: { titleKey: 'harmonium.privacy.title', app: 'harmonium' },
+  },
+  {
     path: '/:locale/baglama/privacy-policy',
     name: 'baglama-privacy',
     component: () => import('./pages/apps/baglama/BaglamaPrivacyPage.vue'),
@@ -645,6 +651,14 @@ const routes = [
   {
     path: '/kings-corner/privacy',
     redirect: () => `/${i18n.global.locale.value}/kings-corner/privacy-policy`,
+  },
+  {
+    path: '/harmonium/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/harmonium/privacy-policy`,
+  },
+  {
+    path: '/harmonium/privacy',
+    redirect: () => `/${i18n.global.locale.value}/harmonium/privacy-policy`,
   },
   {
     path: '/baglama/privacy-policy',
