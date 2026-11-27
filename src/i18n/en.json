@@ -1728,7 +1728,7 @@
     "collect_firebase_title": "Firebase Analytics (Google)",
     "collect_firebase_text": "Collects anonymous usage data such as app opens, screen views, session duration, device model, OS version, country, and language. This data is used to understand how users interact with our apps and to improve functionality. No personally identifiable information is collected.",
     "collect_crashlytics_title": "Firebase Crashlytics (Google)",
-    "collect_crashlytics_text": "Some apps, such as Spectrum Analyzer: Octave RTA, Magnetometer & Metal Detector, English Idioms & Phrasal Verbs, Detective Cases: Harbor Noir, Pinochle Offline: Card Game, Briscola: Offline Card Game, Trumpet Fingering Chart: Tuner, Baglama Tuner: Saz & Cura, Harmonium: Sargam & Raag, Saxophone Fingering & Tuner, Harmonica: Tuner, Bends & Tabs, Ocarina: Fingering & Songs and Piano Tuner & Tuning Check, use Firebase Crashlytics instead of analytics. If the app crashes, technical crash data (device model, Android version, app version, stack trace) may be sent to Google to help us fix the problem. It contains no personal data, no audio and no sensor readings. Analytics are turned off in these apps.",
+    "collect_crashlytics_text": "Some apps, such as Spectrum Analyzer: Octave RTA, Magnetometer & Metal Detector, English Idioms & Phrasal Verbs, Detective Cases: Harbor Noir, Pinochle Offline: Card Game, Briscola: Card Games Offline, Trumpet Fingering Chart: Tuner, Baglama Tuner: Saz & Cura, Harmonium: Sargam & Raag, Saxophone Fingering & Tuner, Harmonica: Tuner, Bends & Tabs, Ocarina: Fingering & Songs and Piano Tuner & Tuning Check, use Firebase Crashlytics instead of analytics. If the app crashes, technical crash data (device model, Android version, app version, stack trace) may be sent to Google to help us fix the problem. It contains no personal data, no audio and no sensor readings. Analytics are turned off in these apps.",
     "collect_admob_title": "Google AdMob",
     "collect_admob_text": "Displays ads within our apps. AdMob may collect device identifiers, IP address, and usage data to serve personalized or non-personalized ads. You can opt out of personalized ads in your device settings. Where consent is required (for example in the EEA and the UK), our apps ask for it through Google’s consent message (User Messaging Platform), and you can change your choice in the app’s privacy options.",
     "use_title": "How We Use Information",
@@ -5377,13 +5377,13 @@
     "title": "Terms of Use"
   },
   "briscola": {
-    "name": "Briscola: Offline Card Game",
+    "name": "Briscola: Card Games Offline",
     "subtitle": "The classic Italian trick-taking card game offline against fair computer players: 2 or 4 players, tutorial, daily deal and stats, points only",
     "desc_short": "Classic Briscola offline: 1 vs 1 or 2 vs 2, three computer levels that never see your cards, tutorial and daily deal. Points only.",
     "privacy": {
       "title": "Privacy Policy",
       "updated": "Last updated",
-      "intro": "This policy explains how the Briscola: Offline Card Game app for Android (package com.zoryatechstudio.briscola), made by Zorya Tech Studio, handles your information. It supplements the Zorya Tech Studio privacy policy.",
+      "intro": "This policy explains how the Briscola: Card Games Offline app for Android (package com.zoryatechstudio.briscola), made by Zorya Tech Studio, handles your information. It supplements the Zorya Tech Studio privacy policy.",
       "summary_title": "Summary",
       "summary_b1": "No account, no sign-in, no online play, no chat and no server of our own. You play offline against computer players on your device.",
       "summary_b2": "Your settings, saved game, statistics and achievements are stored only on your device. We never receive them.",
