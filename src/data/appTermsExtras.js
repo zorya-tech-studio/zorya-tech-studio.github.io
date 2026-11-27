@@ -8,6 +8,17 @@
  * Block: { title?: key, paras?: key[], list?: key[] }
  */
 export const APP_TERMS_EXTRAS = {
+  briscola: [
+    {
+      list: [
+        'briscola.terms.b1',
+        'briscola.terms.b2',
+        'briscola.terms.b3',
+        'briscola.terms.b4',
+        'briscola.terms.b5',
+      ],
+    },
+  ],
   'piano-tuner': [
     {
       list: [

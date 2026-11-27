@@ -48,6 +48,12 @@ const routes = [
   },
   // App-specific routes
   {
+    path: '/:locale/briscola/privacy-policy',
+    name: 'briscola-privacy',
+    component: () => import('./pages/apps/briscola/BriscolaPrivacyPage.vue'),
+    meta: { titleKey: 'briscola.privacy.title', app: 'briscola' },
+  },
+  {
     path: '/:locale/piano-tuner/privacy-policy',
     name: 'piano-tuner-privacy',
     component: () => import('./pages/apps/piano-tuner/PianoTunerPrivacyPage.vue'),
@@ -731,6 +737,14 @@ const routes = [
   {
     path: '/trumpet-fingering/privacy',
     redirect: () => `/${i18n.global.locale.value}/trumpet-fingering/privacy-policy`,
+  },
+  {
+    path: '/briscola/privacy-policy',
+    redirect: () => `/${i18n.global.locale.value}/briscola/privacy-policy`,
+  },
+  {
+    path: '/briscola/privacy',
+    redirect: () => `/${i18n.global.locale.value}/briscola/privacy-policy`,
   },
   {
     path: '/pinochle/privacy-policy',

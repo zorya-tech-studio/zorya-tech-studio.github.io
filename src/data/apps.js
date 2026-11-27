@@ -10,6 +10,19 @@
  */
 export const apps = [
   {
+    slug: 'briscola',
+    nameKey: 'briscola.name',
+    subtitleKey: 'briscola.subtitle',
+    descKey: 'briscola.desc_short',
+    platform: 'Android',
+    status: 'released',
+    category: 'games',
+    tags: ['Android', 'Card Game', 'Briscola', 'Offline'],
+    icon: '/apps/briscola/icon.png',
+    privacyRoute: (locale) => `/${locale}/briscola/privacy-policy`,
+    offerRoute: (locale) => `/${locale}/briscola/terms-of-use`,
+  },
+  {
     slug: 'piano-tuner',
     nameKey: 'pianoTuner.name',
     subtitleKey: 'pianoTuner.subtitle',
